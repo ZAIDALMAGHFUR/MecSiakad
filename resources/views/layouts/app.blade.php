@@ -229,7 +229,7 @@
                     <h6>General </h6>
                   </div>
                 </li>
-                <li class="dropdown"><a class="nav-link menu" href="{{ route('home') }}"><i
+                <li class="dropdown"><a class="nav-link menu" href="{{ route('home')}}"><i
                       data-feather="home"></i><span>Dashboard</span></a>
                 </li>
                 <li class="sidebar-main-title">
@@ -240,8 +240,7 @@
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                       data-feather="grid"></i><span>Data Master</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="">Kurikulum</a></li>
-                    <li><a href="">Tahun Akademik</a></li>
+                    <li><a href="{{ route('program-studi') }}">Program Studi</a></li>
                     <li><a href="">Gedung</a></li>
                     <li><a href="">Ruangan</a></li>
                     <li><a href="">Golongan</a></li>

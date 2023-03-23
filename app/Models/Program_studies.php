@@ -10,6 +10,6 @@ class Program_studies extends Model
     use HasFactory;
 
     protected $guarded = [
-        'name',
+        'id',
     ];
 }

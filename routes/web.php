@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\ProgrammStudiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,14 @@ Auth::routes();
 
 Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    //program studi
+    Route::get('/program-studi', [ProgrammStudiController::class, 'index'])->name('program-studi');
+    Route::get('/program-studi/add', [ProgrammStudiController::class, 'add'])->name('program-studi.add');
+    Route::post('/program-studi/store', [ProgrammStudiController::class, 'store'])->name('program-studi.store');
+    Route::get('/program-studi/edit/{id}', [ProgrammStudiController::class, 'edit'])->name('program-studi.edit');
+    Route::post('/program-studi/update/{id}', [ProgrammStudiController::class, 'update'])->name('program-studi.update');
+    Route::delete('/program-studi/delete/{id}', [ProgrammStudiController::class, 'destroy'])->name('program-studi.delete');
 });
 
 Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {

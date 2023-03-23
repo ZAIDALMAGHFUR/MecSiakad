@@ -13,6 +13,7 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.0",
         "macsidigital/laravel-zoom": "^5.0",
+        "realrashid/sweet-alert": "^6.0",
         "weidner/goutte": "^2.2",
         "yajra/laravel-datatables-oracle": "10.0",
         "yoeunes/toastr": "^2.3"
