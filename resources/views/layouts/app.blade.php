@@ -37,6 +37,13 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
   @stack('css')
+
+  <style>
+    .nyala{
+      background-color: #24695c;
+      border-radius: 2rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -229,7 +236,7 @@
                     <h6>General </h6>
                   </div>
                 </li>
-                <li class="dropdown"><a class="nav-link menu" href="{{ route('home')}}"><i
+                <li class="dropdown "><a @if(request()->route()->uri == 'home') class="nav-link menu nyala  text-white " @endif href="{{ route('home')}}"><i
                       data-feather="home"></i><span>Dashboard</span></a>
                 </li>
                 <li class="sidebar-main-title">
@@ -241,7 +248,7 @@
                       data-feather="grid"></i><span>Data Master</span></a>
                   <ul class="nav-submenu menu-content">
                     <li><a href="{{ route('program-studi') }}">Program Studi</a></li>
-                    <li><a href="">Gedung</a></li>
+                    <li><a href="{{ route('mahasiswa.admin') }}">Mahasiswa</a></li>
                     <li><a href="">Ruangan</a></li>
                     <li><a href="">Golongan</a></li>
                     <li><a href="">Jenis PTK</a></li>

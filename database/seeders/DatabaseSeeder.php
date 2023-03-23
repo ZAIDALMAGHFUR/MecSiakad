@@ -34,7 +34,6 @@ class DatabaseSeeder extends Seeder
             UsersSeeder::class,
             ProgramStuiesSeeder::class,
             MahasiswaSeeder::class,
-            MahasiswaSeeder::class,
             TahunAcademicsSeeder::class,
             DosenSeeder::class,
             JabatanSeeder::class,

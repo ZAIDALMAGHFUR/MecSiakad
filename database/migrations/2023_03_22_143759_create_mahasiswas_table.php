@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->enum('jenis_kelamin', ['laki-laki','perempuan']);
-            $table->string('agama');
+            $table->enum('agama', ['islam','kristen','katolik','hindu','budha','konghucu']);
             $table->enum('status', ['aktif','tidak aktif','lulus','drop out','alumni']);
             $table->string('foto');
             $table->timestamps();

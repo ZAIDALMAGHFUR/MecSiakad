@@ -10,11 +10,6 @@ class Mahasiswa extends Model
     use HasFactory;
 
     protected $guarded = [
-        'nama_mahasiswa',
-        'nim',
-        'email',
-        'password',
-        'role_id',
-        'program_study_id',
+        'id'
     ];
 }

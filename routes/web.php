@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProgrammStudiController;
+use App\Http\Controllers\Admin\CreateMahasiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,10 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
     Route::get('/program-studi/edit/{id}', [ProgrammStudiController::class, 'edit'])->name('program-studi.edit');
     Route::post('/program-studi/update/{id}', [ProgrammStudiController::class, 'update'])->name('program-studi.update');
     Route::delete('/program-studi/delete/{id}', [ProgrammStudiController::class, 'destroy'])->name('program-studi.delete');
+
+    //mahasiswa
+    Route::get('/mahasiswa-admin', [CreateMahasiswaController::class, 'index'])->name('mahasiswa.admin');
+    Route::get('/mahasiswa-admin/add', [CreateMahasiswaController::class, 'create'])->name('mahasiswa.admin.add');
 });
 
 Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {
