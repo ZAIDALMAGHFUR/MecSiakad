@@ -81,7 +81,7 @@
               </button>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Import from Excel</a></li>
-                <li><a class="dropdown-item" href="{{ route('export_excel') }}">Export to Exvel</a></li>
+                <li><a class="dropdown-item" href="{{ route('export_excel') }}">Export to Excel</a></li>
                 <li><a class="dropdown-item" href="storage/Template/import siakad.xlsx">Download Template Import</a></li>
               </ul>
           </div>
