@@ -5,8 +5,10 @@ namespace App\Imports;
 use App\Models\User;
 use App\Models\Mahasiswa;
 use Illuminate\Support\Collection;
-use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithValidation;
 
 class UsersImport implements ToCollection
 {
@@ -16,10 +18,35 @@ class UsersImport implements ToCollection
     * @return \Illuminate\Database\Eloquent\Model|null
     */
 
-    public function model(array $rows)
-    {
-        
-    }
+    // WithHeadingRow, WithValidation
+
+
+    // public function rules(): array
+    // {
+    //     return [
+    //         'nim' => function($attribute, $value, $onFailure) {
+    //             if(Mahasiswa::where('nim', $value)->exists()){
+    //                 $onFailure("NIM $value sudah ada");
+    //             }
+    //         }, 
+    //         'email' => function($attribute, $value, $onFailure) {
+    //             if(Mahasiswa::where('email', $value)->exists()){
+    //                 $onFailure("Email $value sudah ada");
+    //             }
+    //         },
+    //         'name'=> 'required',
+    //         'no_hp'=> 'required',
+    //         'alamat'=> 'required',
+    //         'program_studies_id'=> 'required',
+    //         'tempat_lahir'=> 'required',
+    //         'tanggal_lahir'=> 'required',
+    //         'jenis_kelamin'=> 'required',
+    //         'agama'=> 'required',
+    //         'status'=> 'required',
+    //     ];
+    // }
+
+
     public function collection(Collection $rows)
     {
         // dd($rows);
@@ -53,6 +80,5 @@ class UsersImport implements ToCollection
                     'foto' => $row[12] ?? '',
             ]);
         }
-
     }
 }

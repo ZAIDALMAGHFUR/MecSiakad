@@ -40,10 +40,12 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
 
     //mahaiswa import excel
     Route::post('import_excel', [CreateMahasiswaController::class, 'importExcel'])->name('import_excel');
+    Route::get('export_excel', [CreateMahasiswaController::class, 'exportExcel'])->name('export_excel');
     //mahasiswa
     Route::get('/mahasiswa-admin', [CreateMahasiswaController::class, 'index'])->name('mahasiswa.admin');
     Route::get('/mahasiswa-admin/add', [CreateMahasiswaController::class, 'create'])->name('mahasiswa.admin.add');
     Route::post('/mahasiswa-admin/store', [CreateMahasiswaController::class, 'store'])->name('mahasiswa.admin.store');
+    Route::delete('/mahasiswa-admin/delete/{id}', [CreateMahasiswaController::class, 'destroy'])->name('mahasiswa.admin.delete');
     
 });
 

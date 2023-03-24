@@ -6,9 +6,10 @@ use App\Models\User;
 use App\Models\Mahasiswa;
 use App\Imports\UsersImport;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Program_studies;
+use App\Exports\MahasiswaExport;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\MahasiswatRequest;
 
 class CreateMahasiswaController extends Controller
@@ -82,4 +83,20 @@ class CreateMahasiswaController extends Controller
             'alert-type' => 'success'
         ]);
     }
+
+    public function exportExcel()
+    {
+        return Excel::download(new MahasiswaExport, 'mahasiswa.xlsx');
+    }
+
+    public function destroy($id)
+    {
+        $data = Mahasiswa::findOrFail($id);
+        $data->delete();
+
+        return redirect()->back()->with([
+            'success' => 'Data berhasil dihapus',
+            'alert-type' => 'success'
+        ]);
+    }   
 }

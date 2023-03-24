@@ -74,12 +74,28 @@
     <div class="container-fluid">
       <div class="col-sm-12">
         <div class="card">
-          <div class="card-header">  
-            <a href="{{ route('mahasiswa.admin.add') }}" class="btn btn-primary" >Add Mahasiswa</a>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <div class="card-header">
+              <a href="{{ route('mahasiswa.admin.add') }}" class="btn btn-primary">Add Mahasiswa</a>
+              <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 Import Mahasiswa
-            </button>      
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Import from Excel</a></li>
+                <li><a class="dropdown-item" href="{{ route('export_excel') }}">Export to Exvel</a></li>
+                <li><a class="dropdown-item" href="storage/Template/import siakad.xlsx">Download Template Import</a></li>
+              </ul>
           </div>
+          
+          @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+          @endif
+
           <div class="card-body">
             <div class="table-responsive">
               <table class="display table table-bordered" id="basic-1">
@@ -90,7 +106,8 @@
                     <th>Nim</th>
                     <th>Program Studi</th>
                     <th>Tempat, Tanggal Lahir</th>
-                    <th>Jenis Kelamin</th>
+                    {{-- <th>Jenis Kelamin</th> --}}
+                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -102,7 +119,8 @@
                       <td>{{ $d->nim }}</td>
                       <td>{{ $d->program_studies->name }}</td>
                       <td>{{ $d->tempat_lahir }}, {{ date('d M Y',strtotime($d->tanggal_lahir)) }}</td>
-                      <td>{{ $d->jenis_kelamin }}</td>
+                      {{-- <td>{{ $d->jenis_kelamin }}</td> --}}
+                      <td>{{ $d->status }}</td>
                       <td style="text-align: center">
 
                         <a href=""> 
@@ -113,7 +131,7 @@
                           <button class="btn btn-primary btn-sm edit" type="button"><i class="fa fa-edit"></i></button>
                         </a>
                         
-                        <form action="" method="POST" class="d-inline">
+                        <form action="{{ route('mahasiswa.admin.delete', [$d->id]) }}" method="POST" class="d-inline">
                           @csrf
                           @method('delete')
                           <button class="btn btn-danger btn-sm show_confirm" type="submit"><i class="fa fa-trash"></i></button>
