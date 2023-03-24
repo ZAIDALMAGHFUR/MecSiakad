@@ -52,8 +52,9 @@
           <div class="table-responsive">
             <div class="col-lg-12">
               <div class="card p-3">
-                <form method="post" class="needs-validation" novalidate="" action="">
+                <form method="post" class="needs-validation" novalidate="" action="{{ route('mahasiswa.admin.store') }}" enctype="multipart/form-data">
                   @csrf 
+                    @method('POST')
                   @if ($errors->any())
                   <div class="alert alert-danger">
                       <ul>
@@ -73,6 +74,18 @@
                       <label for="nim" class="col-sm-2 col-form-label">Nim</label>
                       <div class="col-sm-10">
                           <input type="text" class="form-control" name="nim" value="{{ old('nim') }}" id="nim" required>
+                      </div>
+                  </div>
+                  <div class="form-group row border-bottom pb-4">
+                      <label for="email" class="col-sm-2 col-form-label">Email</label>
+                      <div class="col-sm-10">
+                          <input type="text" class="form-control" name="email" value="{{ old('email') }}" id="email" required>
+                      </div>
+                  </div>
+                  <div class="form-group row border-bottom pb-4">
+                      <label for="no_hp" class="col-sm-2 col-form-label">No Handphone</label>
+                      <div class="col-sm-10">
+                          <input type="text" class="form-control" name="no_hp" value="{{ old('no_hp') }}" id="no_hp" required>
                       </div>
                   </div>
                   <div class="form-group row border-bottom pb-4">
@@ -140,7 +153,7 @@
                   <div class="form-group row border-bottom pb-4">
                       <label for="foto" class="col-sm-2 col-form-label">Photo</label>
                       <div class="col-sm-10">
-                          <input type="text" class="form-control" name="foto" value="{{ old('foto') }}" id="foto" required>
+                          <input type="file" class="form-control" name="foto" value="{{ old('foto') }}" id="foto" required>
                       </div>
                   </div>
 

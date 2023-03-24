@@ -37,9 +37,14 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
     Route::post('/program-studi/update/{id}', [ProgrammStudiController::class, 'update'])->name('program-studi.update');
     Route::delete('/program-studi/delete/{id}', [ProgrammStudiController::class, 'destroy'])->name('program-studi.delete');
 
+
+    //mahaiswa import excel
+    Route::post('import_excel', [CreateMahasiswaController::class, 'importExcel'])->name('import_excel');
     //mahasiswa
     Route::get('/mahasiswa-admin', [CreateMahasiswaController::class, 'index'])->name('mahasiswa.admin');
     Route::get('/mahasiswa-admin/add', [CreateMahasiswaController::class, 'create'])->name('mahasiswa.admin.add');
+    Route::post('/mahasiswa-admin/store', [CreateMahasiswaController::class, 'store'])->name('mahasiswa.admin.store');
+    
 });
 
 Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {

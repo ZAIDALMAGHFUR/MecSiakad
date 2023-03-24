@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('nim');
-            $table->foreignId('users_id')->constrained();
+            $table->string('email');
+            $table->foreignId('user_id')->constrained();
             $table->string('no_hp');
             $table->string('alamat');
             $table->foreignId('program_studies_id')->constrained();

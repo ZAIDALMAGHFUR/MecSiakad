@@ -58,7 +58,7 @@
                 <div class="form-group">
                   <label>Email Address</label>
                   <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
+                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
 
                     @error('email')
                         <span class="invalid-feedback" role="alert">

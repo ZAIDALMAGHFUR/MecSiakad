@@ -19,7 +19,8 @@ class MahasiswaSeeder extends Seeder
             Mahasiswa::create([
                 'name' => 'saipol',
                 'nim' => '123456789',
-                'users_id' => 3,
+                'email' => 'mhs@gmail.com',
+                'user_id' => 3,
                 'no_hp' => '08123456789',
                 'alamat' => 'Jl. Jalan',
                 'tempat_lahir' => 'Jakarta',
