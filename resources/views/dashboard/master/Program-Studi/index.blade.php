@@ -57,6 +57,7 @@
                     <th>Kode Program Studi</th>
                     <th>Nama Program Studi</th>
                     <th>Jenjang Program Studi</th>
+                    <th>Id Program Studi</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -67,6 +68,7 @@
                       <td>{{ $d->kode_prodi }}</td>
                       <td>{{ $d->name }}</td>
                       <td>{{ $d->jenjang }}</td>
+                      <td>{{ $d->id }}</td>
                       <td style="text-align: center">
 
                         <a href="{{ route('program-studi.edit', [$d]) }}">

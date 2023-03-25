@@ -8,6 +8,7 @@ use App\Imports\UsersImport;
 use Illuminate\Http\Request;
 use App\Models\Program_studies;
 use App\Exports\MahasiswaExport;
+use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\MahasiswatRequest;
@@ -88,6 +89,45 @@ class CreateMahasiswaController extends Controller
     {
         return Excel::download(new MahasiswaExport, 'mahasiswa.xlsx');
     }
+
+    public function edit($id)
+    {
+        $data = Mahasiswa::findOrFail($id);
+        $program_studies = Program_studies::all();
+        return view('dashboard.master.mahasiswa.edit', compact('data', 'program_studies'));
+    }
+
+    public function update(MahasiswatRequest $request, $id)
+{
+    $mahasiswa = Mahasiswa::findOrFail($id);
+
+    if($request->validated()){
+        if($request->foto){
+            File::delete('storage/'.$mahasiswa->foto);
+            $foto = $request->file('foto')->store(
+                'foto-mahasiswa', 'public'
+            );
+            $mahasiswa->update($request->except('foto') + [
+                'foto' => $foto
+            ]);
+        }
+        else{
+            $mahasiswa->update($request->except('foto'));
+        }
+    }
+
+    return redirect()->route('mahasiswa.admin')->with([
+        'success' => 'Data berhasil diubah',
+        'alert-type' => 'success'
+    ]);
+}
+
+    public function show($id)
+    {
+        $data = Mahasiswa::findOrFail($id);
+        return view('dashboard.master.mahasiswa.show', compact('data'));
+    }
+
 
     public function destroy($id)
     {

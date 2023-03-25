@@ -120,14 +120,31 @@
                       <td>{{ $d->program_studies->name }}</td>
                       <td>{{ $d->tempat_lahir }}, {{ date('d M Y',strtotime($d->tanggal_lahir)) }}</td>
                       {{-- <td>{{ $d->jenis_kelamin }}</td> --}}
-                      <td>{{ $d->status }}</td>
+                      <td>
+                        @if ($d->status == 'aktif')
+                          <span class="badge bg-success">Aktif</span>
+                        @else
+                          @if ($d->status == 'tidak aktif')
+                            <span class="badge bg-danger">Tidak Aktif</span>
+                          @endif
+                          @if ($d->status == 'lulus')
+                            <span class="badge bg-info bg-gradient">Lulus</span>
+                          @endif
+                          @if ($d->status == 'drop out')
+                            <span class="badge bg-info">Drop Out</span>
+                            @endif
+                          @if ($d->status == 'alumni')
+                            <span class="badge bg-warning">Alumni</span>
+                          @endif
+                        @endif
+                      </td>
                       <td style="text-align: center">
 
-                        <a href=""> 
+                        <a href="{{ route('mahasiswa.admin.show', [$d]) }}"> 
                             <button class="btn btn-warning  btn-sm edit" type="button"><i class="fa fa-eye"></i></button>
                         </a>   
 
-                        <a href="">
+                        <a href="{{ route('mahasiswa.admin.edit', [$d]) }}">
                           <button class="btn btn-primary btn-sm edit" type="button"><i class="fa fa-edit"></i></button>
                         </a>
                         
