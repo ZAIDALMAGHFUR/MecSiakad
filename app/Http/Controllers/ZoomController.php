@@ -37,7 +37,10 @@ class ZoomController extends Controller
       'timezone' => 'Asia/Jakarta',
     ]);
     // return response()->json(['success' => 'Zoom successfully added']);
-    return redirect()->route('zoom')->with(['success' => 'Zoom successfully deleted!']);
+    return redirect()->route('zoom')->with([
+      'success' => 'Zoom berhasil ditambahkan',
+      'alert-type' => 'success'
+    ]);
     // return view('dashboard.zoom.index', $meetings);
   }
 
@@ -45,6 +48,9 @@ class ZoomController extends Controller
   public function delete($id)
   {
     $meeting = Zoom::meeting()->find($id)->delete();
-    return redirect()->route('zoom', $meeting)->with(['success' => 'Zoom successfully deleted!']);
+    return redirect()->route('zoom', $meeting)->with([
+      'success' => 'Zoom successfully deleted!',
+      'alert-type' => 'success'
+    ]);
   }
 }

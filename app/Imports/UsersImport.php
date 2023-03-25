@@ -25,12 +25,13 @@ class UsersImport implements ToModel, WithHeadingRow, WithValidation
     {
         return [
             'nim' => function($attribute, $value, $onFailure) {
-                if(Mahasiswa::where('nim', $value)->exists()){
+                if(Mahasiswa::where('nim', '=', $value)->exists()){
                     $onFailure("NIM $value sudah ada");
+                    // dd($value);
                 }
             }, 
             'email' => function($attribute, $value, $onFailure) {
-                if(Mahasiswa::where('email', $value)->exists()){
+                if(User::where('email', $value)->exists()){
                     $onFailure("Email $value sudah ada");
                 }
             },
