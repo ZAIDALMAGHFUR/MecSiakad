@@ -12,7 +12,7 @@
             <h3>Mahasiswa</h3>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="">Applications</a></li>
-              <li class="breadcrumb-item">Data Master</li>
+              <li class="breadcrumb-item">Data Pengguna</li>
               <li class="breadcrumb-item active">Mahasiswa</li>
             </ol>
           </div>

@@ -15,7 +15,7 @@
           <h3>Show Mahasiswa</h3>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
-            <li class="breadcrumb-item">Data Master</li>
+            <li class="breadcrumb-item">Data Pengguna</li>
             <li class="breadcrumb-item active">Show Mahasiswa</li>
           </ol>
         </div>
@@ -95,17 +95,49 @@
                             <td>{{ $data->jenis_kelamin }}</td>
                         </tr>
                         <tr>
-                            <th>Nama Lengkap</th>
-                            <td>{{ $data->name }}</td>
-                        </tr>
-                        <tr>
-                            <th>Nama Lengkap</th>
-                            <td>{{ $data->name }}</td>
-                        </tr>
-                        <tr>
                             <th>Agama</th>
                             <td>{{ $data->agama }}</td>
                         </tr>
+                        <tr>
+                            <th>Tahun Masuk</th>
+                            <td>{{ $data->tahun_masuk }}</td>
+                        </tr>
+                        <tr>
+                            <th>Tahun Lulus</th>
+                            <td>{{ $data->tahun_lulus }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nama Ayah</th>
+                            <td>{{ $data->nama_ayah }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nama Ibu</th>
+                            <td>{{ $data->nama_ibu }}</td>
+                        </tr>
+                        <tr>
+                            <th>Pekerjaan Ayah</th>
+                            <td>{{ $data->pekerjaan_ayah }}</td>
+                        </tr>
+                        <tr>
+                            <th>No Handphone orang tua</th>
+                            <td>{{ $data->no_hp_ortu }}</td>
+                        </tr>
+                        <tr>
+                            <th>Alamat Orang Tua</th>
+                            <td>{{ $data->alamat_ortu }}</td>
+                        </tr>
+                        <tr>
+                            <th>Asal Sekolah</th>
+                            <td>{{ $data->asal_sekolah }}</td>
+                        </tr>
+                        {{-- <tr>
+                            <th>Tahun Academic</th>
+                            <td>
+                              @foreach ($ta as $t)
+                                {{ $t->tahun_akademik }}
+                              @endforeach
+                            </td>
+                        </tr> --}}
                         <tr>
                             <th>Status Mahasiswa</th>
                             <td>{{ $data->status }}</td>

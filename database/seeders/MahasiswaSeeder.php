@@ -30,6 +30,15 @@ class MahasiswaSeeder extends Seeder
                 'foto' => 'photo',
                 'status' => 'aktif',
                 'agama' => 'islam',
+                'tahun_masuk' => '2019',
+                'nama_ayah' => 'Bapak',
+                'nama_ibu' => 'Ibu',
+                'pekerjaan_ayah' => 'PNS',
+                'pekerjaan_ibu' => 'Ibu Rumah Tangga',
+                'no_hp_ortu' => '08123456789',
+                'alamat_ortu' => 'Jl. Jalan',
+                'asal_sekolah' => 'SMA',
+                'tahun_academics_id' => 1,
             ]);
         }
     }

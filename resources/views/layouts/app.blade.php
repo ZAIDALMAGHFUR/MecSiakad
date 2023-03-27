@@ -248,7 +248,6 @@
                       data-feather="grid"></i><span>Data Master</span></a>
                   <ul class="nav-submenu menu-content">
                     <li><a href="{{ route('program-studi') }}">Program Studi</a></li>
-                    <li><a href="{{ route('mahasiswa.admin') }}">Mahasiswa</a></li>
                     <li><a href="">Ruangan</a></li>
                     <li><a href="">Golongan</a></li>
                     <li><a href="">Jenis PTK</a></li>
@@ -260,7 +259,7 @@
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                       data-feather="users"></i><span>Data Pengguna</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="">Siswa</a></li>
+                    <li><a href="{{ route('mahasiswa.admin') }}">Mahasiswa</a></li>
                     <li><a href="">Guru</a></li>
                     <li><a href="http://">Kepala
                         Sekolah</a></li>

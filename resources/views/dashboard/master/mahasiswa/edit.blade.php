@@ -15,7 +15,7 @@
           <h3>Edit Mahasiswa</h3>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
-            <li class="breadcrumb-item">Data Master</li>
+            <li class="breadcrumb-item">Data Pengguna</li>
             <li class="breadcrumb-item active">Edit Mahasiswa</li>
           </ol>
         </div>
@@ -116,6 +116,70 @@
                           <input type="date" class="form-control" name="tanggal_lahir" value="{{ old('tanggal_lahir', $data->tanggal_lahir) }}" id="tanggal_lahir" required>
                       </div>
                   </div>
+                  <div class="form-group row border-bottom pb-4">
+                    <label for="tahun_masuk" class="col-sm-2 col-form-label">Tahun Masuk</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control" name="tahun_masuk" value="{{ old('tahun_masuk', $data->tahun_masuk) }}" id="tahun_masuk" required>
+                    </div>
+                </div>
+                <div class="form-group row border-bottom pb-4">
+                    <label for="tahun_lulus" class="col-sm-2 col-form-label">Tahun Lulus</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control" name="tahun_lulus" value="{{ old('tahun_lulus', $data->tahun_lulus) }}" id="tahun_lulus" required>
+                    </div>
+                </div>
+                <div class="form-group row border-bottom pb-4">
+                    <label for="nama_ayah" class="col-sm-2 col-form-label">Nama Ayah</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="nama_ayah" value="{{ old('nama_ayah', $data->nama_ayah) }}" id="nama_ayah" required>
+                    </div>
+                </div>
+                <div class="form-group row border-bottom pb-4">
+                    <label for="nama_ibu" class="col-sm-2 col-form-label">Nama Ibu</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="nama_ibu" value="{{ old('nama_ibu', $data->nama_ibu) }}" id="nama_ibu" required>
+                    </div>
+                </div>
+                <div class="form-group row border-bottom pb-4">
+                    <label for="pekerjaan_ayah" class="col-sm-2 col-form-label">Pekerjaan Ayah</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="pekerjaan_ayah" value="{{ old('pekerjaan_ayah', $data->pekerjaan_ayah) }}" id="pekerjaan_ayah" required>
+                    </div>
+                </div>
+                <div class="form-group row border-bottom pb-4">
+                    <label for="pekerjaan_ibu" class="col-sm-2 col-form-label">Pekerjaan Ibu</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="pekerjaan_ibu" value="{{ old('pekerjaan_ibu', $data->pekerjaan_ibu) }}" id="pekerjaan_ibu" required>
+                    </div>
+                </div>
+                <div class="form-group row border-bottom pb-4">
+                    <label for="no_hp_ortu" class="col-sm-2 col-form-label">No Handphone Orang Tua</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" name="no_hp_ortu" value="{{ old('no_hp_ortu', $data->no_hp_ortu) }}" id="no_hp_ortu" required>
+                    </div>
+                </div>
+                <div class="form-group row border-bottom pb-4">
+                    <label for="alamat_ortu" class="col-sm-2 col-form-label">Alamat Orang Tua</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="alamat_ortu" value="{{ old('alamat_ortu', $data->alamat_ortu) }}" id="alamat_ortu" required>
+                    </div>
+                </div>
+                <div class="form-group row border-bottom pb-4">
+                    <label for="asal_sekolah" class="col-sm-2 col-form-label">Asal Sekolah</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="asal_sekolah" value="{{ old('asal_sekolah', $data->asal_sekolah) }}" id="asal_sekolah" required>
+                    </div>
+                </div>
+                <div class="form-group row border-bottom pb-4">
+                    <label for="tahun_academics_id" class="col-sm-2 col-form-label">Tahun Academic</label>
+                    <div class="col-sm-10">
+                      <select class="form-control" name="tahun_academics_id" id="tahun_academics_id">
+                        @foreach($tahunakademic as $ta)
+                            <option {{ old("tahun_academics_id") == $ta->id ? 'selected' : null }} value="{{ $ta->id }}">{{ $ta->tahun_akademik }}</option>
+                        @endforeach
+                    </select>
+                    </div>
+                </div>
                   <div class="form-group row border-bottom pb-4">
                     <label for="jenis_kelamin" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                     <div class="col-sm-10">

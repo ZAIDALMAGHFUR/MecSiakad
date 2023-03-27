@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\MahasiswatRequest;
+use App\Models\TahunAcademic;
 
 class CreateMahasiswaController extends Controller
 {
@@ -25,7 +26,8 @@ class CreateMahasiswaController extends Controller
     {
         // dd($request->all());
         $program_studies = Program_studies::all();
-        return view('dashboard.master.mahasiswa.create', compact('program_studies'));
+        $tahunakademic = TahunAcademic::all();
+        return view('dashboard.master.mahasiswa.create', compact('program_studies', 'tahunakademic'));
     }
 
     public function store(MahasiswatRequest $request)
@@ -58,6 +60,16 @@ class CreateMahasiswaController extends Controller
                 'status' => $request->status,
                 'user_id' => $user->id,
                 'foto' => $foto,
+                'tahun_academics_id' => $request->tahun_academics_id,
+                'asal_sekolah' => $request->asal_sekolah,
+                'alamat_ortu' => $request->alamat_ortu,
+                'no_hp_ortu' => $request->no_hp_ortu,
+                'pekerjaan_ibu' => $request->pekerjaan_ibu,
+                'pekerjaan_ayah' => $request->pekerjaan_ayah,
+                'nama_ibu' => $request->nama_ibu,
+                'nama_ayah' => $request->nama_ayah,
+                'tahun_lulus' => $request->tahun_lulus,
+                'tahun_masuk' => $request->tahun_masuk,
             ];
 
             $user->mahasiswa()->create($query);
@@ -94,7 +106,8 @@ class CreateMahasiswaController extends Controller
     {
         $data = Mahasiswa::findOrFail($id);
         $program_studies = Program_studies::all();
-        return view('dashboard.master.mahasiswa.edit', compact('data', 'program_studies'));
+        $tahunakademic = TahunAcademic::all();
+        return view('dashboard.master.mahasiswa.edit', compact('data', 'program_studies', 'tahunakademic'));
     }
 
     public function update(MahasiswatRequest $request, $id)
@@ -125,7 +138,8 @@ class CreateMahasiswaController extends Controller
     public function show($id)
     {
         $data = Mahasiswa::findOrFail($id);
-        return view('dashboard.master.mahasiswa.show', compact('data'));
+        $ta = TahunAcademic::all();
+        return view('dashboard.master.mahasiswa.show', compact('data', 'ta'));
     }
 
 

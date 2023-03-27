@@ -10,6 +10,6 @@ class TahunAcademic extends Model
     use HasFactory;
 
     protected $guarded = [
-        'tahun_akademik',
+        'id',
     ];
 }
