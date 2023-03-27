@@ -248,7 +248,7 @@
                       data-feather="grid"></i><span>Data Master</span></a>
                   <ul class="nav-submenu menu-content">
                     <li><a href="{{ route('program-studi') }}">Program Studi</a></li>
-                    <li><a href="">Ruangan</a></li>
+                    <li><a href="{{ route('thnakademik') }}">Tahun Academic</a></li>
                     <li><a href="">Golongan</a></li>
                     <li><a href="">Jenis PTK</a></li>
                     <li><a href="">Jurusan</a></li>

@@ -36,6 +36,16 @@ class MahasiswatRequest extends FormRequest
             'agama' => 'required',
             'status' => 'required',
             'foto' => 'image|mimes:png,jpg,jpeg',
+            'tahun_masuk' => 'required',
+            'tahun_lulus' => 'required',
+            'nama_ayah' => 'required',
+            'nama_ibu' => 'required',
+            'pekerjaan_ayah' => 'required',
+            'pekerjaan_ibu' => 'required',
+            'no_hp_ortu' => 'required',
+            'alamat_ortu' => 'required',
+            'asal_sekolah' => 'required',
+            'tahun_academics_id' => 'required',
         ];
     }
 }

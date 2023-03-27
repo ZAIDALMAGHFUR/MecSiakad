@@ -10,26 +10,22 @@
           @csrf
           <div>
             <div class="col-md-12">
-              <label class="form-label">Kode Tahun</label>
-              <input class="form-control" type="text" name="kd_tahun" required>
-            </div>
-            <div class="col-md-12">
               <label class="form-label">Nama Tahun</label>
-              <input class="form-control" type="text" name="nm_tahun" required>
+              <input class="form-control" type="text" placeholder="Cth: 2016/2017" name="tahun_akademik" required>
             </div>
             <div class="col-md-12">
-              <label class="form-label">Keterangan</label>
-              <input class="form-control" type="text" placeholder="Cth: 2016/2017" name="ket_tahun" required>
+              <label class="form-label">Semester</label>
+              <input class="form-control" type="text" placeholder="Cth: Ganjil"  name="semester" required>
             </div>
             <div class="col-md-6">
-              <div class="form-group m-t-15 m-checkbox-inline mb-0" id="stts_tahun">
+              <div class="form-group m-t-15 m-checkbox-inline mb-0" id="status">
                 <label class="form-label">Status</label>
                 <label class="d-block">
-                  <input class="form-check-input" id="stts_tahun_1" type="radio" value="Active" name="stts_tahun">
+                  <input class="form-check-input" id="status" type="radio" value="aktif" name="status">
                   Active
                 </label>
                 <label class="d-block">
-                  <input class="form-check-input" id="stts_tahun_2" type="radio" value="Non Active" name="stts_tahun">
+                  <input class="form-check-input" id="status" type="radio" value="tidak aktif" name="status">
                   Non
                   Active
                 </label>

@@ -55,9 +55,8 @@
                 <thead>
                   <tr style="text-align: center">
                     <th style="width: 55px">No</th>
-                    <th>Kode Tahun</th>
                     <th>Nama Tahun</th>
-                    <th>Keterangan</th>
+                    <th>Semester</th>
                     <th>Status</th>
                     <th>Action</th>
                   </tr>
@@ -66,10 +65,9 @@
                   @foreach ($data as $a)
                     <tr style="text-align: center">
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{ $a['kd_tahun'] }}</td>
-                      <td>{{ $a['nm_tahun'] }}</td>
-                      <td>{{ $a['ket_tahun'] }}</td>
-                      @if ($a['stts_tahun'] == 'Active')
+                      <td>{{ $a['tahun_akademik'] }}</td>
+                      <td>{{ $a['semester'] }}</td>
+                      @if ($a['status'] == 'aktif')
                         <td>
                           <span class="span badge rounded badge-success">
                             Active
@@ -78,14 +76,14 @@
                       @else
                         <td>
                           <span class="span badge rounded badge-danger">
-                            Non Active
+                            Tidak aktif
                           </span>
                         </td>
                       @endif
                       <td>
-                        <form method="POST" action="thnakademik/delete/{{ $a['id_tahun'] }}">
+                        <form method="POST" action="thnakademik/delete/{{ $a->id}}">
                           @csrf
-                          <a type="button" class="btn btn-primary btn-xs edit" data-bs-id="{{ $a->id_tahun }}"><i
+                          <a type="button" class="btn btn-primary btn-xs edit" data-bs-id="{{ $a->id }}"><i
                               class="fa fa-edit"></i></a>
                           <input name="_method" type="hidden" class="btn-primary btn-xs" value="DELETE">
                           <a type="submit" class="btn btn-danger btn-xs show_confirm"><i class="fa fa-trash"></i></a>
@@ -170,7 +168,7 @@
             errorFieldCssClass: 'is-invalid',
           });
           validation.addRequiredGroup(
-            '#stts_tahun',
+            '#status',
             'Silahkan pilih status terlebih dahulu!',
           );
           $.ajax({
@@ -203,7 +201,7 @@
               $.each(errors, function(key, value) {
                 errorsHtml += '- ' + value[0] + '<br>';
               });
-              toastr.error(errorsHtml, 'Whoops!');
+              toastr.error(errorsHtml, 'Whoops gagal men!');
             }
           });
         });
@@ -211,16 +209,15 @@
         $('.edit').on("click", function(e) {
           e.preventDefault()
           var id = $(this).attr('data-bs-id');
+          console.log(id);
           $.ajax({
             url: "/master/thnakademik/edit/" + id,
             type: "GET",
             dataType: "JSON",
             success: function(data) {
-              $('#id_tahun').val(data.id_tahun);
-              $('#kd_tahun').val(data.kd_tahun);
-              $('#nm_tahun').val(data.nm_tahun);
-              $('#ket_tahun').val(data.ket_tahun);
-              $('input[id="stts_tahun"][value="' + data.stts_tahun + '"]').prop('checked', true);
+              $('#tahun_akademik').val(data.tahun_akademik);
+              $('#semester').val(data.semester);
+              $('input[id="status"][value="' + data.status + '"]').prop('checked', true);
               $('#editThnAkademik').modal('show');
             }
           });
@@ -231,7 +228,7 @@
             errorFieldCssClass: 'is-invalid',
           });
           validation.addRequiredGroup(
-            '#stts_tahun',
+            '#status',
             'Silahkan pilih status terlebih dahulu!',
           );
           var id_tahun = $("#id_tahun").val();

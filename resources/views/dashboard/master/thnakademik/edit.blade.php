@@ -8,28 +8,23 @@
       <div class="modal-body">
         <form id="dataThnAkademik" class="needs-validation" novalidate="">
           <div>
-            <input class="form-control" id="id_tahun" type="hidden" name="id_tahun">
             <div class="col-md-12">
-              <label class="form-label" for="kd_tahun">Kode Tahun</label>
-              <input class="form-control" id="kd_tahun" type="text" name="kd_tahun" required>
+              <label class="form-label">Nama Tahun</label>
+              <input class="form-control" type="text" placeholder="Cth: 2016/2017" name="tahun_akademik" id="tahun_akademik" required>
             </div>
             <div class="col-md-12">
-              <label class="form-label" for="nm_tahun">Nama Tahun</label>
-              <input class="form-control" id="nm_tahun" type="text" name="nm_tahun" required>
-            </div>
-            <div class="col-md-12">
-              <label class="form-label" for="ket_tahun">Keterangan</label>
-              <input class="form-control" id="ket_tahun" type="text" name="ket_tahun" required>
+              <label class="form-label">Semester</label>
+              <input class="form-control" type="text" placeholder="Cth: Ganjil"  name="semester" id="semester" required>
             </div>
             <div class="col-md-6">
-              <div class="form-group m-t-15 m-checkbox-inline mb-0" id="stts_tahun">
+              <div class="form-group m-t-15 m-checkbox-inline mb-0" id="status">
                 <label class="form-label">Status</label>
                 <label class="d-block">
-                  <input class="form-check-input" id="stts_tahun" type="radio" value="Active" name="stts_tahun">
+                  <input class="form-check-input" id="status" type="radio" value="aktif" name="status">
                   Active
                 </label>
                 <label class="d-block">
-                  <input class="form-check-input" id="stts_tahun" type="radio" value="Non Active" name="stts_tahun">
+                  <input class="form-check-input" id="status" type="radio" value="tidak aktif" name="status">
                   Non
                   Active
                 </label>

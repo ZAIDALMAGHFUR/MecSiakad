@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProgrammStudiController;
+use App\Http\Controllers\Admin\ThnAkademikController;
 use App\Http\Controllers\Admin\CreateMahasiswaController;
 
 /*
@@ -49,6 +50,16 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
     Route::post('/mahasiswa-admin/update/{id}', [CreateMahasiswaController::class, 'update'])->name('mahasiswa.admin.update');
     Route::get('/mahasiswa-admin/show/{id}', [CreateMahasiswaController::class, 'show'])->name('mahasiswa.admin.show');
     Route::delete('/mahasiswa-admin/delete/{id}', [CreateMahasiswaController::class, 'destroy'])->name('mahasiswa.admin.delete');
+
+    //tahun akademik
+    Route::controller(ThnAkademikController::class)->prefix('thnakademik')->group(function () {
+        Route::get('', 'index')->name('thnakademik');
+        Route::get('add', 'add')->name('thnakademik/add');
+        Route::post('save', 'store')->name('thnakademik/save');
+        Route::get('edit/{id}', 'edit')->name('thnakademik/edit');
+        Route::put('update/{id}', 'update')->name('thnakademik/update');
+        Route::delete('delete/{id}', 'destroy')->name('thnakademik/delete');
+    });
     
 });
 
