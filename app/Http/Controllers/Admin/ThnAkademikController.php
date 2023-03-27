@@ -43,7 +43,9 @@ class ThnAkademikController extends Controller
     public function edit($id)
     {
         $data = TahunAcademic::find($id);
-        return response()->json($data);
+        //return response()->json($data);
+
+        return view('dashboard.master.thnakademik.edit', compact('data'));
     }
 
     public function update(Request $request, $id)

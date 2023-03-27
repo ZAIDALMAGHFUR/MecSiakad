@@ -211,7 +211,7 @@
           var id = $(this).attr('data-bs-id');
           console.log(id);
           $.ajax({
-            url: "/master/thnakademik/edit/" + id,
+            url: "thnakademik/edit/",
             type: "GET",
             dataType: "JSON",
             success: function(data) {

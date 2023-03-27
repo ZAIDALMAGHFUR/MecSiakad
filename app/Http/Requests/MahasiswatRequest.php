@@ -37,7 +37,6 @@ class MahasiswatRequest extends FormRequest
             'status' => 'required',
             'foto' => 'image|mimes:png,jpg,jpeg',
             'tahun_masuk' => 'required',
-            'tahun_lulus' => 'required',
             'nama_ayah' => 'required',
             'nama_ibu' => 'required',
             'pekerjaan_ayah' => 'required',

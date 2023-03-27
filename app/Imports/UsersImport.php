@@ -71,6 +71,15 @@ class UsersImport implements ToModel, WithHeadingRow, WithValidation
                 'status' => $row['status'],
                 'user_id' => $user->id,
                 'foto' => $row['foto'] ?? '',
+                'tahun_masuk' => $row['tahun_masuk'],
+                'nama_ayah' => $row['nama_ayah'],
+                'nama_ibu' => $row['nama_ibu'],
+                'pekerjaan_ayah' => $row['pekerjaan_ayah'],
+                'pekerjaan_ibu' => $row['pekerjaan_ibu'],
+                'no_hp_ortu' => $row['no_hp_ortu'],
+                'alamat_ortu' => $row['alamat_ortu'],
+                'asal_sekolah' => $row['asal_sekolah'],
+                'tahun_academics_id' => $row['tahun_academics_id'],
         ]);
     }
 
