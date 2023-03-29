@@ -67,6 +67,9 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::get('', 'index')->name('matkul');
         Route::get('add', 'add')->name('matkul.add');
         Route::post('save', 'store')->name('matkul.save');
+        Route::get('edit/{id}', 'edit')->name('matkul.edit');
+        Route::put('update/{id}', 'update')->name('matkul.update');
+        Route::delete('delete/{id}', 'destroy')->name('matkul.delete');
     });
     
 });
