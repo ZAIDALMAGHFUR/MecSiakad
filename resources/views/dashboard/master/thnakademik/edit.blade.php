@@ -8,6 +8,7 @@
       <div class="modal-body">
         <form id="dataThnAkademik" class="needs-validation" novalidate="">
           <div>
+            <input class="form-control" id="id" type="hidden" name="id">
             <div class="col-md-12">
               <label class="form-label">Nama Tahun</label>
               <input class="form-control" type="text" placeholder="Cth: 2016/2017" name="tahun_akademik" id="tahun_akademik" required>

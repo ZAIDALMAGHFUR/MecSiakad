@@ -12,4 +12,6 @@ class TahunAcademic extends Model
     protected $guarded = [
         'id',
     ];
+
+    // protected $primaryKey = 'id';
 }

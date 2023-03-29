@@ -18,7 +18,7 @@ class ThnAkademikController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'tahun_akademik' => 'required|unique:tahun_academics',
+            'tahun_akademik' => 'required',
             'semester'     => 'required',
             'status'    => 'required'
         ], [
@@ -43,32 +43,28 @@ class ThnAkademikController extends Controller
     public function edit($id)
     {
         $data = TahunAcademic::find($id);
-        //return response()->json($data);
-
-        return view('dashboard.master.thnakademik.edit', compact('data'));
+        return response()->json($data);
     }
 
     public function update(Request $request, $id)
     {
-        // $this->validate($request, [
-        //     'kd_tahun'     =>
-        //     'required|unique:thn_akademiks,kd_tahun,' . $id . ',id_tahun|min:5',
-        //     'nm_tahun'     => 'required',
-        //     'ket_tahun'    => 'required'
-        // ], [
-        //     'kd_tahun.required' => 'Silahkan isi kode tahun terlebih dahulu!',
-        //     'kd_tahun.unique' => 'Kode tahun sudah digunakan!',
-        //     'nm_tahun.required' => 'Silahkan isi nama tahun akademik terlebih dahulu!',
-        //     'ket_tahun.required' => 'Silahkan isi keterangan tahun akademik terlebih dahulu!'
-        // ]);
+        $this->validate($request, [
+            'tahun_akademik' => 'required',
+            'status'    => 'required'
+        ], [
+            'tahun_akademik.required'   => 'Silahkan isi tahun akademik terlebih dahulu!',
+            'status.required' => 'Silahkan isi status terlebih dahulu!'
+        ]);
+        // dd($request->all());
 
-        // $data = TahunAcademic::find($id);
-        // $data->kd_tahun = $request->kd_tahun;
-        // $data->nm_tahun = $request->nm_tahun;
-        // $data->ket_tahun = $request->ket_tahun;
-        // $data->stts_tahun = $request->stts_tahun;
-        // $data->update();
+        $data = TahunAcademic::find($id);
+        $data->tahun_akademik = $request->tahun_akademik;
+        $data->semester = $request->semester;
+        $data->status = $request->status;
+        $data->save();
+        
         return response()->json(['success' => 'Tahun Akademik successfully updated!']);
+        
     }
 
     public function destroy($id)

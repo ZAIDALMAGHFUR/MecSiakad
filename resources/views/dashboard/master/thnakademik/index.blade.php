@@ -81,7 +81,7 @@
                         </td>
                       @endif
                       <td>
-                        <form method="POST" action="thnakademik/delete/{{ $a->id}}">
+                        <form method="POST" action="thnakademik/delete/{{ $a['id']}}">
                           @csrf
                           <a type="button" class="btn btn-primary btn-xs edit" data-bs-id="{{ $a->id }}"><i
                               class="fa fa-edit"></i></a>
@@ -207,65 +207,73 @@
         });
 
         $('.edit').on("click", function(e) {
-          e.preventDefault()
-          var id = $(this).attr('data-bs-id');
-          console.log(id);
-          $.ajax({
-            url: "thnakademik/edit/",
-            type: "GET",
-            dataType: "JSON",
-            success: function(data) {
-              $('#tahun_akademik').val(data.tahun_akademik);
-              $('#semester').val(data.semester);
-              $('input[id="status"][value="' + data.status + '"]').prop('checked', true);
-              $('#editThnAkademik').modal('show');
-            }
-          });
-        });
+    e.preventDefault()
+    var id = $(this).attr('data-bs-id');
+    // console.log(id);
+    $.ajax({
+        url: "/thnakademik/edit/" + id,
+        type: "GET",
+        dataType: "JSON",
+        success: function(data) {
+            console.log(data);
+            $('#id').val(data.id);
+            $('#tahun_akademik').val(data.tahun_akademik);
+            $('#semester').val(data.semester);
+            $('input[id="status"][value="' + data.status + '"]').prop('checked', true);
+            $('#editThnAkademik').modal('show');
+        }
+    });
+});
 
-        $('#update').on("click", function(e) {
-          const validation = new JustValidate('#dataThnAkademik', {
-            errorFieldCssClass: 'is-invalid',
-          });
-          validation.addRequiredGroup(
-            '#status',
-            'Silahkan pilih status terlebih dahulu!',
-          );
-          var id_tahun = $("#id_tahun").val();
-          $.ajax({
-            type: "PUT",
-            data: $('#dataThnAkademik').serialize(),
-            url: '/master/thnakademik/update/' + id_tahun,
-            dataType: "json",
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(data) {
-              toastr.success(
+$('#update').on("click", function(e) {
+    e.preventDefault();
+    const validation = new JustValidate('#dataThnAkademik', {
+        errorFieldCssClass: 'is-invalid',
+    });
+    validation.addRequiredGroup(
+        '#status',
+        'Silahkan pilih status terlebih dahulu!',
+    );
+    var id = $('#id').val();
+    // console.log(id);
+    // console.log($('#dataThnAkademik').serialize());
+    $.ajax({
+        type: "PUT",
+        data: $('#dataThnAkademik').serialize(),
+        url: '/thnakademik/update/' + id,
+        dataType: "json",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(data) {
+            // console.log(data);
+            toastr.success(
                 data.success,
                 'Wohoooo!', {
-                  showDuration: 300,
-                  hideDuration: 900,
-                  timeOut: 900,
-                  closeButton: true,
-                  newestOnTop: true,
-                  progressBar: true,
-                  onHidden: function() {
-                    window.location.reload();
-                  }
+                    showDuration: 300,
+                    hideDuration: 900,
+                    timeOut: 900,
+                    closeButton: true,
+                    newestOnTop: true,
+                    progressBar: true,
+                    onHidden: function() {
+                        window.location.reload();
+                    }
                 }
-              );
-            },
-            error: function(data) {
-              var errors = data.responseJSON.errors;
-              var errorsHtml = '';
-              $.each(errors, function(key, value) {
+            );
+        },
+        error: function(data) {
+            // console.log(data);
+            var errors = data.responseJSON.errors;
+            var errorsHtml = '';
+            $.each(errors, function(key, value) {
                 errorsHtml += '- ' + value[0] + '<br>';
-              });
-              toastr.error(errorsHtml, 'Whoops!');
-            }
-          });
-        });
+            });
+            toastr.error(errorsHtml, 'Whoops ga bisa men!');
+        }
+    });
+});
+
       });
     </script>
   @endPushOnce
