@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\Admin\MatkulController;
 use App\Http\Controllers\ProgrammStudiController;
 use App\Http\Controllers\Admin\ThnAkademikController;
 use App\Http\Controllers\Admin\CreateMahasiswaController;
@@ -59,6 +60,13 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::get('edit/{id}', 'edit')->name('thnakademik/edit');
         Route::put('update/{id}', 'update')->name('thnakademik/update');
         Route::delete('delete/{id}', 'destroy')->name('thnakademik/delete');
+    });
+
+    //mata kuliah
+    Route::controller(MatkulController::class)->prefix('matkul')->group(function () {
+        Route::get('', 'index')->name('matkul');
+        Route::get('add', 'add')->name('matkul.add');
+        Route::post('save', 'store')->name('matkul.save');
     });
     
 });

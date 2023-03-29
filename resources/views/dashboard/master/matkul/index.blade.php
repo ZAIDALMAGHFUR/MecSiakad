@@ -13,7 +13,7 @@
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
               <li class="breadcrumb-item">Data Master</li>
-              <li class="breadcrumb-item active">Jenis PTK</li>
+              <li class="breadcrumb-item active">Mata Kuliah</li>
             </ol>
           </div>
           <div class="col-sm-6">
@@ -46,8 +46,7 @@
       <div class="col-sm-12">
         <div class="card">
           <div class="card-header">
-            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-original-title="test"
-              data-bs-target="#addPtk">Add Jenis PTK</button>
+            <a href="{{ route('matkul.add') }}" class="btn btn-primary">Add Mata Kuliah</a>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -55,8 +54,11 @@
                 <thead>
                   <tr style="text-align: center">
                     <th style="width: 55px">No</th>
-                    <th>Nama PTK</th>
-                    <th>Keterangan</th>
+                    <th>Nama Mata Kuliah</th>
+                    <th>Kode Mata Kuliah</th>
+                    <th>SKS</th>
+                    <th>Semester</th>
+                    <th>Program Studi</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -64,12 +66,15 @@
                   @foreach ($data as $a)
                     <tr style="text-align: center">
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{ $a['nm_ptk'] }}</td>
-                      <td>{{ $a['ket_ptk'] }}</td>
+                      <td>{{ $a['name_mata_kuliah'] }}</td>
+                      <td>{{ $a['kode_mata_kuliah'] }}</td>
+                      <td>{{ $a['sks'] }}</td>
+                      <td>{{ $a['semester'] }}</td>
+                      <td>{{ $a->program_studies->name }}</td>
                       <td>
-                        <form method="POST" action="ptk/delete/{{ $a['id_ptk'] }}">
+                        <form method="POST" action="">
                           @csrf
-                          <a type="button" class="btn btn-primary btn-xs edit" data-bs-id="{{ $a->id_ptk }}"><i
+                          <a type="button" class="btn btn-primary btn-xs edit" data-bs-id=""><i
                               class="fa fa-edit"></i></a>
                           <input name="_method" type="hidden" class="btn-primary btn-xs" value="DELETE">
                           <a type="submit" class="btn btn-danger btn-xs show_confirm"><i class="fa fa-trash"></i></a>
@@ -86,8 +91,8 @@
     </div>
   </div>
   @pushOnce('js')
-    @include('dashboard.master.ptk.add')
-    @include('dashboard.master.ptk.edit')
+    {{-- @include('dashboard.master.matkul.add') --}}
+    @include('dashboard.master.matkul.edit')
     <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
     <script src="{{ asset('assets/js/sweet-alert/sweetalert.min.js') }}"></script>
