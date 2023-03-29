@@ -72,13 +72,10 @@
                       <td>{{ $a['semester'] }}</td>
                       <td>{{ $a->program_studies->name }}</td>
                       <td>
-                        <a href="{{ route('matkul.edit', [$a]) }}">
-                          <button class="btn btn-primary btn-sm edit" type="button"><i class="fa fa-edit"></i></button>
-                        </a>
-
                         <form method="POST" action="{{ route('matkul.delete', [$a]) }}">
                           @csrf
-                          @method('DELETE')
+                          <a href="{{ route('matkul.edit', [$a->id]) }}" type="button" class="btn btn-primary btn-xs edit" data-bs-id=""><i
+                              class="fa fa-edit"></i></a>
                           <input name="_method" type="hidden" class="btn-primary btn-xs" value="DELETE">
                           <a type="submit" class="btn btn-danger btn-xs show_confirm"><i class="fa fa-trash"></i></a>
                         </form>
