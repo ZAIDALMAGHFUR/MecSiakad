@@ -9,7 +9,7 @@
       <div class="page-header">
         <div class="row">
           <div class="col-sm-6">
-            <h3>Jenis PTK</h3>
+            <h3>Mata Kuliah</h3>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
               <li class="breadcrumb-item">Data Master</li>
@@ -72,10 +72,13 @@
                       <td>{{ $a['semester'] }}</td>
                       <td>{{ $a->program_studies->name }}</td>
                       <td>
+                        <a href="{{ route('matkul.edit', [$a]) }}">
+                          <button class="btn btn-primary btn-sm edit" type="button"><i class="fa fa-edit"></i></button>
+                        </a>
+
                         <form method="POST" action="{{ route('matkul.delete', [$a]) }}">
                           @csrf
-                          <a href="{{ route('matkul.edit', [$a]) }}" type="button" class="btn btn-primary btn-xs edit" data-bs-id=""><i
-                              class="fa fa-edit"></i></a>
+                          @method('DELETE')
                           <input name="_method" type="hidden" class="btn-primary btn-xs" value="DELETE">
                           <a type="submit" class="btn btn-danger btn-xs show_confirm"><i class="fa fa-trash"></i></a>
                         </form>
@@ -91,8 +94,6 @@
     </div>
   </div>
   @pushOnce('js')
-    {{-- @include('dashboard.master.matkul.add') --}}
-    @include('dashboard.master.matkul.edit')
     <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
     <script src="{{ asset('assets/js/sweet-alert/sweetalert.min.js') }}"></script>
@@ -150,63 +151,6 @@
           }
         );
       @endif
-    </script>
-    <script>
-      $(document).ready(function() {
-        $('.edit').on("click", function(e) {
-          e.preventDefault()
-          var id = $(this).attr('data-bs-id');
-          $.ajax({
-            url: "/master/ptk/edit/" + id,
-            type: "GET",
-            dataType: "JSON",
-            success: function(data) {
-              $('#id_ptk').val(data.id_ptk);
-              $('#nm_ptk').val(data.nm_ptk);
-              $('#ket_ptk').val(data.ket_ptk);
-              $('#editPtk').modal('show');
-            }
-          });
-        });
-
-        $('#update').on("click", function(e) {
-          e.preventDefault()
-          var id_ptk = $("#id_ptk").val();
-          $.ajax({
-            type: "PUT",
-            data: $('#dataPtk').serialize(),
-            url: '/master/ptk/update/' + id_ptk,
-            dataType: "json",
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(data) {
-              toastr.success(
-                data.success,
-                'Wohoooo!', {
-                  showDuration: 300,
-                  hideDuration: 900,
-                  timeOut: 900,
-                  closeButton: true,
-                  newestOnTop: true,
-                  progressBar: true,
-                  onHidden: function() {
-                    window.location.reload();
-                  }
-                }
-              );
-            },
-            error: function(data) {
-              var errors = data.responseJSON.errors;
-              var errorsHtml = '';
-              $.each(errors, function(key, value) {
-                errorsHtml += '<li>' + value[0] + '</li>';
-              });
-              toastr.error(errorsHtml, 'Whoops!');
-            }
-          });
-        });
-      });
     </script>
   @endPushOnce
 @endsection
