@@ -172,15 +172,18 @@
                       </div>
                   </div>
                   <div class="form-group row border-bottom pb-4">
-                      <label for="tahun_academics_id" class="col-sm-2 col-form-label">Tahun Academic</label>
-                      <div class="col-sm-10">
+                    <label for="tahun_academics_id" class="col-sm-2 col-form-label">Tahun Academic</label>
+                    <div class="col-sm-10">
                         <select class="form-control" name="tahun_academics_id" id="tahun_academics_id">
-                          @foreach($tahunakademic as $ta)
-                              <option {{ old("tahun_academics_id") == $ta->id ? 'selected' : null }} value="{{ $ta->id }}">{{ $ta->tahun_akademik }}</option>
-                          @endforeach
-                      </select>
-                      </div>
-                  </div>
+                            @foreach($tahunakademic as $ta)
+                                @if($ta->status == 'aktif')
+                                    <option {{ old("tahun_academics_id") == $ta->id ? 'selected' : null }} value="{{ $ta->id }}">{{ $ta->tahun_akademik }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                
                   <div class="form-group row border-bottom pb-4">
                     <label for="jenis_kelamin" class="col-sm-2 col-form-label">Jenis Kelamin</label>
                     <div class="col-sm-10">

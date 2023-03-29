@@ -6,13 +6,14 @@ use App\Models\User;
 use App\Models\Mahasiswa;
 use App\Imports\UsersImport;
 use Illuminate\Http\Request;
+use App\Models\TahunAcademic;
 use App\Models\Program_studies;
 use App\Exports\MahasiswaExport;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\MahasiswatRequest;
-use App\Models\TahunAcademic;
 
 class CreateMahasiswaController extends Controller
 {
@@ -153,4 +154,18 @@ class CreateMahasiswaController extends Controller
             'alert-type' => 'success'
         ]);
     }   
+
+    // public function destroy(Mahasiswa $mahasiswa)
+    // {
+    //     File::delete('storage/'.$mahasiswa->foto);
+    //     $mahasiswa->delete();
+
+    //     $user = User::where('id', $mahasiswa->user_id)->first();
+    //     $user->delete();
+        
+    //         return redirect()->back()->with([
+    //         'success' => 'Data berhasil dihapus',
+    //         'alert-type' => 'success'
+    //     ]);
+    // }
 }

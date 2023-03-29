@@ -132,11 +132,7 @@
                         </tr>
                         {{-- <tr>
                             <th>Tahun Academic</th>
-                            <td>
-                              @foreach ($ta as $t)
-                                {{ $t->tahun_akademik }}
-                              @endforeach
-                            </td>
+                            <td>{{ $data->tahun_academics_id->tahun_akademik }}</td>
                         </tr> --}}
                         <tr>
                             <th>Status Mahasiswa</th>

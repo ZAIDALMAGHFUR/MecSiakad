@@ -148,7 +148,7 @@
                           <button class="btn btn-primary btn-sm edit" type="button"><i class="fa fa-edit"></i></button>
                         </a>
                         
-                        <form action="{{ route('mahasiswa.admin.delete', [$d->id]) }}" method="POST" class="d-inline">
+                        <form action="{{ route('mahasiswa.admin.delete', [$d]) }}" method="POST" class="d-inline">
                           @csrf
                           @method('delete')
                           <button class="btn btn-danger btn-sm show_confirm" type="submit"><i class="fa fa-trash"></i></button>

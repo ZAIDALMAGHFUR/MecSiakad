@@ -35,7 +35,7 @@ class MahasiswatRequest extends FormRequest
             'jenis_kelamin' => 'required',
             'agama' => 'required',
             'status' => 'required',
-            'foto' => 'image|mimes:png,jpg,jpeg',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'tahun_masuk' => 'required',
             'nama_ayah' => 'required',
             'nama_ibu' => 'required',
