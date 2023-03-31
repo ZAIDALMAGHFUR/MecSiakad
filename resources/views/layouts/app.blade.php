@@ -261,9 +261,6 @@
                   <ul class="nav-submenu menu-content">
                     <li><a href="{{ route('mahasiswa.admin') }}">Mahasiswa</a></li>
                     <li><a href="">Dosen</a></li>
-                    <li><a href="http://">Kepala
-                        Sekolah</a></li>
-                    <li><a href="http://">Admin</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
@@ -281,21 +278,20 @@
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                       data-feather="calendar"></i><span>Data Absensi</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="http://">Absensi Guru</a></li>
-                    <li><a href="http://">Absensi Siswa</a></li>
+                    <li><a href="http://">Absensi Dosen</a></li>
+                    <li><a href="http://">Absensi Mahasiswa</a></li>
                     <li><a href="http://">Rekap Absensi</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-                      data-feather="file-text"></i><span>Laporan Nilai Siswa</span></a>
+                      data-feather="file-text"></i><span>Laporan Nilai</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="http://">Nilai UTS</a></li>
-                    <li><a href="http://">Nilai Raport</a></li>
-                    <li><a href="http://">Capaian Belajar</a></li>
-                    <li><a href="http://">Extrakulikuler</a></li>
-                    <li><a href="http://">Presentasi</a></li>
-                    <li><a href="http://">Raport UTS</a></li>
-                    <li><a href="http://">Cetak Raport</a></li>
+                    <li><a href="http://">Nilai Tugas</a></li>
+                    <li><a href="http://">Nilai Kuis</a></li>
+                    <li><a href="http://">Nilai Uts</a></li>
+                    <li><a href="http://">Nilai Uas</a></li>
+                    <li><a href="http://">Nilai Akhir</a></li>
+                    <li><a href="http://">Cetak Transkip Nilai</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu" href="javascript:void(0)"><i
