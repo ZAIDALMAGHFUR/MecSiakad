@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\calonController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\Admin\MatkulController;
@@ -26,7 +27,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 
 Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
@@ -93,6 +94,8 @@ Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {
 Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
 });
+
+Route::get('calon', [calonController::class, 'index'])->name('calon');
 
 Route::get('/job-search',  [App\Http\Controllers\JobController::class, 'index'])->name('job-search');
 

@@ -34,6 +34,8 @@ class RedirectIfAuthenticated
                 return redirect(RouteServiceProvider::DOSEN);
             } elseif (Auth::user()->roles_id == 3) {
                 return redirect(RouteServiceProvider::MAHASISWA);
+            } elseif (Auth::user()->roles_id == 4) {
+                return redirect(RouteServiceProvider::Calon);
             }
         }
 

@@ -22,6 +22,7 @@ class RouteServiceProvider extends ServiceProvider
     public const DOSEN = '/dosen';
 
     public const MAHASISWA = '/mahasiswa';
+    public const Calon = '/calon';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
