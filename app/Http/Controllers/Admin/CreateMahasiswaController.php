@@ -20,7 +20,7 @@ class CreateMahasiswaController extends Controller
     public function index()
     {
         $data = Mahasiswa::all();
-        return view('dashboard.master.mahasiswa.index', compact('data'));
+        return view('dashboard.pengguna.mahasiswa.index', compact('data'));
     }
 
     public function create(Request $request)
@@ -28,7 +28,7 @@ class CreateMahasiswaController extends Controller
         // dd($request->all());
         $program_studies = Program_studies::all();
         $tahunakademic = TahunAcademic::all();
-        return view('dashboard.master.mahasiswa.create', compact('program_studies', 'tahunakademic'));
+        return view('dashboard.pengguna.mahasiswa.create', compact('program_studies', 'tahunakademic'));
     }
 
     public function store(MahasiswatRequest $request)
@@ -108,7 +108,7 @@ class CreateMahasiswaController extends Controller
         $data = Mahasiswa::findOrFail($id);
         $program_studies = Program_studies::all();
         $tahunakademic = TahunAcademic::all();
-        return view('dashboard.master.mahasiswa.edit', compact('data', 'program_studies', 'tahunakademic'));
+        return view('dashboard.pengguna.mahasiswa.edit', compact('data', 'program_studies', 'tahunakademic'));
     }
 
     public function update(MahasiswatRequest $request, $id)
@@ -140,7 +140,7 @@ class CreateMahasiswaController extends Controller
     {
         $data = Mahasiswa::findOrFail($id);
         $ta = TahunAcademic::all();
-        return view('dashboard.master.mahasiswa.show', compact('data', 'ta'));
+        return view('dashboard.pengguna.mahasiswa.show', compact('data', 'ta'));
     }
 
 

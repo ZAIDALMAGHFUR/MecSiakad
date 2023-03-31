@@ -250,7 +250,7 @@
                     <li><a href="{{ route('program-studi') }}">Program Studi</a></li>
                     <li><a href="{{ route('thnakademik') }}">Tahun Academic</a></li>
                     <li><a href="{{ route('matkul') }}">Mata Kuliah</a></li>
-                    <li><a href="">Jenis PTK</a></li>
+                    <li><a href="{{ route('jabatan') }}">Jabatan Dosen</a></li>
                     <li><a href="">Jurusan</a></li>
                     <li><a href="">Kelas</a></li>
                     <li><a href="">Kepegawaian</a></li>

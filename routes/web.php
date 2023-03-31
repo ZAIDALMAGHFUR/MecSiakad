@@ -8,6 +8,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\Admin\MatkulController;
 use App\Http\Controllers\ProgrammStudiController;
 use App\Http\Controllers\Admin\ThnAkademikController;
+use App\Http\Controllers\Admin\JabatanDosenController;
 use App\Http\Controllers\Admin\CreateMahasiswaController;
 
 /*
@@ -70,6 +71,16 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::get('edit/{id}', 'edit')->name('matkul.edit');
         Route::post('update/{id}', 'update')->name('matkul.update');
         Route::delete('delete/{id}', 'destroy')->name('matkul.delete');
+    });
+
+    //jabatan dosen
+    Route::controller(JabatanDosenController::class)->prefix('jabatan')->group(function () {
+        Route::get('', 'index')->name('jabatan');
+        Route::get('add', 'add')->name('jabatan/add');
+        Route::post('save', 'store')->name('jabatan/save');
+        Route::get('edit/{id}', 'edit')->name('jabatan/edit');
+        Route::put('update/{id}', 'update')->name('jabatan/update');
+        Route::delete('delete/{id}', 'destroy')->name('jabatan/delete');
     });
     
 });

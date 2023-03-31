@@ -3,17 +3,18 @@
   @pushOnce('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/sweetalert2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/select2.css') }}">
   @endPushOnce
   <div class="page-body">
     <div class="container-fluid">
       <div class="page-header">
         <div class="row">
           <div class="col-sm-6">
-            <h3>Gedung</h3>
+            <h3>Jabatan Dosen</h3>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
               <li class="breadcrumb-item">Data Master</li>
-              <li class="breadcrumb-item active">Gedung</li>
+              <li class="breadcrumb-item active">Jabatan Dosen</li>
             </ol>
           </div>
           <div class="col-sm-6">
@@ -46,8 +47,9 @@
       <div class="col-sm-12">
         <div class="card">
           <div class="card-header">
+            {{-- <button class="btn btn-primary add" type="button">Add Jabatan Dosen</button> --}}
             <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-original-title="test"
-              data-bs-target="#addGedung">Add Gedung</button>
+            data-bs-target="#addJurusan">Add Jabatan Dosen</button>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -55,45 +57,23 @@
                 <thead>
                   <tr style="text-align: center">
                     <th style="width: 55px">No</th>
-                    <th>Kode Gedung</th>
-                    <th>Nama Gedung</th>
-                    <th>Jumlah Lantai</th>
-                    <th>Panjang</th>
-                    <th>Tinggi</th>
-                    <th>Lebar</th>
-                    <th>Keterangan</th>
-                    <th>Status</th>
-                    <th style="width: 77px;">Action</th>
+                    <th>Id Jabatan</th>
+                    <th>Nama Jabatan</th>
+                    <th>Kode Jabatan</th>
+                    <th style="width: 120px">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach ($data as $a)
                     <tr style="text-align: center">
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{ $a['kd_gedung'] }}</td>
-                      <td>{{ $a['nm_gedung'] }}</td>
-                      <td>{{ $a['jml_lantai'] }}</td>
-                      <td>{{ $a['p_gedung'] }}</td>
-                      <td>{{ $a['t_gedung'] }}</td>
-                      <td>{{ $a['l_gedung'] }}</td>
-                      <td>{{ $a['ket_gedung'] }}</td>
-                      @if ($a['stts_gedung'] == 'Active')
-                        <td>
-                          <span class="span badge rounded badge-success">
-                            Active
-                          </span>
-                        </td>
-                      @else
-                        <td>
-                          <span class="span badge rounded badge-danger">
-                            Non Active
-                          </span>
-                        </td>
-                      @endif
+                      <td>{{ $a->id }}</td>
+                      <td>{{ $a['nama_jabatan'] }}</td>
+                      <td>{{ $a['kode_jabatan'] }}</td>
                       <td>
-                        <form method="POST" action="gedung/delete/{{ $a['id_gedung'] }}">
+                        <form method="POST" action="jabatan/delete/{{ $a['id'] }}">
                           @csrf
-                          <a type="button" class="btn btn-primary btn-xs edit" data-bs-id="{{ $a->id_gedung }}"><i
+                          <a type="button" class="btn btn-primary btn-xs edit" data-bs-id="{{ $a->id }}"><i
                               class="fa fa-edit"></i></a>
                           <input name="_method" type="hidden" class="btn-primary btn-xs" value="DELETE">
                           <a type="submit" class="btn btn-danger btn-xs show_confirm"><i class="fa fa-trash"></i></a>
@@ -110,15 +90,15 @@
     </div>
   </div>
   @pushOnce('js')
-    @include('dashboard.master.gedung.add')
-    @include('dashboard.master.gedung.edit')
+    @include('dashboard.master.jabatan-dosen.add')
+    @include('dashboard.master.jabatan-dosen.edit')
     <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
     <script src="{{ asset('assets/js/sweet-alert/sweetalert.min.js') }}"></script>
     <script src="{{ asset('assets/js/form-validation-custom.js') }}"></script>
     <script src="{{ asset('assets/js/tooltip-init.js') }}"></script>
+    <script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
     <script type="text/javascript">
-      // Sweetalert Delete Confirmation
       $('.show_confirm').click(function(e) {
         var form = $(this).closest("form");
         e.preventDefault();
@@ -143,8 +123,8 @@
             }
           })
       });
-
-      // Alert Toastr for delete
+    </script>
+    <script>
       @if (session()->has('success'))
         toastr.success(
           '{{ session('success') }}',
@@ -158,33 +138,27 @@
           }
         );
       @endif
-
-      // Function CRUD with Ajax
+    </script>
+    <script>
       $(document).ready(function() {
         $('.add').on("click", function(e) {
           e.preventDefault()
           $.ajax({
-            url: "{{ route('gedung/add') }}",
+            url: "{{ route('jabatan/add') }}",
             type: "GET",
             dataType: "json",
             success: function(data) {
-              $('#addGedung').modal('show');
+              $('#addJurusan').modal('show');
             }
           });
         });
 
         $('#save').on("click", function(e) {
-          const validation = new JustValidate('#saveGedung', {
-            errorFieldCssClass: 'is-invalid',
-          });
-          validation.addRequiredGroup(
-            '#stts_gedung',
-            'Silahkan pilih status terlebih dahulu!',
-          );
+          e.preventDefault()
           $.ajax({
             type: "POST",
-            data: $('#saveGedung').serialize(),
-            url: "{{ route('gedung/save') }}",
+            data: $('#saveJurusan').serialize(),
+            url: "{{ route('jabatan/save') }}",
             dataType: "json",
             headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -206,51 +180,40 @@
               );
             },
             error: function(data) {
+              console.log(data);
               var errors = data.responseJSON.errors;
               var errorsHtml = '';
               $.each(errors, function(key, value) {
-                errorsHtml += '- ' + value[0] + '<br>';
+                errorsHtml += '<li>' + value[0] + '</li>';
               });
-              toastr.error(errorsHtml, 'Whoops!');
+              toastr.error(errorsHtml, 'Whoops ga bisa men!');
             }
           });
         });
 
         $('.edit').on("click", function(e) {
-          e.preventDefault()
+          e.preventDefault();
           var id = $(this).attr('data-bs-id');
           $.ajax({
-            url: "/master/gedung/edit/" + id,
+            url: "/jabatan/edit/" + id,
             type: "GET",
-            dataType: "json",
+            dataType: "JSON",
             success: function(data) {
-              $('#id_gedung').val(data.id_gedung);
-              $('#kd_gedung').val(data.kd_gedung);
-              $('#nm_gedung').val(data.nm_gedung);
-              $('#jml_lantai').val(data.jml_lantai);
-              $('#p_gedung').val(data.p_gedung);
-              $('#t_gedung').val(data.t_gedung);
-              $('#l_gedung').val(data.l_gedung);
-              $('#ket_gedung').val(data.ket_gedung);
-              $('input[id="stts_gedung"][value="' + data.stts_gedung + '"]').prop('checked', true);
-              $('#editGedung').modal('show');
+              $('#id').val(data.id);
+              $('#nama_jabatan').val(data.nama_jabatan);
+              $('#kode_jabatan').val(data.kode_jabatan);
+              $('#editJurusan').modal('show');
             }
           });
         });
 
         $('#update').on("click", function(e) {
-          const validation = new JustValidate('#dataGedung', {
-            errorFieldCssClass: 'is-invalid',
-          });
-          validation.addRequiredGroup(
-            '#stts_gedung',
-            'Silahkan pilih status terlebih dahulu!',
-          );
-          var id_gedung = $("#id_gedung").val();
+          e.preventDefault()
+          var id = $("#id").val();
           $.ajax({
             type: "PUT",
-            data: $('#dataGedung').serialize(),
-            url: '/master/gedung/update/' + id_gedung,
+            data: $('#dataJurusan').serialize(),
+            url: '/jabatan/update/' + id,
             dataType: "json",
             headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -272,10 +235,11 @@
               );
             },
             error: function(data) {
+              console.log(data);
               var errors = data.responseJSON.errors;
               var errorsHtml = '';
               $.each(errors, function(key, value) {
-                errorsHtml += '- ' + value[0] + '<br>';
+                errorsHtml += '<li>' + value[0] + '</li>';
               });
               toastr.error(errorsHtml, 'Whoops!');
             }
