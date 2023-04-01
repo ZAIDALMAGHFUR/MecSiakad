@@ -47,6 +47,14 @@
         <div class="card">
           <div class="card-header">
             <a href="{{ route('dosen-admin/add') }}" class="btn btn-primary" >Add Dosen</a>
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Import Dosen
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Import from Excel</a></li>
+              <li><a class="dropdown-item" href="{{ route('export_excel_dosen') }}">Export to Excel</a></li>
+              <li><a class="dropdown-item" href="storage/Template/import siakad.xlsx">Download Template Import</a></li>
+            </ul>
           </div>
           <div class="card-body">
             <div class="table-responsive">

@@ -46,6 +46,11 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
     //mahaiswa import excel
     Route::post('import_excel', [CreateMahasiswaController::class, 'importExcel'])->name('import_excel');
     Route::get('export_excel', [CreateMahasiswaController::class, 'exportExcel'])->name('export_excel');
+
+    //dosen import excel
+    Route::post('import_excel_dosen', [AdminDosenController::class, 'importExcel'])->name('import_excel_dosen');
+    Route::get('export_excel_dosen', [AdminDosenController::class, 'exportExcel'])->name('export_excel_dosen');
+
     //mahasiswa
     Route::get('/mahasiswa-admin', [CreateMahasiswaController::class, 'index'])->name('mahasiswa.admin');
     Route::get('/mahasiswa-admin/add', [CreateMahasiswaController::class, 'create'])->name('mahasiswa.admin.add');

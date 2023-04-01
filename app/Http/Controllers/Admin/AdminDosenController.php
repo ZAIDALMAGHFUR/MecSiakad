@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use App\Models\Dosen;
+use App\Exports\DosenExport;
 use Illuminate\Http\Request;
 use App\Models\Program_studies;
 use App\Http\Requests\DosenRequest;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminDosenController extends Controller
 {
@@ -122,5 +124,10 @@ class AdminDosenController extends Controller
             'success' => 'Data berhasil dihapus',
             'alert-type' => 'success'
         ]);
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new DosenExport, 'dosen.xlsx');
     }
 }

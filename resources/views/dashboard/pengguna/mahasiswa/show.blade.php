@@ -141,7 +141,7 @@
                         <tr>
                             <th>Foto</th>
                             <td>
-                                <img src="{{ Storage::url($data->foto) }}" width="200" alt="Gamabar Mahasiswa">
+                                <img src="{{ Storage::url($data->foto) }}" width="200" alt="Gamabar Mahasiswa" class="rounded">
                             </td>
                         </tr>
                     </table>
