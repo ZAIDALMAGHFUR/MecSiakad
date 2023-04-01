@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Dosen;
 use App\Models\Mahasiswa;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -45,5 +46,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function mahasiswa()
     {
         return $this->hasOne(Mahasiswa::class);
+    }
+
+    public function dosen()
+    {
+        return $this->hasOne(Dosen::class);
     }
 }

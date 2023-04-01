@@ -8,6 +8,7 @@ use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\Admin\MatkulController;
 use App\Http\Controllers\ProgrammStudiController;
+use App\Http\Controllers\Admin\AdminDosenController;
 use App\Http\Controllers\Admin\ThnAkademikController;
 use App\Http\Controllers\Admin\JabatanDosenController;
 use App\Http\Controllers\Admin\CreateMahasiswaController;
@@ -83,7 +84,16 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::put('update/{id}', 'update')->name('jabatan/update');
         Route::delete('delete/{id}', 'destroy')->name('jabatan/delete');
     });
-    
+
+    //dosen
+    Route::controller(AdminDosenController::class)->prefix('dosen-admin')->group(function () {
+        Route::get('', 'index')->name('dosen/admin');
+        Route::get('add', 'add')->name('dosen-admin/add');
+        Route::post('save', 'store')->name('dosen-admin/save');
+        Route::get('edit/{id}', 'edit')->name('dosen-admin/edit');
+        Route::put('update/{id}', 'update')->name('dosen-admin/update');
+        Route::delete('delete/{id}', 'destroy')->name('dosen-admin/delete');
+    });
 });
 
 Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {

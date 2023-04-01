@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_dosen');
             $table->string('nidn');
+            $table->string('email');
             $table->foreignId('users_id')->constrained();
             $table->string('no_hp');
             $table->string('alamat');

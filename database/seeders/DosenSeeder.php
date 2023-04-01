@@ -18,6 +18,7 @@ class DosenSeeder extends Seeder
         Dosen::create([
             'nama_dosen' => 'dosen',
             'nidn' => '123456789',
+            'email' => 'dsn@gmail.com',
             'no_hp' => '08123456789',
             'alamat' => 'Jl. Jalan',
             'status' => 'Aktif',

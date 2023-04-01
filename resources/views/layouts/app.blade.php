@@ -260,7 +260,7 @@
                       data-feather="users"></i><span>Data Pengguna</span></a>
                   <ul class="nav-submenu menu-content">
                     <li><a href="{{ route('mahasiswa.admin') }}">Mahasiswa</a></li>
-                    <li><a href="">Dosen</a></li>
+                    <li><a href="{{ route('dosen/admin') }}">Dosen</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
