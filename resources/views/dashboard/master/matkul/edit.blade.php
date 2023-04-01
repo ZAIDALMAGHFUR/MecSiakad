@@ -12,11 +12,11 @@
     <div class="page-header">
       <div class="row">
         <div class="col-sm-6">
-          <h3>Tambahkan Mata Kuliah</h3>
+          <h3>Edit Mata Kuliah</h3>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
             <li class="breadcrumb-item">Data Pengguna</li>
-            <li class="breadcrumb-item active">Tambahkan Mata Kuliah</li>
+            <li class="breadcrumb-item active">Edit Mata Kuliah</li>
           </ol>
         </div>
         <div class="col-sm-6">
@@ -65,20 +65,23 @@
                       </ul>
                   </div>
                   @endif
-                  <div class="form-group row border-bottom pb-4">
-                      <label for="name_mata_kuliah" class="col-sm-2 col-form-label">Nama Mata Kuliah</label>
+                  <div class="row g2">
+                    <div class="col-md-6">
+                      <label for="name_mata_kuliah" class="form-label">Nama Mata Kuliah</label>
                       <div class="col-sm-10">
                           <input type="text" class="form-control" name="name_mata_kuliah" value="{{ old('name_mata_kuliah', $data->name_mata_kuliah) }}" id="name_mata_kuliah" required>
                       </div>
                   </div>
-                  <div class="form-group row border-bottom pb-4">
-                      <label for="kode_mata_kuliah" class="col-sm-2 col-form-label">Kode Mata Kuliah</label>
+                  <div class="col-md-6">
+                      <label for="kode_mata_kuliah" class="form-label">Kode Mata Kuliah</label>
                       <div class="col-sm-10">
                           <input type="text" class="form-control" name="kode_mata_kuliah" value="{{ old('kode_mata_kuliah', $data->kode_mata_kuliah) }}" id="kode_mata_kuliah" required>
                       </div>
+                    </div>
                   </div>
-                  <div class="form-group row border-bottom pb-4">
-                      <label for="sks" class="col-sm-2 col-form-label">SKS</label>
+                  <div class="row g-2 mt-3">
+                    <div class="col-md-6">
+                      <label for="sks" class="form-label">SKS</label>
                       <div class="col-sm-10">
                         <select class="form-control" name="sks" id="sks">
                           <option value="2">2</option>
@@ -89,8 +92,8 @@
                         </select>
                       </div>
                   </div>
-                  <div class="form-group row border-bottom pb-4">
-                      <label for="semester" class="col-sm-2 col-form-label">Semester</label>
+                  <div class="col-md-6">
+                      <label for="semester" class="form-label">Semester</label>
                       <div class="col-sm-10">
                           <select class="form-control" name="semester" id="semester">
                             <option value="1">1</option>
@@ -109,9 +112,10 @@
                             <option value="14">14</option>
                           </select>
                       </div>
+                    </div>
                   </div>
-                  <div class="form-group row border-bottom pb-4">
-                      <label for="program_studies_id" class="col-sm-2 col-form-label">Program Studi</label>
+                  <div class="col-md-6 mt-3">
+                      <label for="program_studies_id" class="form-label">Program Studi</label>
                       <div class="col-sm-10">
                         <select class="form-control" name="program_studies_id" id="program_studies_id">
                             @foreach($program_studies as $ps)
@@ -120,7 +124,7 @@
                         </select>
                     </div>
                   </div>
-                  <button type="submit" class="btn btn-primary">Save</button>
+                  <button type="submit" class="btn btn-primary mt-4">Save</button>
               </form>
               </div>
           </div>

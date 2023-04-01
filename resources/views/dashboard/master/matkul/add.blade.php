@@ -65,20 +65,23 @@
                       </ul>
                   </div>
                   @endif
-                  <div class="form-group row border-bottom pb-4">
-                      <label for="name_mata_kuliah" class="col-sm-2 col-form-label">Nama Mata Kuliah</label>
+                  <div class="row g-2">
+                    <div class="col-md-6">
+                      <label for="name_mata_kuliah" class="form-label">Nama Mata Kuliah</label>
                       <div class="col-sm-10">
                           <input type="text" class="form-control" name="name_mata_kuliah" value="{{ old('name_mata_kuliah') }}" id="name_mata_kuliah" required>
                       </div>
-                  </div>
-                  <div class="form-group row border-bottom pb-4">
-                      <label for="kode_mata_kuliah" class="col-sm-2 col-form-label">Kode Mata Kuliah</label>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="kode_mata_kuliah" class="form-label">Kode Mata Kuliah</label>
                       <div class="col-sm-10">
                           <input type="text" class="form-control" name="kode_mata_kuliah" value="{{ old('kode_mata_kuliah') }}" id="kode_mata_kuliah" required>
                       </div>
+                    </div>
                   </div>
-                  <div class="form-group row border-bottom pb-4">
-                      <label for="sks" class="col-sm-2 col-form-label">SKS</label>
+                  <div class="row g-2 mt-3">
+                    <div class="col-md-6">
+                      <label for="sks" class="form-label">SKS</label>
                       <div class="col-sm-10">
                         <select class="form-control" name="sks" id="sks">
                           <option value="2">2</option>
@@ -88,30 +91,32 @@
                           <option value="10">10</option>
                         </select>
                       </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="semester" class="form-label">Semester</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="semester" id="semester">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                              <option value="10">10</option>
+                              <option value="11">11</option>
+                              <option value="12">12</option>
+                              <option value="13">13</option>
+                              <option value="14">14</option>
+                            </select>
+                        </div>
+                    </div>
                   </div>
-                  <div class="form-group row border-bottom pb-4">
-                      <label for="semester" class="col-sm-2 col-form-label">Semester</label>
-                      <div class="col-sm-10">
-                          <select class="form-control" name="semester" id="semester">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                          </select>
-                      </div>
-                  </div>
-                  <div class="form-group row border-bottom pb-4">
-                      <label for="program_studies_id" class="col-sm-2 col-form-label">Program Studi</label>
+                  <div class="row g-2 mt-3">
+                    <div class="col-md-6">
+                      <label for="program_studies_id" class="form-label">Program Studi</label>
                       <div class="col-sm-10">
                         <select class="form-control" name="program_studies_id" id="program_studies_id">
                             @foreach($program_studies as $ps)
@@ -119,8 +124,9 @@
                             @endforeach
                         </select>
                     </div>
+                    </div>
                   </div>
-                  <button type="submit" class="btn btn-primary">Save</button>
+                  <button type="submit" class="btn btn-primary mt-4">Save</button>
               </form>
               </div>
           </div>

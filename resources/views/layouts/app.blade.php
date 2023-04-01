@@ -325,7 +325,7 @@
               <p class="mb-0">SIAKAD - Media Informatika.</p>
             </div>
             <div class="col-md-6">
-              <p class="pull-right mb-0">Hand crafted & made with <i class="fa fa-heart font-secondary"></i> nurd0tid
+              <p class="pull-right mb-0">Hand crafted & made with <i class="fa fa-heart font-secondary"></i> Zaid
               </p>
             </div>
           </div>
