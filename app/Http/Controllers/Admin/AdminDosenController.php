@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use App\Models\Dosen;
 use App\Exports\DosenExport;
+use App\Imports\DosenImport;
 use Illuminate\Http\Request;
 use App\Models\Program_studies;
 use App\Http\Requests\DosenRequest;
@@ -129,5 +130,22 @@ class AdminDosenController extends Controller
     public function exportExcel()
     {
         return Excel::download(new DosenExport, 'dosen.xlsx');
+    }
+
+    
+    public function importExcel(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xls,xlsx'
+        ]);
+
+        $file = $request->file('file');
+
+        Excel::import(new DosenImport, $file);
+
+        return redirect()->back()->with([
+            'success' => 'Data berhasil ditambahkan',
+            'alert-type' => 'success'
+        ]);
     }
 }

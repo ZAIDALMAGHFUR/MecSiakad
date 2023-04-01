@@ -42,6 +42,33 @@
         </div>
       </div>
     </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Create Dosen Via Excel</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form action="{{ route('import_excel_dosen') }}" method="POST" enctype="multipart/form-data">
+                  @csrf
+          <div class="modal-body">
+              <div class="form-grop">
+                  <input type="file" name="file" required>
+              </div>
+          </div>
+          <div class="modal-footer">
+          
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+          </div>
+        </div>
+      </div>
+          </form>
+      </div>
+  </div>
     <div class="container-fluid">
       <div class="col-sm-12">
         <div class="card">
@@ -53,7 +80,7 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Import from Excel</a></li>
               <li><a class="dropdown-item" href="{{ route('export_excel_dosen') }}">Export to Excel</a></li>
-              <li><a class="dropdown-item" href="storage/Template/import siakad.xlsx">Download Template Import</a></li>
+              <li><a class="dropdown-item" href="storage/Template-Import-Dosen/import Dosen.xlsx">Download Template Import</a></li>
             </ul>
           </div>
           <div class="card-body">

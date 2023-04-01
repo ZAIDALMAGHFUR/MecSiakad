@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\User;
+use App\Models\Dosen;
 use App\Models\Mahasiswa;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToModel;
@@ -81,41 +82,28 @@ class UsersImport implements ToModel, WithHeadingRow, WithValidation
                 'asal_sekolah' => $row['asal_sekolah'],
                 'tahun_academics_id' => $row['tahun_academics_id'],
         ]);
+
+        $user = User::create([
+            'username' => $row['name'],
+            'email' => $row['email'],
+            'password' => bcrypt($row['nidn']),
+            'roles_id' => 3,
+        ]);
+
+        Dosen::create([
+                'nama_dosen' => $row['nama_dosen'],
+                'nidn' => $row['nidn'],
+                'email' => $row['email'],
+                'no_hp' => $row['no_hp'],
+                'alamat' => $row['alamat'],
+                'program_studies_id' => $row['program_studies_id'],
+                'pendidikan_terakhir' => $row['pendidikan_terakhir'],
+                'tempat_lahir' => $row['tempat_lahir'],
+                'tanggal_lahir' => $row['tanggal_lahir'],
+                'jenis_kelamin' => $row['jenis_kelamin'],
+                'agama' => $row['agama'],
+                'photo' => $row['photo']  ?? '',
+                'users_id' => $user->id,
+        ]);
     }
-
-
-    // public function collection(Collection $rows)
-    // {
-    //     // dd($rows);
-    //     foreach($rows as $key=>$row){
-    //         if($key === 0){
-    //             continue;
-    //         }
-    //         // dd($row[2]);
-            
-
-    //         $user = User::create([
-    //             'username' => $row[0],
-    //             'email' => $row[2],
-    //             'password' => bcrypt($row[7]),
-    //             'roles_id' => 3,
-    //         ]);
-            
-    //         Mahasiswa::create([
-    //                 'name' => $row[0],
-    //                 'nim' => $row[1],
-    //                 'email' => $row[2],
-    //                 'no_hp' => $row[3],
-    //                 'alamat' => $row[4],
-    //                 'program_studies_id' => $row[5],
-    //                 'tempat_lahir' => $row[6],
-    //                 'tanggal_lahir' => $row[7],
-    //                 'jenis_kelamin' => $row[8],
-    //                 'agama' => $row[9],
-    //                 'status' => $row[10],
-    //                 'user_id' => $user->id,
-    //                 'foto' => $row[12] ?? '',
-    //         ]);
-    //     }
-    // }
 }
