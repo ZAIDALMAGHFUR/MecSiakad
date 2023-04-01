@@ -91,7 +91,8 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::get('add', 'add')->name('dosen-admin/add');
         Route::post('save', 'store')->name('dosen-admin/save');
         Route::get('edit/{id}', 'edit')->name('dosen-admin/edit');
-        Route::put('update/{id}', 'update')->name('dosen-admin/update');
+        Route::post('update/{id}', 'update')->name('dosen-admin/update');
+        Route::get('show/{id}', 'show')->name('dosen-admin/show');
         Route::delete('delete/{id}', 'destroy')->name('dosen-admin/delete');
     });
 });

@@ -108,6 +108,12 @@ class AdminDosenController extends Controller
         }
     }
 
+    public function show($id)
+    {
+        $data = Dosen::findOrFail($id);
+        return view('dashboard.pengguna.dosen.show', compact('data'));
+    }
+
     public function destroy($id)
     {
         $data = Dosen::findOrFail($id);

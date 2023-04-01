@@ -73,11 +73,11 @@
                       <td>{{ $d->pendidikan_terakhir }}</td>
                       <td style="text-align: center">
 
-                        <a href=""> 
+                        <a href="{{ route('dosen-admin/show', [$d->id]) }}"> 
                           <button class="btn btn-warning  btn-sm edit" type="button"><i class="fa fa-eye"></i></button>
                         </a> 
 
-                        <a href="">
+                        <a href="{{ route('dosen-admin/edit', [$d->id]) }}">
                           <button class="btn btn-primary btn-sm edit" type="button"><i class="fa fa-edit"></i></button>
                         </a>
 
