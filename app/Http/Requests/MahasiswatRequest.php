@@ -26,7 +26,7 @@ class MahasiswatRequest extends FormRequest
         return [
             'name' => 'required',
             'nim' => 'required',
-            'email' => 'required',
+            'email' => 'required|string|email|max:255|unique:users',
             'no_hp' => 'required',
             'alamat' => 'required',
             'program_studies_id' => 'required',

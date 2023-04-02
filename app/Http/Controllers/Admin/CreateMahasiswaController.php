@@ -42,7 +42,7 @@ class CreateMahasiswaController extends Controller
 
             $user = User::create([
                 'username' => $request->name,
-                'email' => $request->nim,
+                'email' => $request->email,
                 'password' => bcrypt($request->tanggal_lahir),
                 'roles_id' => '3',
             ]);
