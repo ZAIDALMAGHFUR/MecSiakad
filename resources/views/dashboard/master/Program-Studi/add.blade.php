@@ -63,27 +63,29 @@
                       </ul>
                   </div>
                   @endif
-                  <div class="form-group row border-bottom pb-4">
-                      <label for="name" class="col-sm-2 col-form-label">Nama Program Studi</label>
+                  <div class="row g-2">
+                    <div class="col-md-6">
+                      <label for="name" class="form-label">Nama Program Studi</label>
                       <div class="col-sm-10">
                           <input type="text" class="form-control" name="name" value="{{ old('name') }}" id="name" required>
                       </div>
                   </div>
-                  <div class="form-group row border-bottom pb-4">
-                      <label for="kode_prodi" class="col-sm-2 col-form-label">Kode Program Studi</label>
+                  <div class="col-md-6">
+                      <label for="kode_prodi" class="form-label">Kode Program Studi</label>
                       <div class="col-sm-10">
                           <input type="text" class="form-control" name="kode_prodi" value="{{ old('kode_prodi') }}" id="kode_prodi" required>
                       </div>
                   </div>
-                  <div class="form-group row border-bottom pb-4">
-                      <label for="jenjang" class="col-sm-2 col-form-label">Jenjang Program Studi</label>
+                  </div>
+                  <div class="col-md-6 mt-3">
+                      <label for="jenjang" class="form-label">Jenjang Program Studi</label>
                       <div class="col-sm-10">
                           <input type="text" class="form-control" name="jenjang" value="{{ old('jenjang') }}" id="jenjang" required>
                       </div>
                   </div>
 
                   
-                  <button type="submit" class="btn btn-primary">Save</button>
+                  <button type="submit" class="btn btn-primary mt-3">Save</button>
               </form>
               </div>
           </div>
