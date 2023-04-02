@@ -65,14 +65,13 @@
                       </ul>
                   </div>
                   @endif
+                  <?php $nama_dosen = \App\Models\Dosen::find($data->dosen_id)->nama_dosen ?>
                   <div class="row g-2 mt-4">
                     <div class="col-md-6">
                         <label for="dosen_id" class="form-label">Nama Dosen</label>
                         <div class="col-sm-10">
                           <select class="form-control" name="dosen_id" id="dosen_id">
-                            @foreach ($dosen as $item)
-                              <option {{ old("dosen_id", $data->dosen_id) == $item->id ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->nama_dosen }}</option>
-                            @endforeach
+                            <option value="{{ $data->dosen_id }}">{{ $nama_dosen }}</option>
                           </select>  
                         </div>
                     </div>
