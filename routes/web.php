@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\MatkulController;
 use App\Http\Controllers\ProgrammStudiController;
 use App\Http\Controllers\Admin\AdminDosenController;
 use App\Http\Controllers\Admin\ThnAkademikController;
+use App\Http\Controllers\Admin\DosenJabatanController;
 use App\Http\Controllers\Admin\JabatanDosenController;
 use App\Http\Controllers\Admin\CreateMahasiswaController;
 
@@ -99,6 +100,16 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::post('update/{id}', 'update')->name('dosen-admin/update');
         Route::get('show/{id}', 'show')->name('dosen-admin/show');
         Route::delete('delete/{id}', 'destroy')->name('dosen-admin/delete');
+    });
+
+    //dosen jabatan
+    Route::controller(DosenJabatanController::class)->prefix('dsnjabatan')->group(function () {
+        Route::get('', 'index')->name('dsnjabatan');
+        Route::get('add', 'add')->name('dsnjabatan.add');
+        Route::post('save', 'store')->name('dsnjabatan.save');
+        Route::get('edit/{id}', 'edit')->name('dsnjabatan.edit');
+        Route::post('update/{id}', 'update')->name('dsnjabatan.update');
+        Route::delete('delete/{id}', 'destroy')->name('dsnjabatan.delete');
     });
 });
 
