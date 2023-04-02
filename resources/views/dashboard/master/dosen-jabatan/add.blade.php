@@ -103,7 +103,9 @@
                             <div class="col-sm-10">
                               <select class="form-control" name="tahun_academics_id" id="tahun_academics_id">
                                 @foreach($tahun_academics as $ta)
-                                  <option {{ old("tahun_academic") == $ta->id ? 'selected' : null }} value="{{ $ta->id }}">{{ $ta->tahun_akademik }}</option>
+                                  @if($ta->status == 'aktif')
+                                    <option {{ old("tahun_academic") == $ta->id ? 'selected' : null }} value="{{ $ta->id }}">{{ $ta->tahun_akademik }}</option>
+                                  @endif
                                 @endforeach
                               </select>
                             </div>
