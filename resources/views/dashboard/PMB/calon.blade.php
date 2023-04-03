@@ -1,6 +1,23 @@
 @extends('layouts.pmb')
 
 @section('content')
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="../../css2.css?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+<link href="../../css2-1.css?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
+<link href="../../css2-2.css?family=Rubik:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/sweetalert2.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/fontawesome.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/icofont.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/themify.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/flag-icon.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/feather-icon.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/animate.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/owlcarousel.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/color-1.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
   <div class="page-body">
     <div class="container-fluid">
       <div class="page-header">
@@ -40,233 +57,134 @@
       </div>
     </div>
     <!-- Container-fluid starts-->
-<div class="row">
-    <div class="col-xl-7">
-        <div class="card transparent-card">
-            <div class="bootstrap-carousel">
-                <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="0"
-                            class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                    </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img class="d-block w-100" src="{{ asset('assets/images/slider-auto-width/11.jpg') }}"
-                                alt="First slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="{{ asset('assets/images/slider-auto-width/12.jpg') }}"
-                                alt="Second slide">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button"
-                        data-bs-target="#carouselExampleIndicators2" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button"
-                        data-bs-target="#carouselExampleIndicators2" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header pb-0">
+                  <h5>Foto Kampus</h5>
                 </div>
-            </div>
+                <div class="card-body">
+                  <div class="owl-carousel owl-theme" id="owl-carousel-13">
+                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
+                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
+                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
+                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
+                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
+                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
+                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
+                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
+                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
+                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
+                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
+                  </div>
+                </div>
+              </div>
         </div>
+      </div>
+      <div class="col-xl-6 xl-100 col-lg-12 box-col-12">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="pull-left">Persyaratan Pendaftaran</h5>
+          </div>
+          <div class="card-body">
+            <div class="tabbed-card">
+              <ul class="pull-right nav nav-tabs border-tab nav-secondary" id="top-tabsecondary" role="tablist">
+                <li class="nav-item"><a class="nav-link" id="top-home-secondary" data-bs-toggle="tab" href="#top-homesecondary" role="tab" aria-controls="top-home" aria-selected="false"><i class="fa fa-institution"></i>Home</a>
+                  <div class="material-border"></div>
+                </li>
+                <li class="nav-item"><a class="nav-link active" id="profile-top-secondary" data-bs-toggle="tab" href="#top-profilesecondary" role="tab" aria-controls="top-profilesecondary" aria-selected="true"><i class="fa fa-users"></i>Profile</a>
+                  <div class="material-border"></div>
+                </li>
+                <li class="nav-item"><a class="nav-link" id="contact-top-secondary" data-bs-toggle="tab" href="#top-contactsecondary" role="tab" aria-controls="top-contactsecondary" aria-selected="false"><i class="icofont icofont-contacts"></i>Contact</a>
+                  <div class="material-border"></div>
+                </li>
+              </ul>
+              <div class="tab-content" id="top-tabContentsecondary">
+                <div class="tab-pane fade" id="top-homesecondary" role="tabpanel" aria-labelledby="top-home-tab">
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                </div>
+                <div class="tab-pane fade active show" id="top-profilesecondary" role="tabpanel" aria-labelledby="profile-top-tab">
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                </div>
+                <div class="tab-pane fade" id="top-contactsecondary" role="tabpanel" aria-labelledby="contact-top-tab">
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-xl-5">
+    <!-- Container-fluid Ends-->
+    <div class="container-fluid">
         <div class="row">
-            <div class="card transparent-card">
-                <div class="widget-stat card bg-primary" style="border-radius: 0%">
-                    <div class="card-body  p-4">
-                        <div class="media">
-                            <span class="me-3">
-                                <i class="la la-users"></i>
-                            </span>
-                            <div class="media-body text-white">
-                                <p class="mb-1">Total Pendaftar</p>
-                                <h3 class="text-white"></h3>
-                                <div class="progress mb-2 bg-secondary">
-                                    <div class="progress-bar progress-animated bg-light" style="width: 80%"></div>
-                                </div>
-                                <small>ditahun ini</small>
-                            </div>
-                        </div>
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-header pb-0">
+                <h5>Alur Pendafataran</h5>
+              </div>
+              <div class="card-body">
+                <!-- cd-timeline Start-->
+                <section class="cd-container" id="cd-timeline">
+                  <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-picture bg-primary"><i class="icon-pencil-alt"></i></div>
+                    <div class="cd-timeline-content">
+                      <h4>Pendafataran Online<span class="digits"> </span></h4>
+                      <p class="m-0">Melakukan pengisian seluruh berkas dan bla bla  bla.</p><span class="cd-date">
                     </div>
-                </div>
+                  </div>
+                  <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-movie bg-secondary"><i class="icon-video-camera"></i></div>
+                    <div class="cd-timeline-content">
+                      <h4>Tes Intervew<span class="digits"></span></h4>
+                      <div class="embed-responsive embed-responsive-21by9 m-t-20">
+                        <iframe src="../../embed/wpmHZspl4EM.html" allowfullscreen=""></iframe>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-location bg-warning"><i class="icon-image"></i></div>
+                    <div class="cd-timeline-content">
+                      <h4>Menunggu Penguguman<span class="digits"> </span></h4><img class="img-fluid p-t-20" src="../assets/images/banner/3.jpg" alt="">
+                    </div>
+                  </div>
+                  <div class="cd-timeline-block">
+                    <div class="cd-timeline-img cd-movie bg-danger"><i class="icon-pencil-alt"></i></div>
+                    <div class="cd-timeline-content">
+                      <h4>Final</h4>
+                      <p class="m-0">This is the content of the last section</p>
+                    </div>
+                  </div>
+                </section>
+                <!-- cd-timeline Ends-->
+              </div>
             </div>
+          </div>
         </div>
-        <div class="row" style="margin-top: -2.7rem">
-            <div class="card transparent-card">
-                <div class="widget-stat card bg-warning" style="border-radius: 0%">
-                    <div class="card-body p-4">
-                        <div class="media">
-                            <span class="me-3">
-                                <i class="la la-user"></i>
-                            </span>
-                            <div class="media-body text-white">
-                                <p class="mb-1">Pendaftar keterima</p>
-                                <h3 class="text-white"></h3>
-                                <div class="progress mb-2 bg-primary">
-                                    <div class="progress-bar progress-animated bg-light" style="width: 50%"></div>
-                                </div>
-                                <small>ditahun ini</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</div>
-</div>
-<div class="row">
-    <div class="card transparent-card">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-6  col-md-6 col-xxl-5 ">
-                                <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane fade show active" id="first">
-                                        <img class="img-fluid" src="{{ asset('assets/images/slider-auto-width/12.jpg') }}" alt="">
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane fade" id="second">
-                                        <img class="img-fluid" src="{{ asset('assets/images/slider-auto-width/12.jpg') }}" alt="">
-                                    </div>
-                                </div>
-                                <div class="tab-slide-content new-arrival-product mb-4 mb-xl-0">
-                                    <!-- Nav tabs -->
-                                    <ul class="nav slide-item-list mt-3" role="tablist">
-                                        <li role="presentation" class="show">
-                                            <a href="#first" role="tab" data-bs-toggle="tab">
-                                                <img class="img-fluid" src="{{ asset('assets/images/slider-auto-width/12.jpg') }}" alt="" width="50">
-                                            </a>
-                                        </li>
-                                        <li role="presentation">
-                                            <a href="#second" role="tab" data-bs-toggle="tab"><img class="img-fluid" src="{{ asset('assets/images/slider-auto-width/12.jpg') }}" alt="" width="50"></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!--Tab slider End-->
-                            <div class="col-xl-9 col-lg-6  col-md-6 col-xxl-7 col-sm-12">
-                                <div class="product-detail-content">
-                                    <!--Product details-->
-                                    <div class="new-arrival-content pr">
-                                        <h3>Ketentuan Umum</h3>
-                                        <div class="custom-tab-1">
-                                            <ul class="nav nav-tabs">
-                                                <li class="nav-item"><a href="#jpk" data-bs-toggle="tab"
-                                                        class="nav-link active show">Jalur Prestasi Khusus</a>
-                                                </li>
-                                                <li class="nav-item"><a href="#reguler" data-bs-toggle="tab"
-                                                        class="nav-link">Jalur Reguler</a>
-                                                </li>
-                                                <li class="nav-item"><a href="#karyawan" data-bs-toggle="tab"
-                                                    class="nav-link">Jalur Karyawan</a>
-                                                </li>
-                                            </ul>
-                                            <div class="tab-content">
-                                                <div id="about-me" class="tab-pane fade active show">
-                                                    <div class="profile-personal-info">
-                                                        <br>
-                                                        <h4 class="text-primary mb-4">Persyaratan</h4>
-                                                        <ul class="list-inline">
-                                                            <li class="list-inline-item">Siswa kelas XII SMA/SMK/MA/Sederajat lulus pada tahun berjalan.</li>
-                                                            <li class="list-inline-item">Mengisi formulir pendaftaran.</li>
-                                                            <li class="list-inline-item">Melampirkan Surat Penghasilan/Slip Gaji Orang Tua.</li>
-                                                            <li class="list-inline-item">Sehat jasmani dan rohani serta tidak buta warna dilengkapi dengan Surat Keterangan Sehat.</li>
-                                                            <li class="list-inline-item">Melampirkan pasfoto 3×4 dan 4×6 (@ 1 lembar)</li>
-                                                            <li class="list-inline-item">Melampirkan fotokopi dokumen (Rapor, Akta Kelahiran, Sertifikat Prestasi <small>(jika ada)</small> )</li>
-                                                        </ul>        
-                                                    </div>
-                                                </div>
-                                                <div id="reguler" class="tab-pane fade">
-                                                    <br>
-                                                        <h4 class="text-primary mb-4">Persyaratan</h4>
-                                                        <ul class="list-inline">
-                                                            <li class="list-inline-item">Siswa kelas XII SMA/SMK/MA/Sederajat lulus pada tahun berjalan.</li>
-                                                            <li class="list-inline-item">Mengisi formulir pendaftaran.</li>
-                                                            <li class="list-inline-item">Melampirkan Surat Penghasilan/Slip Gaji Orang Tua.</li>
-                                                            <li class="list-inline-item">Sehat jasmani dan rohani serta tidak buta warna dilengkapi dengan Surat Keterangan Sehat.</li>
-                                                            <li class="list-inline-item">Melampirkan pasfoto 3×4 dan 4×6 (@ 1 lembar)</li>
-                                                            <li class="list-inline-item">Melampirkan fotokopi dokumen (Rapor, Akta Kelahiran, Sertifikat Prestasi <small>(jika ada)</small> )</li>
-                                                        </ul>    
-                                                </div>
-                                                <div id="karyawan" class="tab-pane fade">
-                                                    <br>
-                                                        <h4 class="text-primary mb-4">Persyaratan</h4>
-                                                        <ul class="list-inline">
-                                                            <li class="list-inline-item">Siswa kelas XII SMA/SMK/MA/Sederajat lulus pada tahun berjalan.</li>
-                                                            <li class="list-inline-item">Mengisi formulir pendaftaran.</li>
-                                                            <li class="list-inline-item">Melampirkan Surat Penghasilan/Slip Gaji Orang Tua.</li>
-                                                            <li class="list-inline-item">Sehat jasmani dan rohani serta tidak buta warna dilengkapi dengan Surat Keterangan Sehat.</li>
-                                                            <li class="list-inline-item">Melampirkan pasfoto 3×4 dan 4×6 (@ 1 lembar)</li>
-                                                            <li class="list-inline-item">Melampirkan fotokopi dokumen (Rapor, Akta Kelahiran, Sertifikat Prestasi <small>(jika ada)</small> )</li>
-                                                        </ul>    
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- review -->
-            <div class="modal fade" id="reviewModal">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Review</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="text-center mb-4">
-                                    <img class="img-fluid rounded" width="78" src="images/avatar/1.jpg" alt="DexignZone">
-                                </div>
-                                <div class="mb-3">
-                                    <div class="rating-widget mb-4 text-center">
-                                        <!-- Rating Stars Box -->
-                                        <div class="rating-stars">
-                                            <ul id="stars">
-                                                <li class="star" title="Poor" data-value="1">
-                                                    <i class="fa fa-star fa-fw"></i>
-                                                </li>
-                                                <li class="star" title="Fair" data-value="2">
-                                                    <i class="fa fa-star fa-fw"></i>
-                                                </li>
-                                                <li class="star" title="Good" data-value="3">
-                                                    <i class="fa fa-star fa-fw"></i>
-                                                </li>
-                                                <li class="star" title="Excellent" data-value="4">
-                                                    <i class="fa fa-star fa-fw"></i>
-                                                </li>
-                                                <li class="star" title="WOW!!!" data-value="5">
-                                                    <i class="fa fa-star fa-fw"></i>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <textarea class="form-control" placeholder="Comment" rows="5"></textarea>
-                                </div>
-                                <button class="btn btn-success btn-block">RATE</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+      </div>
+  </div>
+
+  
+
+  <script src="{{ asset('assets/js/jquery-3.5.1.min.js') }}"></script>
+  <script src="{{ asset('assets/js/icons/feather-icon/feather.min.js') }}"></script>
+  <script src="{{ asset('assets/js/icons/feather-icon/feather-icon.js') }}"></script>
+  <script src="{{ asset('assets/js/config.js') }}"></script>
+  <script src="{{ asset('assets/js/bootstrap/popper.min.js') }}"></script>
+  <script src="{{ asset('assets/js/bootstrap/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('assets/js/owlcarousel/owl.carousel.js') }}"></script>
+  <script src="{{ asset('assets/js/owlcarousel/owl-custom.js') }}"></script>
+  <script src="{{ asset('assets/js/landing_sticky.js') }}"></script>
+  <script src="{{ asset('assets/js/landing.js') }}"></script>
+  <script src="{{ asset('assets/js/jarallax_libs/libs.min.js') }}"></script>
+  <script src="{{ asset('assets/js/script.js') }}"></script>
+  <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
+  <script src="{{ asset('assets/js/sweet-alert/sweetalert.min.js') }}"></script>
+  <script src="{{ asset('assets/js/form-validation-custom.js') }}"></script>
+  <script src="{{ asset('assets/js/tooltip-init.js') }}"></script>
+  <script src="{{ asset('assets/js/timeline/timeline-v-1/main.js') }}"></script>
+  <script src="{{ asset('assets/js/theme-customizer/customizer.js') }}"></script>
+  <script src="{{ asset('assets/js/modernizr.js') }}"></script>
 @endsection
