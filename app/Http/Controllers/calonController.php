@@ -14,6 +14,6 @@ class calonController extends Controller
 
     public function index()
     {
-        return view('dashboard.calon');
+        return view('dashboard.PMB.calon');
     }
 }
