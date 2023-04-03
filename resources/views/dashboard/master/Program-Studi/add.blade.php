@@ -71,19 +71,13 @@
                       </div>
                   </div>
                   <div class="col-md-6">
-                      <label for="kode_prodi" class="form-label">Kode Program Studi</label>
-                      <div class="col-sm-10">
-                          <input type="text" class="form-control" name="kode_prodi" value="{{ old('kode_prodi') }}" id="kode_prodi" required>
-                      </div>
-                  </div>
-                  </div>
-                  <div class="col-md-6 mt-3">
-                      <label for="jenjang" class="form-label">Jenjang Program Studi</label>
-                      <div class="col-sm-10">
-                          <input type="text" class="form-control" name="jenjang" value="{{ old('jenjang') }}" id="jenjang" required>
-                      </div>
-                  </div>
+                    <label for="jenjang" class="form-label">Jenjang Program Studi</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="jenjang" value="{{ old('jenjang') }}" id="jenjang" required>
+                    </div>
+                </div>
 
+                  </div>
                   
                   <button type="submit" class="btn btn-primary mt-3">Save</button>
               </form>

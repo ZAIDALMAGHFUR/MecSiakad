@@ -72,18 +72,12 @@
                               </div>
                           </div>
                           <div class="col-md-6">
-                              <label for="kode_prodi" class="form-label">Kode Program Studi</label>
+                            <label for="jenjang" class="form-label">Jenjang Program Studi</label>
                               <div class="col-sm-10">
-                              <input type="text" class="form-control" name="kode_prodi" value="{{ old('kode_prodi', $data->kode_prodi) }}" id="kode_prodi">
+                                <input type="text" class="form-control" name="jenjang" value="{{ old('jenjang', $data->jenjang) }}" id="jenjang">
                               </div>
-                          </div>
-                          </div>
-                      <div class="col-md-6 mt-3">
-                        <label for="jenjang" class="form-label">Jenjang Program Studi</label>
-                        <div class="col-sm-10">
-                        <input type="text" class="form-control" name="jenjang" value="{{ old('jenjang', $data->jenjang) }}" id="jenjang">
                         </div>
-                    </div>
+                          </div>
                       <button type="submit" class="btn btn-primary mt-3">Ganti</button>
                   </form>
               </div>

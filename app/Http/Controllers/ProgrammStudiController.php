@@ -23,16 +23,17 @@ class ProgrammStudiController extends Controller
     
     public function store(Request $request)
     {
-        // dd($request);
         $this->validate($request, [
             'name' => 'required|unique:program_studies',
-            'kode_prodi' => 'required|unique:program_studies',
             'jenjang' => 'required:program_studies',
         ]);
-
+    
+        $name_words = explode(' ', $request->name);
+        $kode_prodi = strtoupper(substr($name_words[0], 0, 1) . substr(end($name_words), 0, 1));
+    
         Program_studies::create([
             'name' => $request->name,
-            'kode_prodi' => $request->kode_prodi,
+            'kode_prodi' => $kode_prodi,
             'jenjang' => $request->jenjang,
         ]);
     
@@ -41,6 +42,7 @@ class ProgrammStudiController extends Controller
             'alert-type' => 'success'
         ]);
     }
+    
     
 
     public function edit($id)
@@ -52,23 +54,26 @@ class ProgrammStudiController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required|unique:program_studies',
-            'kode_prodi' => 'required|unique:program_studies',
+            'name' => 'required|unique:program_studies,name,'.$id,
             'jenjang' => 'required:program_studies',
         ]);
-
+    
         $data = Program_studies::findOrFail($id);
+        $name_words = explode(' ', $request->name);
+        $kode_prodi = strtoupper(substr($name_words[0], 0, 1) . substr(end($name_words), 0, 1));
+    
         $data->update([
             'name' => $request->name,
-            'kode_prodi' => $request->kode_prodi,
+            'kode_prodi' => $kode_prodi,
             'jenjang' => $request->jenjang,
         ]);
-
+    
         return redirect()->route('program-studi')->with([
             'info' => 'Data berhasil diubah',
             'alert-type' => 'success'
         ]);
     }
+    
 
     public function destroy($id)
     {

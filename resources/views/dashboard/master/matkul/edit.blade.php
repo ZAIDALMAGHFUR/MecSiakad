@@ -73,11 +73,15 @@
                       </div>
                   </div>
                   <div class="col-md-6">
-                      <label for="kode_mata_kuliah" class="form-label">Kode Mata Kuliah</label>
-                      <div class="col-sm-10">
-                          <input type="text" class="form-control" name="kode_mata_kuliah" value="{{ old('kode_mata_kuliah', $data->kode_mata_kuliah) }}" id="kode_mata_kuliah" required>
-                      </div>
-                    </div>
+                    <label for="program_studies_id" class="form-label">Program Studi</label>
+                    <div class="col-sm-10">
+                      <select class="form-control" name="program_studies_id" id="program_studies_id">
+                          @foreach($program_studies as $ps)
+                              <option {{ old("program_study") == $ps->id ? 'selected' : null }} value="{{ $ps->id }}">{{ $ps->name }}</option>
+                          @endforeach
+                      </select>
+                  </div>
+                </div>
                   </div>
                   <div class="row g-2 mt-3">
                     <div class="col-md-6">
@@ -114,16 +118,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-6 mt-3">
-                      <label for="program_studies_id" class="form-label">Program Studi</label>
-                      <div class="col-sm-10">
-                        <select class="form-control" name="program_studies_id" id="program_studies_id">
-                            @foreach($program_studies as $ps)
-                                <option {{ old("program_study") == $ps->id ? 'selected' : null }} value="{{ $ps->id }}">{{ $ps->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                  </div>
+                  
                   <button type="submit" class="btn btn-primary mt-4">Save</button>
               </form>
               </div>
