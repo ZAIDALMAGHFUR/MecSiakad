@@ -8,12 +8,19 @@ use App\Models\Program_studies;
 use Illuminate\Http\Request;
 
 class MatkulController extends Controller
+{public function index(Request $request)
 {
-    public function index()
-    {
-        $data = Mata_Kuliah::all();
-        return view('dashboard.master.matkul.index', compact('data'));
-    }
+    $program_studies = Program_studies::all();
+
+    $matkul = Mata_Kuliah::query()
+        ->when($request->input('program_studies_id'), function ($query, $program_studies_id) {
+            return $query->where('program_studies_id', $program_studies_id);
+        })
+        ->orderBy('id', 'desc')
+        ->get();
+
+    return view('dashboard.master.matkul.index', compact('program_studies', 'matkul'));
+}
 
     public function add(){
         $program_studies = Program_studies::all();

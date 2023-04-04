@@ -48,6 +48,18 @@
           <div class="card-header">
             <a href="{{ route('matkul.add') }}" class="btn btn-primary">Add Mata Kuliah</a>
           </div>
+          <div class="col-sm-10">
+            <form method="GET" action="{{ route('matkul') }}">
+                <select class="form-control" name="program_studies_id" id="program_studies_id">
+                    <option value="">-- Pilih Program Studi --</option>
+                    @foreach($program_studies as $ps)
+                        <option {{ request('program_studies_id') == $ps->id ? 'selected' : '' }} value="{{ $ps->id }}">{{ $ps->name }}</option>
+                    @endforeach
+                </select>
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+        </div>
+        
           <div class="card-body">
             <div class="table-responsive">
               <table class="display table table-bordered" id="basic-1">
@@ -63,7 +75,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($data as $a)
+                  @foreach ($matkul as $a)
                     <tr style="text-align: center">
                       <td>{{ $loop->iteration }}</td>
                       <td>{{ $a['name_mata_kuliah'] }}</td>

@@ -179,8 +179,6 @@
   <script src="{{ asset('assets/js/landing.js') }}"></script>
   <script src="{{ asset('assets/js/jarallax_libs/libs.min.js') }}"></script>
   <script src="{{ asset('assets/js/script.js') }}"></script>
-  <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
-  <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
   <script src="{{ asset('assets/js/sweet-alert/sweetalert.min.js') }}"></script>
   <script src="{{ asset('assets/js/form-validation-custom.js') }}"></script>
   <script src="{{ asset('assets/js/tooltip-init.js') }}"></script>
