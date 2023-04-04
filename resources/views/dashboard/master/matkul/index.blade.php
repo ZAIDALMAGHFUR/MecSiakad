@@ -3,6 +3,9 @@
   @pushOnce('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/sweetalert2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/select2.css') }}">
   @endPushOnce
   <div class="page-body">
     <div class="container-fluid">
@@ -48,9 +51,9 @@
           <div class="card-header">
             <a href="{{ route('matkul.add') }}" class="btn btn-primary">Add Mata Kuliah</a>
           </div>
-          <div class="col-sm-10">
-            <form method="GET" action="{{ route('matkul') }}">
-                <select class="form-control" name="program_studies_id" id="program_studies_id">
+          <div class="col-sm-10 container-fluid ">
+            <form method="GET" action="{{ route('matkul') }}" class="d-flex justify-content-center">
+                <select class="js-example-basic-single col-sm-12" name="program_studies_id" id="program_studies_id">
                     <option value="">-- Pilih Program Studi --</option>
                     @foreach($program_studies as $ps)
                         <option {{ request('program_studies_id') == $ps->id ? 'selected' : '' }} value="{{ $ps->id }}">{{ $ps->name }}</option>
@@ -107,6 +110,8 @@
     <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
     <script src="{{ asset('assets/js/sweet-alert/sweetalert.min.js') }}"></script>
     <script src="{{ asset('assets/js/form-validation-custom.js') }}"></script>
+    <script src="{{ asset('assets/js/select2/select2-custom.js') }}"></script>
+    <script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
     <script src="{{ asset('assets/js/tooltip-init.js') }}"></script>
     <script type="text/javascript">
       $('.show_confirm').click(function(e) {
