@@ -65,23 +65,14 @@
                     <td>{{ $a->username }}</td>
                     <td>{{ $a->email }}</td>
                     <td>{{ $a->no_hp }}</td>
-                    <td>
-                      @if ($a->jenis_kelamin == 'Perempuan')
-                        <span class="badge badge-danger">Perempuan</span>
-                      @elseif($a->jenis_kelamin == 'Laki-laki')
-                        <span class="badge" style="background-color: rgb(81, 171, 255)">Laki-Laki</span>
-                      @else
-                        <span class="badge badge-warning">?</span>
-                    @endif
-                    </td>
-                  </td>
+                    <td>{{ $a->jenis_kelamin }}</td>
                     <td>
                       <form method="POST" action="pengguna/delete/{{ $a['id'] }}">
                         @csrf
                         <input name="_method" type="hidden" class="btn-primary btn-xs" value="DELETE">
                         <a type="submit" class="btn btn-danger btn-xs show_confirm"><i class="fa fa-trash"></i></a>
                       </form>
-                    </td>
+                    </td>blank
                   </tr>
                 @endforeach
                 </tbody>
@@ -93,8 +84,6 @@
     </div>
   </div>
   @pushOnce('js')
-    @include('dashboard.master.jadwalpmb.add')
-    @include('dashboard.master.jadwalpmb.edit')
     <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
     <script src="{{ asset('assets/js/sweet-alert/sweetalert.min.js') }}"></script>
@@ -141,118 +130,6 @@
           }
         );
       @endif
-
-      // Function CRUD with Ajax
-      $(document).ready(function() {
-        $('.add').on("click", function(e) {
-          e.preventDefault()
-          $.ajax({
-            url: "{{ route('jadwalpmb.add') }}",
-            type: "GET",
-            dataType: "json",
-            success: function(data) {
-              $('#addJadwalPmb').modal('show');
-            }
-          });
-        });
-
-        $('#save').on("click", function(e) {
-          $.ajax({
-            type: "POST",
-            data: $('#saveThnAkademik').serialize(),
-            url: "{{ route('jadwalpmb.save') }}",
-            dataType: "json",
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(data) {
-              toastr.success(
-                data.success,
-                'Wohoooo!', {
-                  showDuration: 300,
-                  hideDuration: 900,
-                  timeOut: 900,
-                  closeButton: true,
-                  newestOnTop: true,
-                  progressBar: true,
-                  onHidden: function() {
-                    window.location.reload();
-                  }
-                }
-              );
-            },
-            error: function(data) {
-              var errors = data.responseJSON.errors;
-              var errorsHtml = '';
-              $.each(errors, function(key, value) {
-                errorsHtml += '- ' + value[0] + '<br>';
-              });
-              toastr.error(errorsHtml, 'Whoops gagal men!');
-            }
-          });
-        });
-
-        $('.edit').on("click", function(e) {
-    e.preventDefault()
-    var id = $(this).attr('data-bs-id');
-    // console.log(id);
-    $.ajax({
-        url: "/jadwalpmb/edit/" + id,
-        type: "GET",
-        dataType: "JSON",
-        success: function(data) {
-            console.log(data);
-            $('#id').val(data.id);
-            $('#nama_kegiatan').val(data.nama_kegiatan);
-            $('#jenis_kegiatan').val(data.jenis_kegiatan);
-            $('#tgl_mulai').val(data.tgl_mulai);
-            $('#tgl_akhir').val(data.tgl_akhir);
-            $('#editjadwalpmb').modal('show');
-        }
-    });
-});
-
-$('#update').on("click", function(e) {
-    e.preventDefault();
-    var id = $('#id').val();
-    $.ajax({
-        type: "POST",
-        data: $('#datajadwalpmb').serialize(),
-        url: '/jadwalpmb/update/' + id,
-        dataType: "json",
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        success: function(data) {
-            // console.log(data);
-            toastr.success(
-                data.success,
-                'Wohoooo!', {
-                    showDuration: 300,
-                    hideDuration: 900,
-                    timeOut: 900,
-                    closeButton: true,
-                    newestOnTop: true,
-                    progressBar: true,
-                    onHidden: function() {
-                        window.location.reload();
-                    }
-                }
-            );
-        },
-        error: function(data) {
-            console.log(data);
-            var errors = data.responseJSON.errors;
-            var errorsHtml = '';
-            $.each(errors, function(key, value) {
-                errorsHtml += '- ' + value[0] + '<br>';
-            });
-            toastr.error(errorsHtml, 'Whoops ga bisa men!');
-        }
-    });
-});
-
-      });
     </script>
   @endPushOnce
 @endsection
