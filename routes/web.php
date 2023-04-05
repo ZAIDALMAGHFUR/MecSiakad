@@ -7,6 +7,7 @@ use App\Http\Controllers\calonController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\Admin\MatkulController;
+use App\Http\Controllers\PMB\PenggunaController;
 use App\Http\Controllers\PMB\JadwalPmbController;
 use App\Http\Controllers\ProgrammStudiController;
 use App\Http\Controllers\Admin\AdminDosenController;
@@ -121,6 +122,11 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::get('edit/{id}', 'edit')->name('jadwalpmb/edit');
         Route::post('update/{id}', 'update')->name('jadwalpmb/update');
         Route::delete('delete/{id}', 'destroy')->name('jadwalpmb/delete');
+    });
+
+    Route::controller(PenggunaController::class)->prefix('pengguna')->group(function () {
+        Route::get('', 'index')->name('pengguna');
+        Route::delete('delete/{id}', 'destroy')->name('pengguna/delete');
     });
 
 });

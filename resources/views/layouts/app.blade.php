@@ -298,7 +298,7 @@
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                   data-feather="grid"></i><span>PMB</span></a>
                     <ul class="nav-submenu menu-content">
-                      <li><a href="">Pengguna</a></li>
+                      <li><a href="{{ route('pengguna') }}">Pengguna</a></li>
                       <li><a href="{{ route('jadwalpmb') }}">Jadwal PMB</a></li>
                       <li><a href="">Pendaftaran</a></li>
                       <li><a href="">Pembayaran</a></li>
