@@ -11,20 +11,16 @@ class PenggunaController extends Controller
 {
     public function index()
     {
-        $users = User::where('roles_id', 4)->get(); 
-        return view('dashboard.master.pengguna.index', compact('users',));
+        
+        $user = User::where('roles_id', '4')->get();
+        return view('dashboard.master.pengguna.index', compact('user',));
     }
 
-    public function destroy($id)
-    {
+    public function destroy($id){
         $user = User::find($id);
         $user->delete();
-
-        $profileUser = ProfileUsers::where('users_id', $id)->first();
-        $profileUser->delete();
-        
         return redirect()->back()->with([
-            'success', 'Data berhasil dihapus',
+            'success' => 'Data berhasil dihapus',
             'alert-type' => 'success'
         ]);
     }

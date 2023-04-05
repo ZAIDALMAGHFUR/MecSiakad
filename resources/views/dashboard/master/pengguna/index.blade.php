@@ -53,19 +53,27 @@
                     <th style="width: 55px">No</th>
                     <th>Nama</th>
                     <th>Email</th>
-                    {{-- <th>Telphone</th>
-                    <th>Jenis Kelamin</th> --}}
+                    <th>Telphone</th>
+                    <th>Jenis Kelamin</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($users as $a)
+                  @foreach ($user as $a)
                   <tr style="text-align: center">
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $a->username }}</td>
                     <td>{{ $a->email }}</td>
-                    {{-- <td>{{ $a->email }}</td>
-                    <td>{{ $a->email }}</td> --}}
+                    <td>{{ $a->no_hp }}</td>
+                    <td>
+                      @if ($a->jenis_kelamin == 'Perempuan')
+                        <span class="badge badge-danger">Perempuan</span>
+                      @elseif($a->jenis_kelamin == 'Laki-laki')
+                        <span class="badge" style="background-color: rgb(81, 171, 255)">Laki-Laki</span>
+                      @else
+                        <span class="badge badge-warning">?</span>
+                    @endif
+                    </td>
                   </td>
                     <td>
                       <form method="POST" action="pengguna/delete/{{ $a['id'] }}">
