@@ -8,6 +8,7 @@ use Database\Seeders\DosenSeeder;
 use Database\Seeders\RolesSeeder;
 use Database\Seeders\UsersSeeder;
 use Database\Seeders\JabatanSeeder;
+use Database\Seeders\JadwalPmbSeeder;
 use Database\Seeders\MahasiswaSeeder;
 use Database\Seeders\DosenJabatanSeeder;
 use Database\Seeders\ProgramStuiesSeeder;
@@ -38,6 +39,7 @@ class DatabaseSeeder extends Seeder
             DosenSeeder::class,
             JabatanSeeder::class,
             DosenJabatanSeeder::class,
+            JadwalPmbSeeder::class,
         ]);
     }
 }

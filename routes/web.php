@@ -7,6 +7,7 @@ use App\Http\Controllers\calonController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\Admin\MatkulController;
+use App\Http\Controllers\PMB\JadwalPmbController;
 use App\Http\Controllers\ProgrammStudiController;
 use App\Http\Controllers\Admin\AdminDosenController;
 use App\Http\Controllers\Admin\ThnAkademikController;
@@ -111,6 +112,17 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::post('update/{id}', 'update')->name('dsnjabatan.update');
         Route::delete('delete/{id}', 'destroy')->name('dsnjabatan.delete');
     });
+
+    //jadwal pmb
+    Route::controller(JadwalPmbController::class)->prefix('jadwalpmb')->group(function () {
+        Route::get('', 'index')->name('jadwalpmb');
+        Route::get('add', 'add')->name('jadwalpmb.add');
+        Route::post('save', 'store')->name('jadwalpmb.save');
+        Route::get('edit/{id}', 'edit')->name('jadwalpmb/edit');
+        Route::put('update/{id}', 'update')->name('jadwalpmb/update');
+        Route::delete('delete/{id}', 'destroy')->name('jadwalpmb.delete');
+    });
+
 });
 
 Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {

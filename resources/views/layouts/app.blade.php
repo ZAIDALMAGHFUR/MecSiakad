@@ -294,6 +294,17 @@
                     <li><a href="http://">Cetak Transkip Nilai</a></li>
                   </ul>
                 </li>
+
+                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
+                  data-feather="grid"></i><span>PMB</span></a>
+                    <ul class="nav-submenu menu-content">
+                      <li><a href="">Pengguna</a></li>
+                      <li><a href="{{ route('jadwalpmb') }}">Jadwal PMB</a></li>
+                      <li><a href="">Pendaftaran</a></li>
+                      <li><a href="">Pembayaran</a></li>
+                      <li><a href="">Penguguman</a></li>
+                    </ul>
+                </li>
                 <li class="dropdown"><a class="nav-link menu" href="javascript:void(0)"><i
                       data-feather="book-open"></i><span>Jurnal KBM</span></a>
                 </li>

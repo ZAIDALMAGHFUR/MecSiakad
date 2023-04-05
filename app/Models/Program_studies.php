@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Dosen;
+use App\Models\Mahasiswa;
+use App\Models\Pengumuman;
+use App\Models\Pendaftaran;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Program_studies extends Model
 {
@@ -12,4 +16,23 @@ class Program_studies extends Model
     protected $guarded = [
         'id',
     ];
+
+    public function mahasiswa()
+    {
+        return $this->hasMany(Mahasiswa::class);
+    }
+
+    public function dosen()
+    {
+        return $this->hasMany(Dosen::class);
+    }
+
+    public function pengumuman()
+    {
+    return $this->belongsTo(Pengumuman::class);
+    }
+    
+    public function pendaftaran(){
+        return $this->hasMany(Pendaftaran::class);
+    }
 }

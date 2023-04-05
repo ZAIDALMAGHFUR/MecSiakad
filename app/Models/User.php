@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Dosen;
 use App\Models\Mahasiswa;
+use App\Models\ProfileUsers;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -51,5 +52,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function dosen()
     {
         return $this->hasOne(Dosen::class);
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(ProfileUsers::class);
     }
 }

@@ -49,12 +49,13 @@
                 },
                 error: function(data) {
                     btnSubmit.prop('disabled', false);
-                    const errors = data.responseJSON.errors;
+                    // let errors = data.responseJSON.errors;
                     let errorsHtml = '';
                     $.each(errors, function(_key, value) {
                         errorsHtml += '<p>- ' + value[0] + '</p>';
                     });
                     toastr.error(errorsHtml, 'Whoops!');
+                    console.log(errors);
                 }
             });
         });
@@ -71,9 +72,11 @@
          */
         function modalShowEditGolongan(data) {
             const editGolongan = $('#editGolongan');
-            editGolongan.find('#id_golongan').val(data.id_golongan);
-            editGolongan.find('#nm_golongan').val(data.nm_golongan);
-            editGolongan.find('#ket_golongan').val(data.ket_golongan);
+            editGolongan.find('#id').val(data.id);
+            editGolongan.find('#nama_kegiatan').val(data.nama_kegiatan);
+            editGolongan.find('#jenis_kegiatan').val(data.jenis_kegiatan);
+            editGolongan.find('#tgl_mulai').val(data.tgl_mulai);
+            editGolongan.find('#tgl_akhir').val(data.tgl_akhir);
             editGolongan.modal('show');
         }
 
@@ -102,7 +105,7 @@
                 $.ajax({
                     type: _this.attr('method'),
                     data: _this.serialize(),
-                    url: _this.attr('action') + "/" + data.id_golongan,
+                    url: _this.attr('action') + "/" + data.id,
                     dataType: 'json',
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
