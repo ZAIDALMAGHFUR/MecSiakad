@@ -90,7 +90,7 @@
                       @endif
                   </td>
                     <td>
-                      <form method="POST" action="{{ route('jadwalpmb.delete',[$a->id]) }}">
+                      <form method="POST" action="jadwalpmb/delete/{{ $a['id'] }}">
                         @csrf
                         <a type="button" class="btn btn-primary btn-xs edit" data-bs-id="{{ $a->id }}"><i
                             class="fa fa-edit"></i></a>
@@ -223,7 +223,7 @@
             $('#jenis_kegiatan').val(data.jenis_kegiatan);
             $('#tgl_mulai').val(data.tgl_mulai);
             $('#tgl_akhir').val(data.tgl_akhir);
-            $('#editThnAkademik').modal('show');
+            $('#editjadwalpmb').modal('show');
         }
     });
 });
@@ -231,11 +231,9 @@
 $('#update').on("click", function(e) {
     e.preventDefault();
     var id = $('#id').val();
-    // console.log(id);
-    // console.log($('#dataThnAkademik').serialize());
     $.ajax({
-        type: "PUT",
-        data: $('#dataThnAkademik').serialize(),
+        type: "POST",
+        data: $('#datajadwalpmb').serialize(),
         url: '/jadwalpmb/update/' + id,
         dataType: "json",
         headers: {

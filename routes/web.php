@@ -119,8 +119,8 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::get('add', 'add')->name('jadwalpmb.add');
         Route::post('save', 'store')->name('jadwalpmb.save');
         Route::get('edit/{id}', 'edit')->name('jadwalpmb/edit');
-        Route::put('update/{id}', 'update')->name('jadwalpmb/update');
-        Route::delete('delete/{id}', 'destroy')->name('jadwalpmb.delete');
+        Route::post('update/{id}', 'update')->name('jadwalpmb/update');
+        Route::delete('delete/{id}', 'destroy')->name('jadwalpmb/delete');
     });
 
 });

@@ -1,4 +1,4 @@
-<div class="modal fade" id="editThnAkademik" id aria-hidden="true">
+<div class="modal fade" id="editjadwalpmb" id aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -6,7 +6,7 @@
         <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="dataThnAkademik" class="needs-validation" novalidate="">
+        <form id="datajadwalpmb" class="needs-validation" novalidate="">
           <div>
             <input class="form-control" id="id" type="hidden" name="id">
             <div class="row g-2">
