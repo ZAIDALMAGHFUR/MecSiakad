@@ -79,6 +79,9 @@
                                                     @elseif ($a->status == 'Gratis')
                                                     <span class="badge badge-success">Gratis<span
                                                             class="ms-1 fa fa-check"></span>
+                                                            @elseif($a->status == null)
+                                                                <span class="badge badge-warning">Belum bayar<span
+                                                                        class="ms-1 fas fa-stream"></span>
                                 @endif
                             </div>
                             <div class="col-md-6">

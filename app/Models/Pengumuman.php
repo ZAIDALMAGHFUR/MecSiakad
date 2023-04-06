@@ -20,12 +20,12 @@ class Pengumuman extends Model
     {
         return $this->belongsTo(Pendaftaran::class, 'id_pendaftaran');
  	}
-     public function prodi()
+     public function Program_studies()
      {
          return $this->belongsTo(Program_studies::class, 'prodi_penerima');
       }
     public function user()
     {
-         return $this->belongsTo(User::class, 'user_id');
+         return $this->belongsTo(User::class, 'users_id');
     }
 }

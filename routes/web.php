@@ -12,6 +12,7 @@ use App\Http\Controllers\PMB\JadwalPmbController;
 use App\Http\Controllers\PMB\PendaftarController;
 use App\Http\Controllers\ProgrammStudiController;
 use App\Http\Controllers\PMB\PembayaranController;
+use App\Http\Controllers\PMB\PengugumanController;
 use App\Http\Controllers\Admin\AdminDosenController;
 use App\Http\Controllers\Admin\ThnAkademikController;
 use App\Http\Controllers\Admin\DosenJabatanController;
@@ -155,6 +156,18 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
     Route::get('/paid-payment/{id_pembayaran}', [PembayaranController::class, 'verifikasipembayaran']);
     Route::get('/unpaid-payment/{id_pembayaran}', [PembayaranController::class, 'belumbayar']);
     Route::get('/invalid-payment/{id_pembayaran}', [PembayaranController::class, 'invalidbayar']);
+
+    //pengumuman
+    Route::controller(PengugumanController::class)->prefix('penguguman')->group(function () {
+        Route::get('', 'index')->name('penguguman');
+        Route::delete('delete/{id}', 'destroy')->name('penguguman/delete');
+    });
+    
+    //pengumuman change 
+    Route::get('/view-announcement/{id_pendaftaran}', [PengugumanController::class, 'lihatpengumuman']);
+    Route::post('/save-announcement', [PengugumanController::class, 'simpanpengumuman']);
+    Route::post('/update-announcement/{id}', [PengugumanController::class, 'updatepengumuman']);
+
 });
 
 Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {

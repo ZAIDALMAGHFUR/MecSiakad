@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pengumuman', function (Blueprint $table) {
+        Schema::create('pengumumen', function (Blueprint $table) {
             $table->id();
             $table->string('id_pengumuman')->unique();
             $table->string('id_pendaftaran');
-            $table->string('user_id')->nullable();
+            $table->string('users_id')->nullable();
             $table->string('hasil_seleksi')->nullable();
             $table->unsignedBigInteger('prodi_penerima')->nullable();
             $table->foreign('prodi_penerima')->references('id')->on('program_studies')->onUpdate('cascade')->onDelete('cascade');
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pengumuman');
+        Schema::dropIfExists('pengumumen');
     }
 };
