@@ -11,6 +11,7 @@ use App\Http\Controllers\PMB\PenggunaController;
 use App\Http\Controllers\PMB\JadwalPmbController;
 use App\Http\Controllers\PMB\PendaftarController;
 use App\Http\Controllers\ProgrammStudiController;
+use App\Http\Controllers\PMB\PembayaranController;
 use App\Http\Controllers\Admin\AdminDosenController;
 use App\Http\Controllers\Admin\ThnAkademikController;
 use App\Http\Controllers\Admin\DosenJabatanController;
@@ -137,11 +138,23 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::delete('delete/{id}', 'destroy')->name('pendaftar/delete');
     });
 
+    //verifikasi pendaftar
     Route::get('/verified-registration/{id_pendaftaran}', [PendaftarController::class, 'verifikasistatuspendaftaran']);
     Route::get('/notverified-registration/{id_pendaftaran}', [PendaftarController::class, 'notverifikasistatuspendaftaran']);
     Route::get('/invalid-registration/{id_pendaftaran}', [PendaftarController::class, 'invalidstatuspendaftaran']);
     Route::get('/finish-registration/{id_pendaftaran}', [PendaftarController::class, 'selesaistatuspendaftaran']);
 
+
+    //pembayaran 
+    Route::controller(PembayaranController::class)->prefix('pembayaran')->group(function () {
+        Route::get('', 'index')->name('pembayaran');
+        Route::delete('delete/{id}', 'destroy')->name('pembayaran/delete');
+    });
+
+    //pemmbayaran change status
+    Route::get('/paid-payment/{id_pembayaran}', [PembayaranController::class, 'verifikasipembayaran']);
+    Route::get('/unpaid-payment/{id_pembayaran}', [PembayaranController::class, 'belumbayar']);
+    Route::get('/invalid-payment/{id_pembayaran}', [PembayaranController::class, 'invalidbayar']);
 });
 
 Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {

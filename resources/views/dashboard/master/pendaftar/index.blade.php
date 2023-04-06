@@ -145,8 +145,6 @@
     </div>
   </div>
   @pushOnce('js')
-    @include('dashboard.master.pendaftar.add')
-    @include('dashboard.master.pendaftar.edit')
     <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
     <script src="{{ asset('assets/js/sweet-alert/sweetalert.min.js') }}"></script>

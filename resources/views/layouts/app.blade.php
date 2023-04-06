@@ -301,7 +301,7 @@
                       <li><a href="{{ route('pengguna') }}">Pengguna</a></li>
                       <li><a href="{{ route('jadwalpmb') }}">Jadwal PMB</a></li>
                       <li><a href="{{ route('pendaftar') }}">Pendaftaran</a></li>
-                      <li><a href="">Pembayaran</a></li>
+                      <li><a href="{{ route('pembayaran') }}">Pembayaran</a></li>
                       <li><a href="">Penguguman</a></li>
                     </ul>
                 </li>
