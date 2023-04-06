@@ -21,7 +21,7 @@ return new class extends Migration
             $table->boolean('verifikasi');
             $table->date('tgl_pembayaran')->nullable();
             $table->unsignedBigInteger('id_pendaftaran');
-            $table->foreign('id_pendaftaran')->references('id')->on('pendaftaran')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_pendaftaran')->references('id')->on('pendaftarans')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

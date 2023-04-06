@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Dosen;
+use App\Models\Timeline;
 use App\Models\Mahasiswa;
 use App\Models\ProfileUsers;
 use Laravel\Sanctum\HasApiTokens;
@@ -57,5 +58,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function ProfileUsers()
     {
         return $this->hasOne(ProfileUsers::class);
+    }
+
+    public function timeline(){
+        return $this->hasMany(Timeline::class);
     }
 }

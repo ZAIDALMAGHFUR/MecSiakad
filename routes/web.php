@@ -9,6 +9,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\Admin\MatkulController;
 use App\Http\Controllers\PMB\PenggunaController;
 use App\Http\Controllers\PMB\JadwalPmbController;
+use App\Http\Controllers\PMB\PendaftarController;
 use App\Http\Controllers\ProgrammStudiController;
 use App\Http\Controllers\Admin\AdminDosenController;
 use App\Http\Controllers\Admin\ThnAkademikController;
@@ -124,10 +125,22 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::delete('delete/{id}', 'destroy')->name('jadwalpmb/delete');
     });
 
+    //pengguna
     Route::controller(PenggunaController::class)->prefix('pengguna')->group(function () {
         Route::get('', 'index')->name('pengguna');
         Route::delete('delete/{id}', 'destroy')->name('pengguna/delete');
     });
+
+    //pendaftar
+    Route::controller(PendaftarController::class)->prefix('pendaftar')->group(function () {
+        Route::get('', 'index')->name('pendaftar');
+        Route::delete('delete/{id}', 'destroy')->name('pendaftar/delete');
+    });
+
+    Route::get('/verified-registration/{id_pendaftaran}', [PendaftarController::class, 'verifikasistatuspendaftaran']);
+    Route::get('/notverified-registration/{id_pendaftaran}', [PendaftarController::class, 'notverifikasistatuspendaftaran']);
+    Route::get('/invalid-registration/{id_pendaftaran}', [PendaftarController::class, 'invalidstatuspendaftaran']);
+    Route::get('/finish-registration/{id_pendaftaran}', [PendaftarController::class, 'selesaistatuspendaftaran']);
 
 });
 
