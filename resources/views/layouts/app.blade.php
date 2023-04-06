@@ -295,7 +295,16 @@
                   </ul>
                 </li>
 
-
+                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
+                  data-feather="user-check"></i><span>PMB</span></a>
+                    <ul class="nav-submenu menu-content">
+                      <li><a href="{{ route('pengguna') }}">Pengguna</a></li>
+                      <li><a href="{{ route('jadwalpmb') }}">Jadwal PMB</a></li>
+                      <li><a href="{{ route('pendaftar') }}">Pendaftaran</a></li>
+                      <li><a href="{{ route('pembayaran') }}">Pembayaran</a></li>
+                      <li><a href="{{ route('penguguman') }}">Penguguman</a></li>
+                    </ul>
+                </li>
                 <li class="dropdown"><a class="nav-link menu" href="javascript:void(0)"><i
                       data-feather="book-open"></i><span>Jurnal KBM</span></a>
                 </li>
