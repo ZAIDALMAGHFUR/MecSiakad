@@ -144,6 +144,7 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
     Route::get('/notverified-registration/{id_pendaftaran}', [PendaftarController::class, 'notverifikasistatuspendaftaran']);
     Route::get('/invalid-registration/{id_pendaftaran}', [PendaftarController::class, 'invalidstatuspendaftaran']);
     Route::get('/finish-registration/{id_pendaftaran}', [PendaftarController::class, 'selesaistatuspendaftaran']);
+    Route::get('/detail-registration/{id_pendaftaran}', [PendaftarController::class, 'detailpendaftaran']);
 
 
     //pembayaran 

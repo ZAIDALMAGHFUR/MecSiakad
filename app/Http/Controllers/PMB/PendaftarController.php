@@ -4,7 +4,9 @@ namespace App\Http\Controllers\PMB;
 
 use App\Models\User;
 use App\Models\Timeline;
+use App\Models\Pembayaran;
 use App\Models\Pendaftaran;
+use App\Models\Program_studies;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -77,6 +79,24 @@ class PendaftarController extends Controller
             'created_at' => now()
         ]);
         return redirect('/pendaftar');
+    }
+
+    public function detailpendaftaran($id_pendaftaran)
+    {
+        $User = User::all();
+        $dataprod = Program_studies::all();
+        $data = Pendaftaran::where("id_pendaftaran",$id_pendaftaran)->first();
+        $datPembayaran = Pembayaran::where("id_pendaftaran",$data->id)->first();
+        $no=1;
+        
+        
+        $datapembayaran = Pendaftaran::where("id_pendaftaran", $id_pendaftaran)->get();
+        return view('    dashboard.master.pendaftar.data-pendaftaran-detail', [
+            'User' => $User,
+            'viewDataPembayaran' => $datPembayaran,
+            'viewData' => $data,
+            'viewProdi' => $dataprod
+        ]);
     }
 
     public function destroy($id){

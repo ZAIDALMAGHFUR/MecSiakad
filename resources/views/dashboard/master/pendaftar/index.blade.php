@@ -130,6 +130,7 @@
                       <td>
                         <form method="POST" action="{{ route('pendaftar/delete', [$a->id]) }}">
                           @csrf
+                          <a class="btn btn-secondary shadow btn-xs sharp me-1" title="Detail Registration" href="detail-registration/{{ $a->id_pendaftaran }}"><i class="fa fa-eye"></i></a>
                           <input name="_method" type="hidden" class="btn-primary btn-xs" value="DELETE">
                           <a type="submit" class="btn btn-danger btn-xs show_confirm"><i class="fa fa-trash"></i></a>
                         </form>
