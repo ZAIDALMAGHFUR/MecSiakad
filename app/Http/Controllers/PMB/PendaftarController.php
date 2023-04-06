@@ -78,4 +78,13 @@ class PendaftarController extends Controller
         ]);
         return redirect('/pendaftar');
     }
+
+    public function destroy($id){
+        $Pendaftaran = Pendaftaran::find($id);
+        $Pendaftaran->delete();
+        return redirect()->back()->with([
+            'success' => 'Data berhasil dihapus',
+            'alert-type' => 'success'
+        ]);
+    }
 }
