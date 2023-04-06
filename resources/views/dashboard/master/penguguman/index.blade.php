@@ -78,6 +78,8 @@
                         @endif
                     <td>@if ($a->hasil_seleksi == "LULUS" || $a->hasil_seleksi == "Lulus" || $a->hasil_seleksi == "lulus") 
                         {{ $a->Program_studies->name }}
+                        @elseif ($a->hasil_seleksi == "TIDAK LULUS" || $a->hasil_seleksi == "Tidak Lulus" || $a->hasil_seleksi == "tidak lulus")
+                        -
                         @endif
                     </td>
                     <td><strong>{{ $a->nilai_interview }}</strong></a></td>
@@ -116,25 +118,21 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="update-announcement/{{ $a->id }}"
-                    method="POST" enctype="multipart/form-data">
+              <form action="update-announcement/{{ $a->id }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('POST')
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xl-6">
-                                <label for="iduser">ID Pendaftaran</label>
-                                <select class="default-select form-control wide"
-                                    title="id_pendaftaran" name="id_pendaftaran"
-                                    required>
+                                <label for="id_pendaftaran">ID Pendaftaran</label>
+                                <select class="default-select form-control wide" title="id_pendaftaran" name="id_pendaftaran" required>
                                     <option value="{{ $a->id_pendaftaran }}">
-                                        {{ $a->pendaftaran->id_pendaftaran }}</option>
-                                </select>
-
+                                      {{ $a->pendaftaran->id_pendaftaran }}</option>
+                                </select> 
                             </div>
                             <div class="col-xl-6">
-                                <label for="iduser">Hasil</label>
-                                <select class="default-select form-control wide"
-                                    title="Result" name="hasil" required>
+                                <label for="hasil_seleksi">Hasil</label>
+                                <select class="default-select form-control wide" title="Result" name="hasil_seleksi" required>
                                     <option value="LULUS">LULUS</option>
                                     <option value="TIDAK LULUS">TIDAK LULUS</option>
                                 </select>
@@ -142,38 +140,35 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="iduser">Program Studi Penerima </label>
-                        <select class="default-select form-control wide"
-                            title="Recipient" name="Program_studies" required>
+                        <label for="prodi_penerima">Program Studi Penerima </label>
+                        <select class="default-select form-control wide" title="Recipient" name="prodi_penerima" required>
                             @if ($a->hasil_seleksi == "LULUS" || $a->hasil_seleksi == "Lulus" || $a->hasil_seleksi == "lulus") 
                             <option value="{{ $a->prodi_penerima }}" selected>{{ $a->Program_studies->name }}</option>
                             @endif
                             <option value="{{ $a->pendaftaran->pil1 }}">Pilihan 1 : {{ $a->pendaftaran->pilihan1->name }}</option>
                             <option value="{{ $a->pendaftaran->pil2 }}">Pilihan 2 : {{ $a->pendaftaran->pilihan2->name }}</option>
-                            <option value="tidak diterima0">Tidak DiTerima</option>
+                            <option value="">Tidak DiTerima</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xl-6">
-                                <label for="iduser">Nilai Interview</label>
-                                <input type="number" class="form-control" id="nama"
+                                <label for="nilai_interview">Nilai Interview</label>
+                                <input type="number" class="form-control" id="nilai_interview"
                                     value="{{ $a->nilai_interview }}"
-                                    name="interview" required>
+                                    name="nilai_interview" required>
                             </div>
                             <div class="col-xl-6">
-                                <label for="iduser">Nilai Tes</label>
-                                <input type="number" class="form-control" id="nama"
-                                    value="{{ $a->nilai_test }}" name="test"
+                                <label for="nilai_test">Nilai Tes</label>
+                                <input type="number" class="form-control" id="nilai_test"
+                                    value="{{ $a->nilai_test }}" name="nilai_test"
                                     required>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer border-top-0 d-flex">
-                        <button type="button" class="btn btn-danger light"
-                            data-bs-dismiss="modal">Tutup</button>
-                        <button type="submit" id="add"
-                            class="btn btn-primary">Perbaharui Data</button>
+                        <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </form>
             </div>

@@ -127,12 +127,12 @@
                                                                             </tr>
                                                                         </table>
                                                                     </div>
+                                                                    <tr>
+                                                                      <td scope="row" style="margin-top:-50px"><small>* Bawa Bukti Penerimaan Saat Melakukan Daftar Ulang</small></td>
+                                                                  </tr>
                                                                 @endif
                                                     @endforeach
                                                 </th>
-                                            </tr>
-                                            <tr>
-                                                <td scope="row" style="margin-top:-50px"><small>* Bawa Bukti Penerimaan Saat Melakukan Daftar Ulang</small></td>
                                             </tr>
                                         </tbody>
                                     </table>

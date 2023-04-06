@@ -64,12 +64,10 @@ class PengugumanController extends Controller
         // dd($request->all());
         $this->validate($request, [
             'hasil_seleksi' => 'required',
-            'prodi_penerima' => 'required',
             'nilai_interview' => 'required',
             'nilai_test' => 'required',
         ], [
             'hasil_seleksi.required' => 'Hasil Seleksi tidak boleh kosong!',
-            'prodi_penerima.required' => 'Prodi Penerima tidak boleh kosong!',
             'nilai_interview.required' => 'Nilai Interview tidak boleh kosong!',
             'nilai_test.required' => 'Nilai Test tidak boleh kosong!',
         ]);
@@ -89,7 +87,7 @@ class PengugumanController extends Controller
             'created_at' => now()
         ]);
 
-        return redirect()->route('pengumuman')->with([
+        return redirect()->back()->with([
             'success' => 'Data berhasil diubah!',
             'alert-type' => 'success'
         ]);

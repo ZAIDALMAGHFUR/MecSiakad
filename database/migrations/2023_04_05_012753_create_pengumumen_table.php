@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('users_id')->nullable();
             $table->string('hasil_seleksi')->nullable();
             $table->unsignedBigInteger('prodi_penerima')->nullable();
-            $table->foreign('prodi_penerima')->references('id')->on('program_studies')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('prodi_penerima')->references('id')->on('program_studies')->onUpdate('cascade')->onDelete('cascade')->nullable();
             $table->integer('nilai_interview')->nullable();
             $table->integer('nilai_test')->nullable();
             $table->boolean('status');
