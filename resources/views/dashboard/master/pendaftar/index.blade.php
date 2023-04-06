@@ -85,42 +85,28 @@
                               @endif
                           </div>
                           <div class="col-md-6">
-                              <div class="dropdown text-sans-serif"><button
-                                      class="btn btn-primary tp-btn-light sharp" type="button"
-                                      id="order-dropdown-7" data-bs-toggle="dropdown"
-                                      data-boundary="viewport" aria-haspopup="true"
-                                      aria-expanded="false"><span><svg
-                                              xmlns="http://www.w3.org/2000/svg"
-                                              xmlns:xlink="http://www.w3.org/1999/xlink"
-                                              width="18px" height="18px" viewbox="0 0 24 24"
-                                              version="1.1">
-                                              <g stroke="none" stroke-width="1" fill="none"
-                                                  fill-rule="evenodd">
-                                                  <rect a="0" y="0" width="24" height="24"></rect>
-                                                  <circle fill="#000000" cx="5" cy="12" r="2">
-                                                  </circle>
-                                                  <circle fill="#000000" cx="12" cy="12" r="2">
-                                                  </circle>
-                                                  <circle fill="#000000" cx="19" cy="12" r="2">
-                                                  </circle>
-                                              </g>
-                                          </svg></span></button>
-                                  <div class="dropdown-menu dropdown-menu-end border py-0"
-                                      aria-labelledby="order-dropdown-7">
-                                      <div class="py-2"><a class="dropdown-item"
-                                              href="/verified-registration/{{ $a->id_pendaftaran }}">Terverifikasi</a><a
-                                              class="dropdown-item"
-                                              href="/notverified-registration/{{ $a->id_pendaftaran }}">Belum
-                                              Terverifikasi</a>
-                                              <div class="dropdown-divider"></div><a
-                                              class="dropdown-item text-success"
-                                              href="/finish-registration/{{ $a->id_pendaftaran }}">Selesai
-                                              </a>
-                                      </div>
-                                          <div class="dropdown-divider"></div><a
-                                              class="dropdown-item text-danger"
-                                              href="/invalid-registration/{{ $a->id_pendaftaran }}">Tidak
-                                              Sah</a>
+                              <div class="dropdown text-sans-serif">
+                                <button class="btn btn-primary tp-btn-light sharp" type="button" id="order-dropdown-7" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false">
+                                  <span>
+                                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewbox="0 0 24 24" version="1.1">
+                                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                              <rect a="0" y="0" width="24" height="24"></rect>
+                                                <circle fill="#000000" cx="5" cy="12" r="2"> </circle>
+                                                <circle fill="#000000" cx="12" cy="12" r="2"> </circle>
+                                                <circle fill="#000000" cx="19" cy="12" r="2"> </circle>
+                                          </g>
+                                      </svg>
+                                    </span>
+                                </button>
+                                  <div class="dropdown-menu dropdown-menu-end border py-0" aria-labelledby="order-dropdown-7">
+                                      <div class="py-2">
+                                          <a class="dropdown-item" href="/verified-registration/{{ $a->id_pendaftaran }}">Terverifikasi</a>
+                                          <a class="dropdown-item" href="/notverified-registration/{{ $a->id_pendaftaran }}">Belum Terverifikasi</a>
+                                        <div class="dropdown-divider"></div>
+                                          <a class="dropdown-item text-success" href="/finish-registration/{{ $a->id_pendaftaran }}">Selesai </a>
+                                        </div>
+                                        <div class="dropdown-divider"></div>
+                                          <a class="dropdown-item text-danger" href="/invalid-registration/{{ $a->id_pendaftaran }}">Tidak Sah</a>
                                       </div>
                                   </div>
                               </div>
