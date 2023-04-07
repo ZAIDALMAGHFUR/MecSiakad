@@ -187,11 +187,9 @@
   <script src="{{ asset('assets/js/landing_sticky.js') }}"></script>
   <script src="{{ asset('assets/js/landing.js') }}"></script>
   <script src="{{ asset('assets/js/jarallax_libs/libs.min.js') }}"></script>
-  <script src="{{ asset('assets/js/script.js') }}"></script>
   <script src="{{ asset('assets/js/sweet-alert/sweetalert.min.js') }}"></script>
   <script src="{{ asset('assets/js/form-validation-custom.js') }}"></script>
   <script src="{{ asset('assets/js/tooltip-init.js') }}"></script>
   <script src="{{ asset('assets/js/timeline/timeline-v-1/main.js') }}"></script>
-  <script src="{{ asset('assets/js/theme-customizer/customizer.js') }}"></script>
   <script src="{{ asset('assets/js/modernizr.js') }}"></script>
 @endsection
