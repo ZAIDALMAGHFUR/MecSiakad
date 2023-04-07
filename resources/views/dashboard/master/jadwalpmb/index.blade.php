@@ -92,8 +92,7 @@
                     <td>
                       <form method="POST" action="jadwalpmb/delete/{{ $a['id'] }}">
                         @csrf
-                        <a type="button" class="btn btn-primary btn-xs edit" data-bs-id="{{ $a->id }}"><i
-                            class="fa fa-edit"></i></a>
+                        <a class="btn btn-primary shadow btn-xs sharp me-1" title="Edit" data-bs-toggle="modal" data-bs-target=".edit{{ $a->id }}"><i class="fa fa-edit"></i></a>
                         <input name="_method" type="hidden" class="btn-primary btn-xs" value="DELETE">
                         <a type="submit" class="btn btn-danger btn-xs show_confirm"><i class="fa fa-trash"></i></a>
                       </form>
@@ -108,9 +107,54 @@
       </div>
     </div>
   </div>
+
+
+  <div class="modal fade edit{{ $a->id }}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Sunting Pengumuman</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+            </div>
+            <div class="modal-body">
+              <form action="jadwalpmb/update/{{ $a->id }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('POST')
+                    <div>
+                      <input class="form-control" id="id" type="hidden" name="id">
+                      <div class="row g-2">
+                        <div class="col-md-6">
+                          <label class="form-label">Nama Kegiatan</label>
+                          <input class="form-control" type="text" name="nama_kegiatan" id="nama_kegiatan" required>
+                        </div>
+                        <div class="col-md-6">
+                          <label class="form-label">Jenis Kegiatan</label>
+                          <input class="form-control" type="text" name="jenis_kegiatan" id="jenis_kegiatan" required>
+                        </div>
+                      </div>
+                      <div class="row g-2 mt-3 mb-3">
+                        <div class="col-md-6">
+                          <label class="form-label">Tanggal Mulai</label>
+                          <input class="form-control" type="date" name="tgl_mulai" id="tgl_mulai" required>
+                        </div>
+                        <div class="col-md-6">
+                          <label class="form-label">Tanggal Selesai</label>
+                          <input class="form-control" type="date" name="tgl_akhir" id="tgl_akhir" required>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer border-top-0 d-flex">
+                        <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+  
   @pushOnce('js')
     @include('dashboard.master.jadwalpmb.add')
-    @include('dashboard.master.jadwalpmb.edit')
     <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
     <script src="{{ asset('assets/js/sweet-alert/sweetalert.min.js') }}"></script>
@@ -207,67 +251,6 @@
             }
           });
         });
-
-        $('.edit').on("click", function(e) {
-      e.preventDefault()
-    var id = $(this).attr('data-bs-id');
-    // console.log(id);
-    $.ajax({
-        url: "/jadwalpmb/edit/" + id,
-        type: "GET",
-        dataType: "JSON",
-        success: function(data) {
-            console.log(data);
-            $('#id').val(data.id);
-            $('#nama_kegiatan').val(data.nama_kegiatan);
-            $('#jenis_kegiatan').val(data.jenis_kegiatan);
-            $('#tgl_mulai').val(data.tgl_mulai);
-            $('#tgl_akhir').val(data.tgl_akhir);
-            $('#editjadwalpmb').modal('show');
-        }
-    });
-});
-
-$('#update').on("click", function(e) {
-    e.preventDefault();
-    var id = $('#id').val();
-    $.ajax({
-        type: "POST",
-        data: $('#datajadwalpmb').serialize(),
-        url: '/jadwalpmb/update/' + id,
-        dataType: "json",
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        success: function(data) {
-            // console.log(data);
-            toastr.success(
-                data.success,
-                'Wohoooo!', {
-                    showDuration: 300,
-                    hideDuration: 900,
-                    timeOut: 900,
-                    closeButton: true,
-                    newestOnTop: true,
-                    progressBar: true,
-                    onHidden: function() {
-                        window.location.reload();
-                    }
-                }
-            );
-        },
-        error: function(data) {
-            console.log(data);
-            var errors = data.responseJSON.errors;
-            var errorsHtml = '';
-            $.each(errors, function(key, value) {
-                errorsHtml += '- ' + value[0] + '<br>';
-            });
-            toastr.error(errorsHtml, 'Whoops ga bisa men!');
-        }
-    });
-});
-
       });
     </script>
   @endPushOnce
