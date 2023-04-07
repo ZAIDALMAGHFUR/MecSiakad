@@ -66,17 +66,18 @@
                 </div>
                 <div class="card-body">
                   <div class="owl-carousel owl-theme" id="owl-carousel-13">
-                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
-                    <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt=""></div>
+                    @foreach($fotos as $f)
+                      <div class="item"><img src="{{ Storage::url($f->foto_kampus) }}" width="150" alt="Gamabar Mahasiswa" class="rounded"></div>
+                      <div class="item"><img src="{{ Storage::url($f->foto_kampus2) }}" width="150" alt="Gamabar Mahasiswa" class="rounded"></div>
+                      <div class="item"><img src="{{ Storage::url($f->foto_kampus3) }}" width="150" alt="Gamabar Mahasiswa" class="rounded"></div>
+                      <div class="item"><img src="{{ Storage::url($f->foto_kampus4) }}" width="150" alt="Gamabar Mahasiswa" class="rounded"></div>
+                      <div class="item"><img src="{{ Storage::url($f->foto_kampus5) }}" width="150" alt="Gamabar Mahasiswa" class="rounded"></div>
+                      <div class="item"><img src="{{ Storage::url($f->foto_kampus6) }}" width="150" alt="Gamabar Mahasiswa" class="rounded"></div>
+                      <div class="item"><img src="{{ Storage::url($f->foto_kampus7) }}" width="150" alt="Gamabar Mahasiswa" class="rounded"></div>
+                      <div class="item"><img src="{{ Storage::url($f->foto_kampus8) }}" width="150" alt="Gamabar Mahasiswa" class="rounded"></div>
+                      <div class="item"><img src="{{ Storage::url($f->foto_kampus9) }}" width="150" alt="Gamabar Mahasiswa" class="rounded"></div>
+                      <div class="item"><img src="{{ Storage::url($f->foto_kampus10) }}" width="150" alt="Gamabar Mahasiswa" class="rounded"></div>
+                    @endforeach
                   </div>
                 </div>
               </div>

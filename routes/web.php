@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\calonController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\PMB\FotosController;
 use App\Http\Controllers\Admin\MatkulController;
 use App\Http\Controllers\PMB\PenggunaController;
 use App\Http\Controllers\PMB\JadwalPmbController;
@@ -180,6 +181,16 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::get('edit/{id}', 'edit')->name('persyaratan.edit');
         Route::post('update/{id}', 'update')->name('persyaratan.update');
         Route::delete('delete/{id}', 'destroy')->name('persyaratan.delete');
+    });
+
+    //foto brosur
+    Route::controller(FotosController::class)->prefix('foto')->group(function () {
+        Route::get('', 'index')->name('foto');
+        Route::get('add', 'add')->name('foto.add');
+        Route::post('save', 'store')->name('foto.save');
+        Route::get('edit/{id}', 'edit')->name('foto.edit');
+        Route::post('update/{id}', 'update')->name('foto.update');
+        Route::delete('delete/{id}', 'destroy')->name('foto.delete');
     });
 
 });

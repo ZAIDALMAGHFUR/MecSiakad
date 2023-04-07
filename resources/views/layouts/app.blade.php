@@ -302,7 +302,7 @@
                       <li><a href="{{ route('pembayaran') }}">Pembayaran</a></li>
                       <li><a href="{{ route('penguguman') }}">Penguguman</a></li>
                       <li><a href="{{ route('persyaratan') }}">Persyaratan PMB</a></li>
-                      <li><a href="">Foto Brosur</a></li>
+                      <li><a href="{{ route('foto') }}">Foto Brosur</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu" href="javascript:void(0)"><i
