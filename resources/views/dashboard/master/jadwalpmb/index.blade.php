@@ -175,7 +175,7 @@
         $('#save').on("click", function(e) {
           $.ajax({
             type: "POST",
-            data: $('#saveThnAkademik').serialize(),
+            data: $('#saveJadwalPmb').serialize(),
             url: "{{ route('jadwalpmb.save') }}",
             dataType: "json",
             headers: {
@@ -209,7 +209,7 @@
         });
 
         $('.edit').on("click", function(e) {
-    e.preventDefault()
+      e.preventDefault()
     var id = $(this).attr('data-bs-id');
     // console.log(id);
     $.ajax({

@@ -6,7 +6,7 @@
         <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="saveThnAkademik" class="needs-validation" novalidate="">
+        <form id="saveJadwalPmb" class="needs-validation" novalidate="">
           @csrf
           <div>
             <div class="row g-2">
