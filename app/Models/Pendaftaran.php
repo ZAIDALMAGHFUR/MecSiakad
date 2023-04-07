@@ -33,7 +33,7 @@ class Pendaftaran extends Model
         return $this->hasMany(Pengumuman::class);
     }
 
-    public function jadwal_pmbs_id(){
+    public function jadwal_pmbs(){
         return $this->belongsTo(jadwal_pmbs::class,'jadwal_pmbs_id');
     }
 

@@ -237,7 +237,7 @@
                     <h6>Applications </h6>
                   </div>
                 </li>
-                <li class="dropdown"><a class="nav-link menu" href="javascript:void(0)"><i
+                <li class="dropdown"><a class="nav-link menu" href="{{ route('camba') }}"><i
                   data-feather="book-open"></i><span>Pendafataran</span></a>
                 </li>
                 <li class="dropdown"><a class="nav-link menu" href="javascript:void(0)"><i

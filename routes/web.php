@@ -14,6 +14,7 @@ use App\Http\Controllers\PMB\PendaftarController;
 use App\Http\Controllers\ProgrammStudiController;
 use App\Http\Controllers\PMB\PembayaranController;
 use App\Http\Controllers\PMB\PengugumanController;
+use App\Http\Controllers\PMB\PendaftaranController;
 use App\Http\Controllers\PMB\PersyaratanController;
 use App\Http\Controllers\Admin\AdminDosenController;
 use App\Http\Controllers\Admin\ThnAkademikController;
@@ -204,7 +205,28 @@ Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
 });
 
-Route::get('calon', [calonController::class, 'index'])->name('calon');
+Route::group(['middleware'=> ['auth', 'Camba']], function () {
+
+    Route::get('calon', [calonController::class, 'index'])->name('calon');
+
+    //pendaftaran
+    Route::controller(PendaftaranController::class)->prefix('camba')->group(function () {
+        Route::get('', 'index')->name('camba');
+        Route::get('add', 'add')->name('camba.add');
+        Route::post('save', 'store')->name('camba.save');
+        Route::get('edit/{id}', 'edit')->name('camba.edit');
+        Route::post('update/{id}', 'update')->name('camba.update');
+        Route::delete('delete/{id}', 'destroy')->name('camba.delete');
+    });
+
+});
+
+
+
+
+
+
+
 
 Route::get('/job-search',  [App\Http\Controllers\JobController::class, 'index'])->name('job-search');
 
