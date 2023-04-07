@@ -14,6 +14,7 @@ use Database\Seeders\PendaftarSeeder;
 use Database\Seeders\PembayaranSeeder;
 use Database\Seeders\PengugumanSeeder;
 use Database\Seeders\DosenJabatanSeeder;
+use Database\Seeders\PersyaratansSeeder;
 use Database\Seeders\ProgramStuiesSeeder;
 use Database\Seeders\TahunAcademicsSeeder;
 
@@ -46,6 +47,7 @@ class DatabaseSeeder extends Seeder
             PendaftarSeeder::class,
             PembayaranSeeder::class,
             PengugumanSeeder::class,
+            PersyaratansSeeder::class,
         ]);
     }
 }

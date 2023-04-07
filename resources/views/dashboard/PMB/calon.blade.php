@@ -90,26 +90,34 @@
           <div class="card-body">
             <div class="tabbed-card">
               <ul class="pull-right nav nav-tabs border-tab nav-secondary" id="top-tabsecondary" role="tablist">
-                <li class="nav-item"><a class="nav-link" id="top-home-secondary" data-bs-toggle="tab" href="#top-homesecondary" role="tab" aria-controls="top-home" aria-selected="false"><i class="fa fa-institution"></i>Home</a>
+                <li class="nav-item"><a class="nav-link" id="top-home-secondary" data-bs-toggle="tab" href="#top-homesecondary" role="tab" aria-controls="top-home" aria-selected="false"><i class="fa fa-institution"></i>prestasi</a>
                   <div class="material-border"></div>
                 </li>
-                <li class="nav-item"><a class="nav-link active" id="profile-top-secondary" data-bs-toggle="tab" href="#top-profilesecondary" role="tab" aria-controls="top-profilesecondary" aria-selected="true"><i class="fa fa-users"></i>Profile</a>
+                <li class="nav-item"><a class="nav-link active" id="profile-top-secondary" data-bs-toggle="tab" href="#top-profilesecondary" role="tab" aria-controls="top-profilesecondary" aria-selected="true"><i class="fa fa-users"></i>beasiswa</a>
                   <div class="material-border"></div>
                 </li>
-                <li class="nav-item"><a class="nav-link" id="contact-top-secondary" data-bs-toggle="tab" href="#top-contactsecondary" role="tab" aria-controls="top-contactsecondary" aria-selected="false"><i class="icofont icofont-contacts"></i>Contact</a>
+                <li class="nav-item"><a class="nav-link" id="contact-top-secondary" data-bs-toggle="tab" href="#top-contactsecondary" role="tab" aria-controls="top-contactsecondary" aria-selected="false"><i class="icofont icofont-contacts"></i>pindahan</a>
+                  <div class="material-border"></div>
+                </li>
+                <li class="nav-item"><a class="nav-link" id="contact-top-secondary" data-bs-toggle="tab" href="#top-contactsecondary" role="tab" aria-controls="top-contactsecondary" aria-selected="false"><i class="icofont icofont-contacts"></i>reguler</a>
                   <div class="material-border"></div>
                 </li>
               </ul>
               <div class="tab-content" id="top-tabContentsecondary">
-                <div class="tab-pane fade" id="top-homesecondary" role="tabpanel" aria-labelledby="top-home-tab">
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-                </div>
-                <div class="tab-pane fade active show" id="top-profilesecondary" role="tabpanel" aria-labelledby="profile-top-tab">
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-                </div>
-                <div class="tab-pane fade" id="top-contactsecondary" role="tabpanel" aria-labelledby="contact-top-tab">
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-                </div>
+                @foreach($Persyaratans as $persyaratan)
+                  <div class="tab-pane fade" id="top-homesecondary" role="tabpanel" aria-labelledby="top-home-tab">
+                    <p>{{ $persyaratan->jalur_prestasi }}</p>
+                  </div>
+                  <div class="tab-pane fade active show" id="top-profilesecondary" role="tabpanel" aria-labelledby="profile-top-tab">
+                    <p>{{ $persyaratan->jalur_beasiswa }}</p>
+                  </div>
+                  <div class="tab-pane fade" id="top-contactsecondary" role="tabpanel" aria-labelledby="contact-top-tab">
+                    <p>{{ $persyaratan->jalur_pindahan }}</p>
+                  </div>
+                  <div class="tab-pane fade" id="top-regulersecondary" role="tabpanel" aria-labelledby="reguler-top-tab">
+                    <p>{{ $persyaratan->jalur_reguler }}</p>
+                  </div>
+                @endforeach
               </div>
             </div>
           </div>

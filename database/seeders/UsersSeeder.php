@@ -44,5 +44,13 @@ class UsersSeeder extends Seeder
             'roles_id' => 4,
         ]);
 
+        User::create([
+            'username' => 'dijah',
+            'email' => 'dijah@gmail.com',
+            'password' => bcrypt('password'),
+            'email_verified_at' => '2021-04-06 00:00:00',
+            'roles_id' => 4,
+        ]);
+
     }
 }

@@ -13,6 +13,7 @@ use App\Http\Controllers\PMB\PendaftarController;
 use App\Http\Controllers\ProgrammStudiController;
 use App\Http\Controllers\PMB\PembayaranController;
 use App\Http\Controllers\PMB\PengugumanController;
+use App\Http\Controllers\PMB\PersyaratanController;
 use App\Http\Controllers\Admin\AdminDosenController;
 use App\Http\Controllers\Admin\ThnAkademikController;
 use App\Http\Controllers\Admin\DosenJabatanController;
@@ -168,6 +169,18 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
     Route::get('/view-announcement/{id_pendaftaran}', [PengugumanController::class, 'lihatpengumuman']);
     Route::post('/save-announcement', [PengugumanController::class, 'simpanpengumuman']);
     Route::post('/update-announcement/{id}', [PengugumanController::class, 'updatepengumuman']);
+
+
+
+    //persyaratan
+    Route::controller(PersyaratanController::class)->prefix('persyaratan')->group(function () {
+        Route::get('', 'index')->name('persyaratan');
+        Route::get('add', 'add')->name('persyaratan.add');
+        Route::post('save', 'store')->name('persyaratan.save');
+        Route::get('edit/{id}', 'edit')->name('persyaratan.edit');
+        Route::post('update/{id}', 'update')->name('persyaratan.update');
+        Route::delete('delete/{id}', 'destroy')->name('persyaratan.delete');
+    });
 
 });
 

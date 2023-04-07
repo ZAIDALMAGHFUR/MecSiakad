@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Persyaratans;
 use Illuminate\Http\Request;
 
 class calonController extends Controller
@@ -14,6 +15,7 @@ class calonController extends Controller
 
     public function index()
     {
-        return view('dashboard.PMB.calon');
+        $Persyaratans = Persyaratans::all();
+        return view('dashboard.PMB.calon', compact('Persyaratans'));
     }
 }
