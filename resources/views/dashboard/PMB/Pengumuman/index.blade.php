@@ -64,8 +64,8 @@
                                     <div class="mb-3">
                                         <div class="d-flex align-items-center mb-4 pb-3 justify-content-end flex-wrap">
                                             <div class="me-3">
-                                                <h4 class="fs-18 font-w600">PMB</h4>
-                                                <span>Zaid Ganteng jago hebat awoakowk  <br>Keren nih bos senggol dong</span>
+                                                <h4 class="fs-18 font-w600">PMB UMTI</h4>
+                                                <p>Padang Bulan, Kota Medan <br>Sumatera Utara, Indonesia , 20115 </p>
                                             </div>
                                             <div class="me-3">
                                                 <img src="{{ asset('sipenmaru/images/logo.png') }}" alt="" width="50px">
@@ -147,7 +147,7 @@
           </div>
         </div>
       </div>
-    </div>id="cetak"
+    </div>
   </div>
 
   @pushOnce('js')
