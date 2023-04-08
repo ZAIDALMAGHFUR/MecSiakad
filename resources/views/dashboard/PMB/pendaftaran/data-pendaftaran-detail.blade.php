@@ -73,7 +73,7 @@
                                     </div>
 
                                     <div class="col-xl-3  col-lg-6 col-sm-6 mb-sm-4 mb-0">
-                                        <div class="d-flex project-image">
+                                        <div class="d-flex project-image me-3">
                                             <svg class="me-3" width="55" height="55" viewbox="0 0 55 55"
                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <circle cx="27.5" cy="27.5" r="27.5" fill="#886CC0"></circle>
@@ -90,26 +90,26 @@
                                                 </defs>
                                             </svg>
                                             <div>
-                                                <small
-                                                    class="d-block fs-16 font-w400">{{ $x->pilihan1->name }}</small>
+                                                <span
+                                                    class="d-block fs-16 font-w400">{{ $x->pilihan1->name }}</span>
                                                 <span class="fs-18 font-w500">{{ $x->pilihan2->name }}</span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xl-2  col-lg-6 col-sm-4 mb-sm-3 mb-3 text-end">
+                                    <div class="col-xl-2  col-lg-6 col-sm-4 mb-sm-3 mb-3 text-end" >
                                         <div class="d-flex justify-content-end project-btn">
                                             @if ($x->status_pendaftaran == 'Belum Terverifikasi')
-                                                <a href="detail-registration/{{ $x->id_pendaftaran }}"
+                                                <a href="detail-registration-camba/{{ $x->id_pendaftaran }}"
                                                     class=" btn bgl-warning text-warning fs-16 font-w600">Belum <br>
                                                     Terverifikasi</a>
                                             @elseif ($x->status_pendaftaran == 'Terverifikasi')
-                                                <a href="detail-registration/{{ $x->id_pendaftaran }}"
+                                                <a href="detail-registration-camba/{{ $x->id_pendaftaran }}"
                                                     class=" btn bgl-warning text-success fs-16 font-w600">Terverifikasi</a>
                                             @elseif ($x->status_pendaftaran == 'Selesai')
-                                                <a href="detail-registration/{{ $x->id_pendaftaran }}"
+                                                <a href="detail-registration-camba/{{ $x->id_pendaftaran }}"
                                                     class=" btn bgl-warning text-success fs-16 font-w600">Selesai</a>
                                             @else
-                                                <a href="detail-registration/{{ $x->id_pendaftaran }}"
+                                                <a href="detail-registration-camba/{{ $x->id_pendaftaran }}"
                                                     class=" btn bgl-warning text-danger fs-16 font-w600">Tidak
                                                     Sah</a>
                                             @endif
@@ -133,7 +133,7 @@
                                                 </div>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <a class="dropdown-item"
-                                                        href="detail-registration/{{ $x->id_pendaftaran }}">Lihat
+                                                        href="detail-registration-camba/{{ $x->id_pendaftaran }}">Lihat
                                                         Selengkapnya</a>
                                                     @if ($x->status_pendaftaran == 'Selesai')
                                                         <a class="dropdown-item"

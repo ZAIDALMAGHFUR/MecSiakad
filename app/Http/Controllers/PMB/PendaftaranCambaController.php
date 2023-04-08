@@ -154,7 +154,35 @@ class PendaftaranCambaController extends Controller
             'success' => 'Pendaftaran Berhasil',
             'alert-type' => 'success'
         ]);
+    }
 
+    public function detailpendaftaran($id_pendaftaran)
+    {
+        $User = User::all();
+        $dataprod = Program_studies::all();
+        $data = Pendaftaran::where("id_pendaftaran",$id_pendaftaran)->first();
+        $datPembayaran = Pembayaran::where("id_pendaftaran",$data->id)->first();
+        $no=1;
+        
+        
+        $datapembayaran = Pendaftaran::where("id_pendaftaran", $id_pendaftaran)->get();
+        return view('dashboard.PMB.pendaftaran.pendaftaran-detail', [
+            'User' => $User,
+            'viewDataPembayaran' => $datPembayaran,
+            'viewData' => $data,
+            'viewProdi' => $dataprod
+        ]);
+    }
 
+    public function kartupendaftaran($id_pendaftaran)
+    {
+        $User = User::all();
+        $dataprod = Program_studies::all();
+        $data = Pendaftaran::find($id_pendaftaran);
+        return view('dashboard.PMB.pendaftaran.data-pendaftaran-kartu', [
+            'User' => $User,
+            'viewData' => $data,
+            'viewProdi' => $dataprod
+        ]);
     }
 }

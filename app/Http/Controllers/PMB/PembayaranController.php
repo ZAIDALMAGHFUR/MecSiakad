@@ -70,6 +70,45 @@ class PembayaranController extends Controller
         return redirect('/pembayaran');
     }
 
+    public function updatebuktipembayaran(Request $a){
+        //$dataUser = ProfileUsers::all();
+        try{
+            $file = $a->file('pem');
+            if(file_exists($file)){
+                $kodependaftaran = $a->id_pendaftaran;
+                $nama_file = "payment-".time()."-".$file->getClientOriginalName();
+                $namaFolder = 'data pendaftar/'.$kodependaftaran;
+                $file->move($namaFolder,$nama_file);
+                $pathBukti = $namaFolder."/".$nama_file;
+            } else {
+                $pathBukti = null;
+            }
+            $id= Pendaftaran::where("id_pendaftaran", $a->id_pendaftaran)->first();
+                    Pembayaran::where("id_pendaftaran", $id->id)->update([
+                        'bukti_pembayaran' => $pathBukti,
+                        'status'=> "Dibayar",
+                    ]);
+                    Timeline::create([
+                        'user_id' => Auth::user()->id,
+                        'status' => "Pembayaran",    
+                        'pesan' => 'Mengunggah Bukti Pembayaran',
+                        'tgl_update' => now(),
+                        'created_at' => now()
+                    ]);
+            
+            return redirect('/detail-registration'.'/'.$a->id_pendaftaran)->with([
+                'success' => 'Data Berhasil Diubah!',
+                'alert' => 'alert-success'
+            ]);
+
+        } catch (\Exception $e){
+            return redirect()->back()->with([
+                'success' => 'Data Gagal Diubah!',
+                'alert' => 'alert-danger'
+            ]);
+        }
+    }
+
     public function destroy($id){
         $pembayaran = Pembayaran::find($id);
         $pembayaran->delete();

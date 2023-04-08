@@ -220,6 +220,9 @@ Route::group(['middleware'=> ['auth', 'Camba']], function () {
         Route::post('update/{id}', 'update')->name('camba.update');
         Route::delete('delete/{id}', 'destroy')->name('camba.delete');
     });
+    Route::get('/detail-registration-camba/{id_pendaftaran}', [PendaftaranCambaController::class, 'detailpendaftaran']);
+    Route::post('/upload-payment', [PembayaranController::class, 'updatebuktipembayaran'])->name('upload-payment');
+    Route::get('/card-registration/{id_pendaftaran}', [PendaftaranCambaController::class, 'kartupendaftaran']);
 
 });
 
