@@ -59,9 +59,10 @@
     <!-- Container-fluid starts-->
 
     <div class="row">
-        <form action="/save-registration" method="POST" enctype="multipart/form-data">
-            {{ csrf_field() }}
-            <input type="hidden" name="userid" value="{{ auth()->user()->id }}">
+        <form action="camba/save" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('POST')
+            <input type="hidden" name="users_id" id="users_id" value="{{ auth()->user()->id }}">
             <div class="col-xl-12">
                 <div class="custom-accordion">
                     <div class="card">
@@ -83,15 +84,14 @@
                         <div id="personal-data" class="collapse show">
                             <div class="p-4 border-top">
                                 <div class="row">
-                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                                    <input type="hidden" name="id" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="users_id" id="users_id" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="users_id" id="users_id" value="{{ auth()->user()->id }}">
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-nisn">NISN</label>
-                                            <input type="text" class="form-control" id="personal-data-nisn"
-                                                name="nisn" placeholder="Masukkan NISN" value="{{ old('nisn') }}" required>
+                                            <label class="form-label" for="nisn">NISN</label>
+                                            <input type="text" class="form-control" id="nisn" name="nisn" placeholder="Masukkan NISN" value="{{ old('nisn') }}" required>
                                             @error('nisn')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
@@ -102,9 +102,8 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-nik">NIK</label>
-                                            <input type="text" class="form-control" id="personal-data-nik" name="nik"
-                                                placeholder="Masukkan NIK" value="{{ old('nik') }}" required>
+                                            <label class="form-label" for="nik">NIK</label>
+                                            <input type="text" class="form-control" id="nik" name="nik" placeholder="Masukkan NIK" value="{{ old('nik') }}" required>
                                             @error('nik')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
@@ -117,17 +116,16 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-name">Nama</label>
+                                            <label class="form-label" for="nama_siswa">Nama</label>
     
                                             @if ( auth()->user()->username  != null)
-                                                <input type="text" class="form-control" id="basicpill" name="username"
+                                                <input type="text" class="form-control" id="nama_siswa" name="nama_siswa"
                                                     placeholder="Masukkan Nama Lengkap" value="{{ auth()->user()->username }}" required>
                                             @else
-                                                <input type="text" class="form-control" id="personal-data-name"
-                                                    name="nama" placeholder="Masukkan Nama Lengkap"
-                                                    value="{{ old('nama') }}" required>
+                                                <input type="text" class="form-control" id="nama_siswa" name="nama_siswa" placeholder="Masukkan Nama Lengkap"
+                                                    value="{{ old('nama_siswa') }}" required>
                                             @endif
-                                            @error('nama')
+                                            @error('nama_siswa')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -137,35 +135,34 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-gender">Jenis
-                                                Kelamin</label>
+                                            <label class="form-label" for="jenis_kelamin">Jenis Kelamin</label>
                                             @if (auth()->user()->jenis_kelamin != null)
                                                 @if (auth()->user()->jenis_kelamin == 'Perempuan')
-                                                    <select class="form-control wide" name="jk"
-                                                        value="{{ old('jk') }}">
+                                                    <select class="form-control wide" name="jenis_kelamin"
+                                                        value="{{ old('jenis_kelamin') }}">
                                                         <option value="{{ auth()->user()->jenis_kelamin }}" selected>
                                                             {{ auth()->user()->jenis_kelamin }}</option>
                                                         <option value="Laki-laki">Laki-laki</option>
                                                     </select>
                                                 @else
-                                                    <select class="form-control wide" name="jk"
-                                                        value="{{ old('jk') }}">
+                                                    <select class="form-control wide" name="jenis_kelamin"
+                                                        value="{{ old('jenis_kelamin') }}">
                                                         <option value="{{ auth()->user()->jenis_kelamin }}" selected>
                                                             {{ auth()->user()->jenis_kelamin }}</option>
                                                         <option value="Perempuan">Perempuan</option>
                                                     </select>
                                                 @endif
                                             @else
-                                                <select class="form-control wide" name="jk"
-                                                    value="{{ old('jk') }}">
-                                                    <option value="{{ old('jk') }}" disabled selected>Pilih
+                                                <select class="form-control wide" name="jenis_kelamin"
+                                                    value="{{ old('jenis_kelamin') }}">
+                                                    <option value="{{ old('jenis_kelamin') }}" disabled selected>Pilih
                                                         Jenis Kelamin </option>
                                                     <option value="Laki-laki">Laki-Laki</option>
                                                     <option value="Perempuan">Perempuan</option>
                                                 </select>
                                             @endif
     
-                                            @error('jk')
+                                            @error('jenis_kelamin')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -175,8 +172,8 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data">Agama</label>
-                                            <select class="form-control wide" name="agama"
+                                            <label class="form-label" for="agama">Agama</label>
+                                            <select class="form-control wide" name="agama" id="agama"
                                                 value="{{ old('agama') }}">
                                                 <option value="{{ old('agama') }}" disabled selected>Pilih agama
                                                 </option>
@@ -199,17 +196,13 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="mb-4 mb-lg-0">
-                                            <label class="form-label">Tempat lahir</label>
+                                            <label class="form-label" for="tempat_lahir">Tempat lahir</label>
                                             @if (auth()->user()->tempat_lahir != null)
-                                                <input type="text" class="form-control" id="basicpill"
-                                                    name="tempatlahir" placeholder="Masukkan Tempat Lahir"
-                                                    value="{{ auth()->user()->tempat_lahir }}" required>
+                                                <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" id="tempat_lahir" placeholder="Masukkan Tempat Lahir" value="{{ auth()->user()->tempat_lahir }}" required>
                                             @else
-                                                <input type="text" class="form-control" id="basicpill"
-                                                    name="tempatlahir" placeholder="Masukkan Tempat Lahir"
-                                                    value="{{ old('tempatlahir') }}" required>
+                                                <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Masukkan Tempat Lahir" value="{{ old('tempat_lahir') }}" required>
                                             @endif
-                                            @error('tempatlahir')
+                                            @error('tempat_lahir')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -219,17 +212,13 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="mb-4 mb-lg-0">
-                                            <label class="form-label" for="billing-city">Tanggal lahir</label>
+                                            <label class="form-label" for="tanggal_lahir">Tanggal lahir</label>
                                             @if (auth()->user()->tanggal_lahir != null)
-                                                <input type="date" class="form-control" id="basicpill"
-                                                    name="tanggallahir" placeholder="Masukkan Tanggal Lahir"
-                                                    value="{{ auth()->user()->tanggal_lahir }}" required>
+                                                <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" id="tanggal_lahir" placeholder="Masukkan Tanggal Lahir" value="{{ auth()->user()->tanggal_lahir }}" required>
                                             @else
-                                                <input type="date" class="form-control" id="basicpill"
-                                                    name="tanggallahir" placeholder="Masukkan Tanggal Lahir"
-                                                    value="{{ old('tanggallahir') }}" required>
+                                                <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" placeholder="Masukkan Tanggal Lahir" value="{{ old('tanggal_lahir') }}" required>
                                             @endif
-                                            @error('tanggallahir')
+                                            @error('tanggal_lahir')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -240,14 +229,13 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="mb-0">
-                                            <label class="form-label" for="zip-code">Pas Photo</label>
+                                            <label class="form-label" for="pas_foto">Pas Photo</label>
                                             <div class="input-group">
                                                 <div class="form-file">
-                                                    <input type="file" class="form-file-input form-control"
-                                                        name="foto" value="{{ old('foto') }}" accept="image/png, image/jpg, image/jpeg" required>
+                                                    <input type="file" class="form-file-input form-control" name="pas_foto" id="pas_foto" value="{{ old('pas_foto') }}" accept="image/png, image/jpg, image/jpeg" required>
                                                 </div>
                                             </div>
-                                            @error('foto')
+                                            @error('pas_foto')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -257,14 +245,12 @@
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                                    <label class="form-label" for="billing-address">Alamat</label>
+                                    <label class="form-label" for="alamat">Alamat</label>
     
                                     @if (auth()->user()->alamat != null)
-                                        <textarea class="form-control" id="billing-address" rows="3" name="alamat" required
-                                            placeholder="Masukkan alamat lengkap">{{ auth()->user()->alamat }}</textarea>
+                                        <textarea class="form-control" id="alamat" rows="3" name="alamat" required placeholder="Masukkan alamat lengkap">{{ auth()->user()->alamat }}</textarea>
                                     @else
-                                        <textarea class="form-control" id="billing-address" rows="3" name="alamat" required
-                                            placeholder="Masukkan alamat lengkap">{{ old('alamat') }}</textarea>
+                                        <textarea class="form-control" id="alamat" rows="3" name="alamat" required placeholder="Masukkan alamat lengkap">{{ old('alamat') }}</textarea>
                                     @endif
                                     @error('alamat')
                                         <div class="alert alert-warning" role="alert">
@@ -276,10 +262,8 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-nisn">Email</label>
-                                            <input type="email" class="form-control" id="personal-data-nisn"
-                                                name="email" placeholder="Masukkan email"
-                                                value="{{ auth()->user()->email }}" required readonly>
+                                            <label class="form-label" for="email">Email</label>
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email" value="{{ auth()->user()->email }}" required readonly>
                                             @error('email')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
@@ -290,16 +274,14 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-nik">No
+                                            <label class="form-label" for="no_hp">No
                                                 Hp/WhatsApp</label>
                                             @if (auth()->user()->no_hp != null)
-                                                <input type="number" class="form-control" id="basicpill" name="nohp"
-                                                    placeholder="Masukkan Tanggal Lahir" value="{{ auth()->user()->no_hp }}" required>
+                                                <input type="number" class="form-control" id="no_hp" name="no_hp" placeholder="Masukkan Tanggal Lahir" value="{{ auth()->user()->no_hp }}" required>
                                             @else
-                                                <input type="number" class="form-control" id="basicpill" name="nohp"
-                                                    placeholder="Masukkan nomor telepon" value="{{ old('nohp') }}" required>
+                                                <input type="number" class="form-control" id="no_hp" name="no_hp" placeholder="Masukkan nomor telepon" value="{{ old('no_hp') }}" required>
                                             @endif
-                                            @error('nohp')
+                                            @error('no_hp')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -329,13 +311,13 @@
                         <div id="registration-data" class="collapse">
                             <div class="p-4 border-top">
                                 <div class="mb-4">
-                                    <label class="form-label" for="billing-address">Gelombang</label>
-                                    <select class="form-control wide" name="jadwal_pmbs_id" required>
+                                    <label class="form-label" for="jadwal_pmbs_id">Gelombang</label>
+                                    <select class="form-control wide" name="jadwal_pmbs_id" id="jadwal_pmbs_id" required>
                                         @foreach ($viewDataJadwal as $x)
                                             <option value="{{ $x->id }}" selected>{{ $x->nama_kegiatan }}</option>
                                         @endforeach
                                     </select>
-                                    @error('gelombang')
+                                    @error('jadwal_pmbs_id')
                                         <div class="alert alert-warning" role="alert">
                                             <strong>Peringatan!</strong>
                                             {{ $message }}
@@ -345,10 +327,9 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-nisn">Pilihan
+                                            <label class="form-label" for="pil1">Pilihan
                                                 1</label>
-                                            <input class="form-control" list="datalistOptionsProdi" id="exampleDataList"
-                                                placeholder="Pilih program studi" name="pil1"
+                                            <input class="form-control" list="datalistOptionsProdi" id="pil1" placeholder="Pilih program studi" name="pil1"
                                                 value="{{ old('pil1') }}" required>
                                             <datalist id="datalistOptionsProdi">
                                                 @foreach ($viewProdi as $z)
@@ -365,9 +346,8 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-nik">Pilihan 2</label>
-                                            <input class="form-control" list="datalistOptionsProdi" id="exampleDataList"
-                                                placeholder="Pilih program studi" name="pil2"
+                                            <label class="form-label" for="pil2">Pilihan 2</label>
+                                            <input class="form-control" list="datalistOptionsProdi" id="pil2" placeholder="Pilih program studi" name="pil2"
                                                 value="{{ old('pil2') }}" required>
                                             <datalist id="datalistOptionsProdi">
                                                 @foreach ($viewProdi as $z)
@@ -407,12 +387,9 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-name">Nama
-                                                Ayah</label>
-                                            <input type="text" class="form-control" id="personal-data-name"
-                                                name="ayah" placeholder="Masukkan Nama Ayah"
-                                                value="{{ old('ayah') }}" required>
-                                            @error('ayah')
+                                            <label class="form-label" for="nama_ayah">Nama Ayah</label>
+                                            <input type="text" class="form-control" id="nama_ayah" name="nama_ayah" placeholder="Masukkan Nama Ayah" value="{{ old('nama_ayah') }}" required>
+                                            @error('nama_ayah')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -422,11 +399,11 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-gender">Pekerjaan
+                                            <label class="form-label" for="pekerjaan_ayah">Pekerjaan
                                                 Ayah</label>
                                             <input class="form-control" list="datalistOptionsOccupation"
-                                                id="exampleDataList" placeholder="Masukkan Jenis Pekerjaan..."
-                                                name="pekerjaanayah" value="{{ old('pekerjaanayah') }}" required>
+                                                id="pekerjaan_ayah" placeholder="Masukkan Jenis Pekerjaan..."
+                                                name="pekerjaan_ayah" value="{{ old('pekerjaan_ayah') }}" required>
                                             <datalist id="datalistOptionsOccupation">
                                                 <option value="Karyawan Swasta"></option>
                                                 <option value="Karyawan BUMN"></option>
@@ -445,7 +422,7 @@
                                                 <option value="Pengajar"></option>
                                                 <option value="Notaris"></option>
                                             </datalist>
-                                            @error('pekerjaanayah')
+                                            @error('pekerjaan_ayah')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -455,12 +432,9 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-nik">No HP
-                                                Ayah</label>
-                                            <input type="number" class="form-control" id="personal-data-no"
-                                                name="noayah" placeholder="Masukkan Telepon Ayah" required
-                                                value="{{ old('noayah') }}">
-                                            @error('pekerjaanayah')
+                                            <label class="form-label" for="nohp_ayah">No HP Ayah</label>
+                                            <input type="number" class="form-control" id="nohp_ayah" name="nohp_ayah" id="nohp_ayah" placeholder="Masukkan Telepon Ayah" required value="{{ old('nohp_ayah') }}">
+                                            @error('nohp_ayah')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -472,11 +446,9 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-name">Nama Ibu</label>
-                                            <input type="text" class="form-control" id="personal-data-name" required
-                                                name="ibu" placeholder="Masukkan Nama Ibu"
-                                                value="{{ old('ibu') }}">
-                                            @error('ibu')
+                                            <label class="form-label" for="nama_ibu">Nama Ibu</label>
+                                            <input type="text" class="form-control" id="nama_ibu" required name="nama_ibu" placeholder="Masukkan Nama Ibu" value="{{ old('nama_ibu') }}">
+                                            @error('nama_ibu')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -488,9 +460,7 @@
                                         <div class="mb-3 mb-4">
                                             <label class="form-label" for="personal-data-gender">Pekerjaan
                                                 Ibu</label>
-                                            <input class="form-control" list="datalistOptionsOccupation"
-                                                id="exampleDataList" placeholder="Cari Pekerjaan Ibu.." 
-                                                name="pekerjaanibu" value="{{ old('pekerjaanibu') }}" required>
+                                            <input class="form-control" list="datalistOptionsOccupation" id="pekerjaan_ibu" placeholder="Cari Pekerjaan Ibu.."  name="pekerjaan_ibu" id="pekerjaan_ibu" value="{{ old('pekerjaan_ibu') }}" required>
                                             <datalist id="datalistOptionsOccupation">
                                                 <option value="Karyawan Swasta"></option>
                                                 <option value="Karyawan BUMN"></option>
@@ -498,7 +468,6 @@
                                                 <option value="Karyawan Honorer"></option>
                                                 <option value="PNS"></option>
                                                 <option value="Wirausaha"></option>
-                                                <option value="PNS"></option>
                                                 <option value="Buruh"></option>
                                                 <option value="Asisten Rumah Tangga"></option>
                                                 <option value="Seniman"></option>
@@ -509,7 +478,7 @@
                                                 <option value="Pengajar"></option>
                                                 <option value="Notaris"></option>
                                             </datalist>
-                                            @error('pekerjaanibu')
+                                            @error('pekerjaan_ibu')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -519,12 +488,9 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-nik">No Telepon
-                                                Ibu</label>
-                                            <input type="number" class="form-control" id="personal-data-no"
-                                                name="noibu" placeholder="Masukkan Telepon Ibu"
-                                                value="{{ old('noibu') }}" required>
-                                            @error('noibu')
+                                            <label class="form-label" for="nohp_ibu">No Telepon Ibu</label>
+                                            <input type="number" class="form-control" id="nohp_ibu" name="nohp_ibu" id="nohp_ibu" placeholder="Masukkan Telepon Ibu" value="{{ old('nohp_ibu') }}" required>
+                                            @error('nohp_ibu')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -536,19 +502,14 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-nisn">Penghasilan Ayah</label>
-                                            <select class="form-control wide" title="Recipient" name="penghasilan_ayah" required>
-                                                <option value="{{ old('penghasilan_ayah') }}" disabled selected>Pilih gaji
-                                                </option>
-                                                <option value="< 1.0000.000">
-                                                    < 1.000.000</option>
-                                                <option value="1.000.000 - 2.500.000">1.000.000 -
-                                                    2.500.000
-                                                </option>
+                                            <label class="form-label" for="penghasilan_ayah">Penghasilan Ayah</label>
+                                            <select class="form-control wide" title="Recipient" name="penghasilan_ayah" id="penghasilan_ayah" required>
+                                                <option value="{{ old('penghasilan_ayah') }}" disabled selected>Pilih gaji </option>
+                                                <option value="< 1.0000.000"> < 1.000.000</option>
+                                                <option value="1.000.000 - 2.500.000">1.000.000 - 2.500.000 </option>
                                                 <option value="2.500.000 - 5.000.000">2.500.000 - 5.000.000</option>
                                                 <option value="5.000.000 - 7.500.000">5.000.000 - 7.500.000</option>
-                                                <option value="7.500.000 - 10.000.000">7.500.000 - 10.000.000
-                                                </option>
+                                                <option value="7.500.000 - 10.000.000">7.500.000 - 10.000.000 </option>
                                                 <option value="> 10.0000.000"> > 10.000.000</option>
                                             </select>
                                             @error('penghasilan_ayah')
@@ -561,19 +522,14 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-nisn">Penghasilan Ibu</label>
-                                            <select class="form-control wide" title="Recipient" name="penghasilan_ibu" required>
-                                                <option value="{{ old('penghasilan_ibu') }}" disabled selected>Pilih gaji
-                                                </option>
-                                                <option value="< 1.0000.000">
-                                                    < 1.000.000</option>
-                                                <option value="1.000.000 - 2.500.000">1.000.000 -
-                                                    2.500.000
-                                                </option>
+                                            <label class="form-label" for="penghasilan_ibu">Penghasilan Ibu</label>
+                                            <select class="form-control wide" title="Recipient" name="penghasilan_ibu" id="penghasilan_ibu" required>
+                                                <option value="{{ old('penghasilan_ibu') }}" disabled selected>Pilih gaji </option>
+                                                <option value="< 1.0000.000">< 1.000.000</option>
+                                                <option value="1.000.000 - 2.500.000">1.000.000 - 2.500.000 </option>
                                                 <option value="2.500.000 - 5.000.000">2.500.000 - 5.000.000</option>
                                                 <option value="5.000.000 - 7.500.000">5.000.000 - 7.500.000</option>
-                                                <option value="7.500.000 - 10.000.000">7.500.000 - 10.000.000
-                                                </option>
+                                                <option value="7.500.000 - 10.000.000">7.500.000 - 10.000.000 </option>
                                                 <option value="> 10.0000.000"> > 10.000.000</option>
                                             </select>
                                             @error('penghasilan_ibu')
@@ -586,15 +542,14 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-nisn">Berkas Orang Tua <small>kk,slip gaji</small>
+                                            <label class="form-label" for="berkas_ortu">Berkas Orang Tua <small>kk,slip gaji</small>
                                             </label>
                                             <div class="input-group">
                                                 <div class="form-file">
-                                                    <input type="file" class="form-file-input form-control"
-                                                        name="ftberkas_ortu" value="{{ old('ftberkas_ortu') }}" accept="application/pdf" required>
+                                                    <input type="file" class="form-file-input form-control" name="berkas_ortu" id="berkas_ortu" value="{{ old('berkas_ortu') }}" accept="application/pdf" required>
                                                 </div>
                                             </div>
-                                            @error('ftberkas_ortu')
+                                            @error('berkas_ortu')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -627,11 +582,9 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="billing-address">Nama
-                                                Sekolah</label>
-                                                <input type="text" class="form-control" name="asal_sekolah"
-                                                    placeholder="Masukkan Asal Sekolah" value="{{ old('asal_sekolah') }}" required>
-                                            @error('sekolah')
+                                            <label class="form-label" for="asal_sekolah">Nama Sekolah</label>
+                                                <input type="text" class="form-control" name="asal_sekolah" id="asal_sekolah" placeholder="Masukkan Asal Sekolah" value="{{ old('asal_sekolah') }}" required>
+                                            @error('asal_sekolah')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -644,9 +597,8 @@
                                 <div class="row">
                                     <div class="col-lg-2">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label">Semester 1</label>
-                                            <input type="number" class="form-control" name="smt1"
-                                                placeholder="Masukkan Rata Nilai Semester" value="{{ old('smt1') }}" required>
+                                            <label class="form-label" for="smt1">Semester 1</label>
+                                            <input type="number" class="form-control" name="smt1" id="smt1" placeholder="Masukkan Rata Nilai Semester" value="{{ old('smt1') }}" required>
                                             @error('smt1')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
@@ -657,9 +609,8 @@
                                     </div>
                                     <div class="col-lg-2">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label">Semester 2</label>
-                                            <input type="number" class="form-control" name="smt2"
-                                                placeholder="Masukkan Rata Nilai Semester" value="{{ old('smt2') }}" required>
+                                            <label class="form-label" for="smt2">Semester 2</label>
+                                            <input type="number" class="form-control" name="smt2" id="smt2" placeholder="Masukkan Rata Nilai Semester" value="{{ old('smt2') }}" required>
                                             @error('smt2')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
@@ -670,9 +621,8 @@
                                     </div>
                                     <div class="col-lg-2">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label">Semester 3</label>
-                                            <input type="number" class="form-control" name="smt3"
-                                                placeholder="Masukkan Rata Nilai Semester" value="{{ old('smt3') }}" required>
+                                            <label class="form-label" for="smt3">Semester 3</label>
+                                            <input type="number" class="form-control" name="smt3" id="smt3" placeholder="Masukkan Rata Nilai Semester" value="{{ old('smt3') }}" required>
                                             @error('smt3')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
@@ -683,9 +633,8 @@
                                     </div>
                                     <div class="col-lg-2">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label">Semester 4</label>
-                                            <input type="number" class="form-control" name="smt4"
-                                                placeholder="Masukkan Rata Nilai Semester" value="{{ old('smt4') }}" required>
+                                            <label class="form-label" for="smt4">Semester 4</label>
+                                            <input type="number" class="form-control" name="smt4" id="smt4" placeholder="Masukkan Rata Nilai Semester" value="{{ old('smt4') }}" required>
                                             @error('smt4')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
@@ -696,9 +645,8 @@
                                     </div>
                                     <div class="col-lg-2">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label">Semester 5</label>
-                                            <input type="number" class="form-control" name="smt5"
-                                                placeholder="Masukkan Rata Nilai Semester" value="{{ old('smt5') }}" required>
+                                            <label class="form-label" for="smt5">Semester 5</label>
+                                            <input type="number" class="form-control" name="smt5" id="smt5" placeholder="Masukkan Rata Nilai Semester" value="{{ old('smt5') }}" required>
                                             @error('smt5')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
@@ -709,9 +657,9 @@
                                     </div>
                                     <div class="col-lg-2">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label">Semester 6 <small><i>*jika ada</i></small></label>
-                                            <input type="number" class="form-control" name="smt6" placeholder="Masukkan Rata Nilai Semester" value="{{ old('smt6') }}">
-                                            @error('smt5')
+                                            <label class="form-label" for="smt6">Semester 6</label>
+                                            <input type="number" class="form-control" name="smt6" id="smt6" placeholder="Masukkan Rata Nilai Semester" value="{{ old('smt6') }}">
+                                            @error('smt6')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -723,14 +671,13 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="billing-address">Berkas Siswa</label>
+                                            <label class="form-label" for="berkas_siswa">Berkas Siswa</label>
                                             <div class="input-group">
                                                 <div class="form-file">
-                                                    <input type="file" class="form-file-input form-control"
-                                                        name="ftberkas_siswa" value="{{ old('ftberkas_siswa') }}" accept="application/pdf" required>
+                                                    <input type="file" class="form-file-input form-control" id="berkas_siswa" name="berkas_siswa" value="{{ old('berkas_siswa') }}" accept="application/pdf" required>
                                                 </div>
                                             </div>
-                                            @error('ftberkas_siswa')
+                                            @error('berkas_siswa')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -740,15 +687,13 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="billing-address">Prestasi <small>(jika
-                                                    ada)</small></label>
+                                            <label class="form-label" for="prestasi">Prestasi <small>(jika ada)</small></label>
                                             <div class="input-group">
                                                 <div class="form-file">
-                                                    <input type="file" class="form-file-input form-control"
-                                                        name="ftprestasi" value="{{ old('ftprestasi') }}" accept="application/pdf" >
+                                                    <input type="file" class="form-file-input form-control" name="prestasi" id="prestasi" value="{{ old('prestasi') }}" accept="application/pdf" >
                                                 </div>
                                             </div>
-                                            @error('ftprestasi')
+                                            @error('prestasi')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}

@@ -27,10 +27,10 @@ return new class extends Migration
             $table->date('tanggal_lahir');
             $table->string('no_hp');
             $table->string('alamat');
-            $table->string('provinsi');
-            $table->string('kabupaten');
-            $table->string('kecamatan');
-            $table->string('kelurahan');
+            // $table->string('provinsi');
+            // $table->string('kabupaten');
+            // $table->string('kecamatan');
+            // $table->string('kelurahan');
             $table->foreignId('jadwal_pmbs_id')->constrained();
             $table->string('tahun_masuk');
             $table->unsignedBigInteger('pil1')->nullable();

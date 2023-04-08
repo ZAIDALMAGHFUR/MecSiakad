@@ -163,7 +163,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="pt-4 border-bottom-1 pb-3">
-                                            <img src="{{ asset($viewData->pas_foto) }}" width="250px" height="300" alt="">
+                                            <img src="{{ Storage::url($viewData->pas_foto) }}" width="250px" height="300"alt="Gamabar" class="rounded">
                                         </div>
                                     </div>
                                 </div>
@@ -235,7 +235,7 @@
                                             <div class="col-sm-12 col-12">
                                                 <p class="f-w-400">Berkas Orang Tua <small>kk,slip gaji</small></p>
                                                 <div class="col-sm-9 col-7">
-                                                    <a href="{{ asset($viewData->berkas_siswa) }}"> <i class="fa fa-file-pdf" style="font-size:48px;color:red"></i></a>
+                                                    <a href="{{ Storage::url($viewData->berkas_ortu) }}"><i class="fa fa-file-pdf-o" style="font-size:48px;color:red"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -317,14 +317,14 @@
                                         <div class="col-sm-6 col-6">
                                             <p class="f-w-400">Berkas Calon Pendaftar <small>raport,ijazah</small></p>
                                             <div class="col-sm-9 col-7">
-                                                <a href="{{ asset($viewData->berkas_siswa) }}"> <i class="fa fa-file-pdf" style="font-size:48px;color:red"></i></a>
+                                                <a href="{{ Storage::url($viewData->berkas_siswa) }}"><i class="fa fa-file-pdf-o" style="font-size:48px;color:red"></i></a>
                                             </div>
                                         </div>
                                         <div class="col-sm-6 col-6">
                                             @if ($viewData->prestasi != null)
                                                 <p class="f-w-400">Prestasi <small><i>*jika ada</i></small></p>
                                                 <div class="col-sm-9 col-7">
-                                                    <a href="{{ asset($viewData->berkas_siswa) }}"> <i class="fa fa-file-pdf" style="font-size:48px;color:red"></i></a>
+                                                    <a href="{{ Storage::url($viewData->prestasi) }}"><i class="fa fa-file-pdf-o" style="font-size:48px;color:red"></i></a>
                                                 </div>
                                             @endif
                                         </div>

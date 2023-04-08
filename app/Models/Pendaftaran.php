@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-use App\Models\jadwal_pmbs;
 use App\Models\User;
 use App\Models\Pembayaran;
 use App\Models\Pengumuman;
+use App\Models\jadwal_pmbs;
 use App\Models\Program_studies;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -17,6 +18,28 @@ class Pendaftaran extends Model
     protected $guarded = [
         'id',
     ];
+
+    public static function id()
+    {
+        $data = DB::table('pendaftarans')->orderby('id_pendaftaran','DESC')->first();
+        $kodeakhir5 = substr($data->id_pendaftaran,-4);
+        $kodeku= (int)$kodeakhir5;
+        $addNol = '';
+        $kodetb = 'PENDPSB';
+        $kode = (int)$kodeku + 1;
+
+        if (strlen($kode) == 1) {
+            $addNol = "000";
+        } elseif (strlen($kode) == 2) {
+            $addNol = "00";
+        } elseif (strlen($kode) == 3) {
+            $addNol = "0";
+        } elseif (strlen($kode) == 4) {
+            $addNol = "";
+        }
+        $kodeBaru = $kodetb.now()->format('y').$addNol.$kode;
+    	return $kodeBaru;
+    }
 
     public function user()
     {

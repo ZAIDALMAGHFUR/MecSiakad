@@ -103,8 +103,9 @@
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td colspan="4"><img src="{{ url('/'.$dataid->pas_foto) }}" alt="" width="180px" height="240"></td>
+                                                    <td colspan="4"><img src="{{ Storage::url($dataid->pas_foto) }}" width="250px" height="300"alt="Gamabar" class="rounded"></td>
                                                 <tr>
+                                            
                                                 
                                                 <tr border="5">
                                                     <th colspan="3" scope="row">

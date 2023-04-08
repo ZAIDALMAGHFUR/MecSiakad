@@ -62,7 +62,7 @@
                   @foreach ($Pembayaran as $a)
                     <tr style="text-align: center">
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{ $a['id_pembayaran'] }}</td>
+                      <td><a href="detail-registration/{{ $a->pendaftaran->id_pendaftaran }}">{{ $a->pendaftaran->id_pendaftaran }}</a></td>
                       <td>{{ $a['tgl_pembayaran'] }}</td>
                       <td>
                         <div class="row">

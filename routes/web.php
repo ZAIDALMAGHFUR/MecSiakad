@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\AdminDosenController;
 use App\Http\Controllers\Admin\ThnAkademikController;
 use App\Http\Controllers\Admin\DosenJabatanController;
 use App\Http\Controllers\Admin\JabatanDosenController;
+use App\Http\Controllers\PMB\PendaftaranCambaController;
 use App\Http\Controllers\Admin\CreateMahasiswaController;
 
 /*
@@ -210,10 +211,9 @@ Route::group(['middleware'=> ['auth', 'Camba']], function () {
     Route::get('calon', [calonController::class, 'index'])->name('calon');
 
     //pendaftaran
-    Route::controller(PendaftaranController::class)->prefix('camba')->group(function () {
+    Route::controller(PendaftaranCambaController::class)->prefix('camba')->group(function () {
         Route::get('', 'index')->name('camba');
-        Route::get('add', 'add')->name('camba.add');
-        Route::post('save', 'store')->name('camba.save');
+        Route::post('save', 'simpanpendaftaran')->name('camba/save');
         Route::get('edit/{id}', 'edit')->name('camba.edit');
         Route::post('update/{id}', 'update')->name('camba.update');
         Route::delete('delete/{id}', 'destroy')->name('camba.delete');
