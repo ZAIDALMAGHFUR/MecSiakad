@@ -83,27 +83,6 @@ class UsersImport implements ToModel, WithHeadingRow, WithValidation
                 'tahun_academics_id' => $row['tahun_academics_id'],
         ]);
 
-        $user = User::create([
-            'username' => $row['name'],
-            'email' => $row['email'],
-            'password' => bcrypt($row['nidn']),
-            'roles_id' => 3,
-        ]);
-
-        Dosen::create([
-                'nama_dosen' => $row['nama_dosen'],
-                'nidn' => $row['nidn'],
-                'email' => $row['email'],
-                'no_hp' => $row['no_hp'],
-                'alamat' => $row['alamat'],
-                'program_studies_id' => $row['program_studies_id'],
-                'pendidikan_terakhir' => $row['pendidikan_terakhir'],
-                'tempat_lahir' => $row['tempat_lahir'],
-                'tanggal_lahir' => $row['tanggal_lahir'],
-                'jenis_kelamin' => $row['jenis_kelamin'],
-                'agama' => $row['agama'],
-                'photo' => $row['photo']  ?? '',
-                'users_id' => $user->id,
-        ]);
+        
     }
 }

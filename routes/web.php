@@ -206,6 +206,8 @@ Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
 });
 
+
+
 Route::group(['middleware'=> ['auth', 'Camba']], function () {
 
     Route::get('calon', [calonController::class, 'index'])->name('calon');

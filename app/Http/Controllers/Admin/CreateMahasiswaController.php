@@ -143,29 +143,18 @@ class CreateMahasiswaController extends Controller
         return view('dashboard.pengguna.mahasiswa.show', compact('data', 'ta'));
     }
 
-
     public function destroy($id)
     {
-        $data = Mahasiswa::findOrFail($id);
-        $data->delete();
+        $mahasiswa = Mahasiswa::findOrFail($id);
+        File::delete('storage/'. $mahasiswa->foto);
+        $mahasiswa->delete();
 
-        return redirect()->back()->with([
+        $user = User::where('id', '=', $mahasiswa->user_id)->first()->delete();
+        //$user->delete();
+
+            return redirect()->back()->with([
             'success' => 'Data berhasil dihapus',
             'alert-type' => 'success'
         ]);
-    }   
-
-    // public function destroy(Mahasiswa $mahasiswa)
-    // {
-    //     File::delete('storage/'.$mahasiswa->foto);
-    //     $mahasiswa->delete();
-
-    //     $user = User::where('id', $mahasiswa->user_id)->first();
-    //     $user->delete();
-        
-    //         return redirect()->back()->with([
-    //         'success' => 'Data berhasil dihapus',
-    //         'alert-type' => 'success'
-    //     ]);
-    // }
+    }
 }

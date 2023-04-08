@@ -10,27 +10,32 @@ use App\Models\Pembayaran;
 use App\Models\Pengumuman;
 use App\Models\jadwal_pmbs;
 use App\Models\Pendaftaran;
+use Illuminate\Http\Request;
 use App\Models\Program_studies;
-use Illuminate\Http\UploadedFile;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\HttpFoundation\Request;
 
 class PendaftaranCambaController extends Controller
 {
     public function index(){
+        // dd(Auth::user()->toArray());
+        $pendafatran = Pendaftaran::where('users_id', Auth::user()->id)->first();
+        if ($pendafatran) {
+            return view('dashboard.PMB.pendaftaran.data-pendaftaran-detail', ['x' => $pendafatran]);
+        }
+
         $dataprod = Program_studies::all();
         $datenow = date('Y-m-d');
         $dataJadwal = jadwal_pmbs::where('tgl_mulai', '<=', $datenow)->where("tgl_akhir",">",$datenow)->get();
 
-        // dd($dataJadwal);
         return view ('dashboard.PMB.pendaftaran.index',[
             'viewDataJadwal' => $dataJadwal,
-            'viewProdi' => $dataprod
+            'viewProdi' => $dataprod,
+            // 'pendafatran' => $pendafatran
         ]);
     }
 
-    public function simpanpendaftaran(Request $request,)
+    public function simpanpendaftaran(Request $request)
     {
         // dd($request->all());
 
@@ -145,7 +150,7 @@ class PendaftaranCambaController extends Controller
             'created_at' => now()
         ]);
 
-        return redirect()->route('dashboard.PMB.pendaftaran.index')->with([
+        return redirect()->back('camba')->with([
             'success' => 'Pendaftaran Berhasil',
             'alert-type' => 'success'
         ]);
