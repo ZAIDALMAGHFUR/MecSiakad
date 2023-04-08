@@ -185,4 +185,13 @@ class PendaftaranCambaController extends Controller
             'viewProdi' => $dataprod
         ]);
     }
+
+    public function lihatkelulusan(Request $a)
+    {
+        $user = User::where('roles_id', '4')->get();
+        $dataditemukan = Pengumuman::where("id_pendaftaran", $a->id_pendaftaran)->first();
+        $data = Pengumuman::all();
+        $dataid = Pendaftaran::where("id_pendaftaran", $a->id_pendaftaran)->first();
+        return view('dashboard.PMB.Pengumuman.index', compact('user', 'data', 'dataditemukan', 'dataid'));
+    }
 }

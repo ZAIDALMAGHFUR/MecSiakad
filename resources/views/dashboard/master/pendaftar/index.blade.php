@@ -86,7 +86,7 @@
                           </div>
                           <div class="col-md-6">
                               <div class="dropdown text-sans-serif">
-                                <button class="btn btn-primary tp-btn-light sharp" type="button" id="order-dropdown-7" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false">
+                                <div class="btn-link" type="button" id="order-dropdown-7" data-bs-toggle="dropdown">
                                   <span>
                                       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewbox="0 0 24 24" version="1.1">
                                           <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -97,7 +97,7 @@
                                           </g>
                                       </svg>
                                     </span>
-                                </button>
+                                </div>
                                   <div class="dropdown-menu dropdown-menu-end border py-0" aria-labelledby="order-dropdown-7">
                                       <div class="py-2">
                                           <a class="dropdown-item" href="/verified-registration/{{ $a->id_pendaftaran }}">Terverifikasi</a>

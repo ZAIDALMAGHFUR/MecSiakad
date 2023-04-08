@@ -240,9 +240,6 @@
                 <li class="dropdown"><a class="nav-link menu" href="{{ route('camba') }}"><i
                   data-feather="book-open"></i><span>Pendafataran</span></a>
                 </li>
-                <li class="dropdown"><a class="nav-link menu" href="javascript:void(0)"><i
-                      data-feather="book-open"></i><span>Penguguman</span></a>
-                </li>
                 <li class="sidebar-main-title">
                   <div>
                     <h6>Miscellaneous </h6>

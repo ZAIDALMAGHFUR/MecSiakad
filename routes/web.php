@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\AdminDosenController;
 use App\Http\Controllers\Admin\ThnAkademikController;
 use App\Http\Controllers\Admin\DosenJabatanController;
 use App\Http\Controllers\Admin\JabatanDosenController;
+use App\Http\Controllers\PMB\PengumumanCambaController;
 use App\Http\Controllers\PMB\PendaftaranCambaController;
 use App\Http\Controllers\Admin\CreateMahasiswaController;
 
@@ -224,6 +225,8 @@ Route::group(['middleware'=> ['auth', 'Camba']], function () {
     Route::post('/upload-payment', [PembayaranController::class, 'updatebuktipembayaran'])->name('upload-payment');
     Route::get('/card-registration/{id_pendaftaran}', [PendaftaranCambaController::class, 'kartupendaftaran']);
 
+    //lihat pengumuman
+    Route::get('/view-graduation/{id_pendaftaran}', [PendaftaranCambaController::class, 'lihatkelulusan']);
 });
 
 

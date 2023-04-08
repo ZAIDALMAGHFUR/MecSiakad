@@ -137,7 +137,7 @@
                                                         Selengkapnya</a>
                                                     @if ($x->status_pendaftaran == 'Selesai')
                                                         <a class="dropdown-item"
-                                                        href="view-announcement/{{ $x->id_pendaftaran }}">Lihat
+                                                        href="view-graduation/{{ $x->id_pendaftaran }}">Lihat
                                                         Pengumuman</a>
                                                     @endif
                                                 </div>

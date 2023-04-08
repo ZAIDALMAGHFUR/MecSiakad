@@ -85,11 +85,10 @@
                                 @endif
                             </div>
                             <div class="col-md-6">
-                                <div class="dropdown text-sans-serif"><button
-                                        class="btn btn-primary tp-btn-light sharp" type="button"
-                                        id="order-dropdown-7" data-bs-toggle="dropdown"
-                                        data-boundary="viewport" aria-haspopup="true"
-                                        aria-expanded="false"><span><svg
+                                <div class="dropdown text-sans-serif">
+                                  <div
+                                        class="btn-link" type="button"
+                                        id="order-dropdown-7" data-bs-toggle="dropdown"><span><svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 xmlns:xlink="http://www.w3.org/1999/xlink" width="18px"
                                                 height="18px" viewbox="0 0 24 24" version="1.1">
@@ -103,7 +102,7 @@
                                                     <circle fill="#000000" cx="19" cy="12" r="2">
                                                     </circle>
                                                 </g>
-                                            </svg></span></button>
+                                            </svg></span></div>
                                     <div class="dropdown-menu dropdown-menu-end border py-0"
                                         aria-labelledby="order-dropdown-7">
                                         <div class="py-2"><a class="dropdown-item"
