@@ -164,12 +164,9 @@
                                         class="fa fa-print"> </i></button>
                             </div>
                         </div>
-                        <!-- end col -->
                     </div>
-                    <!-- end row-->
                 </form>
             </div>
-            <!-- end row -->
             </div>
           </div>
         </div>

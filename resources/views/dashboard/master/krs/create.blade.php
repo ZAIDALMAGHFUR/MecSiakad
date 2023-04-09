@@ -56,7 +56,6 @@
                         <div class="col-lg-12">
                             <div class="card p-3">
                             <form method="POST" action="{{ route('krs.store') }}">
-                            <!-- <form method="post" action="http://172.105.120.11:88"> -->
                                     @csrf 
                                     @method('POST')
                                     <div class="form-group row border-bottom pb-4">
@@ -76,11 +75,11 @@
                                     <div class="form-group row border-bottom pb-4">
                                         <label for="mata_kuliah_id" class="col-sm-2 col-form-label">Mata Kuliah</label>
                                         <div class="col-sm-10">
-                                            <select class="form-control" name="mata_kuliah_id" id="mata_kuliah_id">
+                                            <select class="js-example-placeholder-multiple col-sm-12" name="mata_kuliah_id[]" id="mata_kuliah_id" multiple="multiple">
                                                 @foreach($data_mata_kuliah as $mata_kuliah)
                                                     <option value="{{ $mata_kuliah->id }}">{{ $mata_kuliah->name_mata_kuliah }}</option>
                                                 @endforeach
-                                            </select>
+                                            </select>                                            
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-success">Save</button>

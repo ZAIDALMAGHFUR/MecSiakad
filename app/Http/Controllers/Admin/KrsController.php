@@ -71,27 +71,28 @@ class KrsController extends Controller
 }
 
 
-    public function store(Request $request)
-    {
-        // Krs::create($request->validated() );
+public function store(Request $request)
+{
+    $this->validate(request(), [
+        'nim' => 'required',
+        'tahun_academic_id' => 'required',
+        'mata_kuliah_id' => 'required|array',
+    ]);
 
-        $this->validate(request(), [
-            'nim' => 'required',
-            'tahun_academic_id' => 'required',
-            'mata_kuliah_id' => 'required',
-        ]);
-
-        krs::create([
+    foreach ($request->mata_kuliah_id as $mata_kuliah_id) {
+        Krs::create([
             'nim' => $request->nim,
             'tahun_academic_id' => $request->tahun_academic_id,
-            'mata_kuliah_id' => $request->mata_kuliah_id,
-        ]);
-
-        return redirect()->route('krs')->with([
-            'info' => 'berhasi di buat !',
-            'alert-type' => 'success'
+            'mata_kuliah_id' => $mata_kuliah_id,
         ]);
     }
+
+    return redirect()->route('krs')->with([
+        'info' => 'berhasil dibuat!',
+        'alert-type' => 'success'
+    ]);
+}
+
 
     public function destroy($id)
     {
