@@ -22,5 +22,13 @@ class MataKuliahSeeder extends Seeder
             'semester' => 1,
             'program_studies_id' => 1,
         ]);
+
+        Mata_Kuliah::create([
+            'name_mata_kuliah' => 'Pemrograman Mobile',
+            'kode_mata_kuliah' => 'TI002',
+            'sks' => 4,
+            'semester' => 1,
+            'program_studies_id' => 1,
+        ]);
     }
 }

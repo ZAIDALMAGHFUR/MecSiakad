@@ -264,13 +264,11 @@
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                       data-feather="book"></i><span>Data Akademik</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="http://">Kelompok Mapel</a></li>
-                    <li><a href="http://">Mata Pelajaran</a></li>
-                    <li><a href="http://">Jadwal Pelajaran</a></li>
-                    <li><a href="http://">Bahan & Tugas</a></li>
-                    <li><a href="http://">Kompetensi Dasar</a></li>
-                    <li><a href="http://">Penilaian Diri</a></li>
+                    <li><a href="{{ route('krs') }}">KRS</a></li>
+                    <li><a href="http://">KHS</a></li>
+                    <li><a href="http://">Cetak Transkip Nilai</a></li>
                     <li><a href="http://">Rentang Nilai</a></li>
+                    <li><a href="http://">Cek Ipk</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i

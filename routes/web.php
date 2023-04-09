@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\calonController;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\Admin\KrsController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PMB\FotosController;
 use App\Http\Controllers\Admin\MatkulController;
@@ -122,6 +123,17 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::delete('delete/{id}', 'destroy')->name('dsnjabatan.delete');
     });
 
+    //krs
+    Route::controller(KrsController::class)->prefix('krs')->group(function () {
+        Route::get('', 'index')->name('krs');
+        Route::post('', 'find')->name('krs.find');
+        Route::get('add/{nim}/{tahun_academic}', 'add')->name('krs.create');
+        Route::post('save', 'store')->name('krs.store');
+        Route::get('edit/{id}', 'edit')->name('krs.edit');
+        Route::post('update/{id}', 'update')->name('krs.update');
+        Route::delete('delete/{id}', 'destroy')->name('krs.destroy');
+    });
+
     //jadwal pmb
     Route::controller(JadwalPmbController::class)->prefix('jadwalpmb')->group(function () {
         Route::get('', 'index')->name('jadwalpmb');
@@ -195,14 +207,16 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::post('update/{id}', 'update')->name('foto.update');
         Route::delete('delete/{id}', 'destroy')->name('foto.delete');
     });
-
 });
 
+
+//dosen
 Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {
     Route::get('/dosen', [DosenController::class, 'index'])->name('dosen');
 });
 
 
+//mahasiswa
 Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
 });

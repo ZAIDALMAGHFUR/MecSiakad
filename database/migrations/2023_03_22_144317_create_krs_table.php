@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('krs', function (Blueprint $table) {
             $table->id();
             $table->string('nim');
-            $table->string('nama_mahasiswas');
             $table->unsignedBigInteger('tahun_academic_id');
             $table->foreign('tahun_academic_id')->references('id')->on('tahun_academics')->onDelete('cascade');
             $table->unsignedBigInteger('mata_kuliah_id')->nullable();

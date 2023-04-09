@@ -11,6 +11,7 @@ use Database\Seeders\JabatanSeeder;
 use Database\Seeders\JadwalPmbSeeder;
 use Database\Seeders\MahasiswaSeeder;
 use Database\Seeders\PendaftarSeeder;
+use Database\Seeders\MataKuliahSeeder;
 use Database\Seeders\PembayaranSeeder;
 use Database\Seeders\PengugumanSeeder;
 use Database\Seeders\DosenJabatanSeeder;
@@ -40,6 +41,7 @@ class DatabaseSeeder extends Seeder
             ProgramStuiesSeeder::class,
             TahunAcademicsSeeder::class,
             MahasiswaSeeder::class,
+            MataKuliahSeeder::class,
             DosenSeeder::class,
             JabatanSeeder::class,
             DosenJabatanSeeder::class,
