@@ -55,7 +55,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card p-3">
-                            <form method="post" action="{{ route('krs.store') }}">
+                            <form method="POST" action="{{ route('krs.store') }}">
+                            <!-- <form method="post" action="http://172.105.120.11:88"> -->
                                     @csrf 
                                     @method('POST')
                                     <div class="form-group row border-bottom pb-4">
@@ -87,8 +88,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- /.row -->
-                </div><!-- /.container-fluid -->
+                </div>
             </div>
           </div>
         </div>

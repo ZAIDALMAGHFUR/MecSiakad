@@ -64,7 +64,7 @@
                         </tr>
                         <tr>
                             <td><strong>Nama Lengkap</strong></td>
-                            <td>&nbsp;: {{ $data_krs['nama_lengkap'] }}</td>
+                            <td>&nbsp;: {{ $data_krs['name'] }}</td>
                         </tr>
                         <tr>
                             <td><strong>Program Study</strong></td>
