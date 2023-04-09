@@ -84,9 +84,12 @@
                         </tr>
                     </table>
                 </center>
-                
-                <a href="{{ route('krs.create', [$data_krs['nim'],$data_krs['tahun_academic_id']])  }}" class="btn btn-sm btn-primary mb-4"> <i class="fa fa-plus fa-sm"></i> Tambah Data</a>
-        
+
+                @if ($tahun_academic->status == 'aktif')
+                    <a href="{{ route('krs.create', [$data_krs['nim'],$data_krs['tahun_academic_id']])  }}" class="btn btn-sm btn-primary mb-4"> <i class="fa fa-plus fa-sm"></i> Tambah Data</a>
+                @else
+                    <button class="btn btn-danger btn-xs mt-5 mb-5">Maaf anda di luar jadwal pengisian KRS</button>
+                @endif
                 <table class="display table table-bordered">
                     <tr>
                         <th>NO</th>
