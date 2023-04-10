@@ -35,7 +35,10 @@ class PembayaranController extends Controller
             'tgl_update' => now(),
             'created_at' => now()
         ]);
-        return redirect('/pembayaran');
+        return redirect('/pembayaran')->with([
+            'success' => 'Data Pembayaran Berhasil Diverifikasi',
+            'alert-type' => 'success'
+        ]);
     }
 
     public function belumbayar($id_pembayaran){
@@ -51,7 +54,10 @@ class PembayaranController extends Controller
             'tgl_update' => now(),
             'created_at' => now()
         ]);
-        return redirect('/pembayaran');
+        return redirect('/pembayaran')->with([
+            'info' => 'Data Pembayaran Belum Diverifikasi',
+            'alert-type' => 'success'
+        ]);
     }
 
     public function invalidbayar($id_pembayaran){
@@ -67,7 +73,10 @@ class PembayaranController extends Controller
             'tgl_update' => now(),
             'created_at' => now()
         ]);
-        return redirect('/pembayaran');
+        return redirect('/pembayaran')->with([
+            'error' => 'Data Pembayaran Tidak Sah',
+            'alert-type' => 'success'
+        ]);
     }
 
     public function updatebuktipembayaran(Request $a){
@@ -119,6 +128,9 @@ class PembayaranController extends Controller
             'tgl_update' => now(),
             'created_at' => now()
         ]);
-        return redirect('/pembayaran');
+        return redirect('/pembayaran')->with([
+            'success' => 'Data Berhasil Dihapus!',
+            'alert' => 'alert-success'
+        ]);
     }
 }

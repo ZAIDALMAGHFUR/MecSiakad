@@ -33,7 +33,10 @@ class PendaftarController extends Controller
             'tgl_update' => now(),
             'created_at' => now()
         ]);
-        return redirect('/pendaftar');
+        return redirect('/pendaftar')->with([
+            'success' => 'Data Berhasil Diverifikasi',
+            'alert-type' => 'success'
+        ]);
     }
 
     public function notverifikasistatuspendaftaran($id_pendaftaran){
@@ -48,7 +51,10 @@ class PendaftarController extends Controller
             'tgl_update' => now(),
             'created_at' => now()
         ]);
-        return redirect('/pendaftar');
+        return redirect('/pendaftar')->with([
+            'info' => 'Data Belum Diverifikasi',
+            'alert-type' => 'success'
+        ]);
     }
 
     public function invalidstatuspendaftaran($id_pendaftaran){
@@ -63,7 +69,10 @@ class PendaftarController extends Controller
             'tgl_update' => now(),
             'created_at' => now()
         ]);
-        return redirect('/pendaftar');
+        return redirect('/pendaftar')->with([
+            'error' => 'Data Tidak Sah',
+            'alert-type' => 'success'
+        ]);
     }
 
     public function selesaistatuspendaftaran($id_pendaftaran){
@@ -78,7 +87,10 @@ class PendaftarController extends Controller
             'tgl_update' => now(),
             'created_at' => now()
         ]);
-        return redirect('/pendaftar');
+        return redirect('/pendaftar')->with([
+            'success' => 'Data Berhasil Di Umumkan',
+            'alert-type' => 'success'
+        ]);
     }
 
     public function detailpendaftaran($id_pendaftaran)

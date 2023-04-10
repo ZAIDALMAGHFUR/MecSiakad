@@ -53,7 +53,9 @@ class PengugumanController extends Controller
                 'tgl_update' => now(),
                 'created_at' => now()
             ]);
-            return redirect('/data-announcement')->with('success', 'Data Tersimpan!!');
+            return redirect('/data-announcement')->with([
+                'success' => 'Data Berhasil Disimpan',
+                'alert-type' => 'success']);
         } catch (\Exception $e){
             return redirect()->back()->with('error', 'Data Tidak Berhasil Disimpan!');
         }
