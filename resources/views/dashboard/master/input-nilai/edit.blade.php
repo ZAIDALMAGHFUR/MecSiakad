@@ -4,6 +4,7 @@
 @pushOnce('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/sweetalert2.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/select2.css') }}">
 @endPushOnce
 
 
@@ -50,34 +51,107 @@
       <div class="card">
         <div class="card-body">
           <div class="table-responsive">
-            <div class="col-lg-12">
-              <div class="card p-3">
-                <div class="form-group">
-                  <label for="mata_kuliah_id">Mata Kuliah</label>
-                  <select name="mata_kuliah_id" id="mata_kuliah_id" class="form-control">
-                      <option value="">- Pilih Mata Kuliah -</option>
-                      @foreach ($mataKuliah as $mk)
-                          <option value="{{ $mk->id }}" {{ $selectedMataKuliah == $mk->id ? 'selected' : '' }}>{{ $mk->name_mata_kuliah }}</option>
-                      @endforeach
-                  </select>
+            <div class="row mb-3">
+              <div class="col-md-12 col-12">
+                  <div class="card text-left">
+                    <div class="card-body">
+                      <h4 class="card-title">Info</h4>
+                      <p class="card-text">
+                          <div class="row">
+                              <div class="col-lg-2">NIM</div>
+                              <div class="col-lg-4">:{{ $krs['0']['nim'] }}</div>
+                          </div>
+                          <div class="row">
+                              <div class="col-lg-2">Nama Mahasiswa</div>
+                              <div class="col-lg-4">: {{ $mahasiswa['name'] }}  </div>
+                          </div>
+                      </p>
+                    </div>
+                  </div>
               </div>
-              
-              <div class="form-group">
-                  <label for="tahun_akademik_id">Tahun Akademik</label>
-                  <select name="tahun_akademik_id" id="tahun_akademik_id" class="form-control">
-                      <option value="">- Pilih Tahun Akademik -</option>
-                      @foreach ($tahunAcademik as $ta)
-                          <option value="{{ $ta->id }}" {{ $selectedTahunAcademik == $ta->id ? 'selected' : '' }}>{{ $ta->tahun_akademik }}</option>
-                      @endforeach
-                  </select>
-              </div>
-              
-              </div>
+          </div>
+          
+          <div class="row mb-3">
+            <div class="col-md-12 col-12">
+              <div class="card mb-4">
+                  <div class="card-body">
+                      <div class="row mb-3">
+                          <div class="col-12 col-lg-6">
+                          <a href="{{ route('nilai') }}" class="btn btn-danger btn-sm">Kembali</a>
+                              <a href="" onclick="event.preventDefault();document.getElementById('form-nilai').submit();">
+                                  <button class="btn btn-sm btn-primary">Simpan</button>
+                              </a>
+                          </div>
+                          <div class="col-12 col-lg-6 text-right d-flex justify-content-end">
+                              <form action="" style="display:flex" method="GET">
+                                  <input type="text" class="mr-2 form-control form-control-sm" name="q" placeholder="Nama Mahasiswa" value="">
+                                  <button class="btn btn-info btn-sm">Cari</button>
+                              </form>
+                          </div>
+                      </div>
+                      <form action="" id="form-nilai" method="POST">
+                      @csrf
+                      @method('PUT')
+                      <table class="table table-responsive-sm">
+                          <thead>
+                              <tr>
+                                  <th width="20%">NIM</th>
+                                  <th width="20%">Mata Kuliah</th>
+                                  <th width="10%" class="text-center">Tugas</th>
+                                  <th width="10%" class="text-center">Kuis</th>
+                                  <th width="10%" class="text-center">UTS</th>
+                                  <th width="10%" class="text-center">UAS</th>
+                                  <th width="20%" class="text-center">Nilai Akhir</th>
+                              </tr>
+                              @if ($krs->count() > 0)
+                              <tr>
+                                  <th colspan="7" class="text-center">
+                                      {{-- @if ($keywords === "")
+                                      <span>Data nilai tidak ada</span>
+                                      @else
+                                      <span>Data yang anda cari tidak sesuai kriteria</span>
+                                      @endif --}}
+                                  </th>
+                              </tr>
+                              @endif
+                          </thead>
+                          <tbody>
+                              @foreach ($krs as $k)
+                                  <input type="hidden" value="{{ $k->id }}" name="id[]">
+                                  <input type="hidden" value="{{ $k->mahasiswa_id }}" name="mahasiswa_id[]">
+                                  <tr class="rowData">
+                                      <td scope="row">{{ $k['nim'] }}</td>
+                                      <td>{{ $k['mataKuliah']['name_mata_kuliah'] }}</td>
+                                      <td>
+                                        <input type="text" class="form-control form-control-sm tugas" value="{{ $k->tugas }}" name="tugas[]">
+                                      </td>
+                                      <td>
+                                          <input type="text" class="form-control form-control-sm kuis" value="{{ $k->kuis }}" name="kuis[]">
+                                      </td>
+                                      <td>
+                                          <input type="text" class="form-control form-control-sm uts" value="{{ $k->uts }}" name="uts[]">
+                                      </td>
+                                      <td>
+                                          <input type="text" class="form-control form-control-sm uas" value="{{ $k->uas }}" name="uas[]">
+                                      </td>
+                                      <td>
+                                          <input type="text" class="form-control form-control-sm nilai_akhir" value="{{ $k->nilai_akhir }}" name="nilai_akhir[]">
+                                      </td>
+                                  </tr>
+                              @endforeach
+                          </tbody>
+                      </table>
+                      </form>
+                  </div>
+                </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<script src="{{ asset('assets/js/select2/select2-custom.js') }}"></script>
+<script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
 @endsection

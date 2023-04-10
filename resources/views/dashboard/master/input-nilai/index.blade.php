@@ -57,7 +57,7 @@
                     <th style="width: 55px">No</th>
                     <th>NIM</th>
                     <th>Nama Mahasiswa</th>
-                    <th>Tahun Academic</th>
+                    {{-- <th>Tahun Academic</th> --}}
                     <th>Program Studi</th>
                     {{-- <th>Mata Kuliah</th> --}}
                     <th>Action</th>
@@ -69,15 +69,8 @@
                       <td>{{ $loop->iteration }}</td>
                       <td>{{ $a['nim'] }}</td>
                       <td>{{ $a['name'] }}</td>
-                      <td>{{ $a->TahunAcademic->tahun_akademik }}</td>
+                      {{-- <td>{{ $a->TahunAcademic->tahun_akademik }}</td> --}}
                       <td>{{ $a->program_studies->name }}</td>
-                      {{-- <td>{{ $a->MataKuliah->name_mata_kuliah }}</td> --}}
-                      {{-- <td>
-                        @foreach ($a->MataKuliah as $mata_kuliah)
-                          {{ $mata_kuliah->name_mata_kuliah }}
-                          @if (!$loop->last), @endif
-                        @endforeach
-                      </td> --}}
                       <td style="text-align: center">
 
                         <a href=""> 
@@ -87,12 +80,6 @@
                         <a href="{{ route('nilai.edit', [$a]) }}">
                           <button class="btn btn-primary btn-sm edit" type="button"><i class="fa fa-edit"></i></button>
                         </a>
-                        
-                        {{-- <form action="" method="POST" class="d-inline">
-                          @csrf
-                          @method('delete')
-                          <button class="btn btn-danger btn-sm show_confirm" type="submit"><i class="fa fa-trash"></i></button>
-                        </form> --}}
                       </td>
                     </tr>
                   @endforeach

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Krs;
 use App\Models\Nilai;
 use App\Models\Mahasiswa;
 use App\Models\Mata_kuliah;
@@ -20,28 +21,12 @@ class InputNilaiController extends Controller
         return view('dashboard.master.input-nilai.index', compact('mahasiswa', 'nilai'));
     }
 
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        $mahasiswa = Mahasiswa::all();
-        $nilai = Nilai::find($id);
-        $programStudi = Program_studies::all();
-        
-        // Menambahkan filter mata kuliah
-        $mataKuliah = Mata_kuliah::all();
-        $selectedMataKuliah = $nilai->mata_kuliah_id;
-    
-        // Menambahkan filter tahun akademik
-        $tahunAcademik = TahunAcademic::all();
-        $selectedTahunAcademik = $nilai->tahun_akademik_id;
-    
-        return view('dashboard.master.input-nilai.edit', compact('mahasiswa', 'nilai', 'programStudi', 'mataKuliah', 'selectedMataKuliah', 'tahunAcademik', 'selectedTahunAcademik'));
-    }
-    
+        $mahasiswa = Mahasiswa::where('id', $id)->first();
+        $krs = Krs::where('nim', $mahasiswa->nim)->get();
 
-    public function destroy($id)
-    {
-        $nilai = Nilai::find($id);
-        $nilai->delete();
-        return redirect()->route('admin.inputnilai.index')->with('success', 'Data Berhasil Dihapus');
+        // dd($krs);
+        return view('dashboard.master.input-nilai.edit', compact('mahasiswa','krs'));
     }
 }

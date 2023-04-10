@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Krs;
 use App\Models\Program_studies;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Mata_Kuliah extends Model
 {
@@ -20,5 +21,10 @@ class Mata_Kuliah extends Model
     public function program_studies()
     {
         return $this->belongsTo(Program_Studies::class, 'program_studies_id');
+    }
+
+    public function krs()
+    {
+        return $this->hasMany(Krs::class, 'mata_kuliah_id', 'nim');
     }
 }

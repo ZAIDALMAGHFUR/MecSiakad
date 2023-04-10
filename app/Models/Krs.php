@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use App\Models\TahunAcademic;
+use App\Models\Mahasiswa;
 use App\Models\Mata_Kuliah;
+use App\Models\TahunAcademic;
 use App\Models\Program_Studies;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,16 +17,21 @@ class Krs extends Model
 
     public function program_studies()
     {
-        return $this->belongsTo(Program_Studies::class,);
+        return $this->belongsTo(Program_Studies::class);
     }
 
-    public function mata_kuliah()
+    public function mataKuliah()
     {
         return $this->belongsTo(Mata_Kuliah::class);
     }
 
-    public function tahun_akademik()
+    public function tahunAkademik()
     {
-        return $this->belongsTo(TahunAcademic::class);
+        return $this->belongsTo(TahunAcademic::class, 'tahun_academic_id', );
+    }
+
+    public function mahasiswa()
+    {
+        return $this->belongsTo(Mahasiswa::class, 'mahasiswas_id', 'nim');
     }
 }
