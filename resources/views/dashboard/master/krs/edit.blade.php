@@ -58,22 +58,24 @@
                             <form method="POST" action="{{ route('krs.update', [$krs]) }}">
                                     @csrf 
                                     @method('POST')
-                                    <div class="form-group row border-bottom pb-4">
-                                        <label for="nim" class="col-sm-2 col-form-label">Nim</label>
-                                        <div class="col-sm-10">
-                                            <input readonly type="text" class="form-control" name="nim" value="{{ $krs->nim }}" id="nim">
+                                      <div class="row g-2">
+                                        <div class="col-md-6">
+                                          <label for="nim" class="form-label">Nim</label>
+                                          <div class="col-sm-10">
+                                              <input readonly type="text" class="form-control" name="nim" value="{{ $krs->nim }}" id="nim">
+                                          </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                          <label for="tahun_academic_id" class="form-label">Tahun Akademik</label>
+                                          <div class="col-sm-10">
+                                              <select readonly class="form-control" name="tahun_academic_id" id="tahun_academic_id">
+                                                  <option readonly value="{{ $tahun_akademik ? $tahun_akademik->id : '' }}"> {{ $tahun_akademik ? $tahun_akademik->tahun_akademik . $tahun_akademik->semester : '' }}</option>
+                                              </select>
+                                          </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group row border-bottom pb-4">
-                                        <label for="tahun_academic_id" class="col-sm-2 col-form-label">Tahun Akademik</label>
-                                        <div class="col-sm-10">
-                                            <select readonly class="form-control" name="tahun_academic_id" id="tahun_academic_id">
-                                                <option readonly value="{{ $tahun_akademik ? $tahun_akademik->id : '' }}"> {{ $tahun_akademik ? $tahun_akademik->tahun_akademik . $tahun_akademik->semester : '' }}</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row border-bottom pb-4">
-                                        <label for="mata_kuliah_id" class="col-sm-2 col-form-label">Mata Kuliah</label>
+                                      </div>
+                                    <div class="col-md-6 mt-3">
+                                        <label for="mata_kuliah_id" class="form-label">Mata Kuliah</label>
                                         <div class="col-sm-10">
                                             <select class="js-example-placeholder-multiple col-sm-12" name="mata_kuliah_id" id="mata_kuliah_id" multiple="multiple">
                                                 @foreach($data_mata_kuliah as $mata_kuliah)
@@ -82,7 +84,7 @@
                                             </select>                                            
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-success">Save</button>
+                                    <button type="submit" class="btn btn-success mt-5">Save</button>
                                 </form>
                             </div>
                         </div>
