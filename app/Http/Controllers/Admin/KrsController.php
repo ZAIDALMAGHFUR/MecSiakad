@@ -117,6 +117,42 @@ public function store(Request $request)
 }
 
 
+public function edit($id){
+    $krs = Krs::find($id);
+    $mahasiswa = Mahasiswa::where('nim', $krs->nim)->first();
+    $program_studies_id = $mahasiswa->program_studies_id;
+
+    $data_mata_kuliah = Mata_Kuliah::where('program_studies_id', $program_studies_id)->get(['name_mata_kuliah', 'id']);
+
+    $tahun_akademik = TahunAcademic::find($krs->tahun_academic_id);
+
+    return view('dashboard.master.krs.edit', compact('krs', 'tahun_akademik', 'data_mata_kuliah'));
+}
+
+
+
+
+    public function update(Request $request, $id)
+{
+    $this->validate(request(), [
+        'nim' => 'required',
+        'tahun_academic_id' => 'required',
+        'mata_kuliah_id' => 'required',
+    ]);
+
+    $krs = Krs::find($id);
+    $krs->update([
+        'nim' => $request->nim,
+        'tahun_academic_id' => $request->tahun_academic_id,
+        'mata_kuliah_id' => $request->mata_kuliah_id,
+    ]);
+
+    return redirect()->route('krs')->with([
+        'info' => 'berhasil dibuat!',
+        'alert-type' => 'success'
+    ]);
+}
+
     public function destroy($id)
     {
         $krs = Krs::find($id);

@@ -108,7 +108,7 @@
                             <td>
                                 <form method="POST" action="{{ route('krs.destroy', $krs->id) }}">
                                     @csrf
-                                    <a href="" class="btn btn-primary btn-xs edit"> <i class="fa fa-edit"></i> </a>
+                                    <a href="{{ route('krs.edit', $krs->id) }}" class="btn btn-primary btn-xs edit"> <i class="fa fa-edit"></i> </a>
                                     @method('DELETE')
                                     <input name="_method" type="hidden" class="btn-primary btn-xs" value="DELETE">
                                     <a type="submit" class="btn btn-danger btn-xs show_confirm"><i class="fa fa-trash"></i></a>

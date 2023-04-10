@@ -129,8 +129,8 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::post('', 'find')->name('krs.find');
         Route::get('add/{nim}/{tahun_academic}', 'add')->name('krs.create');
         Route::post('save', 'store')->name('krs.store');
-        Route::get('edit/{id}', 'edit')->name('krs.edit');
-        Route::post('update/{id}', 'update')->name('krs.update');
+        Route::get('edit/{krs:id}', 'edit')->name('krs.edit');
+        Route::post('update/{krs:id}', 'update')->name('krs.update');
         Route::delete('delete/{id}', 'destroy')->name('krs.destroy');
     });
 
