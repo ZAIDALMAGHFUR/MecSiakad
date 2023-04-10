@@ -18,6 +18,7 @@ use App\Http\Controllers\PMB\PengugumanController;
 use App\Http\Controllers\PMB\PendaftaranController;
 use App\Http\Controllers\PMB\PersyaratanController;
 use App\Http\Controllers\Admin\AdminDosenController;
+use App\Http\Controllers\Admin\InputNilaiController;
 use App\Http\Controllers\Admin\ThnAkademikController;
 use App\Http\Controllers\Admin\DosenJabatanController;
 use App\Http\Controllers\Admin\JabatanDosenController;
@@ -132,6 +133,14 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::get('edit/{krs:id}', 'edit')->name('krs.edit');
         Route::post('update/{krs:id}', 'update')->name('krs.update');
         Route::delete('delete/{id}', 'destroy')->name('krs.destroy');
+    });
+
+    //input nilai
+    Route::controller(InputNilaiController::class)->prefix('nilai')->group(function () {
+        Route::get('', 'index')->name('nilai');
+        Route::get('edit/{id}', 'edit')->name('nilai.edit');
+        Route::post('update/{id}', 'update')->name('nilai.update');
+        Route::delete('delete/{id}', 'destroy')->name('nilai.delete');
     });
 
     //jadwal pmb

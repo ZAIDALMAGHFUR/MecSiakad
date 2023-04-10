@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('nilai', function (Blueprint $table) {
+        Schema::create('nilais', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('tahun_academic_id');
             $table->foreign('tahun_academic_id')->references('id')->on('tahun_academics')->onDelete('cascade');
@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('uts');
             $table->string('uas');
             $table->string('nilai_akhir');
-            $table->unsignedBigInteger('mata_kuliah_id')->nullable();
-            $table->foreign('mata_kuliah_id')->references('id')->on('mata_kuliahs')->onDelete('cascade');
+            $table->unsignedBigInteger('mata_kuliahs_id')->nullable();
+            $table->foreign('mata_kuliahs_id')->references('id')->on('mata_kuliahs')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nilai');
+        Schema::dropIfExists('nilais');
     }
 };

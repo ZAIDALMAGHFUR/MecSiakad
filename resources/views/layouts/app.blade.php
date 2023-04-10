@@ -266,6 +266,7 @@
                   <ul class="nav-submenu menu-content">
                     <li><a href="{{ route('krs') }}">KRS</a></li>
                     <li><a href="http://">KHS</a></li>
+                    <li><a href="{{ route('nilai') }}">Input Nilai</a></li>
                     <li><a href="http://">Cetak Transkip Nilai</a></li>
                     <li><a href="http://">Rentang Nilai</a></li>
                     <li><a href="http://">Cek Ipk</a></li>

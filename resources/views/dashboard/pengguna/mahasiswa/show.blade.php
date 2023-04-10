@@ -132,7 +132,7 @@
                         </tr>
                         {{-- <tr>
                             <th>Tahun Academic</th>
-                            <td>{{ $data->tahun_academics_id->tahun_akademik }}</td>
+                            <td>{{ $data->TahunAcademic->tahun_akademik }}</td>
                         </tr> --}}
                         <tr>
                             <th>Status Mahasiswa</th>
