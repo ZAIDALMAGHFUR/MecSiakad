@@ -43,4 +43,10 @@ class Mahasiswa extends Model
     {
         return $this->hasMany(Krs::class, 'mahasiswas_id', 'nim');
     }
+
+    public function mata_kuliah()
+{
+    return $this->belongsTo(MataKuliah::class);
+}
+
 }

@@ -41,16 +41,27 @@ class KhsController extends Controller
     
         if($nilai_akhirs->isEmpty()) {
             return redirect()->back()->with([
-                'message' => 'Mahasiswa belum memiliki nilai pada tahun yang dipilih !',
+                'info' => 'Mahasiswa belum memiliki nilai pada tahun yang dipilih !',
                 'alert-type' => 'info'
             ]);
         }
-
+    
+        $krs = Krs::where('nim', $request->nim)
+            ->where('tahun_academic_id', $request->tahun_academic_id)
+            ->get();
+    
+        if($krs->isEmpty()) {
+            return redirect()->back()->with([
+                'info' => 'Maaf, mahasiswa belum melakukan pemilihan KRS pada tahun akademik yang dipilih !',
+                'alert-type' => 'info'
+            ]);
+        }
+    
         $select_krs = Krs::where('nim', $request->nim)
-        ->where('tahun_academic_id', $request->tahun_academic_id)
-        ->join('mata_kuliahs', 'krs.mata_kuliah_id', '=', 'mata_kuliahs.id')
-        ->select('krs.id', 'mata_kuliahs.name_mata_kuliah', 'mata_kuliahs.kode_mata_kuliah', 'mata_kuliahs.sks')
-        ->get();
+            ->where('tahun_academic_id', $request->tahun_academic_id)
+            ->join('mata_kuliahs', 'krs.mata_kuliah_id', '=', 'mata_kuliahs.id')
+            ->select('krs.id', 'mata_kuliahs.name_mata_kuliah', 'mata_kuliahs.kode_mata_kuliah', 'mata_kuliahs.sks')
+            ->get();
     
         $data_khs = [
             'mhs_data' => $nilai_akhirs,

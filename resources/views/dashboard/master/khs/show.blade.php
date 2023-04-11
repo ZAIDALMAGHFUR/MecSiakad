@@ -93,7 +93,7 @@
                       <th>NILAI</th>
                       <th>SKOR</th>
                     </tr>
-                    @php $total_sks = 0 @endphp
+                    @php $total_sks = 0 ; $x = 0 @endphp
                     
                     @foreach ($data_khs['select_krs'] as $khs)
                       <tr>
@@ -101,9 +101,10 @@
                         <td>{{ $khs['kode_mata_kuliah'] }}</td>
                         <td>{{ $khs['name_mata_kuliah'] }}</td>
                         <td>{{ $khs['sks'] }}</td>
-                        <td>{{ $data_khs['mhs_data']}}  </td>
+                        <td>{{ $data_khs['mhs_data'][$x]['nilai_akhir']}}  </td>
+                        <td>{{ $data_khs['mhs_data'][$x]->kriteria}}  </td>
                       </tr>
-                    @php $total_sks += $khs->sks @endphp
+                    @php $total_sks += $khs->sks ; $x++ @endphp
                     @endforeach
                     
                     <tr>
