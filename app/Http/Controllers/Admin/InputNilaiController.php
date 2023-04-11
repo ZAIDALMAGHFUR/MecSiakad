@@ -25,14 +25,20 @@ class InputNilaiController extends Controller
     public function edit(Request $request, $id)
     {
         $mahasiswa = Mahasiswa::where('id', $id)->first();
-        $tahun_akademik = TahunAcademic::all(); // tambahkan model TahunAkademik dan ambil semua data tahun akademik
+        $tahun_akademik = TahunAcademic::all();
+        
+        $krsQuery = Krs::query()
+            ->where('nim', $mahasiswa->nim);
+            
+        if($request->has('tahun_academic_id')){
+            $krsQuery->where('tahun_academic_id', $request->tahun_academic_id);
+        }else{
+            $krsQuery->whereIn('tahun_academic_id', $tahun_akademik->pluck('id'));
+        }
+        
+        $krs = $krsQuery->get();
     
-        // filter data krs berdasarkan tahun_akademik_id dan nim mahasiswa
-        $krs = Krs::where('nim', $mahasiswa->nim)
-            ->whereIn('tahun_academic_id', $tahun_akademik->pluck('id')) // hanya tampilkan krs yang tahun_akademik_id nya ada di dalam data tahun_akademik
-            ->get();
-    
-        return view('dashboard.master.input-nilai.edit', compact('mahasiswa', 'krs', 'tahun_akademik')); // tambahkan variable $tahun_akademik untuk dikirimkan ke view
+        return view('dashboard.master.input-nilai.edit', compact('mahasiswa', 'krs', 'tahun_akademik'));
     }
     
 

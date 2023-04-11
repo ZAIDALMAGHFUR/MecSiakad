@@ -53,24 +53,41 @@
           <div class="table-responsive">
             <div class="row mb-3">
               <div class="col-md-12 col-12">
-                  <div class="card text-left">
-                    <div class="card-body">
+                <div class="card text-left">
+                  <div class="card-body">
                       <h4 class="card-title">Info</h4>
                       <p class="card-text">
                           <div class="row">
                               <div class="col-lg-2">NIM</div>
-                              <div class="col-lg-4">:{{ $krs['0']['nim'] }}</div>
+                              @if(isset($krs['0']['nim']))
+                                  <div class="col-lg-4">:{{ $krs['0']['nim'] }}</div>
+                              @else
+                                  <div class="col-lg-4">: Mahasiswa Belum Mengambil Krs</div>
+                              @endif
                           </div>
                           <div class="row">
                               <div class="col-lg-2">Nama Mahasiswa</div>
-                              <div class="col-lg-4">: {{ $mahasiswa['name'] }}  </div>
+                              <div class="col-lg-4">: {{ $mahasiswa['name'] }}</div>
                           </div>
                       </p>
-                    </div>
                   </div>
               </div>
+              
+                
+              </div>
           </div>
-          
+            <div class="col-md-12 col-12 mb-5">
+                <form action="{{ route('nilai.edit', $mahasiswa->id) }}" method="GET">
+                        <label for="tahun_academic_id">Tahun Akademik:</label>
+                        <select class="js-example-basic-single col-sm-12" name="tahun_academic_id" id="tahun_academic_id" onchange="this.form.submit()">
+                            <option value="">Pilih Tahun Akademik</option>
+                            @foreach($tahun_akademik as $item)
+                              <option {{ request('tahun_academic_id') == $item->id ? 'selected' : ''}} value="{{ $item->id }}">{{ $item->tahun_akademik }}</option>
+                            @endforeach
+                        </select>
+                        <button hidden type="submit" class="btn btn-primary">Filter</button>
+                </form>
+            </div>
           <div class="row mb-3">
             <div class="col-md-12 col-12">
               <div class="card mb-4">
@@ -140,7 +157,14 @@
     </div>
   </div>
 </div>
-
+@pushOnce('js')
+<script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
+<script src="{{ asset('assets/js/sweet-alert/sweetalert.min.js') }}"></script>
+<script src="{{ asset('assets/js/form-validation-custom.js') }}"></script>
+<script src="{{ asset('assets/js/select2/select2-custom.js') }}"></script>
+<script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
+<script src="{{ asset('assets/js/tooltip-init.js') }}"></script>
 <script>
   const rowData = document.getElementsByClassName('rowData');
 
@@ -205,6 +229,5 @@
     });
   });
 </script>
-
-
+@endPushOnce
 @endsection
