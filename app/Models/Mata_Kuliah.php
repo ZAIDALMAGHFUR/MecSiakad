@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Krs;
+use App\Models\Nilai;
 use App\Models\Program_studies;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -26,5 +27,10 @@ class Mata_Kuliah extends Model
     public function krs()
     {
         return $this->hasMany(Krs::class, 'mata_kuliah_id', 'nim');
+    }
+
+    public function nilai()
+    {
+        return $this->hasMany(Nilai::class, 'mata_kuliahs_id', 'nim');
     }
 }

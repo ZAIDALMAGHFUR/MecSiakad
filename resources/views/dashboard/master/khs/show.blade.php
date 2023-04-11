@@ -93,7 +93,25 @@
                       <th>NILAI</th>
                       <th>SKOR</th>
                     </tr>
-                    @php $total_sks = 0 ; $x = 0 @endphp
+                    @php 
+                    $total_sks = 0;
+                    $total_nilai = 0;
+                    $x = 0;
+                    function skorNilai($krs, $skor) {
+                      if ($skor == 'A') {
+                        $skor = 4 * $krs; 
+                      } elseif ($skor == 'B') {
+                        $skor = 3 * $krs; 
+                      } elseif ($skor == 'C') {
+                        $skor = 2 * $krs; 
+                      } elseif ($skor == 'D') {
+                        $skor = 1 * $krs; 
+                      } elseif ($skor == 'E') {
+                        $skor = 0 * $krs; 
+                      }
+                      return $skor;
+                    }
+                    @endphp
                     
                     @foreach ($data_khs['select_krs'] as $khs)
                       <tr>
@@ -104,7 +122,12 @@
                         <td>{{ $data_khs['mhs_data'][$x]['nilai_akhir']}}  </td>
                         <td>{{ $data_khs['mhs_data'][$x]->kriteria}}  </td>
                       </tr>
-                    @php $total_sks += $khs->sks ; $x++ @endphp
+                    @php
+                      $total_sks += $khs->sks;
+                      $total_nilai = skorNilai($khs['sks'], $data_khs['mhs_data'][$x]->kriteria) + $total_nilai;
+                      $ipk = number_format($total_nilai / $total_sks, 2);
+                      $x++;
+                    @endphp
                     @endforeach
                     
                     <tr>
@@ -113,7 +136,7 @@
                     </tr>
                 </table>
                 <div class="m-5">
-                  Index Prestasi: 
+                  <h3>Index Prestasi: {{ $ipk }}</h3>
                 </div>
             </div>
         </div>

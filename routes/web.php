@@ -145,7 +145,13 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::delete('delete/{id}', 'destroy')->name('nilai.delete');
     });
 
-
+    //edit nilai
+    Route::controller(EditNilaiController::class)->prefix('change')->group(function () {
+        Route::get('', 'index')->name('change');
+        Route::get('edit/{id}', 'change')->name('change.edit');
+        Route::post('update', 'update')->name('change.update');
+        Route::delete('delete/{id}', 'destroy')->name('change.delete');
+    });
 
     //khs
     Route::controller(KhsController::class)->prefix('khs')->group(function () {

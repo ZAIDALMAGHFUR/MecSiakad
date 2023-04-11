@@ -1,0 +1,155 @@
+{
+    "mhs_data": [
+        {
+            "tahun_academic_id": 1,
+            "mahasiswas_id": 1,
+            "mata_kuliahs_id": 1,
+            "nilai_akhir": "86"
+        },
+        {
+            "tahun_academic_id": 1,
+            "mahasiswas_id": 1,
+            "mata_kuliahs_id": 2,
+            "nilai_akhir": "85"
+        },
+        {
+            "tahun_academic_id": 1,
+            "mahasiswas_id": 1,
+            "mata_kuliahs_id": 3,
+            "nilai_akhir": "71"
+        },
+        {
+            "tahun_academic_id": 1,
+            "mahasiswas_id": 1,
+            "mata_kuliahs_id": 4,
+            "nilai_akhir": "77"
+        },
+        {
+            "tahun_academic_id": 1,
+            "mahasiswas_id": 1,
+            "mata_kuliahs_id": 5,
+            "nilai_akhir": "92"
+        },
+        {
+            "tahun_academic_id": 1,
+            "mahasiswas_id": 1,
+            "mata_kuliahs_id": 6,
+            "nilai_akhir": "94"
+        },
+        {
+            "tahun_academic_id": 1,
+            "mahasiswas_id": 1,
+            "mata_kuliahs_id": 7,
+            "nilai_akhir": "77"
+        },
+        {
+            "tahun_academic_id": 1,
+            "mahasiswas_id": 1,
+            "mata_kuliahs_id": 8,
+            "nilai_akhir": "78"
+        },
+        {
+            "tahun_academic_id": 1,
+            "mahasiswas_id": 1,
+            "mata_kuliahs_id": 9,
+            "nilai_akhir": "80"
+        },
+        {
+            "tahun_academic_id": 1,
+            "mahasiswas_id": 1,
+            "mata_kuliahs_id": 10,
+            "nilai_akhir": "79"
+        },
+        {
+            "tahun_academic_id": 1,
+            "mahasiswas_id": 1,
+            "mata_kuliahs_id": 11,
+            "nilai_akhir": "77"
+        },
+        {
+            "tahun_academic_id": 1,
+            "mahasiswas_id": 1,
+            "mata_kuliahs_id": 12,
+            "nilai_akhir": "68"
+        }
+    ],
+    "nim": "123456789",
+    "name": "saipol",
+    "prody": "Teknik Informatika",
+    "tahun_academic": "2020\/2021",
+    "semester": "Ganjil",
+    "select_krs": [
+        {
+            "id": 1,
+            "name_mata_kuliah": "Pemrograman Web",
+            "kode_mata_kuliah": "TPW004",
+            "sks": "2"
+        },
+        {
+            "id": 2,
+            "name_mata_kuliah": "Pemrograman Mobile",
+            "kode_mata_kuliah": "TPM004",
+            "sks": "2"
+        },
+        {
+            "id": 5,
+            "name_mata_kuliah": "Agama Islam",
+            "kode_mata_kuliah": "TAI003",
+            "sks": "2"
+        },
+        {
+            "id": 7,
+            "name_mata_kuliah": "PKN",
+            "kode_mata_kuliah": "TP004",
+            "sks": "2"
+        },
+        {
+            "id": 8,
+            "name_mata_kuliah": "Bahasa Indonesia",
+            "kode_mata_kuliah": "TBI005",
+            "sks": "2"
+        },
+        {
+            "id": 9,
+            "name_mata_kuliah": "db",
+            "kode_mata_kuliah": "Td006",
+            "sks": "2"
+        },
+        {
+            "id": 10,
+            "name_mata_kuliah": "uiux",
+            "kode_mata_kuliah": "Tu007",
+            "sks": "2"
+        },
+        {
+            "id": 11,
+            "name_mata_kuliah": "IPA",
+            "kode_mata_kuliah": "TI008",
+            "sks": "2"
+        },
+        {
+            "id": 12,
+            "name_mata_kuliah": "IPS",
+            "kode_mata_kuliah": "TI009",
+            "sks": "2"
+        },
+        {
+            "id": 13,
+            "name_mata_kuliah": "SKI",
+            "kode_mata_kuliah": "TS010",
+            "sks": "2"
+        },
+        {
+            "id": 14,
+            "name_mata_kuliah": "PA",
+            "kode_mata_kuliah": "TP011",
+            "sks": "2"
+        },
+        {
+            "id": 15,
+            "name_mata_kuliah": "op",
+            "kode_mata_kuliah": "To012",
+            "sks": "2"
+        }
+    ]
+}

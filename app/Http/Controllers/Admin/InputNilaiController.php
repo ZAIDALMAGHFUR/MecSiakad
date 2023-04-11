@@ -46,6 +46,7 @@ class InputNilaiController extends Controller
 
     public function update(Request $request)
 {
+    
     $validator = Validator::make($request->all(), [
         'tahun_academic_id.*' => 'required',
         'mahasiswa_id.*' => 'required',

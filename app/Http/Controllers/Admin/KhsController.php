@@ -41,7 +41,7 @@ class KhsController extends Controller
     
         if($nilai_akhirs->isEmpty()) {
             return redirect()->back()->with([
-                'info' => 'Mahasiswa belum memiliki nilai pada tahun yang dipilih !',
+                'message' => 'Mahasiswa belum memiliki nilai pada tahun yang dipilih !',
                 'alert-type' => 'info'
             ]);
         }
@@ -52,7 +52,7 @@ class KhsController extends Controller
     
         if($krs->isEmpty()) {
             return redirect()->back()->with([
-                'info' => 'Maaf, mahasiswa belum melakukan pemilihan KRS pada tahun akademik yang dipilih !',
+                'message' => 'Maaf, mahasiswa belum melakukan pemilihan KRS pada tahun akademik yang dipilih !',
                 'alert-type' => 'info'
             ]);
         }
@@ -72,8 +72,12 @@ class KhsController extends Controller
             'semester' => $tahun_academic->semester,
             'select_krs' => $select_krs,
         ];
-    
+        // 
+        //file_put_contents('tes.json', json_encode($data_khs, JSON_PRETTY_PRINT));
+
+
         // Menambahkan perhitungan kriteria nilai akhir
+
         foreach ($nilai_akhirs as $nilai_akhir) {
             $nilai_akhir->kriteria = '';
             if ($nilai_akhir->nilai_akhir >= 0 && $nilai_akhir->nilai_akhir <= 59) {
@@ -87,8 +91,15 @@ class KhsController extends Controller
             } elseif ($nilai_akhir->nilai_akhir >= 90 && $nilai_akhir->nilai_akhir <= 100) {
                 $nilai_akhir->kriteria = 'A';
             }
+            // foreach ($data_khs['select_krs'] as $count_krs) {
+            //     if ($count_krs->id == $nilai_akhir->mata_kuliahs_id && $request->tahun_academic_id == $nilai_akhir->tahun_academic_id) {
+            //         $bobot_ipk = $count_krs->sks * $bobot;
+            //         $bobot_total = $bobot_total + $bobot_ipk;
+            //     }
+            // }
         }
     
+        //  dd($bobot_total);
         return view('dashboard.master.khs.show', compact('data_khs', 'tahun_academic'));
     }
     
