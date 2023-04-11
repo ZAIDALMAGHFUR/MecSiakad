@@ -16,6 +16,7 @@ use App\Http\Controllers\PMB\PendaftarController;
 use App\Http\Controllers\ProgrammStudiController;
 use App\Http\Controllers\PMB\PembayaranController;
 use App\Http\Controllers\PMB\PengugumanController;
+use App\Http\Controllers\Admin\EditNilaiController;
 use App\Http\Controllers\PMB\PendaftaranController;
 use App\Http\Controllers\PMB\PersyaratanController;
 use App\Http\Controllers\Admin\AdminDosenController;
@@ -143,6 +144,8 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::post('update', 'update')->name('nilai.update');
         Route::delete('delete/{id}', 'destroy')->name('nilai.delete');
     });
+
+
 
     //khs
     Route::controller(KhsController::class)->prefix('khs')->group(function () {

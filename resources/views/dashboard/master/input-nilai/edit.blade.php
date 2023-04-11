@@ -13,11 +13,11 @@
     <div class="page-header">
       <div class="row">
         <div class="col-sm-6">
-          <h3>Edit Nilai</h3>
+          <h3>Isi Nilai</h3>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
             <li class="breadcrumb-item">Data Akademik</li>
-            <li class="breadcrumb-item active">Edit Nilai</li>
+            <li class="breadcrumb-item active">Isi Nilai</li>
           </ol>
         </div>
         <div class="col-sm-6">
@@ -62,7 +62,7 @@
                               @if(isset($krs['0']['nim']))
                                   <div class="col-lg-4">:{{ $krs['0']['nim'] }}</div>
                               @else
-                                  <div class="col-lg-4">: Mahasiswa Belum Mengambil Krs</div>
+                                  <div class="col-lg-4  btn-danger">: Mahasiswa Belum Mengambil Krs</div>
                               @endif
                           </div>
                           <div class="row">

@@ -57,9 +57,7 @@
                     <th style="width: 55px">No</th>
                     <th>NIM</th>
                     <th>Nama Mahasiswa</th>
-                    {{-- <th>Tahun Academic</th> --}}
                     <th>Program Studi</th>
-                    {{-- <th>Mata Kuliah</th> --}}
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -69,13 +67,8 @@
                       <td>{{ $loop->iteration }}</td>
                       <td>{{ $a['nim'] }}</td>
                       <td>{{ $a['name'] }}</td>
-                      {{-- <td>{{ $a->TahunAcademic->tahun_akademik }}</td> --}}
                       <td>{{ $a->program_studies->name }}</td>
                       <td style="text-align: center">
-
-                        <a href=""> 
-                            <button class="btn btn-warning  btn-sm edit" type="button"><i class="fa fa-eye"></i></button>
-                        </a>   
 
                         <a href="{{ route('nilai.edit', [$a]) }}">
                           <button class="btn btn-primary btn-sm edit" type="button"><i class="fa fa-edit"></i></button>

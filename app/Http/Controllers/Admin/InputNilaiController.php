@@ -37,6 +37,8 @@ class InputNilaiController extends Controller
         }
         
         $krs = $krsQuery->get();
+
+        // dd($krsQuery);
     
         return view('dashboard.master.input-nilai.edit', compact('mahasiswa', 'krs', 'tahun_akademik'));
     }
