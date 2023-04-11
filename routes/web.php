@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\calonController;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\Admin\KhsController;
 use App\Http\Controllers\Admin\KrsController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PMB\FotosController;
@@ -141,6 +142,17 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::get('edit/{id}', 'edit')->name('nilai.edit');
         Route::post('update', 'update')->name('nilai.update');
         Route::delete('delete/{id}', 'destroy')->name('nilai.delete');
+    });
+
+    //khs
+    Route::controller(KhsController::class)->prefix('khs')->group(function () {
+        Route::get('', 'index')->name('khs');
+        Route::post('', 'find')->name('khs.find');
+        Route::get('add/{nim}/{tahun_academic}', 'add')->name('khs.create');
+        Route::post('save', 'store')->name('khs.store');
+        Route::get('edit/{krs:id}', 'edit')->name('khs.edit');
+        Route::post('update/{krs:id}', 'update')->name('khs.update');
+        Route::delete('delete/{id}', 'destroy')->name('khs.destroy');
     });
 
     //jadwal pmb
