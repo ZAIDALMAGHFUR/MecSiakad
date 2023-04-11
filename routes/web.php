@@ -139,7 +139,7 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
     Route::controller(InputNilaiController::class)->prefix('nilai')->group(function () {
         Route::get('', 'index')->name('nilai');
         Route::get('edit/{id}', 'edit')->name('nilai.edit');
-        Route::post('update/{id}', 'update')->name('nilai.update');
+        Route::post('update', 'update')->name('nilai.update');
         Route::delete('delete/{id}', 'destroy')->name('nilai.delete');
     });
 

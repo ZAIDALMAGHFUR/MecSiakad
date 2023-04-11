@@ -82,66 +82,54 @@
                                   <button class="btn btn-sm btn-primary">Simpan</button>
                               </a>
                           </div>
-                          <div class="col-12 col-lg-6 text-right d-flex justify-content-end">
-                              <form action="" style="display:flex" method="GET">
-                                  <input type="text" class="mr-2 form-control form-control-sm" name="q" placeholder="Nama Mahasiswa" value="">
-                                  <button class="btn btn-info btn-sm">Cari</button>
-                              </form>
-                          </div>
                       </div>
-                      <form action="" id="form-nilai" method="POST">
-                      @csrf
-                      @method('PUT')
-                      <table class="table table-responsive-sm">
-                          <thead>
-                              <tr>
-                                  <th width="20%">NIM</th>
-                                  <th width="20%">Mata Kuliah</th>
-                                  <th width="10%" class="text-center">Tugas</th>
-                                  <th width="10%" class="text-center">Kuis</th>
-                                  <th width="10%" class="text-center">UTS</th>
-                                  <th width="10%" class="text-center">UAS</th>
-                                  <th width="20%" class="text-center">Nilai Akhir</th>
-                              </tr>
-                              @if ($krs->count() > 0)
-                              <tr>
-                                  <th colspan="7" class="text-center">
-                                      {{-- @if ($keywords === "")
-                                      <span>Data nilai tidak ada</span>
-                                      @else
-                                      <span>Data yang anda cari tidak sesuai kriteria</span>
-                                      @endif --}}
-                                  </th>
-                              </tr>
-                              @endif
-                          </thead>
-                          <tbody>
-                              @foreach ($krs as $k)
-                                  <input type="hidden" value="{{ $k->id }}" name="id[]">
-                                  <input type="hidden" value="{{ $k->mahasiswa_id }}" name="mahasiswa_id[]">
-                                  <tr class="rowData">
-                                      <td scope="row">{{ $k['nim'] }}</td>
-                                      <td>{{ $k['mataKuliah']['name_mata_kuliah'] }}</td>
-                                      <td>
-                                        <input type="text" class="form-control form-control-sm tugas" value="{{ $k->tugas }}" name="tugas[]">
-                                      </td>
-                                      <td>
-                                          <input type="text" class="form-control form-control-sm kuis" value="{{ $k->kuis }}" name="kuis[]">
-                                      </td>
-                                      <td>
-                                          <input type="text" class="form-control form-control-sm uts" value="{{ $k->uts }}" name="uts[]">
-                                      </td>
-                                      <td>
-                                          <input type="text" class="form-control form-control-sm uas" value="{{ $k->uas }}" name="uas[]">
-                                      </td>
-                                      <td>
-                                          <input type="text" class="form-control form-control-sm nilai_akhir" value="{{ $k->nilai_akhir }}" name="nilai_akhir[]">
-                                      </td>
-                                  </tr>
-                              @endforeach
-                          </tbody>
-                      </table>
-                      </form>
+
+                      <form action="{{ route('nilai.update') }}" id="form-nilai" method="POST">
+                        <input type="hidden" name="dosen_matkul_id" value="">
+                        @csrf
+                        @method('POST')
+                        <table class="table table-responsive-sm">
+                            <thead>
+                                <tr>
+                                    <th width="20%">NIM</th>
+                                    <th width="20%">Mata Kuliah</th>
+                                    <th width="10%" class="text-center">Tugas</th>
+                                    <th width="10%" class="text-center">Kuis</th>
+                                    <th width="10%" class="text-center">UTS</th>
+                                    <th width="10%" class="text-center">UAS</th>
+                                    <th width="20%" class="text-center">Nilai Akhir</th>
+                                </tr>
+                                @if ($krs->count() > 0)
+                                @endif
+                            </thead>
+                            <tbody>
+                                @foreach ($krs as $k)
+                                <tr class="rowData">
+                                    <input type="hidden"  value="{{ $k->tahun_academic_id }}" name="tahun_academic_id[]">
+                                    <input type="hidden" value="{{ $mahasiswa->id }}" name="mahasiswa_id[]">
+                                    <input type="hidden" value="{{ $k->mata_kuliah_id }}" name="mata_kuliahs_id[]">
+                                    <td scope="row">{{ $k->nim }}</td>
+                                    <td>{{ $k['mataKuliah']['name_mata_kuliah'] }}</td>
+                                    <td>
+                                        <input type="number" class="form-control form-control-sm kuis" value="{{ $k->kuis }}" name="kuis[]">
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control form-control-sm tugas" value="{{ $k->tugas }}" name="tugas[]">
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control form-control-sm uts" value="{{ $k->uts }}" name="uts[]">
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control form-control-sm uas" value="{{ $k->uas }}" name="uas[]">
+                                    </td>
+                                    <td>
+                                        <input readonly type="number" class="form-control form-control-sm nilai_akhir" value="{{ $k->nilai_akhir }}" name="nilai_akhir[]">
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </form>                    
                   </div>
                 </div>
             </div>
@@ -152,6 +140,71 @@
     </div>
   </div>
 </div>
-<script src="{{ asset('assets/js/select2/select2-custom.js') }}"></script>
-<script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
+
+<script>
+  const rowData = document.getElementsByClassName('rowData');
+
+  // iterasi melalui semua baris data
+  Array.from(rowData).forEach(row => {
+    row.addEventListener('keyup', function(event) {
+      // matikan tab
+      if (event.keyCode == 9) {
+        event.preventDefault();
+      }
+
+      // ambil input dengan kelas yang sesuai
+      let tugas = this.getElementsByClassName('tugas')[0];
+      let kuis = this.getElementsByClassName('kuis')[0];
+      let uts = this.getElementsByClassName('uts')[0];
+      let uas = this.getElementsByClassName('uas')[0];
+      let nilai_akhir = this.getElementsByClassName('nilai_akhir')[0];
+
+      let nilai_tugas = parseInt(tugas.value) || 0;
+      let nilai_kuis = parseInt(kuis.value) || 0;
+      let nilai_uts = parseInt(uts.value) || 0;
+      let nilai_uas = parseInt(uas.value) || 0;
+
+      function calculateNilaiAkhir() {
+        // calculate the final value
+        let finalValue = Number(nilai_kuis) + Number(nilai_tugas) + Number(nilai_uts) + Number(nilai_uas);
+        // set the value to the input
+        nilai_akhir.value = finalValue;
+      }
+
+      if (nilai_tugas !== 0 && nilai_kuis !== 0 && nilai_uts !== 0 && nilai_uas !== 0) {
+        calculateNilaiAkhir();
+      }
+
+      tugas.addEventListener('keyup', function() {
+        if (tugas.value !== "") {
+          nilai_tugas = parseInt(this.value);
+          calculateNilaiAkhir();
+        }
+      });
+
+      kuis.addEventListener('keyup', function() {
+        if (kuis.value !== "") {
+          nilai_kuis = parseInt(this.value);
+          calculateNilaiAkhir();
+        }
+      });
+
+      uts.addEventListener('keyup', function() {
+        if (uts.value !== "") {
+          nilai_uts = parseInt(this.value);
+          calculateNilaiAkhir();
+        }
+      });
+
+      uas.addEventListener('keyup', function() {
+        if (uas.value !== "") {
+          nilai_uas = parseInt(this.value);
+          calculateNilaiAkhir();
+        }
+      });
+    });
+  });
+</script>
+
+
 @endsection

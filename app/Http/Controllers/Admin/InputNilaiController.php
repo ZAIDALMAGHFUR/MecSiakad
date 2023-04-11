@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\TahunAcademic;
 use App\Models\Program_studies;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class InputNilaiController extends Controller
 {
@@ -24,9 +25,62 @@ class InputNilaiController extends Controller
     public function edit(Request $request, $id)
     {
         $mahasiswa = Mahasiswa::where('id', $id)->first();
-        $krs = Krs::where('nim', $mahasiswa->nim)->get();
-
-        // dd($krs);
-        return view('dashboard.master.input-nilai.edit', compact('mahasiswa','krs'));
+        $tahun_akademik = TahunAcademic::all(); // tambahkan model TahunAkademik dan ambil semua data tahun akademik
+    
+        // filter data krs berdasarkan tahun_akademik_id dan nim mahasiswa
+        $krs = Krs::where('nim', $mahasiswa->nim)
+            ->whereIn('tahun_academic_id', $tahun_akademik->pluck('id')) // hanya tampilkan krs yang tahun_akademik_id nya ada di dalam data tahun_akademik
+            ->get();
+    
+        return view('dashboard.master.input-nilai.edit', compact('mahasiswa', 'krs', 'tahun_akademik')); // tambahkan variable $tahun_akademik untuk dikirimkan ke view
     }
+    
+
+    public function update(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'tahun_academic_id.*' => 'required',
+        'mahasiswa_id.*' => 'required',
+        'mata_kuliahs_id.*' => 'required',
+        'tugas.*' => 'required',
+        'kuis.*' => 'required',
+        'uts.*' => 'required',
+        'uas.*' => 'required',
+        'nilai_akhir.*' => 'required',
+    ]);
+
+    if ($validator->fails()) {
+        return redirect()->back()
+            ->withErrors($validator)
+            ->withInput()
+            ->with('error', 'Nilai gagal disimpan.');
+    }
+
+    $tahun_academic_id = $request->input('tahun_academic_id');
+    $mahasiswa_id = $request->input('mahasiswa_id');
+    $mata_kuliahs_id = $request->input('mata_kuliahs_id');
+    $tugas = $request->input('tugas');
+    $kuis = $request->input('kuis');
+    $uts = $request->input('uts');
+    $uas = $request->input('uas');
+    $nilai_akhir = $request->input('nilai_akhir');
+
+    // loop through the input arrays to create the new records
+    foreach ($tahun_academic_id as $key => $value) {
+        $nilai = new Nilai;
+        $nilai->tahun_academic_id = $tahun_academic_id[$key];
+        $nilai->mahasiswas_id = $mahasiswa_id[$key];
+        $nilai->mata_kuliahs_id = $mata_kuliahs_id[$key];
+        $nilai->tugas = $tugas[$key];
+        $nilai->kuis = $kuis[$key];
+        $nilai->uts = $uts[$key];
+        $nilai->uas = $uas[$key];
+        $nilai->nilai_akhir = $nilai_akhir[$key];
+        $nilai->save();
+    }
+
+    return redirect()->back()->with('success', 'Nilai berhasil disimpan.');
+}
+
+
 }
