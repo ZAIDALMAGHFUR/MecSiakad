@@ -268,7 +268,7 @@
                     <li><a href="{{ route('khs') }}">KHS</a></li>
                     <li><a href="{{ route('nilai') }}">Input Nilai</a></li>
                     <li><a href="{{ route('change') }}">Edit Nilai</a></li>
-                    <li><a href="http://">Rentang Nilai</a></li>
+                    <li><a href="{{ route('rentang') }}">Rentang Nilai</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i

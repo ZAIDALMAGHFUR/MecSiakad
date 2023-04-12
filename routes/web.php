@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\EditNilaiController;
 use App\Http\Controllers\PMB\PendaftaranController;
 use App\Http\Controllers\PMB\PersyaratanController;
 use App\Http\Controllers\Admin\AdminDosenController;
+use App\Http\Controllers\Admin\BobotNilaiController;
 use App\Http\Controllers\Admin\InputNilaiController;
 use App\Http\Controllers\Admin\ThnAkademikController;
 use App\Http\Controllers\Admin\DosenJabatanController;
@@ -125,6 +126,16 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::post('update/{id}', 'update')->name('dsnjabatan.update');
         Route::delete('delete/{id}', 'destroy')->name('dsnjabatan.delete');
     });
+
+    //rentang nilai
+        Route::controller(BobotNilaiController::class)->prefix('rentang')->group(function () {
+            Route::get('', 'index')->name('rentang');
+            Route::get('add', 'add')->name('rentang.add');
+            Route::post('save', 'store')->name('rentang.save');
+            Route::get('edit/{id}', 'edit')->name('rentang.edit');
+            Route::post('update/{id}', 'update')->name('rentang.update');
+            Route::delete('delete/{id}', 'destroy')->name('rentang.delete');
+        });
 
     //krs
     Route::controller(KrsController::class)->prefix('krs')->group(function () {
