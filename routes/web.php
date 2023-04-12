@@ -149,7 +149,8 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
     Route::controller(EditNilaiController::class)->prefix('change')->group(function () {
         Route::get('', 'index')->name('change');
         Route::get('edit/{id}', 'change')->name('change.edit');
-        Route::post('update', 'update')->name('change.update');
+        Route::get('replacement/{id}', 'replacement')->name('change.replacement');
+        Route::post('update/{id}', 'update')->name('change.update');
         Route::delete('delete/{id}', 'destroy')->name('change.delete');
     });
 

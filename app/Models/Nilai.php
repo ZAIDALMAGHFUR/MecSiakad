@@ -19,7 +19,7 @@ class Nilai extends Model
 
     public function Mahasiswa()
     {
-        return $this->belongsTo(Mahasiswa::class);
+        return $this->belongsTo(Mahasiswa::class, 'mahasiswas_id');
     }
 
     public function Program_studies()
@@ -27,9 +27,9 @@ class Nilai extends Model
         return $this->belongsTo(Program_studies::class);
     }
 
-    public function Mata_kuliah()
+    public function mataKuliah()
     {
-        return $this->belongsTo(Mata_kuliah::class);
+        return $this->belongsTo(Mata_kuliah::class, 'mata_kuliahs_id');
     }
 
     public function krs()
