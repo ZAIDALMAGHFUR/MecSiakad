@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreign('prodi_penerima')->references('id')->on('program_studies')->onUpdate('cascade')->onDelete('cascade')->nullable();
             $table->integer('nilai_interview')->nullable();
             $table->integer('nilai_test')->nullable();
-            $table->boolean('status');
+            // $table->boolean('status');
             $table->timestamps();
         });
     }

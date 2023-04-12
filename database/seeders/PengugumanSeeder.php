@@ -23,7 +23,7 @@ class PengugumanSeeder extends Seeder
             'prodi_penerima' => '1',
             'nilai_interview' => '90',
             'nilai_test' => '90',
-            'status' => '0',
+            // 'status' => '0',
         ]);
     }
 }

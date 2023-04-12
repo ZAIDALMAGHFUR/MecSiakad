@@ -32,12 +32,12 @@ class Pengumuman extends Model
 
     public static function id()
     {
-    	$data = DB::table('pembayarans')->orderby('id_pendaftaran','DESC')->first();
+        $data = DB::table('pembayarans')->orderby('id_pendaftaran','DESC')->first();
 		$kodeakhir5 = substr($data->id_pendaftaran,-3);
 		$kodeku= (int)$kodeakhir5;
 		$addNol = '';
 		$kodetb = 'TAG';
-		//$kode = str_replace($kodetb,"", $kode);
+		// $kode = str_replace($kodetb,"", $kode);
 		$kode = (int)$kodeku + 1;
 		$incrementKode = $kode;
 
@@ -51,7 +51,7 @@ class Pengumuman extends Model
 		} elseif (strlen($kode) == 4) {
 			$addNol = "";
 		}
-		$kodeBaru = 'ANN'.now()->format('y').$addNol.$incrementKode;
-    	return $kodeBaru;
+		$kodeBaru = 'ACNNPC'.now()->format('y').$addNol.$incrementKode;
+        return $kodeBaru;
     }
 }
