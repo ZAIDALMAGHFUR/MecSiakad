@@ -61,7 +61,6 @@
                 </div>
             </div>
             <div class="container-fluid">
-        
                 <center class="mb-5">
                     <table>
                         <tr>
@@ -82,7 +81,8 @@
                         </tr>
                     </table>
                 </center>
-                <table class="display table table-bordered">
+                <div class="table-responsive">
+                  <table class="table table-bordered">
                     <tr>
                       <th>NO</th>
                       <th>KODE MATA KULIAH</th>
@@ -133,6 +133,7 @@
                         <td colspan="2"><strong>{{ $total_sks }}</strong></td>
                     </tr>
                 </table>
+                </div>
                 <div class="m-5">
                   <h3>Index Prestasi: {{ $ipk }}</h3>
                 </div>

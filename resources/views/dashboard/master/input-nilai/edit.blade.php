@@ -50,7 +50,6 @@
     <div class="col-sm-12">
       <div class="card">
         <div class="card-body">
-          <div class="table-responsive">
             <div class="row mb-3">
               <div class="col-md-12 col-12">
                 <div class="card text-left">
@@ -89,7 +88,6 @@
                 </form>
             </div>
           <div class="row mb-3">
-            <div class="col-md-12 col-12">
               <div class="card mb-4">
                   <div class="card-body">
                       <div class="row mb-3">
@@ -105,7 +103,8 @@
                         <input type="hidden" name="dosen_matkul_id" value="">
                         @csrf
                         @method('POST')
-                        <table class="table table-responsive-sm">
+                        <div class="table-responsive">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th width="20%">NIM</th>
@@ -150,9 +149,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        </div>
                     </form>                    
                   </div>
-                </div>
             </div>
           </div>
           </div>
