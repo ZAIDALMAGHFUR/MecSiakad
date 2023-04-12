@@ -53,6 +53,7 @@ class InputNilaiController extends Controller
         'mata_kuliahs_id.*' => 'required',
         'tugas.*' => 'required',
         'kuis.*' => 'required',
+        'partisipasi_pembelajaran.*' => 'required',
         'uts.*' => 'required',
         'uas.*' => 'required',
         'nilai_akhir.*' => 'required',
@@ -69,6 +70,7 @@ class InputNilaiController extends Controller
     $mahasiswa_id = $request->input('mahasiswa_id');
     $mata_kuliahs_id = $request->input('mata_kuliahs_id');
     $tugas = $request->input('tugas');
+    $partisipasi_pembelajaran = $request->input('partisipasi_pembelajaran');
     $kuis = $request->input('kuis');
     $uts = $request->input('uts');
     $uas = $request->input('uas');
@@ -81,6 +83,7 @@ class InputNilaiController extends Controller
         $nilai->mahasiswas_id = $mahasiswa_id[$key];
         $nilai->mata_kuliahs_id = $mata_kuliahs_id[$key];
         $nilai->tugas = $tugas[$key];
+        $nilai->partisipasi_pembelajaran = $partisipasi_pembelajaran[$key];
         $nilai->kuis = $kuis[$key];
         $nilai->uts = $uts[$key];
         $nilai->uas = $uas[$key];

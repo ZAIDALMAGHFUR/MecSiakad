@@ -111,6 +111,7 @@
                                     <th width="20%">NIM</th>
                                     <th width="20%">Mata Kuliah</th>
                                     <th width="10%" class="text-center">Tugas</th>
+                                    <th width="10%" class="text-center">Partisipasi Pembelajaran</th>
                                     <th width="10%" class="text-center">Kuis</th>
                                     <th width="10%" class="text-center">UTS</th>
                                     <th width="10%" class="text-center">UAS</th>
@@ -129,6 +130,9 @@
                                     <td>{{ $k['mataKuliah']['name_mata_kuliah'] }}</td>
                                     <td>
                                         <input type="number" class="form-control form-control-sm kuis" value="{{ $k->kuis }}" name="kuis[]">
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control form-control-sm partisipasi_pembelajaran" value="{{ $k->partisipasi_pembelajaran }}" name="partisipasi_pembelajaran[]">
                                     </td>
                                     <td>
                                         <input type="number" class="form-control form-control-sm tugas" value="{{ $k->tugas }}" name="tugas[]">
@@ -178,19 +182,21 @@
 
       // ambil input dengan kelas yang sesuai
       let tugas = this.getElementsByClassName('tugas')[0];
+      let partisipasi_pembelajaran = this.getElementsByClassName('partisipasi_pembelajaran')[0];
       let kuis = this.getElementsByClassName('kuis')[0];
       let uts = this.getElementsByClassName('uts')[0];
       let uas = this.getElementsByClassName('uas')[0];
       let nilai_akhir = this.getElementsByClassName('nilai_akhir')[0];
 
       let nilai_tugas = parseInt(tugas.value) || 0;
+      let nilai_partisipasi_pembelajaran = parseInt(partisipasi_pembelajaran.value) || 0;
       let nilai_kuis = parseInt(kuis.value) || 0;
       let nilai_uts = parseInt(uts.value) || 0;
       let nilai_uas = parseInt(uas.value) || 0;
 
       function calculateNilaiAkhir() {
         // calculate the final value
-        let finalValue = Number(nilai_kuis) + Number(nilai_tugas) + Number(nilai_uts) + Number(nilai_uas);
+        let finalValue = Number(nilai_kuis) + Number(nilai_tugas) + Number(nilai_partisipasi_pembelajaran) + Number(nilai_uts) + Number(nilai_uas);
         // set the value to the input
         nilai_akhir.value = finalValue;
       }
@@ -202,6 +208,13 @@
       tugas.addEventListener('keyup', function() {
         if (tugas.value !== "") {
           nilai_tugas = parseInt(this.value);
+          calculateNilaiAkhir();
+        }
+      });
+
+      partisipasi_pembelajaran.addEventListener('keyup', function() {
+        if (partisipasi_pembelajaran.value !== "") {
+          nilai_partisipasi_pembelajaran = parseInt(this.value);
           calculateNilaiAkhir();
         }
       });

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign('mahasiswas_id')->references('id')->on('mahasiswas')->onDelete('cascade');
             $table->string('tugas');
             $table->string('kuis');
+            $table->string('partisipasi_pembelajaran');
             $table->string('uts');
             $table->string('uas');
             $table->string('nilai_akhir');
