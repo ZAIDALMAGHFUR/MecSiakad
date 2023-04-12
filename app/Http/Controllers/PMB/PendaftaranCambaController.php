@@ -39,6 +39,49 @@ class PendaftaranCambaController extends Controller
     {
         // dd($request->all());
 
+        $this -> validate($request, [
+            'id_pendaftaran' => 'required',
+            'users_id' =>'required',
+            'nisn' => 'required',
+            'nik' =>'required',
+            'nama_siswa' => 'required',
+            'jenis_kelamin' => 'required',
+            'pas_foto' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'agama' => 'required',
+
+            'email' => 'required',
+            'no_hp' =>'required',
+            
+            'alamat' => 'required',
+
+            'jadwal_pmbs_id' => 'required',
+            'pil1' => 'required',
+            'pil2' => 'required',
+            
+            'nama_ayah' => 'required',
+            'nama_ibu' =>'required',
+            'pekerjaan_ayah' => 'required',
+            'pekerjaan_ibu' =>'required',
+            'nohp_ayah' => 'required',
+            'nohp_ibu' => 'required',
+            'penghasilan_ayah' => 'required',
+            'penghasilan_ibu' => 'required',
+            'berkas_ortu' =>  'required',
+
+            'asal_sekolah' => 'required',
+            'smt1' => 'required',
+            'smt2' => 'required',
+            'smt3' => 'required',
+            'smt4' => 'required',
+            'smt5' => 'required',
+            'smt6' => 'required',
+            'berkas_siswa' => 'required',
+            'prestasi' => 'required',
+
+        ]);
+
         $dataUser = User::all();
 
         $kodependaftaran = Pendaftaran::id();

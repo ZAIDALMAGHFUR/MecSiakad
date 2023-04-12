@@ -52,6 +52,61 @@
         <div class="card-body">
             <div class="row mb-3">
               <div class="col-md-12 col-12">
+                <div class="card">
+                  <a href="#parental-data" class="collapsed text-dark" data-bs-toggle="collapse">
+                      <div class="p-4">
+                          <div class="d-flex align-items-center">
+                              <div class="flex-shrink-0 me-3"> <i class="uil uil-bill text-primary h2"></i>
+                              </div>
+                              <div class="flex-grow-1 overflow-hidden">
+                                  <h5 class="font-size-16 mb-1">Kriteria Pengisian Nilai</h5>
+                                  <p class="text-muted text-truncate mb-0">Rentang Nilai, Bobot Nilai, Nilai Huruf.
+                                  </p>
+                              </div>
+                              <div class="flex-shrink-0"> <i
+                                      class="mdi mdi-chevron-up accor-down-icon font-size-24"></i> </div>
+                          </div>
+                      </div>
+                  </a>
+                  <div id="parental-data" class="collapse">
+                      <div class="p-4 border-top">
+                          <div class="row">
+                              <div class="col-lg-4">
+                                  <div class="mb-3 mb-4">
+                                      @foreach ($bobot as $item)
+                                        <p class="form-label" for="nama_ayah">Nama Nilai = {{ $item->nama_rentang_nilai }}</p>
+                                      @endforeach
+                                  </div>
+                              </div>
+                              <div class="col-lg-4">
+                                  <div class="mb-3 mb-4">
+                                    @foreach ($bobot as $it)
+                                      <p class="form-label" for="nama_ayah">Nilai Max = {{ $it->rentang_nilai }}</p>
+                                    @endforeach
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="p-4">
+                          <div class="row">
+                              <div class="col-lg-4">
+                                  <div class="mb-3 mb-4">
+                                      @foreach ($bobot as $p)
+                                        <p class="form-label" for="nama_ayah">Nilai Hufur = {{ $p->huruf_nilai }}</p>
+                                      @endforeach
+                                  </div>
+                              </div>
+                              <div class="col-lg-4">
+                                  <div class="mb-3 mb-4">
+                                    @foreach ($bobot as $b)
+                                      <p class="form-label" for="nama_ayah">Nilai Bobot = {{ $b->bobot_nilai }}</p>
+                                    @endforeach
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
                 <div class="card text-left">
                   <div class="card-body">
                       <h4 class="card-title">Info</h4>

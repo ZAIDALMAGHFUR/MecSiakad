@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\TahunAcademic;
 use App\Models\Program_studies;
 use App\Http\Controllers\Controller;
+use App\Models\BobotNilai;
 use Illuminate\Support\Facades\Validator;
 
 class InputNilaiController extends Controller
@@ -24,6 +25,7 @@ class InputNilaiController extends Controller
 
     public function edit(Request $request, $id)
     {
+        $bobot = BobotNilai::all();
         $mahasiswa = Mahasiswa::where('id', $id)->first();
         $tahun_akademik = TahunAcademic::all();
         
@@ -40,7 +42,7 @@ class InputNilaiController extends Controller
 
         // dd($krsQuery);
     
-        return view('dashboard.master.input-nilai.edit', compact('mahasiswa', 'krs', 'tahun_akademik'));
+        return view('dashboard.master.input-nilai.edit', compact('mahasiswa', 'krs', 'tahun_akademik', 'bobot'));
     }
     
 
