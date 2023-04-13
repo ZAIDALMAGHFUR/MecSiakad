@@ -252,6 +252,7 @@
                     <li><a href="{{ route('matkul') }}">Mata Kuliah</a></li>
                     <li><a href="{{ route('jabatan') }}">Jabatan Dosen</a></li>
                     <li><a href="{{ route('dsnjabatan') }}">Dosen Jabatan</a></li>
+                    <li><a href="{{ route('dsnmatkul') }}">Dosen Matkul</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i

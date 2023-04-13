@@ -22,12 +22,14 @@ use App\Http\Controllers\PMB\PersyaratanController;
 use App\Http\Controllers\Admin\AdminDosenController;
 use App\Http\Controllers\Admin\BobotNilaiController;
 use App\Http\Controllers\Admin\InputNilaiController;
+use App\Http\Controllers\Admin\DosenMatkulController;
 use App\Http\Controllers\Admin\ThnAkademikController;
 use App\Http\Controllers\Admin\DosenJabatanController;
 use App\Http\Controllers\Admin\JabatanDosenController;
 use App\Http\Controllers\PMB\PengumumanCambaController;
 use App\Http\Controllers\PMB\PendaftaranCambaController;
 use App\Http\Controllers\Admin\CreateMahasiswaController;
+use App\Http\Controllers\Dosen\DosenMataKuliahDosenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -125,6 +127,16 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::get('edit/{id}', 'edit')->name('dsnjabatan.edit');
         Route::post('update/{id}', 'update')->name('dsnjabatan.update');
         Route::delete('delete/{id}', 'destroy')->name('dsnjabatan.delete');
+    });
+
+    //dosen matkul
+    Route::controller(DosenMatkulController::class)->prefix('dsnmatkul')->group(function () {
+        Route::get('', 'index')->name('dsnmatkul');
+        Route::get('add', 'create')->name('dsnmatkul.add');
+        Route::post('save', 'store')->name('dsnmatkul.save');
+        Route::get('edit/{id}', 'edit')->name('dsnmatkul.edit');
+        Route::post('update/{id}', 'update')->name('dsnmatkul.update');
+        Route::delete('delete/{id}', 'destroy')->name('dsnmatkul.delete');
     });
 
     //rentang nilai
@@ -255,6 +267,16 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
 //dosen
 Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {
     Route::get('/dosen', [DosenController::class, 'index'])->name('dosen');
+
+    //matakuliah
+    Route::controller(DosenMataKuliahDosenController::class)->prefix('matkuldosen')->group(function () {
+        Route::get('', 'index')->name('matkuldosen');
+        Route::get('add', 'add')->name('matkuldosen.add');
+        Route::post('save', 'store')->name('matkuldosen.save');
+        Route::get('edit/{id}', 'edit')->name('matkuldosen.edit');
+        Route::post('update/{id}', 'update')->name('matkuldosen.update');
+        Route::delete('delete/{id}', 'destroy')->name('matkuldosen.delete');
+    });
 });
 
 

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Krs;
+use App\Models\Dosen;
 use App\Models\Nilai;
 use App\Models\Program_studies;
 use Illuminate\Database\Eloquent\Model;
@@ -32,5 +33,10 @@ class Mata_Kuliah extends Model
     public function nilai()
     {
         return $this->hasMany(Nilai::class, 'mata_kuliahs_id', 'nim');
+    }
+
+    public function dosen()
+    {
+        return $this->belongsTo(Dosen::class);
     }
 }
