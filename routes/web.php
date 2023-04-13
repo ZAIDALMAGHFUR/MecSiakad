@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\KhsController;
 use App\Http\Controllers\Admin\KrsController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PMB\FotosController;
+use App\Http\Controllers\Dosen\NilaiController;
 use App\Http\Controllers\Admin\MatkulController;
 use App\Http\Controllers\PMB\PenggunaController;
 use App\Http\Controllers\PMB\JadwalPmbController;
@@ -271,11 +272,11 @@ Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {
     //matakuliah
     Route::controller(DosenMataKuliahDosenController::class)->prefix('matkuldosen')->group(function () {
         Route::get('', 'index')->name('matkuldosen');
-        Route::get('add', 'add')->name('matkuldosen.add');
-        Route::post('save', 'store')->name('matkuldosen.save');
-        Route::get('edit/{id}', 'edit')->name('matkuldosen.edit');
-        Route::post('update/{id}', 'update')->name('matkuldosen.update');
-        Route::delete('delete/{id}', 'destroy')->name('matkuldosen.delete');
+    });
+
+    //input nilai
+    Route::controller(NilaiController::class)->prefix('nilaidosen')->group(function () {
+        Route::get('', 'index')->name('nilaidosen');
     });
 });
 

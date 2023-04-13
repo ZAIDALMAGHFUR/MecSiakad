@@ -247,7 +247,7 @@
                       data-feather="users"></i><span>Penilaian</span></a>
                   <ul class="nav-submenu menu-content">
                     <li>
-                      <a href="">Data Penilaian</a>
+                      <a href="{{ route('nilaidosen') }}">Data Penilaian</a>
                     </li>
                   </ul>
                 </li>
