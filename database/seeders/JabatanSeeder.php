@@ -16,8 +16,8 @@ class JabatanSeeder extends Seeder
     public function run()
     {
         Jabatan::create([
-            'nama_jabatan' => 'Dosen Tetap',
-            'kode_jabatan' => 'DT',
+            'nama_jabatan' => 'Ketua Prodi',
+            'kode_jabatan' => 'KP',
         ]);
     }
 }

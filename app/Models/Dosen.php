@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use App\Models\Program_studies;
 use App\Models\Mata_Kuliah;
+use App\Models\DosenJabatan;
+use App\Models\Program_studies;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Dosen extends Model
 {
@@ -23,5 +24,10 @@ class Dosen extends Model
     public function mataKuliahs()
     {
         return $this->hasMany(Mata_Kuliah::class);
+    }
+
+    public function dosenJabatans()
+    {
+        return $this->hasMany(DosenJabatan::class, 'jabatan_id');
     }
 }

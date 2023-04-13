@@ -66,11 +66,11 @@
                   @foreach ($dsnmatkul as $item)
                     <tr>
                       <td style="text-align: center">{{ $loop->iteration }}</td>
-                      <td>{{ $item->mataKuliah->kode_mata_kuliah }}</td>
-                      <td>{{ $item->mataKuliah->name_mata_kuliah }}</td>
-                      <td>{{ $item->mataKuliah->sks }}</td>
-                      <td>{{ $item->programStudies->name}}</td>
-                      <td>{{ $item->tahunAcademic->tahun_akademik }}</td>
+                      <td>{{ $item->kode_mata_kuliah }}</td>
+                      <td>{{ $item->name_mata_kuliah }}</td>
+                      <td>{{ $item->sks }}</td>
+                      <td>{{ $item->program_studies->name}}</td>
+                      <td>{{ $item }}</td>
                     </tr>
                   @endforeach
                 </tbody>

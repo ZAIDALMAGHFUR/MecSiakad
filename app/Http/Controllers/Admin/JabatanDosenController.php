@@ -66,6 +66,12 @@ class JabatanDosenController extends Controller
 
     public function destroy($id)
     {
+        if ($id == 1) {
+            return redirect()->route('jabatan')->with([
+                'error' => 'Gabisa dihapus Bro',
+                'alert-type' => 'error'
+            ]);
+        }
         $data = Jabatan::find($id);
         $data->delete();
 
