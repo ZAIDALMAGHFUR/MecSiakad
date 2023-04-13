@@ -55,14 +55,24 @@
                 <thead>
                   <tr style="text-align: center">
                     <th style="width: 55px">No</th>
-                    <th>Foto Brosur 1</th>
-                    <th>Foto Brosur 2</th>
-                    <th>Foto Brosur 3</th>
-                    <th>foto kampus 4</th>
-                    <th>Action</th>
+                    <th>Kode Mk</th>
+                    <th>Nama MK</th>
+                    <th>Jumlah Sks</th>
+                    <th>Program Studi</th>
+                    <th>Tahun Academic</th>
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach ($dsnmatkul as $item)
+                    <tr>
+                      <td style="text-align: center">{{ $loop->iteration }}</td>
+                      <td>{{ $item->mataKuliah->kode_mata_kuliah }}</td>
+                      <td>{{ $item->mataKuliah->name_mata_kuliah }}</td>
+                      <td>{{ $item->mataKuliah->sks }}</td>
+                      <td>{{ $item->programStudies->name}}</td>
+                      <td>{{ $item->tahunAcademic->tahun_akademik }}</td>
+                    </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>
