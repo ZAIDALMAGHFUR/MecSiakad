@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Dosen;
 
 use App\Models\Krs;
+use App\Models\Dosen;
 use App\Models\Nilai;
 use App\Models\Mahasiswa;
 use App\Models\BobotNilai;
+use App\Models\DosenMatkul;
 use Illuminate\Http\Request;
 use App\Models\TahunAcademic;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Mata_Kuliah;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class NilaiController extends Controller
 {
@@ -20,26 +24,47 @@ class NilaiController extends Controller
         return view('dashboard.dosen.input-nilai.index', compact('mahasiswa', 'nilai'));
     }
 
+
+
+
     public function find(Request $request, $id){
         $bobot = BobotNilai::all();
         $mahasiswa = Mahasiswa::where('id', $id)->first();
         $tahun_akademik = TahunAcademic::all();
-
-        $krsQuery = Krs::query()
-        ->where('nim', $mahasiswa->nim);
+        $dosen = Dosen::Where('users_id', Auth::user()->id)->first();
         
+        if ($dosen->dosenJabatans()->first()->jabatan_id != '1') {
+            $dsnmatkul = DosenMatkul::where('dosen_id', $dosen->id)
+                ->where('program_studies_id', $mahasiswa->program_studies_id)
+                ->pluck('mata_kuliah_id');
+                //dd($dsnmatkul);
+            $krsQuery = Krs::query()
+                ->whereIn('mata_kuliah_id', $dsnmatkul, 'OR');
+                //->where('nim', $mahasiswa->nim);
+        } else {
+            $dsnmatkul = DosenMatkul::where('dosen_id', $dosen->id)->get();
+            $turu = Mata_Kuliah::whereIn('program_studies_id', $dsnmatkul->pluck('program_studies_id'))->get()->pluck('id');
+            $krsQuery = Krs::query()
+                ->whereIn('mata_kuliah_id', $turu, 'OR')
+                ->where('nim', $mahasiswa->nim);
+        }
+    
         if($request->has('tahun_academic_id')){
             $krsQuery->where('tahun_academic_id', $request->tahun_academic_id);
         }else{
             $krsQuery->whereIn('tahun_academic_id', $tahun_akademik->pluck('id'));
         }
-        
+    
         $krs = $krsQuery->get();
 
-        // dd($krsQuery);
-
+            //dd(json_encode($krs, JSON_PRETTY_PRINT));
+        //  dd($krs);
+    
         return view('dashboard.dosen.input-nilai.edit', compact('mahasiswa', 'krs', 'tahun_akademik', 'bobot'));
     }
+    
+
+
 
     public function update(Request $request)
 {

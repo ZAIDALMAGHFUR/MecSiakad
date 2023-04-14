@@ -279,7 +279,6 @@ Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {
         Route::get('', 'index')->name('nilaidosen');
         Route::get('find/{id}', 'find')->name('nilaidosen.find');
         Route::post('update', 'update')->name('nilaidosen.update');
-
     });
 });
 
