@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dosen')
 @section('content')
 
 @pushOnce('css')
