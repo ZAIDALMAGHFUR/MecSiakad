@@ -277,6 +277,9 @@ Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {
     //input nilai
     Route::controller(NilaiController::class)->prefix('nilaidosen')->group(function () {
         Route::get('', 'index')->name('nilaidosen');
+        Route::get('find/{id}', 'find')->name('nilaidosen.find');
+        Route::post('update', 'update')->name('nilaidosen.update');
+
     });
 });
 

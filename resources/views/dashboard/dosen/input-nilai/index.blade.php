@@ -62,27 +62,19 @@
                   </tr>
                 </thead>
                 <tbody>
-                  {{-- @foreach ($data as $a)
+                    @foreach ($mahasiswa as $a)
                     <tr style="text-align: center">
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{ $a->nama_dosen }}</td>
-                      <td>{{ $a->nama_jabatan }}</td>
-                      <td>{{ $a->name }}</td>
-                      <td>{{ $a->tahun_akademik }}</td>
+                      <td>{{ $a['nim'] }}</td>
+                      <td>{{ $a['name'] }}</td>
+                      <td>{{ $a->program_studies->name }}</td>
                       <td style="text-align: center">
-
-                        <a href="">
+                        <a href="{{ route('nilaidosen.find', [$a]) }}">
                           <button class="btn btn-primary btn-sm edit" type="button"><i class="fa fa-edit"></i></button>
                         </a>
-
-                        <form method="POST" action="" class="d-inline">
-                          @csrf
-                          @method('DELETE')
-                          <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-trash"></i></button>
-                        </form>
                       </td>
                     </tr>
-                  @endforeach --}}
+                  @endforeach
                 </tbody>
               </table>
             </div>
