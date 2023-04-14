@@ -30,18 +30,18 @@
                 <li><a href="javascript:void(0)" data-container="body" data-bs-toggle="popover" data-placement="top"
                     title="" data-original-title="Learning"><i data-feather="layers"></i></a></li>
                 <li><a href="javascript:void(0)"><i class="bookmark-search" data-feather="star"></i></a>
-                  <form class="form-inline search-form">
-                    <div class="form-group form-control-search">
-                      <input type="text" placeholder="Search..">
-                    </div>
-                  </form>
+                    <form class="form-inline search-form">
+                        <div class="form-group form-control-search">
+                            <input type="text" placeholder="Search..">
+                        </div>
+                    </form>
                 </li>
-              </ul>
+            </ul>
             </div>
             <!-- Bookmark Ends-->
-          </div>
         </div>
-      </div>
+        </div>
+    </div>
     </div>
     <div class="container-fluid">
       <div class="col-sm-12">
