@@ -162,6 +162,7 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
+                                  <th style="width: 55px">No</th>
                                     <th width="20%">NIM</th>
                                     <th width="20%">Mata Kuliah</th>
                                     <th width="10%" class="text-center">Tugas</th>
@@ -176,11 +177,12 @@
                             </thead>
                             <tbody>
                                 @foreach ($krs as $k)
-                                <tr class="rowData">
+                                <tr class="rowData" >
                                     <input type="hidden"  value="{{ $k->tahun_academic_id }}" name="tahun_academic_id[]">
                                     <input type="hidden" value="{{ $mahasiswa->id }}" name="mahasiswa_id[]">
                                     <input type="hidden" value="{{ $k->mata_kuliah_id }}" name="mata_kuliahs_id[]">
-                                    <td scope="row">{{ $k->nim }}</td>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $k->nim }}</td>
                                     <td>{{ $k['mataKuliah']['name_mata_kuliah'] }}</td>
                                     <td>
                                         <input type="number" class="form-control form-control-sm kuis" value="{{ $k->kuis }}" name="kuis[]">
