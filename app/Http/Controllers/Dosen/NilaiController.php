@@ -34,13 +34,11 @@ class NilaiController extends Controller
         $dosen = Dosen::Where('users_id', Auth::user()->id)->first();
         
         if ($dosen->dosenJabatans()->first()->jabatan_id != '1') {
-            $dsnmatkul = DosenMatkul::where('dosen_id', $dosen->id)
-                ->where('program_studies_id', $mahasiswa->program_studies_id)
-                ->pluck('mata_kuliah_id');
-                //dd($dsnmatkul);
             $krsQuery = Krs::query()
-                ->whereIn('mata_kuliah_id', $dsnmatkul, 'OR');
-                //->where('nim', $mahasiswa->nim);
+                ->where('nim', $mahasiswa->nim);
+            $dsnmatkul = DosenMatkul::where('dosen_id', $dosen->id)
+                ->pluck('mata_kuliah_id');
+            $krsQuery->whereIn('mata_kuliah_id', $dsnmatkul);
         } else {
             $dsnmatkul = DosenMatkul::where('dosen_id', $dosen->id)->get();
             $turu = Mata_Kuliah::whereIn('program_studies_id', $dsnmatkul->pluck('program_studies_id'))->get()->pluck('id');
@@ -56,9 +54,6 @@ class NilaiController extends Controller
         }
     
         $krs = $krsQuery->get();
-
-            //dd(json_encode($krs, JSON_PRETTY_PRINT));
-        //  dd($krs);
     
         return view('dashboard.dosen.input-nilai.edit', compact('mahasiswa', 'krs', 'tahun_akademik', 'bobot'));
     }
