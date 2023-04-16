@@ -28,9 +28,25 @@ class EdiNilaiMahasiswaController extends Controller
         $mahasiswa = Mahasiswa::where('id', $id)->first();
         $nilai = Nilai::where('mahasiswas_id', $id)->get();
         $tahun_akademik = TahunAcademic::all();
+        $dosen = Dosen::Where('users_id', Auth::user()->id)->first();
 
-        $nilaiQuery = Nilai::query()
-            ->where('mahasiswas_id', $mahasiswa->id);
+        if ($dosen->dosenJabatans()->first()->jabatan_id != '1') {
+            $nilaiQuery = Nilai::query()
+                ->where('mahasiswas_id', $mahasiswa->id);
+            $dsnmatkul = DosenMatkul::where('dosen_id', $dosen->id)
+                ->pluck('mata_kuliah_id');
+            $nilaiQuery->whereIn('mata_kuliahs_id', $dsnmatkul);
+        } else {
+            $dsnmatkul = DosenMatkul::where('dosen_id', $dosen->id)->get();
+            $turu = Mata_Kuliah::whereIn('program_studies_id', $dsnmatkul->pluck('program_studies_id'))->get()->pluck('id');
+            $nilaiQuery = Nilai::query()
+                ->whereIn('mata_kuliahs_id', $turu, 'OR')
+                ->where('mahasiswas_id', $mahasiswa->id);
+        }
+
+
+        // $nilaiQuery = Nilai::query()
+        //     ->where('mahasiswas_id', $mahasiswa->id);
 
         if($request->has('tahun_academic_id')){
             $nilaiQuery->where('tahun_academic_id', $request->tahun_academic_id);
