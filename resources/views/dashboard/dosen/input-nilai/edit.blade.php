@@ -185,13 +185,13 @@
                                     <td>{{ $k->nim }}</td>
                                     <td>{{ $k['mataKuliah']['name_mata_kuliah'] }}</td>
                                     <td>
+                                      <input type="number" class="form-control form-control-sm tugas" value="{{ $k->tugas }}" name="tugas[]">
+                                    </td>
+                                    <td>
+                                      <input type="number" class="form-control form-control-sm partisipasi_pembelajaran" value="{{ $k->partisipasi_pembelajaran }}" name="partisipasi_pembelajaran[]">
+                                    </td>
+                                    <td>
                                         <input type="number" class="form-control form-control-sm kuis" value="{{ $k->kuis }}" name="kuis[]">
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control form-control-sm partisipasi_pembelajaran" value="{{ $k->partisipasi_pembelajaran }}" name="partisipasi_pembelajaran[]">
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control form-control-sm tugas" value="{{ $k->tugas }}" name="tugas[]">
                                     </td>
                                     <td>
                                         <input type="number" class="form-control form-control-sm uts" value="{{ $k->uts }}" name="uts[]">
