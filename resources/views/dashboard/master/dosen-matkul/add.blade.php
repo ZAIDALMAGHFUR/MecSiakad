@@ -81,7 +81,7 @@
                         <div class="col-sm-10">
                           <select class="form-control" name="mata_kuliah_id" id="mata_kuliah_id">
                             @foreach ($mata_kuliahs as $item)
-                              <option value="{{ $item->id }}">{{ $item->name_mata_kuliah }}</option>
+                              <option value="{{ $item->id }}">{{ $item->name_mata_kuliah }} -{{ $item->program_studies->name }} </option>
                             @endforeach
                           </select>
                         </div>

@@ -90,6 +90,8 @@
             </div>
           </div>
         </div>
+        <h4>NB*</h4>
+        <b>1. Harus menambahakan mata kuliah dosen, jika di bukan dosen ketua prodi, maka di setiap mata kuliah yang di ajarkan, harus  di tambahakan mata kuliah nya nya</b>
       </div>
     </div>
   </div>

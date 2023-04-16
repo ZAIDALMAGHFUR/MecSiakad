@@ -23,7 +23,7 @@ class DosenMatkulController extends Controller
         $dosen = Dosen::all();
         $tahun_academics = TahunAcademic::all();
         $program_studies = Program_studies::all();
-        $mata_kuliahs = Mata_Kuliah::all();
+        $mata_kuliahs = Mata_Kuliah::with('program_studies')->get();
         return view('dashboard.master.dosen-matkul.add', compact('dosen', 'tahun_academics', 'program_studies', 'mata_kuliahs'));
     }
 
