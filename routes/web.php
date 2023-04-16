@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\JabatanDosenController;
 use App\Http\Controllers\PMB\PengumumanCambaController;
 use App\Http\Controllers\PMB\PendaftaranCambaController;
 use App\Http\Controllers\Admin\CreateMahasiswaController;
+use App\Http\Controllers\Dosen\EdiNilaiMahasiswaController;
 use App\Http\Controllers\Dosen\DosenMataKuliahDosenController;
 
 /*
@@ -280,6 +281,15 @@ Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {
         Route::get('find/{id}', 'find')->name('nilaidosen.find');
         Route::post('update', 'update')->name('nilaidosen.update');
     });
+
+        //edit nilai
+        Route::controller(EdiNilaiMahasiswaController::class)->prefix('compensation')->group(function () {
+            Route::get('', 'index')->name('compensation');
+            Route::get('edit/{id}', 'change')->name('compensation.edit');
+            Route::get('replacement/{id}', 'compensation')->name('compensation.replacement');
+            Route::post('update/{id}', 'update')->name('compensation.update');
+            Route::delete('delete/{id}', 'destroy')->name('compensation.delete');
+        });
 });
 
 

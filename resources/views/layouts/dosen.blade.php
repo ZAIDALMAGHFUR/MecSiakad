@@ -249,6 +249,9 @@
                     <li>
                       <a href="{{ route('nilaidosen') }}">Data Penilaian</a>
                     </li>
+                    <li>
+                      <a href="{{ route('compensation') }}">Edit Penilaian</a>
+                    </li>
                   </ul>
                 </li>
                 <li class="sidebar-main-title">
