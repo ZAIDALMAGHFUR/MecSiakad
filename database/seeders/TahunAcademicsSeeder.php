@@ -18,13 +18,13 @@ class TahunAcademicsSeeder extends Seeder
         TahunAcademic::create([
             'tahun_akademik' => '2020/2021',
             'semester' => 'Ganjil',
-            'status' => 'Aktif',
+            'status' => 'aktif',
         ]);
 
         TahunAcademic::create([
             'tahun_akademik' => '2021/2022',
             'semester' => 'Genap',
-            'status' => 'Tidak Aktif',
+            'status' => 'tidak aktif',
         ]);
     }
 }
