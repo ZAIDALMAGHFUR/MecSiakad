@@ -293,10 +293,16 @@ Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {
 });
 
 
+
+
+
 //mahasiswa
 Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
 });
+
+
+
 
 
 

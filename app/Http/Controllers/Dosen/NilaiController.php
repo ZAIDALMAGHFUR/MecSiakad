@@ -54,8 +54,14 @@ class NilaiController extends Controller
         }
     
         $krs = $krsQuery->get();
-    
-        return view('dashboard.dosen.input-nilai.edit', compact('mahasiswa', 'krs', 'tahun_akademik', 'bobot'));
+
+        $nilais = Nilai::where('mahasiswas_id', $id)
+        ->get()
+        // ->pluck('mata_kuliahs_id')
+        ->toArray();
+
+    return view('dashboard.dosen.input-nilai.edit', compact('mahasiswa', 'krs', 'tahun_akademik', 'bobot', 'nilais'));
+
     }
     
 
@@ -94,7 +100,8 @@ class NilaiController extends Controller
     $nilai_akhir = $request->input('nilai_akhir');
 
     // loop through the input arrays to create the new records
-    foreach ($tahun_academic_id as $key => $value) {
+    $total = count($tugas) - 1;
+    for ($key = 0; $key <= $total ; $key++) {
         $nilai = new Nilai;
         $nilai->tahun_academic_id = $tahun_academic_id[$key];
         $nilai->mahasiswas_id = $mahasiswa_id[$key];

@@ -176,7 +176,17 @@
                                 @endif
                             </thead>
                             <tbody>
-                                @foreach ($krs as $k)
+                            <?php $x = 0 ?>
+                              @foreach ($krs as $k)
+                              <?php if (! isset($nilais[$x]) ) {
+                                $nilais[$x]['tugas'] = '';
+                                $nilais[$x]['partisipasi_pembelajaran'] = '';
+                                $nilais[$x]['kuis'] = '';
+                                $nilais[$x]['uts'] = '';
+                                $nilais[$x]['uas'] = '';
+                                $nilais[$x]['nilai_akhir'] = '';
+                              }
+                              ?>
                                 <tr class="rowData">
                                     <input type="hidden"  value="{{ $k->tahun_academic_id }}" name="tahun_academic_id[]">
                                     <input type="hidden" value="{{ $mahasiswa->id }}" name="mahasiswa_id[]">
@@ -185,25 +195,27 @@
                                     <td>{{ $k->nim }}</td>
                                     <td>{{ $k['mataKuliah']['name_mata_kuliah'] }}</td>
                                     <td>
-                                      <input type="number" class="form-control form-control-sm tugas" value="{{ $k->tugas }}" name="tugas[]">
+                                        <input type="number" class="form-control form-control-sm tugas" value="{{ $nilais[$x]['tugas'] }}" name="tugas[]" {{ $nilais[$x]['tugas'] ? 'disabled' : '' }}>
                                     </td>
                                     <td>
-                                      <input type="number" class="form-control form-control-sm partisipasi_pembelajaran" value="{{ $k->partisipasi_pembelajaran }}" name="partisipasi_pembelajaran[]">
+                                        <input type="number" class="form-control form-control-sm partisipasi_pembelajaran" value="{{ $nilais[$x]['partisipasi_pembelajaran'] }}" name="partisipasi_pembelajaran[]" {{ $nilais[$x]['partisipasi_pembelajaran'] ? 'disabled' : '' }}>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm kuis" value="{{ $k->kuis }}" name="kuis[]">
+                                        <input type="number" class="form-control form-control-sm kuis" value="{{ $nilais[$x]['kuis'] }}" name="kuis[]" {{ $nilais[$x]['kuis'] ? 'disabled' : '' }}>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm uts" value="{{ $k->uts }}" name="uts[]">
+                                        <input type="number" class="form-control form-control-sm uts" value="{{ $nilais[$x]['uts'] }}" name="uts[]" {{ $nilais[$x]['uts'] ? 'disabled' : '' }}>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm uas" value="{{ $k->uas }}" name="uas[]">
+                                        <input type="number" class="form-control form-control-sm uas" value="{{ $nilais[$x]['uas'] }}" name="uas[]" {{ $nilais[$x]['uas'] ? 'disabled' : '' }}>
                                     </td>
                                     <td>
-                                        <input readonly type="number" class="form-control form-control-sm nilai_akhir" value="{{ $k->nilai_akhir }}" name="nilai_akhir[]">
+                                        <input readonly type="number" class="form-control form-control-sm nilai_akhir" value="{{ $nilais[$x]['nilai_akhir'] }}" name="nilai_akhir[]" {{ $nilais[$x]['nilai_akhir'] ? '' : '' }}>
                                     </td>
                                 </tr>
-                                @endforeach
+                                <?php $x++ ?>
+                            @endforeach
+                            
                             </tbody>
                         </table>
                         </div>
