@@ -12,6 +12,7 @@ use App\Http\Controllers\PMB\FotosController;
 use App\Http\Controllers\Dosen\NilaiController;
 use App\Http\Controllers\Admin\MatkulController;
 use App\Http\Controllers\PMB\PenggunaController;
+use App\Http\Controllers\Mahasiswa\GetController;
 use App\Http\Controllers\PMB\JadwalPmbController;
 use App\Http\Controllers\PMB\PendaftarController;
 use App\Http\Controllers\ProgrammStudiController;
@@ -299,6 +300,17 @@ Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {
 //mahasiswa
 Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
+
+
+    //ambil krs
+    Route::controller(GetController::class)->prefix('mhskrs')->group(function () {
+        Route::get('', 'index')->name('mhskrs');
+        Route::get('add', 'add')->name('mhskrs.add');
+        Route::post('save', 'store')->name('mhskrs.save');
+        Route::get('edit/{id}', 'edit')->name('mhskrs.edit');
+        Route::post('update/{id}', 'update')->name('mhskrs.update');
+        Route::delete('delete/{id}', 'destroy')->name('mhskrs.delete');
+    });
 });
 
 

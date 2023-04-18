@@ -238,63 +238,22 @@
                   </div>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-                      data-feather="grid"></i><span>Data Master</span></a>
+                      data-feather="grid"></i><span>Data KRS</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="">Kurikulum</a></li>
-                    <li><a href="">Tahun Akademik</a></li>
-                    <li><a href="">Gedung</a></li>
-                    <li><a href="">Ruangan</a></li>
-                    <li><a href="">Golongan</a></li>
-                    <li><a href="">Jenis PTK</a></li>
-                    <li><a href="">Jurusan</a></li>
-                    <li><a href="">Kelas</a></li>
-                    <li><a href="">Kepegawaian</a></li>
+                    <li><a href="{{ route('mhskrs') }}">Ambil Krs</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-                      data-feather="users"></i><span>Data Pengguna</span></a>
+                      data-feather="users"></i><span>Data KHS</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="">Siswa</a></li>
-                    <li><a href="">Guru</a></li>
-                    <li><a href="http://">Kepala
-                        Sekolah</a></li>
-                    <li><a href="http://">Admin</a></li>
+                    <li><a href="">Lihat KHS</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-                      data-feather="book"></i><span>Data Akademik</span></a>
+                      data-feather="users"></i><span>Ajukan Judul</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="http://">Kelompok Mapel</a></li>
-                    <li><a href="http://">Mata Pelajaran</a></li>
-                    <li><a href="http://">Jadwal Pelajaran</a></li>
-                    <li><a href="http://">Bahan & Tugas</a></li>
-                    <li><a href="http://">Kompetensi Dasar</a></li>
-                    <li><a href="http://">Penilaian Diri</a></li>
-                    <li><a href="http://">Rentang Nilai</a></li>
+                    <li><a href="">Ajukan Judul</a></li>
                   </ul>
-                </li>
-                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-                      data-feather="calendar"></i><span>Data Absensi</span></a>
-                  <ul class="nav-submenu menu-content">
-                    <li><a href="http://">Absensi Guru</a></li>
-                    <li><a href="http://">Absensi Siswa</a></li>
-                    <li><a href="http://">Rekap Absensi</a></li>
-                  </ul>
-                </li>
-                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-                      data-feather="file-text"></i><span>Laporan Nilai Siswa</span></a>
-                  <ul class="nav-submenu menu-content">
-                    <li><a href="http://">Nilai UTS</a></li>
-                    <li><a href="http://">Nilai Raport</a></li>
-                    <li><a href="http://">Capaian Belajar</a></li>
-                    <li><a href="http://">Extrakulikuler</a></li>
-                    <li><a href="http://">Presentasi</a></li>
-                    <li><a href="http://">Raport UTS</a></li>
-                    <li><a href="http://">Cetak Raport</a></li>
-                  </ul>
-                </li>
-                <li class="dropdown"><a class="nav-link menu" href="javascript:void(0)"><i
-                      data-feather="book-open"></i><span>Jurnal KBM</span></a>
                 </li>
                 <li class="sidebar-main-title">
                   <div>
@@ -324,7 +283,7 @@
               <p class="mb-0">SIAKAD - Media Informatika.</p>
             </div>
             <div class="col-md-6">
-              <p class="pull-right mb-0">Hand crafted & made with <i class="fa fa-heart font-secondary"></i> nurd0tid
+              <p class="pull-right mb-0">Hand crafted & made with <i class="fa fa-heart font-secondary"></i> Zaid
               </p>
             </div>
           </div>
