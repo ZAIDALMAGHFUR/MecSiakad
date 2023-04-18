@@ -82,6 +82,7 @@
                         </tr>
                     </table>
                 </center>
+                <a href="" class="btn btn-sm btn-primary mb-4"> <i class="fa fa-plus fa-sm"></i>Tambah Data</a>
 
                 {{-- @if ($tahun_academic->status == 'aktif')
                     <a href="{{ route('krs.create', [$data_krs['nim'],$data_krs['tahun_academic_id']])  }}" class="btn btn-sm btn-primary mb-4"> <i class="fa fa-plus fa-sm"></i> Tambah Data</a>

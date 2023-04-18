@@ -17,20 +17,21 @@ class GetController extends Controller
         $krs = Krs::where('nim', $mhs->nim)->get();
 
     
-        $select_krs = Krs::where('nim', $request->nim)
-            ->where('tahun_academic_id', $request->tahun_academic_id)
+        $select_krs = Krs::where('nim', $mhs->nim)
+            ->where('tahun_academic_id', $mhs->tahun_academic_id)
             ->join('mata_kuliahs', 'krs.mata_kuliah_id', '=', 'mata_kuliahs.id')
             ->select('krs.id', 'mata_kuliahs.name_mata_kuliah', 'mata_kuliahs.kode_mata_kuliah', 'mata_kuliahs.sks')
             ->get();
     
         $data_krs = [
-            'nim' => $request->nim,
-            'tahun_academic_id' => $request->tahun_academic_id,
+            'nim' => $mhs->nim,
+            'tahun_academic_id' => $mhs->tahun_academic_id,
             'name' => $mhs->name,
             'prody' => $mhs->program_studies->name,
             'select_krs' => $select_krs
         ];
         // dd($krs);
+        // dd($data_krs);
         return view('dashboard.mahasiswa.krs.index', compact('data_krs'));
     }
     
