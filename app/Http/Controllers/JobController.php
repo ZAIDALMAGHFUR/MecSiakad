@@ -40,11 +40,18 @@ class JobController extends Controller
       // dd($data); 
       $loker = [];
       foreach ($data as $key => $value) {
-        isset($value['salaries']['0']['minAmount']) ? $value['salaries']['0']['minAmount'] : $value['salaries']['0']['minAmount'] = '';
-        isset($value['salaries']['0']['maxAmount']) ? $value['salaries']['0']['maxAmount'] : $value['salaries']['0']['maxAmount'] = '';
+        isset($value['salaries']['0']['minAmount']) ? $value['salaries']['0']['minAmount'] = number_format($value['salaries']['0']['minAmount'], 0, ',', '.') : $value['salaries']['0']['minAmount'] = '';
+        isset($value['salaries']['0']['maxAmount']) ? $value['salaries']['0']['maxAmount'] = number_format($value['salaries']['0']['maxAmount'], 0, ',', '.') : $value['salaries']['0']['maxAmount'] = '';
       
         isset($value['citySubDivision']['name']) ? $value['citySubDivision']['name'] . ', ' : $value['citySubDivision']['name'] = '';
       
+        $date_glints = $value['updatedAt'];
+        $date_glints = date('Y-m-d', strtotime($date_glints));
+        $date_glints = strtotime($date_glints);
+        $date_now = strtotime(date('Y-m-d'));
+        $date_diff = $date_now - $date_glints;
+        $last_updated = floor($date_diff / (60 * 60 * 24));
+        
         $loker[] = [
           'img' => $value['company']['logo'],
           'title' => $value['title'],
@@ -53,21 +60,11 @@ class JobController extends Controller
           'gaji' => $value['salaries']['0']['minAmount'] . ' - ' . $value['salaries']['0']['maxAmount'],
           'pengalaman' => $value['minYearsOfExperience'] . ' - ' . $value['maxYearsOfExperience'] . ' Tahun',
           'status' => $value['status'],
-          'update' => date('H', strtotime($value['updatedAt'])),
+          'update' => $last_updated,
           // 'update' => date('H:i:s', strtotime($value['updatedAt'])),
           'link' => 'https://glints.com/id/opportunities/jobs/' . $value['id'],
         ];
-      
-        $date_glints = $value['updatedAt'];
-        $date_glints = date('Y-m-d', strtotime($date_glints));
-        $date_glints = strtotime($date_glints);
-        $date_now = strtotime(date('Y-m-d'));
-        $date_diff = $date_now - $date_glints;
-        $date_diff = floor($date_diff / (60 * 60 * 24));
       }
-      
-      
-
     return view('dashboard.jobSearch.index', compact('loker'));
 
   }

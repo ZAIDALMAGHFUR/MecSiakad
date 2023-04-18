@@ -105,12 +105,9 @@
                             <td>{{ $krs->name_mata_kuliah }}</td>
                             <td>{{ $krs->sks }}</td>
                             <td>
-                                <form method="POST" action="{{ route('krs.destroy', $krs->id) }}">
+                                <form method="POST" action="{{ route('mhskrs.delete', $krs->id) }}">
                                     @csrf
-                                    <a href="{{ route('krs.edit', $krs->id) }}" class="btn btn-primary btn-xs edit"> <i class="fa fa-edit"></i> </a>
-                                    @method('DELETE')
-                                    <input name="_method" type="hidden" class="btn-primary btn-xs" value="DELETE">
-                                    <a type="submit" class="btn btn-danger btn-xs show_confirm"><i class="fa fa-trash"></i></a>
+                                    <a href="{{ route('mhskrs.edit', $krs->id) }}" class="btn btn-primary btn-xs edit"> <i class="fa fa-edit"></i> </a>
                                 </form>                          
                             </td>
                         </tr>
