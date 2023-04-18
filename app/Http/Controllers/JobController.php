@@ -37,7 +37,7 @@ class JobController extends Controller
       // dd($result);
       $data = json_decode($result, true);
       $data = $data['data']['searchJobs']['jobsInPage'];
-      // dd($data); 
+       dd($data); 
       $loker = [];
       foreach ($data as $key => $value) {
         isset($value['salaries']['0']['minAmount']) ? $value['salaries']['0']['minAmount'] = number_format($value['salaries']['0']['minAmount'], 0, ',', '.') : $value['salaries']['0']['minAmount'] = '';
@@ -51,7 +51,7 @@ class JobController extends Controller
         $date_now = strtotime(date('Y-m-d'));
         $date_diff = $date_now - $date_glints;
         $last_updated = floor($date_diff / (60 * 60 * 24));
-        
+
         $loker[] = [
           'img' => $value['company']['logo'],
           'title' => $value['title'],
