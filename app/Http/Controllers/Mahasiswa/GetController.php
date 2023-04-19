@@ -22,85 +22,65 @@ class GetController extends Controller
         return view('dashboard.mahasiswa.krs.index', compact('TahunAcademic', 'krs', 'mhs'));
     }
 
-    // public function index(Request $request)
-    // {
-    //     $mhs = Mahasiswa::Where('user_id', Auth::user()->id)
-    //     ->first();
-    //     $krs = Krs::where('nim', $mhs->nim)->get();
+public function find(Request $request)
+{
+    $this->validate(request(), [
+        'tahun_academic_id' => 'required',
+    ]);
 
-    
-    //     $select_krs = Krs::where('nim', $mhs->nim)
-    //         ->join('mata_kuliahs', 'krs.mata_kuliah_id', '=', 'mata_kuliahs.id')
-    //         ->select('krs.id', 'mata_kuliahs.name_mata_kuliah', 'mata_kuliahs.kode_mata_kuliah', 'mata_kuliahs.sks')
-    //         ->get();
-    
-    //     $data_krs = [
-    //         'nim' => $mhs->nim,
-    //         'name' => $mhs->name,
-    //         'prody' => $mhs->program_studies->name,
-    //         'select_krs' => $select_krs
-    //     ];
-    //     // dd($krs);
-    //     // dd($select_krs);
-    //     return view('dashboard.mahasiswa.krs.index', compact('data_krs'));
-    // }
+    $mhs = Mahasiswa::Where('user_id', Auth::user()->id)
+    ->first();
+    $nim = $mhs->nim;
 
-    public function find(Request $request)
-    {
-        $this->validate(request(), [
-            'tahun_academic_id' => 'required',
-            'nim' => 'required',
+    $mhs = Mahasiswa::where('nim', $nim)->first();
+    if(is_null($mhs)) {
+        return redirect()->back()->with([
+            'info' => 'mahasiswa belum terdaftar !',
+            'alert-type' => 'info'
         ]);
-    
-        $mhs = Mahasiswa::where('nim', $request->nim)->first();
-        if(is_null($mhs)) {
-            return redirect()->back()->with([
-                'info' => 'mahasiswa belum terdaftar !',
-                'alert-type' => 'info'
-            ]);
-        }
-    
-        $tahun_academic = TahunAcademic::findOrFail($request->tahun_academic_id);
-        if ($tahun_academic->status != 'aktif') {
+    }
 
-            $select_krs = Krs::where('nim', $request->nim)
-            ->where('tahun_academic_id', $request->tahun_academic_id)
-            ->join('mata_kuliahs', 'krs.mata_kuliah_id', '=', 'mata_kuliahs.id')
-            ->select('krs.id', 'mata_kuliahs.name_mata_kuliah', 'mata_kuliahs.kode_mata_kuliah', 'mata_kuliahs.sks')
-            ->get();
+    $tahun_academic = TahunAcademic::findOrFail($request->tahun_academic_id);
+    if ($tahun_academic->status != 'aktif') {
 
-            $data_krs = [
-                'nim' => $request->nim,
-                'tahun_academic_id' => $request->tahun_academic_id,
-                'name' => $mhs->name,
-                'tahun_academic' => $tahun_academic->tahun_academic_id,
-                'semester' => $tahun_academic->semester,
-                'prody' => $mhs->program_studies->name,
-                'select_krs' => $select_krs
-            ];
+        $select_krs = Krs::where('nim', $nim)
+        ->where('tahun_academic_id', $request->tahun_academic_id)
+        ->join('mata_kuliahs', 'krs.mata_kuliah_id', '=', 'mata_kuliahs.id')
+        ->select('krs.id', 'mata_kuliahs.name_mata_kuliah', 'mata_kuliahs.kode_mata_kuliah', 'mata_kuliahs.sks')
+        ->get();
 
-            return view('dashboard.mahasiswa.krs.show', compact('data_krs', 'tahun_academic'));
-        }
-    
-        $select_krs = Krs::where('nim', $request->nim)
-            ->where('tahun_academic_id', $request->tahun_academic_id)
-            ->join('mata_kuliahs', 'krs.mata_kuliah_id', '=', 'mata_kuliahs.id')
-            ->select('krs.id', 'mata_kuliahs.name_mata_kuliah', 'mata_kuliahs.kode_mata_kuliah', 'mata_kuliahs.sks')
-            ->get();
-    
         $data_krs = [
-            'nim' => $request->nim,
+            'nim' => $nim,
             'tahun_academic_id' => $request->tahun_academic_id,
             'name' => $mhs->name,
-            'tahun_academic' => $tahun_academic->tahun_akademik,
+            'tahun_academic' => $tahun_academic->tahun_academic_id,
             'semester' => $tahun_academic->semester,
             'prody' => $mhs->program_studies->name,
             'select_krs' => $select_krs
         ];
-    
-        // dd($data_krs);
+
         return view('dashboard.mahasiswa.krs.show', compact('data_krs', 'tahun_academic'));
     }
+
+    $select_krs = Krs::where('nim', $nim)
+        ->where('tahun_academic_id', $request->tahun_academic_id)
+        ->join('mata_kuliahs', 'krs.mata_kuliah_id', '=', 'mata_kuliahs.id')
+        ->select('krs.id', 'mata_kuliahs.name_mata_kuliah', 'mata_kuliahs.kode_mata_kuliah', 'mata_kuliahs.sks')
+        ->get();
+
+    $data_krs = [
+        'nim' => $nim,
+        'tahun_academic_id' => $request->tahun_academic_id,
+        'name' => $mhs->name,
+        'tahun_academic' => $tahun_academic->tahun_akademik,
+        'semester' => $tahun_academic->semester,
+        'prody' => $mhs->program_studies->name,
+        'select_krs' => $select_krs
+    ];
+
+    return view('dashboard.mahasiswa.krs.show', compact('data_krs', 'tahun_academic'));
+}
+
     
     
     public function add($nim, $tahun_akademik_id)
