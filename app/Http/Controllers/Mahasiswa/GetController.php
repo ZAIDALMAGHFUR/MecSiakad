@@ -182,15 +182,17 @@ public function cetak()
         $matkul = $select_krs->pluck('mata_kuliah_id');
         $dsnmatkul = DosenMatkul::whereIn('mata_kuliah_id', $matkul, 'OR')->get();
         $ketua_prodi_id = DosenJabatan::where('jabatan_id', 1)->where('program_studies_id', $data->program_studies_id)->first();
-        // dd($ketua_prodi_id);
-            // dd($dsnmatkul);
+
+        // dd($select_krs);
+        $total_semester = $select_krs->sum('tahun_akademik_id.sks');
+        // dd($total_semester);
 
         $data->total_sks = 0;
         foreach ($select_krs as $itung_sks) {
             $data->total_sks += $itung_sks->sks;
         }
         $download ='KRS-'. $data->mhs->name .'.pdf';
-        // return view('dashboard.mahasiswa.cetak.cetak', compact('data', 'select_krs', 'dsnmatkul', 'ketua_prodi_id'));
-        return Pdf::loadHTML(view('dashboard.mahasiswa.cetak.cetak', compact('data', 'select_krs', 'dsnmatkul', 'ketua_prodi_id')))->download($download);
+        return view('dashboard.mahasiswa.cetak.cetak', compact('data', 'select_krs', 'dsnmatkul', 'ketua_prodi_id'));
+        // return Pdf::loadHTML(view('dashboard.mahasiswa.cetak.cetak', compact('data', 'select_krs', 'dsnmatkul', 'ketua_prodi_id')))->download($download);
     }
 }

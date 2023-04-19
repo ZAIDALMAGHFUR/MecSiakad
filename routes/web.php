@@ -348,7 +348,7 @@ Route::group(['middleware'=> ['auth', 'Camba']], function () {
 
 
 Route::get('/job-search',  [App\Http\Controllers\JobController::class, 'index'])->name('job-search');
-Route::get('/country/{search}',  [App\Http\Controllers\JobController::class, 'search']);
+Route::get('/job-country/{search}',  [App\Http\Controllers\JobController::class, 'search']);
 
 Route::get('/zoom', [\App\Http\Controllers\ZoomController::class, 'index'])->name('zoom');
 Route::get('/zoom/create', [\App\Http\Controllers\ZoomController::class, 'create'])->name('zoom/create');

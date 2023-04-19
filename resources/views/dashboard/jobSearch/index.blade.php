@@ -1,5 +1,10 @@
 @extends('layouts.app')
 @section('content')
+  @pushOnce('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/sweetalert2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/select2.css') }}">
+  @endPushOnce
   <div class="page-body">
     <div class="container-fluid">
       <div class="page-header">
@@ -49,14 +54,13 @@
         </div>
         <div class="col-xl-5">
         <div class="faq-form">
-            <select id="location-select" class="form-control"></select>
-            <i class="search-icon" data-feather="map-pin"></i>
+            <select class="js-example-basic-single col-sm-12" name="location" id="location">
+                <option value="">-- Pilih Negara --</option>
+                @foreach($country_name as $ps)
+                    <option  value="{{ $ps->name->common }}">{{ $ps->name->common }}</option>
+                @endforeach
+            </select>
         </div>
-
-          <div class="faq-form">
-            <input class="form-control" type="text" name="location" placeholder="Tambahkan Negara" oninput="searchCountry()"><i
-              class="search-icon" data-feather="map-pin"></i>
-          </div>
         </div>
         <div class="col-xl-2">
           <button class="btn btn-pill btn-light" type="submit"><i class="fa fa-spin fa-circle-o-notch"></i> Go
@@ -65,17 +69,21 @@
         </form>
       </div>
       <div class="row">
-        @if ($loker == null)
+        @if ($loker == null || isset($loker['init']))
           <div class="col-sm-12">
             <div class="card">
               <div class="card-body">
                 <center>
-                  {{-- <img src="{{ asset('assets/images/job-search.gif') }}" alt="job-search"> --}}
+                    <img src="{{ asset('assets/images/job-search.gif') }}" alt="job-search"> 
                 </center>
                 <center>
                   <h5>
                     <b>
+                      <?php if (isset($loker['init'])) { ?>
+                      <i class="fa fa-spin fa-spinner"></i> Ketikkan keyword untuk mencari loker.
+                      <?php } else { ?>
                       <i class="fa fa-spin fa-spinner"></i> Maaf, tidak ada lowongan ditemukan.
+                      <?php } ?>
                     </b>
                   </h5>
                 </center>
@@ -135,23 +143,55 @@
     </div>
     <!-- Container-fluid Ends-->
   </div>
-  <script>
-    function searchCountry() {
-      var selectEl = document.getElementById('location-select');
-      var xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function() {
-      if (this.readyState === 4 && this.status === 200) {
-        var options = JSON.parse(this.responseText);
-        options.forEach(function(option) {
-          var optionEl = document.createElement('option');
-          optionEl.value = option.country_code;
-          optionEl.textContent = option.country;
-          selectEl.appendChild(optionEl);
-      });
+  @pushOnce('js')
+  <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
+  <script src="{{ asset('assets/js/sweet-alert/sweetalert.min.js') }}"></script>
+  <script src="{{ asset('assets/js/form-validation-custom.js') }}"></script>
+  <script src="{{ asset('assets/js/select2/select2-custom.js') }}"></script>
+  <script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
+  <script src="{{ asset('assets/js/tooltip-init.js') }}"></script>
+<script>
+let delaySearchTimer = null;
+
+function delaySearch(value) {
+    clearTimeout(delaySearchTimer);
+    delaySearchTimer = setTimeout(() => {
+        searchCountries(value);
+    }, 500); // delay of 1 second
+}
+
+function searchCountries(query) {
+  if (query.length === 0) {
+    document.getElementById("country-dropdown").innerHTML = "";
+    document.getElementById("country-dropdown").style.display = 'none';
+    return;
+  }
+
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var countries = JSON.parse(this.responseText);
+      var dropdown = document.getElementById("country-dropdown");
+      dropdown.innerHTML = "";
+      for (var i = 0; i < countries.length; i++) {
+        if (countries[i].country.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+          dropdown.style.display = 'block';
+          var option = document.createElement("div");
+          option.innerHTML = countries[i].country;
+          option.addEventListener("click", function() {
+            document.getElementsByName("location")[0].value = this.innerHTML;
+            dropdown.innerHTML = "";
+            dropdown.style.display = 'none';
+          });
+          dropdown.appendChild(option);
+        }
+      }
     }
   };
-  xhr.open('GET', 'https://settle-jesus-conflict-push.trycloudflare.com/country/ind', true);
+  xhr.open("GET", "/job-country/" + query, true);
   xhr.send();
 }
 </script>
+@endPushOnce
 @endsection
