@@ -46,8 +46,8 @@
     <div class="row my-4">
         <div class="col">
             <div class="text-end mt-2 mt-sm-0">
-                <button class="btn btn-success waves-effect waves-light me-1" onclick="printDiv('cetak')"><i
-                        class="fa fa-print"> </i></button>
+                <a href="{{ route('mhskrs.cetak') }}"><button class="btn btn-success waves-effect waves-light me-1"><i
+                  class="fa fa-print"> </i></button></a>
             </div>
         </div>
     </div>

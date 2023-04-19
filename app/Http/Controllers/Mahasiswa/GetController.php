@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Mahasiswa;
 
 use App\Models\Krs;
 use App\Models\Mahasiswa;
+use App\Models\DosenMatkul;
+use App\Models\Mata_Kuliah;
+use App\Models\DosenJabatan;
 use Illuminate\Http\Request;
 use App\Models\TahunAcademic;
-use App\Models\Mata_Kuliah;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -162,7 +165,32 @@ public function edit($id){
 }
 
 public function cetak()
-{
-    return view('dashboard.mahasiswa.cetak.cetak');
-}
+    {
+        $mhsinfo = Mahasiswa::where('user_id', Auth::user()->id)->first();
+        $nim = $mhsinfo->nim;
+        $data = (object)[];
+        $data->mhs = Mahasiswa::where('nim', $nim)->first();
+        $data->tahun_academic = TahunAcademic::where('status', 'aktif')->first();
+        $data->tahun_akademik_id = $data->tahun_academic->id;
+        $data->program_studies_id = $data->mhs->program_studies_id;
+        $select_krs = Krs::where('nim', $nim)
+            ->where('tahun_academic_id', $data->tahun_akademik_id)
+            ->join('mata_kuliahs', 'krs.mata_kuliah_id', '=', 'mata_kuliahs.id')
+            ->select('krs.id', 'krs.mata_kuliah_id', 'mata_kuliahs.name_mata_kuliah', 'mata_kuliahs.kode_mata_kuliah', 'mata_kuliahs.sks')
+            ->get();
+
+        $matkul = $select_krs->pluck('mata_kuliah_id');
+        $dsnmatkul = DosenMatkul::whereIn('mata_kuliah_id', $matkul, 'OR')->get();
+        $ketua_prodi_id = DosenJabatan::where('jabatan_id', 1)->where('program_studies_id', $data->program_studies_id)->first();
+        // dd($ketua_prodi_id);
+            // dd($dsnmatkul);
+
+        $data->total_sks = 0;
+        foreach ($select_krs as $itung_sks) {
+            $data->total_sks += $itung_sks->sks;
+        }
+        $download ='KRS-'. $data->mhs->name .'.pdf';
+        // return view('dashboard.mahasiswa.cetak.cetak', compact('data', 'select_krs', 'dsnmatkul', 'ketua_prodi_id'));
+        return Pdf::loadHTML(view('dashboard.mahasiswa.cetak.cetak', compact('data', 'select_krs', 'dsnmatkul', 'ketua_prodi_id')))->download($download);
+    }
 }

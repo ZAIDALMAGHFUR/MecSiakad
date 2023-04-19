@@ -17,7 +17,7 @@ class DosenMatkul extends Model
 
     public function dosen()
     {
-        return $this->belongsTo(Dosen::class);
+        return $this->belongsTo(Dosen::class, 'dosen_id');
     }
 
     public function tahunAcademic()

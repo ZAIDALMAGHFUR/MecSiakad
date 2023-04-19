@@ -16,23 +16,23 @@
 </head>
 
 <body>
-    {{-- Header --}}
+    
     <table style="width: 100%">
         <tr>
-            {{-- <td style="width: 10%">
-                <img src="{{ Storage::url($data->mhs->foto) }}" alt="foto mahasiswa" width="80">
-            </td> --}}
+            <td style="width: 10%">
+                <img src="https://converted-won-eating-nano.trycloudflare.com/\img\logo.png" alt="" width="80">
+            </td>
             <td style="width: 90%; text-align: center">
                 <div style="font-weight: bold;font-size=20px">KARTU RENCANA STUDI (KRS)</div>
                 <div style="font-weight: bold;font-size=20px">SEKOLAH TINGGI ILMU TARBIYAH (STIT) AL-HIKMAH TEBING
                     TINGGI</div>
-                <div style="font-weight: bold;font-size=20px">TAHUN AKADEMIK {{ $data->tahun_academic->tahun_akademik }}
+                <div style="font-weight: bold;font-size=20px">TAHUN AKADEMIK 2020/2021
                 </div>
             </td>
         </tr>
     </table>
 
-    {{-- Info --}}
+    
     <table style="width: 100%; margin-top: 3%">
         <tr>
             <td style="width: 50%">
@@ -40,35 +40,35 @@
                     <tr>
                         <td>NAMA</td>
                         <td>:</td>
-                        <td>{{ $data->mhs->name }}</td>
+                        <td>Saipul</td>
                     </tr>
                     <tr>
-                        <td>NIM</td>
+                        <td>NPM</td>
                         <td>:</td>
-                        <td>{{ $data->mhs->nim }}</td>
+                        <td>89767575</td>
                     </tr>
                 </table>
             </td>
             <td style="width: 50%;">
                 <table>
-                    {{-- <tr>
+                    <tr>
                         <td>SEMESTER</td>
                         <td>:</td>
                         <td>4</td>
-                    </tr> --}}
+                    </tr>
                     <tr>
                         <td>PROGRAM STUDI</td>
                         <td>:</td>
-                        <td>{{ $data->mhs->program_studies->name }}</td>
+                        <td>Tekik Informatik</td>
                     </tr>
                 </table>
             </td>
         </tr>
     </table>
 
-    {{-- Info --}}
+    
     <table style="width: 100%; margin-top: 3%" border="1" cellspacing="0" cellpadding="7">
-        {{-- Thead --}}
+        
         <tr style="text-align: center">
             <td rowspan="2" style="width: 2%">No</td>
             <td rowspan="2" style="width: 15%">Mata Kuliah</td>
@@ -81,47 +81,37 @@
             <td style="width: 5%">MK</td>
             <td style="width: 5%">Dosen</td>
         </tr>
-        {{-- Body --}}
-        @foreach ($select_krs as $krs_data)
-            <tr>
-                <td align="center">{{ $loop->iteration }}</td>
-                <td>{{ $krs_data->name_mata_kuliah }}</td>
-                <td align="center">{{ $krs_data->sks }}</td>
-                <td align="center">{{ $krs_data->kode_mata_kuliah }}</td>
-                <td align="center">{{ $krs_data }}</td>
-                <td>{{ $dsnmatkul[$loop->iteration - 1]->dosen->nama_dosen }}</td>
-                <td align="center">-</td>
-            </tr>
-        @endforeach
+        
+        
         <tr>
             <td></td>
             <td>Jumlah SKS</td>
-            <td align="center">{{ $data->total_sks }}</td>
+            <td align="center">22</td>
             <td colspan="4"></td>
         </tr>
     </table>
 
-    {{-- Tanda Tangan --}}
+    
     <table style="width: 100%; margin-top: 3%">
         <tr>
             <td>
                 <div>Mengetahui,</div>
-                <div>Ketua Prodi {{ $data->mhs->program_studies->name }} </div>
+                <div>Ketua Prodi Teknik Informatika </div>
                 <div style="height: 80px"></div>
-                <div style="font-weight: bold;">{{ $ketua_prodi_id->dosen->nama_dosen }}</div>
+                <div style="font-weight: bold;">Mega MPDI</div>
             </td>
-            {{-- <td>
+            <td>
                 <div>Menyetujui,</div>
                 <div>Penasehat Akademik</div>
                 <div style="height: 80px"></div>
                 <div style="font-weight: bold;">
                     Puan MPDI</div>
-            </td> --}}
+            </td>
             <td>
                 <div>Tebing Tinggi, ......................</div>
                 <div>Mahasiswa</div>
                 <div style="height: 80px"></div>
-                <div style="font-weight: bold;">{{ $data->mhs->name }}</div>
+                <div style="font-weight: bold;">Saipul</div>
             </td>
         </tr>
     </table>

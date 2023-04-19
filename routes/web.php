@@ -312,7 +312,7 @@ Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
         Route::get('edit/{krs:id}', 'edit')->name('mhskrs.edit');
         Route::post('update/{krs:id}', 'update')->name('mhskrs.update');
     });
-    Route::get('cetak/{nim}/{tahun_academic}', [GetController::class, 'cetak']);
+    Route::get('cetak', [GetController::class, 'cetak'])->name('mhskrs.cetak');
 });
 
 
