@@ -42,14 +42,17 @@ class JobController extends Controller
       foreach ( $country as $data ) {
         if ( strtolower($data->name->common) == strtolower($location)) {
             $country_code = $data->cca2;
-            foreach ($data->currencies as $currency_data) {
-              $symbol = $currency_data->symbol;
             }
         }
       }
+
+    if ($keyword != null) {
+      $search_term = '"SearchTerm":"' . $keyword . '",';
+    } else {
+      $search_term = '';
     }
 
-    $post = '{"operationName":"searchJobs","variables":{"data":{"SearchTerm":"' . $keyword . '","CountryCode":"' . $country_code . '","limit":60,"offset":0,"includeExternalJobs":true,"sources":["NATIVE","SUPER_POWERED"]}},"query":"query searchJobs($data: JobSearchConditionInput!) {\n  searchJobs(data: $data) {\n    jobsInPage {\n      id\n      title\n      isRemote\n      status\n      createdAt\n      updatedAt\n      isActivelyHiring\n      isHot\n      shouldShowSalary\n      salaryEstimate {\n        minAmount\n        maxAmount\n        CurrencyCode\n        __typename\n      }\n      company {\n        ...CompanyFields\n        __typename\n      }\n      citySubDivision {\n        id\n        name\n        __typename\n      }\n      city {\n        ...CityFields\n        __typename\n      }\n      country {\n        ...CountryFields\n        __typename\n      }\n      category {\n        id\n        name\n        __typename\n      }\n      salaries {\n        ...SalaryFields\n        __typename\n      }\n      minYearsOfExperience\n      maxYearsOfExperience\n      source\n      __typename\n    }\n    totalJobs\n    __typename\n  }\n}\n\nfragment CompanyFields on Company {\n  id\n  name\n  logo\n  __typename\n}\n\nfragment CityFields on City {\n  id\n  name\n  __typename\n}\n\nfragment CountryFields on Country {\n  code\n  name\n  __typename\n}\n\nfragment SalaryFields on JobSalary {\n  id\n  salaryType\n  salaryMode\n  maxAmount\n  minAmount\n  CurrencyCode\n  __typename\n}\n"}';  
+    $post = '{"operationName":"searchJobs","variables":{"data":{' . $search_term . '"CountryCode":"' . $country_code . '","limit":60,"offset":0,"includeExternalJobs":true,"sources":["NATIVE","SUPER_POWERED"]}},"query":"query searchJobs($data: JobSearchConditionInput!) {\n  searchJobs(data: $data) {\n    jobsInPage {\n      id\n      title\n      isRemote\n      status\n      createdAt\n      updatedAt\n      isActivelyHiring\n      isHot\n      shouldShowSalary\n      salaryEstimate {\n        minAmount\n        maxAmount\n        CurrencyCode\n        __typename\n      }\n      company {\n        ...CompanyFields\n        __typename\n      }\n      citySubDivision {\n        id\n        name\n        __typename\n      }\n      city {\n        ...CityFields\n        __typename\n      }\n      country {\n        ...CountryFields\n        __typename\n      }\n      category {\n        id\n        name\n        __typename\n      }\n      salaries {\n        ...SalaryFields\n        __typename\n      }\n      minYearsOfExperience\n      maxYearsOfExperience\n      source\n      __typename\n    }\n    totalJobs\n    __typename\n  }\n}\n\nfragment CompanyFields on Company {\n  id\n  name\n  logo\n  __typename\n}\n\nfragment CityFields on City {\n  id\n  name\n  __typename\n}\n\nfragment CountryFields on Country {\n  code\n  name\n  __typename\n}\n\nfragment SalaryFields on JobSalary {\n  id\n  salaryType\n  salaryMode\n  maxAmount\n  minAmount\n  CurrencyCode\n  __typename\n}\n"}';  
     //dd($post);
       $ch = curl_init('https://glints.com/api/graphql');
       curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
@@ -60,9 +63,20 @@ class JobController extends Controller
       curl_close($ch);
       $data = json_decode($result, true);
       $data = $data['data']['searchJobs']['jobsInPage'];
-      // dd($data); 
+      //  dd($data); 
       $loker = [];
       foreach ($data as $key => $value) {
+
+        if (isset($value['salaries']['0']['CurrencyCode'])) {
+          foreach ( $country as $data ) {
+            foreach ($data->currencies as $currency => $currency_data) {
+              if ($currency == $value['salaries']['0']['CurrencyCode']) {
+                $symbol = $currency_data->symbol;
+              }
+            }
+          }
+        }
+
         isset($value['salaries']['0']['minAmount']) ? $value['salaries']['0']['minAmount'] = $symbol . ' ' . number_format($value['salaries']['0']['minAmount'], 0, ',', '.') : $value['salaries']['0']['minAmount'] = '';
         isset($value['salaries']['0']['maxAmount']) ? $value['salaries']['0']['maxAmount'] = $symbol . ' ' . number_format($value['salaries']['0']['maxAmount'], 0, ',', '.') : $value['salaries']['0']['maxAmount'] = '';
       
