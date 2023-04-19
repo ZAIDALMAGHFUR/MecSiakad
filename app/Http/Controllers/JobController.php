@@ -37,7 +37,7 @@ class JobController extends Controller
       // dd($result);
       $data = json_decode($result, true);
       $data = $data['data']['searchJobs']['jobsInPage'];
-       dd($data); 
+      //dd($data); 
       $loker = [];
       foreach ($data as $key => $value) {
         isset($value['salaries']['0']['minAmount']) ? $value['salaries']['0']['minAmount'] = number_format($value['salaries']['0']['minAmount'], 0, ',', '.') : $value['salaries']['0']['minAmount'] = '';
@@ -67,5 +67,23 @@ class JobController extends Controller
       }
     return view('dashboard.jobSearch.index', compact('loker'));
 
+  }
+  public function search($search)
+  {
+    $country = file_get_contents('../country.json');
+    $country = json_decode($country);
+    
+    $array = [];
+
+    foreach ($country as $data) {
+      if (str_contains(strtolower($data->name->common), strtolower($search))) {
+        $array[] = [
+          "country" => $data->name->common,
+          "country_code" => $data->cca2
+        ];
+      }
+
+    }
+    return response()->json($array);
   }
 }

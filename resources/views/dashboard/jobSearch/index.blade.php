@@ -48,8 +48,13 @@
             </div>
         </div>
         <div class="col-xl-5">
+        <div class="faq-form">
+            <select id="location-select" class="form-control"></select>
+            <i class="search-icon" data-feather="map-pin"></i>
+        </div>
+
           <div class="faq-form">
-            <input class="form-control" type="text" name="location" placeholder="Tambahkan Negara"><i
+            <input class="form-control" type="text" name="location" placeholder="Tambahkan Negara" oninput="searchCountry()"><i
               class="search-icon" data-feather="map-pin"></i>
           </div>
         </div>
@@ -65,7 +70,7 @@
             <div class="card">
               <div class="card-body">
                 <center>
-                  <img src="{{ asset('assets/images/job-search.gif') }}" alt="job-search">
+                  {{-- <img src="{{ asset('assets/images/job-search.gif') }}" alt="job-search"> --}}
                 </center>
                 <center>
                   <h5>
@@ -130,4 +135,23 @@
     </div>
     <!-- Container-fluid Ends-->
   </div>
+  <script>
+    function searchCountry() {
+      var selectEl = document.getElementById('location-select');
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+      if (this.readyState === 4 && this.status === 200) {
+        var options = JSON.parse(this.responseText);
+        options.forEach(function(option) {
+          var optionEl = document.createElement('option');
+          optionEl.value = option.country_code;
+          optionEl.textContent = option.country;
+          selectEl.appendChild(optionEl);
+      });
+    }
+  };
+  xhr.open('GET', 'https://settle-jesus-conflict-push.trycloudflare.com/country/ind', true);
+  xhr.send();
+}
+</script>
 @endsection

@@ -43,85 +43,47 @@
         </div>
       </div>
     </div>
-    <div class="row my-4">
-        <div class="col">
-            <div class="text-end mt-2 mt-sm-0">
-                <button class="btn btn-success waves-effect waves-light me-1" onclick="printDiv('cetak')"><i
-                        class="fa fa-print"> </i></button>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12" id="cetak">
+    <div class="container-fluid">
+      <div class="col-sm-12">
         <div class="card">
-            <div class="card-header">
-                <div class="row mb-2">
-                    <div class="col-sm-12 d-flex justify-content-between">
-                        <h3 class="m-0">{{ __('KARTU RENCANA STUDI (KRS)') }}</h3>
+          <div class="card-header">
+          </div>
+          <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card p-3">
+                            <form method="post" action="{{ route('mhskrs.find') }}">
+                                @csrf 
+                                @method('POST')
+                                <div class="form-group row border-bottom pb-4">
+                                    <label for="nim" class="col-sm-2 col-form-label">Nim</label>
+                                    <div class="col-sm-10">
+                                        <input readonly type="text" class="form-control" name="nim" value="{{ $mhs->nim }}" id="nim">
+                                    </div>
+                                </div>
+                                <div class="form-group row border-bottom pb-4">
+                                    <label for="tahun_academic_id" class="col-sm-2 col-form-label">Tahun Akademik</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name="tahun_academic_id" id="tahun_academic_id">
+                                            @foreach($TahunAcademic as $th)
+                                            <option value="{{ $th->id }}"> {{ $th->tahun_akademik . ' ' . $th->semester }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-success">Find  </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="container-fluid">
-        
-                <center class="mb-5">
-                    <table>
-                        <tr>
-                            <td><strong>NIM</strong></td>
-                            <td>&nbsp;: {{ $data_krs['nim'] }}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Nama Lengkap</strong></td>
-                            <td>&nbsp;: {{ $data_krs['name'] }}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Program Study</strong></td>
-                            <td>&nbsp;: {{ $data_krs['prody'] }}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Tahun Akademik (Semester)</strong></td>
-                            {{-- <td>&nbsp;:{{ $data_krs['tahun_academic'] }} ({{ $data_krs['semester']}})</td> --}}
-                        </tr>
-                    </table>
-                </center>
-                <a href="" class="btn btn-sm btn-primary mb-4"> <i class="fa fa-plus fa-sm"></i>Tambah Data</a>
-
-                {{-- @if ($tahun_academic->status == 'aktif')
-                    <a href="{{ route('krs.create', [$data_krs['nim'],$data_krs['tahun_academic_id']])  }}" class="btn btn-sm btn-primary mb-4"> <i class="fa fa-plus fa-sm"></i> Tambah Data</a>
-                @else
-                    <button class="btn btn-danger btn-xs mt-5 mb-5">Maaf anda di luar jadwal pengisian KRS</button>
-                @endif --}}
-                <table class="display table table-bordered">
-                    <tr>
-                        <th>NO</th>
-                        <th>KODE MATA KULIAH</th>
-                        <th>NAMA MATA KULIAH</th>
-                        <th>SKS</th>
-                        <th colspan="2">AKSI</th>
-                    </tr>
-                    @php $total_sks = 0 @endphp
-                    @foreach($data_krs['select_krs'] as $krs)
-                        <tr>
-                            <td width="20px">{{ $loop->iteration }}</td>
-                            <td>{{ $krs->kode_mata_kuliah }}</td>
-                            <td>{{ $krs->name_mata_kuliah }}</td>
-                            <td>{{ $krs->sks }}</td>
-                            <td>
-                                <form method="POST" action="{{ route('mhskrs.delete', $krs->id) }}">
-                                    @csrf
-                                    <a href="{{ route('mhskrs.edit', $krs->id) }}" class="btn btn-primary btn-xs edit"> <i class="fa fa-edit"></i> </a>
-                                </form>                          
-                            </td>
-                        </tr>
-                        @php $total_sks += $krs->sks @endphp
-                    @endforeach
-                    <tr>
-                        <td colspan="3" align="right"><strong>Jumlah SKS</strong></td>
-                        <td colspan="2"><strong>{{ $total_sks }}</strong></td>
-                    </tr>
-                </table>
-            </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
         </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
   @pushOnce('js')
     <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
@@ -183,18 +145,5 @@
         );
       @endif
     </script>
-
-<script type="text/javascript">
-    function printDiv(divName) {
-        var printContents = document.getElementById(divName).innerHTML;
-        var originalContents = document.body.innerHTML;
-
-        document.body.innerHTML = printContents;
-
-        window.print();
-
-        document.body.innerHTML = originalContents;
-    }
-</script>
   @endPushOnce
 @endsection

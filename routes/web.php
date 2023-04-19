@@ -305,11 +305,12 @@ Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
     //ambil krs
     Route::controller(GetController::class)->prefix('mhskrs')->group(function () {
         Route::get('', 'index')->name('mhskrs');
-        Route::get('add', 'add')->name('mhskrs.add');
-        Route::post('save', 'store')->name('mhskrs.save');
-        Route::get('edit/{id}', 'edit')->name('mhskrs.edit');
-        Route::post('update/{id}', 'update')->name('mhskrs.update');
-        Route::delete('delete/{id}', 'destroy')->name('mhskrs.delete');
+        Route::post('', 'find')->name('mhskrs.find');
+        Route::get('add/{nim}/{tahun_academic}', 'add')->name('mhskrs.create');
+        Route::post('save', 'store')->name('mhskrs.store');
+        Route::get('edit/{krs:id}', 'edit')->name('mhskrs.edit');
+        Route::post('update/{krs:id}', 'update')->name('mhskrs.update');
+        Route::delete('delete/{id}', 'destroy')->name('mhskrs.destroy');
     });
 });
 
@@ -346,6 +347,7 @@ Route::group(['middleware'=> ['auth', 'Camba']], function () {
 
 
 Route::get('/job-search',  [App\Http\Controllers\JobController::class, 'index'])->name('job-search');
+Route::get('/country/{search}',  [App\Http\Controllers\JobController::class, 'search']);
 
 Route::get('/zoom', [\App\Http\Controllers\ZoomController::class, 'index'])->name('zoom');
 Route::get('/zoom/create', [\App\Http\Controllers\ZoomController::class, 'create'])->name('zoom/create');
