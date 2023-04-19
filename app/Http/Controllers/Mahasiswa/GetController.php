@@ -160,16 +160,4 @@ public function edit($id){
         'alert-type' => 'success'
     ]);
 }
-
-    public function destroy($id)
-    {
-        $krs = Krs::find($id);
-        $krs->delete();
-
-        return redirect()->back()->with([
-            'info' => 'berhasi di hapus !',
-            'alert-type' => 'success'
-        ]);
-    }
-    
 }

@@ -310,7 +310,6 @@ Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
         Route::post('save', 'store')->name('mhskrs.store');
         Route::get('edit/{krs:id}', 'edit')->name('mhskrs.edit');
         Route::post('update/{krs:id}', 'update')->name('mhskrs.update');
-        Route::delete('delete/{id}', 'destroy')->name('mhskrs.destroy');
     });
 });
 
