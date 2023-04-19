@@ -53,7 +53,7 @@ public function find(Request $request)
             'nim' => $nim,
             'tahun_academic_id' => $request->tahun_academic_id,
             'name' => $mhs->name,
-            'tahun_academic' => $tahun_academic->tahun_academic_id,
+            'tahun_academic' => $tahun_academic->tahun_akademik,
             'semester' => $tahun_academic->semester,
             'prody' => $mhs->program_studies->name,
             'select_krs' => $select_krs
@@ -159,5 +159,10 @@ public function edit($id){
         'info' => 'berhasil dibuat!',
         'alert-type' => 'success'
     ]);
+}
+
+public function cetak()
+{
+    return view('dashboard.mahasiswa.cetak.cetak');
 }
 }

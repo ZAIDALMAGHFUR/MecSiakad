@@ -305,12 +305,14 @@ Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
     //ambil krs
     Route::controller(GetController::class)->prefix('mhskrs')->group(function () {
         Route::get('', 'index')->name('mhskrs');
+        Route::get('cari ', 'cari')->name('mhskrs.cari');
         Route::post('', 'find')->name('mhskrs.find');
         Route::get('add/{nim}/{tahun_academic}', 'add')->name('mhskrs.create');
         Route::post('save', 'store')->name('mhskrs.store');
         Route::get('edit/{krs:id}', 'edit')->name('mhskrs.edit');
         Route::post('update/{krs:id}', 'update')->name('mhskrs.update');
     });
+    Route::get('cetak/{nim}/{tahun_academic}', [GetController::class, 'cetak']);
 });
 
 
