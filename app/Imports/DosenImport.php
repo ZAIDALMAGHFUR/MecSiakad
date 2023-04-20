@@ -31,6 +31,7 @@ class DosenImport implements ToModel, WithHeadingRow, WithValidation
                     $onFailure("Email $value sudah ada");
                 }
             },
+            'kode_dosen' => 'required',
             'nama_dosen'=> 'required',
             'no_hp'=> 'required',
             'alamat'=> 'required',
@@ -54,6 +55,7 @@ class DosenImport implements ToModel, WithHeadingRow, WithValidation
         ]);
         
         return new Dosen([
+            'kode_dosen' => $row['kode_dosen'],
             'nama_dosen' => $row['nama_dosen'],
             'nidn' => $row['nidn'],
             'email' => $row['email'],

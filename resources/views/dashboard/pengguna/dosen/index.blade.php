@@ -89,6 +89,7 @@
                 <thead>
                   <tr style="text-align: center">
                     <th style="width: 55px">No</th>
+                    <th>Kode Dosen</th>
                     <th>Nama Dosen</th>
                     <th>NIDN</th>
                     <th>No HP</th>
@@ -101,6 +102,7 @@
                   @foreach ($data as $d)
                     <tr>
                       <td style="text-align: center">{{ $loop->iteration }}</td>
+                      <td>{{ $d->kode_dosen }}</td>
                       <td>{{ $d->nama_dosen }}</td>
                       <td>{{ $d->nidn }}</td>
                       <td>{{ $d->no_hp }}</td>

@@ -41,6 +41,7 @@ class AdminDosenController extends Controller
             ]);
 
             $query = [
+                'kode_dosen' => $request->kode_dosen,
                 'nama_dosen' => $request->nama_dosen,
                 'nidn' => $request->nidn,
                 'email' => $request->email,
@@ -88,6 +89,7 @@ class AdminDosenController extends Controller
             ]);
 
             $query = [
+                'kode_dosen' => $request->kode_dosen,
                 'nama_dosen' => $request->nama_dosen,
                 'nidn' => $request->nidn,
                 'email' => $request->email,

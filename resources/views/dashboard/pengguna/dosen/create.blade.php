@@ -73,61 +73,67 @@
                         </div>
                     </div>
                     <div class="col-md-6">
+                      <label for="kode_dosen" class="form-label">Kode Dosen</label>
+                      <div class="col-sm-10">
+                          <input type="text" class="form-control" name="kode_dosen" value="{{ old('kode_dosen') }}" id="kode_dosen" required>
+                      </div>
+                  </div>
+                  </div>
+                    <div class="row g-2 mt-4">
+                      <div class="col-md-6">
                         <label for="nidn" class="form-label">NIDN</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="nidn" value="{{ old('nidn') }}" id="nidn" required>
                         </div>
                     </div>
-                  </div>
-                    <div class="row g-2 mt-4">
                         <div class="col-md-6">
                             <label for="email" class="form-label">Email</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="email" value="{{ old('email') }}" id="email" required>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <label for="no_hp" class="form-label">No Handphone</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="no_hp" value="{{ old('no_hp') }}" id="no_hp" required>
-                            </div>
-                        </div>
                     </div>
                     <div class="row g-2 mt-4">
+                      <div class="col-md-6">
+                        <label for="no_hp" class="form-label">No Handphone</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="no_hp" value="{{ old('no_hp') }}" id="no_hp" required>
+                        </div>
+                    </div>
                         <div class="col-md-6">
                             <label for="alamat" class="form-label">Alamat</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="alamat" value="{{ old('alamat') }}" id="alamat" required>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <label for="status" class="form-label">Status</label>
-                            <div class="col-sm-10">
-                              <select class="form-control" name="status" id="status">
-                                  <option {{ old('status') == 'aktif' ? 'selected' : null }} value="aktif">Aktif</option>
-                                  <option {{ old('status') == 'tidak aktif' ? 'selected' : null }} value="tidak aktif">Tidak Aktif</option>
-                                  <option {{ old('status') == 'pensiun' ? 'selected' : null }} value="pensiun">Pensiun</option>
-                                  <option {{ old('status') == 'keluar' ? 'selected' : null }} value="keluar">Keluar</option>
-                              </select>
-                            </div>
-                        </div>
                     </div>
                     <div class="row g-2 mt-4">
+                      <div class="col-md-6">
+                        <label for="status" class="form-label">Status</label>
+                        <div class="col-sm-10">
+                          <select class="form-control" name="status" id="status">
+                              <option {{ old('status') == 'aktif' ? 'selected' : null }} value="aktif">Aktif</option>
+                              <option {{ old('status') == 'tidak aktif' ? 'selected' : null }} value="tidak aktif">Tidak Aktif</option>
+                              <option {{ old('status') == 'pensiun' ? 'selected' : null }} value="pensiun">Pensiun</option>
+                              <option {{ old('status') == 'keluar' ? 'selected' : null }} value="keluar">Keluar</option>
+                          </select>
+                        </div>
+                    </div>
                         <div class="col-md-6">
                             <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="tempat_lahir" value="{{ old('tempat_lahir') }}" id="tempat_lahir" required>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                          <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                          <div class="col-sm-10">
-                              <input type="date" class="form-control" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}" id="tanggal_lahir" required>
-                          </div>
-                      </div>
                     </div>
                 
                     <div class="row g-2 mt-4">
+                      <div class="col-md-6">
+                        <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}" id="tanggal_lahir" required>
+                        </div>
+                    </div>
                         <div class="col-md-6">
                             <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
                             <div class="col-sm-10">
@@ -137,21 +143,21 @@
                                 </select>
                             </div>
                           </div>
-                          <div class="col-md-6">
-                              <label for="agama" class="form-label">Agama</label>
-                              <div class="col-sm-10">
-                                <select class="form-control" name="agama" id="agama">
-                                    <option {{ old('agama') == 'islam' ? 'selected' : null }} value="islam">Islam</option>
-                                    <option {{ old('agama') == 'kristen' ? 'selected' : null }} value="kristen">Kristen</option>
-                                    <option {{ old('agama') == 'katolik' ? 'selected' : null }} value="katolik">Katolik</option>
-                                    <option {{ old('agama') == 'hindu' ? 'selected' : null }} value="hindu">Hindu</option>
-                                    <option {{ old('agama') == 'budha' ? 'selected' : null }} value="budha">Budha</option>
-                                    <option {{ old('agama') == 'konghucu' ? 'selected' : null }} value="konghucu">Konghucu</option>
-                                </select>
-                              </div>
-                          </div>
                     </div>  
                     <div class="row g-2 mt-4">
+                      <div class="col-md-6">
+                        <label for="agama" class="form-label">Agama</label>
+                        <div class="col-sm-10">
+                          <select class="form-control" name="agama" id="agama">
+                              <option {{ old('agama') == 'islam' ? 'selected' : null }} value="islam">Islam</option>
+                              <option {{ old('agama') == 'kristen' ? 'selected' : null }} value="kristen">Kristen</option>
+                              <option {{ old('agama') == 'katolik' ? 'selected' : null }} value="katolik">Katolik</option>
+                              <option {{ old('agama') == 'hindu' ? 'selected' : null }} value="hindu">Hindu</option>
+                              <option {{ old('agama') == 'budha' ? 'selected' : null }} value="budha">Budha</option>
+                              <option {{ old('agama') == 'konghucu' ? 'selected' : null }} value="konghucu">Konghucu</option>
+                          </select>
+                        </div>
+                    </div>
                         <div class="col-md-6">
                             <label for="program_studies_id" class="form-label">Program Studi</label>
                             <div class="col-sm-10">
@@ -162,21 +168,21 @@
                               </select>
                           </div>
                         </div>
-                        <div class="col-md-6">
-                            <label for="pendidikan_terakhir" class="form-label">Pendidikan Terakhir</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="pendidikan_terakhir" value="{{ old('pendidikan_terakhir') }}" id="pendidikan_terakhir" required>
-                            </div>
-                        </div>
                     </div>
 
-                    <div class="row g-2 mt-3">
+                    <div class="row g-2 mt-4">
+                      <div class="col-md-6">
+                        <label for="pendidikan_terakhir" class="form-label">Pendidikan Terakhir</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="pendidikan_terakhir" value="{{ old('pendidikan_terakhir') }}" id="pendidikan_terakhir" required>
+                        </div>
+                    </div>
                         <div class="col-md-6">
                             <label for="photo" class="form-label">Photo</label>
                             <div class="col-sm-10">
                                 <input type="file" class="form-control" name="photo" value="{{ old('photo') }}" id="photo" required>
                             </div>
-                        </div>
+                    </div>
                     </div>
 
                   

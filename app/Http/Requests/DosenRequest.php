@@ -24,6 +24,7 @@ class DosenRequest extends FormRequest
     public function rules()
     {
         return [
+            'kode_dosen' => 'required|string|max:255',
             'nama_dosen' => 'required|string|max:255',
             'nidn' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',

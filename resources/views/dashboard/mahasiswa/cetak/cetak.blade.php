@@ -88,7 +88,7 @@
                 <td>{{ $krs_data->name_mata_kuliah }}</td>
                 <td align="center">{{ $krs_data->sks }}</td>
                 <td align="center">{{ $krs_data->kode_mata_kuliah }}</td>
-                <td align="center">{{ $krs_data }}</td>
+                <td align="center">{{ $dsnmatkul[$loop->iteration - 1]->dosen->kode_dosen }}</td>
                 <td>{{ $dsnmatkul[$loop->iteration - 1]->dosen->nama_dosen }}</td>
                 <td align="center">-</td>
             </tr>

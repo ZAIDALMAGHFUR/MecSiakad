@@ -16,6 +16,7 @@ class DosenSeeder extends Seeder
     public function run()
     {
         Dosen::create([
+            'kode_dosen' => 'D001',
             'nama_dosen' => 'dosen',
             'nidn' => '123456789',
             'email' => 'dsn@gmail.com',
