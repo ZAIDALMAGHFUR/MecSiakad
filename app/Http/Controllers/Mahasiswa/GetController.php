@@ -192,7 +192,7 @@ public function cetak()
             $data->total_sks += $itung_sks->sks;
         }
         $download ='KRS-'. $data->mhs->name .'.pdf';
-        return view('dashboard.mahasiswa.cetak.cetak', compact('data', 'select_krs', 'dsnmatkul', 'ketua_prodi_id'));
-        // return Pdf::loadHTML(view('dashboard.mahasiswa.cetak.cetak', compact('data', 'select_krs', 'dsnmatkul', 'ketua_prodi_id')))->download($download);
+        // return view('dashboard.mahasiswa.cetak.cetak', compact('data', 'select_krs', 'dsnmatkul', 'ketua_prodi_id'));
+        return Pdf::loadHTML(view('dashboard.mahasiswa.cetak.cetak', compact('data', 'select_krs', 'dsnmatkul', 'ketua_prodi_id')))->download($download);
     }
 }

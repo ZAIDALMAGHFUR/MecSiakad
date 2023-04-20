@@ -1,4 +1,4 @@
-@extends('layouts.mahasiswa')
+@extends('layouts.app')
 @section('content')
   @pushOnce('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
@@ -10,11 +10,11 @@
       <div class="page-header">
         <div class="row">
           <div class="col-sm-6">
-            <h3>KRS</h3>
+            <h3>KHS</h3>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
-              <li class="breadcrumb-item">Data KRS</li>
-              <li class="breadcrumb-item active">KRS</li>
+              <li class="breadcrumb-item">Data Akademik</li>
+              <li class="breadcrumb-item active">KHS</li>
             </ol>
           </div>
           <div class="col-sm-6">
@@ -43,53 +43,47 @@
         </div>
       </div>
     </div>
-            <div class=" d-flex justify-content-center">
-              <div class="container-fluid">
-                <div class="col-sm-12 col-xl-6">
-                  <div class="card card-absolute">
-                    <div class="card-header bg-secondary">
-                      <h5 class="text-white">Ambil KRS</h5>
-                    </div>
-                    <div class="card-body">
-                      <form method="post" action="{{ route('mhskrs.find') }}">
-                        @csrf 
-                        @method('POST')
-                        <div class="col-md-12">
-                          <label for="" class="form-label">Nama</label>
-                          <div class="col-sm-10">
-                              <input readonly type="text" class="form-control" name="" value="{{ $mhs->name }}" disabled>
-                          </div>
-                      </div>
-                        <div class="col-md-12 mt-4">
-                            <label for="nim" class="form-label">Nim</label>
-                            <div class="col-sm-10">
-                                <input readonly type="text" class="form-control" name="nim" value="{{ $mhs->nim }}" id="nim" disabled>
-                            </div>
+    <div class="container-fluid">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+          </div>
+          <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card p-3">
+                            <form method="post" action="{{ route('khs.find') }}">
+                                @csrf 
+                                @method('POST')
+                                <div class="form-group row border-bottom pb-4">
+                                    <label for="nim" class="col-sm-2 col-form-label">Nim</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="nim" value="{{ old('nim') }}" id="nim">
+                                    </div>
+                                </div>
+                                <div class="form-group row border-bottom pb-4">
+                                    <label for="tahun_academic_id" class="col-sm-2 col-form-label">Tahun Akademik</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name="tahun_academic_id" id="tahun_academic_id">
+                                            @foreach($TahunAcademic as $th)
+                                            <option value="{{ $th->id }}"> {{ $th->tahun_akademik . ' ' . $th->semester }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-success">Find  </button>
+                            </form>
                         </div>
-                        <div class="col-md-12 mt-4">
-                          <label for="" class="form-label">Program Studi</label>
-                          <div class="col-sm-10">
-                              <input readonly type="text" class="form-control" name="" value="{{ $mhs->program_studies->name }}"  disabled>
-                          </div>
-                      </div>
-                        <div class="col-md-12 mt-4">
-                            <label for="tahun_academic_id" class="form-label">Tahun Akademik</label>
-                            <div class="col-sm-10">
-                                <select class="form-control" name="tahun_academic_id" id="tahun_academic_id">
-                                    @foreach($TahunAcademic as $th)
-                                    <option value="{{ $th->id }}"> {{ $th->tahun_akademik . ' ' . $th->semester }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-success mt-4">Find  </button>
-                    </form>
                     </div>
-                  </div>
                 </div>
-            </div>
-            </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
         </div>
+        </div>
+      </div>
+    </div>
+  </div>
   @pushOnce('js')
     <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
