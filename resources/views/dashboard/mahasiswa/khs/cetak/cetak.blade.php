@@ -20,7 +20,8 @@
     <table style="border-bottom:3px solid;width:100%; border-bottom-style: double; color: #408C67">
         <tr style="width: 100%">
             <td style="width: 10%">
-                <img src="{{ asset('assets/images/logo/logo-1.png') }}" alt="makan" width="90">
+                {{-- <img src="{{ asset('assets/images/logo/logo-1.png') }}" alt="makan" width="90"> --}}
+                <img src="{{ public_path() . '/assets/logo.png' }}" alt="makan" width="90">
             </td>
             <td style="width: 90%; text-align: center">
                 <div style="font-weight: lighter;">YAYASAN PERGURUAN TINGGI ISLAM AL-HIKMAH (YASPETIA)</div>
