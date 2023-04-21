@@ -171,42 +171,22 @@ class GetKHSController extends Controller
             }
         }
         
-
-
-
-
-        //menghitung total sks
         $total_sks = 0 ;
         foreach ($select_krs as $sks) {
             $total_sks += $sks->sks;
         }
-
-        // Inisialisasi variabel total nilai
+        
         $total_nilai = 0;
-
-        // Looping untuk menghitung total nilai
         foreach ($select_krs as $index => $khs) {
-            // Mengambil bobot nilai dari nilai_akhirs sesuai index
             $bobot = $nilai_akhirs[$index]->bobot;
-
-            // Menghitung perkalian sks dan bobot nilai
             $nilai = $khs->sks * $bobot;
-
-            // Menambahkan hasil perkalian ke total nilai
             $total_nilai += $nilai;
         }
 
-        // Menampilkan total nilai
-        // echo "Total nilai: " . $total_nilai;
-
-
-        //menghitung ipk
         $ipk = number_format($total_nilai / $total_sks, 2);
         
-        // dd($nilai_akhirs);
-
         $download ='KRS-'. $data->mhs->name .'.pdf';
-        return view('dashboard.mahasiswa.khs.cetak.cetak', compact('data', 'ketua_prodi_id', 'nilai_akhirs', 'select_krs', 'total_sks', 'total_nilai', 'ipk'));
-        // return Pdf::loadHTML(view('dashboard.mahasiswa.khs.cetak.cetak', compact('data', 'ketua_prodi_id', 'nilai_akhirs', 'select_krs', 'total_sks', 'total_nilai', 'ipk')))->download($download);
+        // return view('dashboard.mahasiswa.khs.cetak.cetak', compact('data', 'ketua_prodi_id', 'nilai_akhirs', 'select_krs', 'total_sks', 'total_nilai', 'ipk'));
+        return Pdf::loadHTML(view('dashboard.mahasiswa.khs.cetak.cetak', compact('data', 'ketua_prodi_id', 'nilai_akhirs', 'select_krs', 'total_sks', 'total_nilai', 'ipk')))->download($download);
     }
 }
