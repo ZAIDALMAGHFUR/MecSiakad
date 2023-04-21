@@ -246,7 +246,7 @@
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                       data-feather="users"></i><span>Data KHS</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="">Lihat KHS</a></li>
+                    <li><a href="{{ route('mhskhs') }}">Lihat KHS</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i

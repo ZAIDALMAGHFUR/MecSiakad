@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.mahasiswa')
 @section('content')
   @pushOnce('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
@@ -13,7 +13,7 @@
             <h3>KHS</h3>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
-              <li class="breadcrumb-item">Data Akademik</li>
+              <li class="breadcrumb-item">Data KHS</li>
               <li class="breadcrumb-item active">KHS</li>
             </ol>
           </div>
@@ -46,8 +46,8 @@
     <div class="row my-4">
         <div class="col">
             <div class="text-end mt-2 mt-sm-0">
-                <button class="btn btn-success waves-effect waves-light me-1" onclick="printDiv('cetak')"><i
-                        class="fa fa-print"> </i></button>
+              <a href="{{ route('mhskhs.cetak') }}"><button class="btn btn-success waves-effect waves-light me-1"><i
+                class="fa fa-print"> </i></button></a>
             </div>
         </div>
     </div>

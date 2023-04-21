@@ -24,6 +24,7 @@ use App\Http\Controllers\PMB\PersyaratanController;
 use App\Http\Controllers\Admin\AdminDosenController;
 use App\Http\Controllers\Admin\BobotNilaiController;
 use App\Http\Controllers\Admin\InputNilaiController;
+use App\Http\Controllers\Mahasiswa\GetKHSController;
 use App\Http\Controllers\Admin\DosenMatkulController;
 use App\Http\Controllers\Admin\ThnAkademikController;
 use App\Http\Controllers\Admin\DosenJabatanController;
@@ -313,6 +314,13 @@ Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
         Route::post('update/{krs:id}', 'update')->name('mhskrs.update');
     });
     Route::get('cetak', [GetController::class, 'cetak'])->name('mhskrs.cetak');
+
+        //khs
+        Route::controller(GetKHSController::class)->prefix('mhskhs')->group(function () {
+            Route::get('', 'index')->name('mhskhs');
+            Route::post('', 'find')->name('mhskhs.find');
+        });
+    Route::get('cetak-khs', [GetKHSController::class, 'cetak'])->name('mhskhs.cetak');
 });
 
 

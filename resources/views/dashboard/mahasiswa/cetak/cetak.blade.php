@@ -75,7 +75,7 @@
             <td rowspan="2" style="width: 2%">SKS</td>
             <td colspan="2">Kode</td>
             <td rowspan="2" style="width: 10%">Nama Dosen</td>
-            <td rowspan="2" style="width: 3%">KET</td>
+            <td rowspan="2" style="width: 3%">PARAP</td>
         </tr>
         <tr style="text-align: center">
             <td style="width: 5%">MK</td>
@@ -110,13 +110,13 @@
                 <div style="height: 80px"></div>
                 <div style="font-weight: bold;">{{ $ketua_prodi_id->dosen->nama_dosen }}</div>
             </td>
-            {{-- <td>
+            <td>
                 <div>Menyetujui,</div>
                 <div>Penasehat Akademik</div>
                 <div style="height: 80px"></div>
                 <div style="font-weight: bold;">
-                    Puan MPDI</div>
-            </td> --}}
+                    </div>
+            </td>
             <td>
                 <div>Tebing Tinggi, ......................</div>
                 <div>Mahasiswa</div>
