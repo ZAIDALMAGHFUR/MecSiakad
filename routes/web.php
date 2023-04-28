@@ -28,6 +28,7 @@ use App\Http\Controllers\Mahasiswa\GetKHSController;
 use App\Http\Controllers\Admin\DosenMatkulController;
 use App\Http\Controllers\Admin\ThnAkademikController;
 use App\Http\Controllers\Admin\DosenJabatanController;
+use App\Http\Controllers\Admin\FullCalendarController;
 use App\Http\Controllers\Admin\JabatanDosenController;
 use App\Http\Controllers\PMB\PengumumanCambaController;
 use App\Http\Controllers\PMB\PendaftaranCambaController;
@@ -265,6 +266,21 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::post('update/{id}', 'update')->name('foto.update');
         Route::delete('delete/{id}', 'destroy')->name('foto.delete');
     });
+
+    //kalender akademik
+    // Route::controller(FullCalendarController::class)->prefix('getevent')->group(function () {
+    //     Route::get('', 'getEvent')->name('getevent');
+    //     Route::post('createevent', 'createEvent')->name('createevent');
+    //     Route::delete('deleteevent', 'deleteEvent')->name('deleteevent');
+    // });
+
+    // Route::get('/getevent', 'FullCalendarController@getEvent')->name('getevent');
+    // Route::post('/createevent','FullCalendarController@createEvent')->name('createevent');
+    // Route::post('/deleteevent','FullCalendarController@deleteEvent')->name('deleteevent');
+
+    Route::get('getevent', [FullCalendarController::class, 'getEvent'])->name('getevent');
+    Route::post('createevent', [FullCalendarController::class, 'createEvent'])->name('createevent');
+    Route::post('deleteevent', [FullCalendarController::class, 'deleteEvent'])->name('deleteevent');
 });
 
 

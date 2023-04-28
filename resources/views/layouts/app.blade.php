@@ -281,14 +281,9 @@
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-                      data-feather="file-text"></i><span>Laporan Nilai</span></a>
+                      data-feather="file-text"></i><span>Calendar Academic</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="http://">Nilai Tugas</a></li>
-                    <li><a href="http://">Nilai Kuis</a></li>
-                    <li><a href="http://">Nilai Uts</a></li>
-                    <li><a href="http://">Nilai Uas</a></li>
-                    <li><a href="http://">Nilai Akhir</a></li>
-                    <li><a href="http://">Cetak Transkip Nilai</a></li>
+                    <li><a href="{{ route('getevent') }}">Calendar</a></li>
                   </ul>
                 </li>
 
