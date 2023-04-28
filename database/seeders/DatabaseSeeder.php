@@ -11,6 +11,7 @@ use Database\Seeders\JabatanSeeder;
 use Database\Seeders\JadwalPmbSeeder;
 use Database\Seeders\MahasiswaSeeder;
 use Database\Seeders\PendaftarSeeder;
+use Database\Seeders\PengajuanSeeder;
 use Database\Seeders\MataKuliahSeeder;
 use Database\Seeders\PembayaranSeeder;
 use Database\Seeders\PengugumanSeeder;
@@ -50,6 +51,7 @@ class DatabaseSeeder extends Seeder
             PembayaranSeeder::class,
             PengugumanSeeder::class,
             PersyaratansSeeder::class,
+            PengajuanSeeder::class,
         ]);
     }
 }
