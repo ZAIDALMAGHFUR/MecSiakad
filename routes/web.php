@@ -16,6 +16,7 @@ use App\Http\Controllers\Mahasiswa\GetController;
 use App\Http\Controllers\PMB\JadwalPmbController;
 use App\Http\Controllers\PMB\PendaftarController;
 use App\Http\Controllers\ProgrammStudiController;
+use App\Http\Controllers\Dosen\CalendarController;
 use App\Http\Controllers\PMB\PembayaranController;
 use App\Http\Controllers\PMB\PengugumanController;
 use App\Http\Controllers\Admin\EditNilaiController;
@@ -35,6 +36,7 @@ use App\Http\Controllers\PMB\PendaftaranCambaController;
 use App\Http\Controllers\Admin\CreateMahasiswaController;
 use App\Http\Controllers\Dosen\EdiNilaiMahasiswaController;
 use App\Http\Controllers\Dosen\DosenMataKuliahDosenController;
+use App\Http\Controllers\Mahasiswa\CalendarAcademicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -268,16 +270,6 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
     });
 
     //kalender akademik
-    // Route::controller(FullCalendarController::class)->prefix('getevent')->group(function () {
-    //     Route::get('', 'getEvent')->name('getevent');
-    //     Route::post('createevent', 'createEvent')->name('createevent');
-    //     Route::delete('deleteevent', 'deleteEvent')->name('deleteevent');
-    // });
-
-    // Route::get('/getevent', 'FullCalendarController@getEvent')->name('getevent');
-    // Route::post('/createevent','FullCalendarController@createEvent')->name('createevent');
-    // Route::post('/deleteevent','FullCalendarController@deleteEvent')->name('deleteevent');
-
     Route::get('getevent', [FullCalendarController::class, 'getEvent'])->name('getevent');
     Route::post('createevent', [FullCalendarController::class, 'createEvent'])->name('createevent');
     Route::post('deleteevent', [FullCalendarController::class, 'deleteEvent'])->name('deleteevent');
@@ -308,6 +300,9 @@ Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {
             Route::post('update/{id}', 'update')->name('compensation.update');
             Route::delete('delete/{id}', 'destroy')->name('compensation.delete');
         });
+
+    //kalender akademik
+    Route::get('getdosenevent', [CalendarController::class, 'getDosenEvent'])->name('getdosenevent');
 });
 
 
@@ -337,6 +332,9 @@ Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
             Route::post('', 'find')->name('mhskhs.find');
         });
     Route::get('cetak-khs', [GetKHSController::class, 'cetak'])->name('mhskhs.cetak');
+
+        //kalender akademik
+        Route::get('getmahasiswaevent', [CalendarAcademicController::class, 'getMahasiswaEvent'])->name('getmahasiswaevent');
 });
 
 

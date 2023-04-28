@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.mahasiswa')
 @section('content')
   @pushOnce('css')
   <link href='https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css' rel='stylesheet'>
@@ -9,12 +9,7 @@
       <div class="page-header">
         <div class="row">
           <div class="col-sm-6">
-            <h3>KHS</h3>
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
-              <li class="breadcrumb-item">Data KHS</li>
-              <li class="breadcrumb-item active">KHS</li>
-            </ol>
+
           </div>
           <div class="col-sm-6">
             <!-- Bookmark Start-->
@@ -72,7 +67,7 @@
                 },
                 navLinks: true,
                 editable: true,
-                events: "getevent",           
+                events: "getmahasiswaevent",           
                 displayEventTime: false,
                 eventRender: function (event, element, view) {
                     if (event.allDay === 'true') {
@@ -83,38 +78,6 @@
                 },
             selectable: true,
             selectHelper: true,
-            select: function (start, end, allDay) {
-                var title = prompt('Event Title:');
-                if (title) {
-                    var start = moment(start, 'DD.MM.YYYY').format('YYYY-MM-DD'); 
-                    var end = moment(end, 'DD.MM.YYYY').format('YYYY-MM-DD'); 
-                    $.ajax({ 
-                        url: "{{ URL::to('createevent') }}",
-                        data: 'title=' + title + '&start=' + start + '&end=' + end +'&_token=' +"{{ csrf_token() }}",
-                        type: "post",
-                        success: function (data) {
-                            alert("Added Successfully");
-                            $('#calendar').fullCalendar('refetchEvents');
-                        }
-                    });
-                }
-            },
-            eventClick: function (event) {
-                var deleteMsg = confirm("Do you really want to delete?");
-                if (deleteMsg) { 
-                   $.ajax({
-                        type: "POST",
-                        url: "{{ URL::to('deleteevent') }}",
-                        data: "&id=" + event.id+'&_token=' +"{{ csrf_token() }}",
-                        success: function (response) {
-                            if(parseInt(response) > 0) {
-                                $('#calendar').fullCalendar('removeEvents', event.id);
-                                alert("Deleted Successfully");
-                            }
-                        }
-                    });
-                }
-            }
             });
         });
     </script>
