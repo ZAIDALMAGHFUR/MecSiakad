@@ -284,6 +284,7 @@
                       data-feather="file-text"></i><span>Calendar Academic</span></a>
                   <ul class="nav-submenu menu-content">
                     <li><a href="{{ route('getevent') }}">Calendar</a></li>
+                    {{-- <li><a href="{{ route('calendar.index') }}">Calendar</a></li> --}}
                   </ul>
                 </li>
 

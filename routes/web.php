@@ -273,6 +273,11 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
     Route::get('getevent', [FullCalendarController::class, 'getEvent'])->name('getevent');
     Route::post('createevent', [FullCalendarController::class, 'createEvent'])->name('createevent');
     Route::post('deleteevent', [FullCalendarController::class, 'deleteEvent'])->name('deleteevent');
+
+    // Route::get('calendar/index', [FullCalendarController::class, 'index'])->name('calendar.index');
+    // Route::post('calendar', [FullCalendarController::class, 'store'])->name('calendar.store');
+    // Route::patch('calendar/update/{id}', [FullCalendarController::class, 'update'])->name('calendar.update');
+    // Route::delete('calendar/destroy/{id}', [FullCalendarController::class, 'destroy'])->name('calendar.destroy');
 });
 
 
