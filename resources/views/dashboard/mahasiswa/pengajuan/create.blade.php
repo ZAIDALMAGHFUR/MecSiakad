@@ -128,7 +128,7 @@
                         <td>{{ $item->judul_2 }}</td>
                         <td>{{ $item->judul_3 }}</td>
                         <td style="text-align: center">
-                            <a href="{{ route('pengajuan') }}">
+                            <a href="{{ route('pengajuan-cetak') }}">
                                 <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-print"></i></button>
                             </a>
                             <form action="{{ route('mhsjudul.delete', [$item->id]) }}" method="POST">

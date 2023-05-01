@@ -313,6 +313,7 @@ Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {
             Route::get('', 'index')->name('pengajuan');
         });
         Route::post('save-pengajuan/{id}', [PengajuanController::class, 'update']);
+        Route::get('ambil/{id}/{nama}', [PengajuanController::class, 'ambiljudul'])->name('pengajuan.ambil');
 });
 
 
@@ -356,7 +357,7 @@ Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
             Route::delete('delete/{id}', 'destroy')->name('mhsjudul.delete');
         });
 
-        Route::get('pengajuan', [SkripsiController::class, 'pengajuan'])->name('pengajuan');
+        Route::get('pengajuan-cetak', [SkripsiController::class, 'pengajuan'])->name('pengajuan-cetak');
 });
 
 

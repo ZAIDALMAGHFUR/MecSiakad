@@ -69,7 +69,7 @@
                         <td>{{ $data->mahasiswa->name }}</td>
                         <td>{{ $data->judul }}</td>
                         <td style="text-align: center">
-                            <a href="" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                            <a href="{{ route('pengajuan.ambil', [$data->mahasiswa->id, $data->mahasiswa->name]) }}" class="btn btn-primary btn-sm"><i class="fa fa-print"></i></a>
                         </td>
                         <td style="text-align: center">
                             <div class="row">
@@ -114,7 +114,7 @@
                                 <div class="mb-3">
                                     <label for="status" class="form-label">Status</label>
                                     <select class="form-select" id="status" name="status">
-                                        <option value="disetujui">Setujui</option>
+                                        <option value="diterima">Setujui</option>
                                         <option value="ditolak">Tolak</option>
                                     </select>
                                 </div>                                                
