@@ -256,6 +256,15 @@
                 </li>
 
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
+                  data-feather="users"></i><span>Pengajuan Judul</span></a>
+              <ul class="nav-submenu menu-content">
+                <li>
+                  <a href="{{ route('pengajuan') }}">Data Pengajuan</a>
+                </li>
+              </ul>
+            </li>
+
+                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                   data-feather="users"></i><span>Calender Academic</span></a>
               <ul class="nav-submenu menu-content">
                 <li>

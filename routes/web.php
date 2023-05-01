@@ -20,6 +20,7 @@ use App\Http\Controllers\Dosen\CalendarController;
 use App\Http\Controllers\PMB\PembayaranController;
 use App\Http\Controllers\PMB\PengugumanController;
 use App\Http\Controllers\Admin\EditNilaiController;
+use App\Http\Controllers\Dosen\PengajuanController;
 use App\Http\Controllers\PMB\PendaftaranController;
 use App\Http\Controllers\PMB\PersyaratanController;
 use App\Http\Controllers\Admin\AdminDosenController;
@@ -274,10 +275,6 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
     Route::post('createevent', [FullCalendarController::class, 'createEvent'])->name('createevent');
     Route::post('deleteevent', [FullCalendarController::class, 'deleteEvent'])->name('deleteevent');
 
-    // Route::get('calendar/index', [FullCalendarController::class, 'index'])->name('calendar.index');
-    // Route::post('calendar', [FullCalendarController::class, 'store'])->name('calendar.store');
-    // Route::patch('calendar/update/{id}', [FullCalendarController::class, 'update'])->name('calendar.update');
-    // Route::delete('calendar/destroy/{id}', [FullCalendarController::class, 'destroy'])->name('calendar.destroy');
 });
 
 
@@ -308,6 +305,12 @@ Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {
 
     //kalender akademik
     Route::get('getdosenevent', [CalendarController::class, 'getDosenEvent'])->name('getdosenevent');
+
+
+    //pengajuan judul
+        Route::controller(PengajuanController::class)->prefix('pengajuan')->group(function () {
+            Route::get('', 'index')->name('pengajuan');
+        });
 });
 
 

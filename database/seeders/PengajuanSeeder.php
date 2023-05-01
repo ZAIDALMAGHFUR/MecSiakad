@@ -24,7 +24,7 @@ class PengajuanSeeder extends Seeder
             'judul_3' => 'Pengajuan Judul 3',
             'deskripsi' => 'Pengajuan Judul',
             'pesan' => 'Pengajuan Judul bagus',
-            'status' => 'Diterima',
+            'status' => 'diterima',
         ]);
     }
 }

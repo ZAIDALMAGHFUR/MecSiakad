@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('judul_1');
             $table->string('judul_2');
             $table->string('judul_3');
-            $table->string('status');
+            $table->enum('status', ['diterima', 'ditolak']);
             $table->string('pesan');
             $table->unsignedBigInteger('mahasiswa_id');
             $table->foreign('mahasiswa_id')->references('id')->on('mahasiswas')->onDelete('cascade');
