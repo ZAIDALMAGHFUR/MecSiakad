@@ -349,7 +349,11 @@ Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
         //pengajuan judul
         Route::controller(SkripsiController::class)->prefix('mhsjudul')->group(function () {
             Route::get('', 'index')->name('mhsjudul');
+            Route::get('add', 'add')->name('mhsjudul.add');
+            Route::post('save', 'store')->name('mhsjudul.save');
         });
+
+        Route::get('pengajuan', [SkripsiController::class, 'pengajuan'])->name('pengajuan');
 });
 
 

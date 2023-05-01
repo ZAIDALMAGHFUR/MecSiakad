@@ -271,6 +271,9 @@
             <li>
               <a href="{{ route('mhsjudul') }}">Pengajuan Skripsi</a>
             </li>
+            <li>
+              <a href="{{ route('mhsjudul.add') }}">Buat Pengajuan Skripsi</a>
+            </li>
           </ul>
         </li>
 
