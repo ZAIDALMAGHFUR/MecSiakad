@@ -64,7 +64,7 @@
                         </tr>
                         <tr>
                             <th>Nidn</th>
-                            <td>{{ $data->nama_dosen }}</td>
+                            <td>{{ $data->nidn }}</td>
                         </tr>
                         <tr>
                             <th>Email</th>

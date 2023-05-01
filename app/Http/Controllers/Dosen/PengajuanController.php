@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers\Dosen;
 
+use App\Models\Dosen;
 use App\Models\Pengajuan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PengajuanController extends Controller
 {
     public function index()
     {   
-        $Pengajuan = Pengajuan::all();
-        return view('dashboard.dosen.pengajuan.index', compact('Pengajuan'));
+        $dosen = Dosen::Where('users_id', Auth::user()->id)->first();
+        $pengajuan = Pengajuan::where('dosen_id', $dosen->id)->get();
+        return view('dashboard.dosen.pengajuan.index', [
+            'pengajuan' => $pengajuan
+        ]);
     }
 
     public function update(Request $request, $id)

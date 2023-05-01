@@ -63,7 +63,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($Pengajuan as $data)
+                    @foreach ($pengajuan as $data)
                         <tr>
                         <td style="text-align: center">{{ $loop->iteration }}</td>
                         <td>{{ $data->mahasiswa->name }}</td>
