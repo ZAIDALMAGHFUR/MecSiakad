@@ -29,6 +29,7 @@ use App\Http\Controllers\Admin\InputNilaiController;
 use App\Http\Controllers\Mahasiswa\GetKHSController;
 use App\Http\Controllers\Admin\DosenMatkulController;
 use App\Http\Controllers\Admin\ThnAkademikController;
+use App\Http\Controllers\Mahasiswa\SkripsiController;
 use App\Http\Controllers\Admin\DosenJabatanController;
 use App\Http\Controllers\Admin\FullCalendarController;
 use App\Http\Controllers\Admin\JabatanDosenController;
@@ -344,6 +345,11 @@ Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
 
         //kalender akademik
         Route::get('getmahasiswaevent', [CalendarAcademicController::class, 'getMahasiswaEvent'])->name('getmahasiswaevent');
+
+        //pengajuan judul
+        Route::controller(SkripsiController::class)->prefix('mhsjudul')->group(function () {
+            Route::get('', 'index')->name('mhsjudul');
+        });
 });
 
 

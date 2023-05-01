@@ -265,6 +265,15 @@
               </ul>
             </li>
 
+            <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
+              data-feather="users"></i><span>Pengajuan Skripsi</span></a>
+          <ul class="nav-submenu menu-content">
+            <li>
+              <a href="{{ route('mhsjudul') }}">Pengajuan Skripsi</a>
+            </li>
+          </ul>
+        </li>
+
 
                 <li class="sidebar-main-title">
                   <div>
