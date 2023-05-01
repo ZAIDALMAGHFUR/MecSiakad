@@ -15,16 +15,16 @@ return new class extends Migration
     {
         Schema::create('pengajuans', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->string('deskripsi');
-            $table->string('judul_1');
-            $table->string('judul_2');
-            $table->string('judul_3');
-            $table->enum('status', ['diterima', 'ditolak']);
-            $table->string('pesan');
-            $table->unsignedBigInteger('mahasiswa_id');
+            $table->string('judul')->nullable();
+            $table->string('deskripsi')->nullable();
+            $table->string('judul_1')->nullable();
+            $table->string('judul_2')->nullable();
+            $table->string('judul_3')->nullable();
+            $table->enum('status', ['diterima', 'ditolak'])->nullable();
+            $table->string('pesan')->nullable();
+            $table->unsignedBigInteger('mahasiswa_id')->nullable();
             $table->foreign('mahasiswa_id')->references('id')->on('mahasiswas')->onDelete('cascade');
-            $table->unsignedBigInteger('dosen_id');
+            $table->unsignedBigInteger('dosen_id')->nullable();
             $table->foreign('dosen_id')->references('id')->on('dosens')->onDelete('cascade');
             $table->timestamps();
         });

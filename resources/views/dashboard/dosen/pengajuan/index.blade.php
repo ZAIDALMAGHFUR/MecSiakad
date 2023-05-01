@@ -10,11 +10,11 @@
       <div class="page-header">
         <div class="row">
           <div class="col-sm-6">
-            <h3>Pengajuan Nilai</h3>
+            <h3>Pengajuan Judul</h3>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
               <li class="breadcrumb-item">Data Master</li>
-              <li class="breadcrumb-item active">Pengajuan Nilai</li>
+              <li class="breadcrumb-item active">Pengajuan Judul</li>
             </ol>
           </div>
           <div class="col-sm-6">
@@ -57,8 +57,9 @@
                     <th style="width: 55px">No</th>
                     <th>Nama Mahasiswa</th>
                     <th>Judul</th>
-                    <th>Action</th>
+                    <th>Lihat Judul</th>
                     <th>Status</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -70,56 +71,66 @@
                         <td style="text-align: center">
                             <a href="" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
                         </td>
-                        {{-- <td style="text-align: center">
-                            @if ($data->status == 'diterima')
-                                <span class="badge badge-success">Diterima</span>
-                            @elseif($data->status == 'ditolak')
-                                <span class="badge badge-danger">Ditolak</span>
-                            @endif
-                        </td> --}}
-                        <td>
+                        <td style="text-align: center">
                             <div class="row">
-                              <div class="col-md-6">
-                                  @if ($data->status == 'diterima')
-                                      <span class="badge badge-success">Diterima<span
-                                              class="ms-1 fa fa-check"></span>
-                                      @elseif($data->status == 'ditolak')
-                                          <span class="badge badge-warning">Di  <br> Tolak
-                                              <br><span class="ms-1 fas fa-stream"></span>
-                                              @else
-                                                  <span class="badge badge-danger">Not Found<span
-                                                          class="ms-1 fa fa-ban"></span>
-                                  @endif
-                              </div>
-                              <div class="col-md-6">
-                                  <div class="dropdown text-sans-serif">
-                                    <div class="btn-link" type="button" id="order-dropdown-7" data-bs-toggle="dropdown">
-                                      <span>
-                                          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewbox="0 0 24 24" version="1.1">
-                                              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                  <rect a="0" y="0" width="24" height="24"></rect>
-                                                    <circle fill="#000000" cx="5" cy="12" r="2"> </circle>
-                                                    <circle fill="#000000" cx="12" cy="12" r="2"> </circle>
-                                                    <circle fill="#000000" cx="19" cy="12" r="2"> </circle>
-                                              </g>
-                                          </svg>
-                                        </span>
-                                    </div>
-                                      <div class="dropdown-menu dropdown-menu-end border py-0" aria-labelledby="order-dropdown-7">
-                                          <div class="py-2">
-                                              <a class="dropdown-item" href="">Terima</a>
-                                              <a class="dropdown-item" href="">Tolak</a>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          </td>
+                                <div class="">
+                                    @if ($data->status == 'diterima')
+                                        <span class="badge badge-success">Diterima<span class="ms-1 fa fa-check"></span>
+                                    @elseif($data->status == 'ditolak')
+                                        <span class="badge badge-danger">Di<br>Tolak<br><span class="ms-1 fas fa-stream"></span>
+                                    @else
+                                        <span class="badge badge-warning">Not Found<span class="ms-1 fa fa-ban"></span>
+                                    @endif
+                                </div>
+                            </div>
+                        </td>
+                        <td style="text-align: center">
+                            <a class="btn btn-primary btn-sm" title="Edit" data-bs-toggle="modal" data-bs-target=".edit{{ $data->id }}"><i class="fa fa-edit"></i></a>
+                        </td>
 
                         </tr>
                     @endforeach
                 </tbody>
               </table>
+              <!-- Modal -->
+              <div class="modal fade edit{{ $data->id }}" id="modal-{{ $data->id }}" tabindex="-1" aria-labelledby="modalLabel-{{ $data->id }}" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel-{{ $data->id }}">Pengajuan Judul</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="save-pengajuan/{{ $data->id }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                @method('POST')
+                                <input type="hidden" name="id" value="{{ $data->id }}">
+                                <input type="hidden" name="mahasiswa_id" value="{{ $data->mahasiswa_id }}">
+                                <input type="hidden" name="dosen_id" value="{{ $data->dosen_id }}">
+                                <div class="mb-3">
+                                    <label for="judul" class="form-label">Judul yang di pilih</label>
+                                    <input type="text" class="form-control" id="judul" name="judul">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="status" class="form-label">Status</label>
+                                    <select class="form-select" id="status" name="status">
+                                        <option value="disetujui">Setujui</option>
+                                        <option value="ditolak">Tolak</option>
+                                    </select>
+                                </div>                                                
+                                <div class="mb-3">
+                                    <label for="pesan" class="form-label">Komentar</label>
+                                    <textarea class="form-control" id="pesan" rows="4" cols="50" name="pesan"></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
           </div>
         </div>

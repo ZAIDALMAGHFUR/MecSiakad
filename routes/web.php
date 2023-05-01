@@ -311,6 +311,7 @@ Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {
         Route::controller(PengajuanController::class)->prefix('pengajuan')->group(function () {
             Route::get('', 'index')->name('pengajuan');
         });
+        Route::post('save-pengajuan/{id}', [PengajuanController::class, 'update']);
 });
 
 
