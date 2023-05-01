@@ -10,11 +10,11 @@
       <div class="page-header">
         <div class="row">
           <div class="col-sm-6">
-            <h3>Add Pengajuan Skripsi</h3>
+            <h3> Pengajuan Skripsi</h3>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
               <li class="breadcrumb-item">Data Master</li>
-              <li class="breadcrumb-item active">Add Pengajuan Skripsi</li>
+              <li class="breadcrumb-item active"> Pengajuan Skripsi</li>
             </ol>
           </div>
           <div class="col-sm-6">
@@ -46,9 +46,6 @@
     <div class="container-fluid">
       <div class="col-sm-12">
         <div class="card">
-          <div class="card-header">
-            <a href="" class="btn btn-primary">Add Pengajuan</a>
-          </div>
         
           <div class="card-body">
             <div class="table-responsive">
@@ -59,7 +56,7 @@
                     <th>Judul</th>
                     <th>Nama Dosen</th>
                     <th>Status</th>
-                    <th>Action</th>
+                    <th>Pesan</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -77,14 +74,7 @@
                                 <span class="badge badge-danger">Ditolak</span>
                             @endif
                         </td>
-                        <td style="text-align: center">
-                            <a href="" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-                            <form action="" method="POST" style="display: inline-block">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-trash"></i></button>
-                            </form>
-                        </td>
+                        <td>{{ $item->pesan }}</td>
                     </tr>
                     @endforeach
                 </tbody>
