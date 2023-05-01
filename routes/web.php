@@ -351,6 +351,9 @@ Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
             Route::get('', 'index')->name('mhsjudul');
             Route::get('add', 'add')->name('mhsjudul.add');
             Route::post('save', 'store')->name('mhsjudul.save');
+            Route::get('edit/{id}', 'edit')->name('mhsjudul.edit');
+            Route::post('update/{id}', 'update')->name('mhsjudul.update');
+            Route::delete('delete/{id}', 'destroy')->name('mhsjudul.delete');
         });
 
         Route::get('pengajuan', [SkripsiController::class, 'pengajuan'])->name('pengajuan');

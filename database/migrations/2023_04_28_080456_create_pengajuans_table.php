@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('pengajuans', function (Blueprint $table) {
             $table->id();
             $table->string('judul')->nullable();
-            $table->string('deskripsi')->nullable();
+            $table->longText('deskripsi')->nullable();
             $table->string('judul_1')->nullable();
             $table->string('judul_2')->nullable();
             $table->string('judul_3')->nullable();

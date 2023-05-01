@@ -84,7 +84,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="dosen_id" class="form-label">Kepda dosen</label>
-                            <input disabled type="text" class="form-control" id="dosen_id" name="dosen_id" value=""></input>
+                            <p class="form-control" disabled>{{ $ketua_prodi_id->dosen->nama_dosen }}</p>
+                            <input type="hidden" class="form-control" id="dosen_id" name="dosen_id" value="{{ $ketua_prodi_id->dosen->id }}"?>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -127,10 +128,12 @@
                         <td>{{ $item->judul_2 }}</td>
                         <td>{{ $item->judul_3 }}</td>
                         <td style="text-align: center">
-                            <form action="" method="POST">
+                            <a href="{{ route('pengajuan') }}">
+                                <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-print"></i></button>
+                            </a>
+                            <form action="{{ route('mhsjudul.delete', [$item->id]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <a href="" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
                                 <button type="submit" class="btn btn-danger btn-sm show_confirm"><i class="fa fa-trash"></i></button>
                             </form>
                     </tr>
