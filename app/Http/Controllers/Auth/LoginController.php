@@ -34,11 +34,18 @@ class LoginController extends Controller
         } elseif (Auth::user()->roles_id == 2) {
             return RouteServiceProvider::DOSEN;
         } elseif (Auth::user()->roles_id == 3) {
-            return RouteServiceProvider::MAHASISWA;
+            if (Auth::user()->mahasiswa->status == 'drop out') {
+                return redirect()->route('login')->withErrors([
+                    'danger' => 'Data berhasil diubah'
+                ]);
+            } else {
+                return RouteServiceProvider::MAHASISWA;
+            }
         } elseif (Auth::user()->roles_id == 4) {
             return RouteServiceProvider::Calon;
         }
     }
+    
 
     /**
      * Create a new controller instance.

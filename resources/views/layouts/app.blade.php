@@ -273,14 +273,6 @@
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-                      data-feather="calendar"></i><span>Data Absensi</span></a>
-                  <ul class="nav-submenu menu-content">
-                    <li><a href="http://">Absensi Dosen</a></li>
-                    <li><a href="http://">Absensi Mahasiswa</a></li>
-                    <li><a href="http://">Rekap Absensi</a></li>
-                  </ul>
-                </li>
-                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                       data-feather="file-text"></i><span>Calendar Academic</span></a>
                   <ul class="nav-submenu menu-content">
                     <li><a href="{{ route('getevent') }}">Calendar</a></li>

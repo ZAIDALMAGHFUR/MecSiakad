@@ -249,12 +249,6 @@
                     <li><a href="{{ route('mhskhs') }}">Lihat KHS</a></li>
                   </ul>
                 </li>
-                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-                      data-feather="users"></i><span>Ajukan Judul</span></a>
-                  <ul class="nav-submenu menu-content">
-                    <li><a href="">Ajukan Judul</a></li>
-                  </ul>
-                </li>
 
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                   data-feather="users"></i><span>Calender Academic</span></a>
@@ -266,13 +260,13 @@
             </li>
 
             <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-              data-feather="users"></i><span>Pengajuan Skripsi</span></a>
+              data-feather="users"></i><span>Pengajuan Judul Skripsi</span></a>
           <ul class="nav-submenu menu-content">
             <li>
-              <a href="{{ route('mhsjudul') }}">Pengajuan Skripsi</a>
+              <a href="{{ route('mhsjudul') }}">Pengajuan Judul Skripsi</a>
             </li>
             <li>
-              <a href="{{ route('mhsjudul.add') }}">Buat Pengajuan Skripsi</a>
+              <a href="{{ route('mhsjudul.add') }}">Buat Pengajuan Judul Skripsi</a>
             </li>
           </ul>
         </li>
@@ -283,11 +277,12 @@
                     <h6>Miscellaneous </h6>
                   </div>
                 </li>
-                <li class="dropdown"><a class="nav-link menu" href="{{ route('zoom') }}"><i
+                {{-- <li class="dropdown"><a class="nav-link menu" href="{{ route('zoom') }}"><i
                       data-feather="video"></i><span>Zoom
                       Meeting</span></a>
-                </li>
-                <li class="dropdown"><a class="nav-link menu" href="{{ route('job-search') }}"><i
+                </li> --}}
+                
+                <li class="dropdown"><a class="nav-link menu" href="{{ route('job-mhs') }}"><i
                       data-feather="pocket"></i><span>Job Search</span></a>
                 </li>
               </ul>

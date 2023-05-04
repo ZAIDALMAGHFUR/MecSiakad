@@ -288,11 +288,11 @@
                     <h6>Miscellaneous </h6>
                   </div>
                 </li>
-                <li class="dropdown"><a class="nav-link menu" href="{{ route('zoom') }}"><i
+                {{-- <li class="dropdown"><a class="nav-link menu" href="{{ route('zoom') }}"><i
                       data-feather="video"></i><span>Zoom
                       Meeting</span></a>
-                </li>
-                <li class="dropdown"><a class="nav-link menu" href="{{ route('job-search') }}"><i
+                </li> --}}
+                <li class="dropdown"><a class="nav-link menu" href="{{ route('job-dsn') }}"><i
                       data-feather="pocket"></i><span>Job Search</span></a>
                 </li>
               </ul>

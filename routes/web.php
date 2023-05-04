@@ -11,6 +11,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PMB\FotosController;
 use App\Http\Controllers\Dosen\NilaiController;
 use App\Http\Controllers\Admin\MatkulController;
+use App\Http\Controllers\Dosen\JobDsnController;
 use App\Http\Controllers\PMB\PenggunaController;
 use App\Http\Controllers\Mahasiswa\GetController;
 use App\Http\Controllers\PMB\JadwalPmbController;
@@ -27,6 +28,7 @@ use App\Http\Controllers\Admin\AdminDosenController;
 use App\Http\Controllers\Admin\BobotNilaiController;
 use App\Http\Controllers\Admin\InputNilaiController;
 use App\Http\Controllers\Mahasiswa\GetKHSController;
+use App\Http\Controllers\Mahasiswa\JobMhsController;
 use App\Http\Controllers\Admin\DosenMatkulController;
 use App\Http\Controllers\Admin\ThnAkademikController;
 use App\Http\Controllers\Mahasiswa\SkripsiController;
@@ -276,6 +278,14 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
     Route::post('createevent', [FullCalendarController::class, 'createEvent'])->name('createevent');
     Route::post('deleteevent', [FullCalendarController::class, 'deleteEvent'])->name('deleteevent');
 
+    Route::get('/job-search',  [App\Http\Controllers\JobController::class, 'index'])->name('job-search');
+    Route::get('/job-country/{search}',  [App\Http\Controllers\JobController::class, 'search']);
+
+    Route::get('/zoom', [\App\Http\Controllers\ZoomController::class, 'index'])->name('zoom');
+    Route::get('/zoom/create', [\App\Http\Controllers\ZoomController::class, 'create'])->name('zoom/create');
+    Route::post('/zoom/save', [\App\Http\Controllers\ZoomController::class, 'save'])->name('zoom/save');
+    Route::delete('/zoom/delete/{id}', [\App\Http\Controllers\ZoomController::class, 'delete'])->name('zoom.delete');
+
 });
 
 
@@ -314,6 +324,10 @@ Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {
         });
         Route::post('save-pengajuan/{id}', [PengajuanController::class, 'update']);
         Route::get('ambil/{id}/{nama}', [PengajuanController::class, 'ambiljudul'])->name('pengajuan.ambil');
+
+                //job search
+                Route::get('/job-dsn',  [JobDsnController::class, 'indexDsn'])->name('job-dsn');
+                Route::get('/job-country-dsn/{search}',  [JobDsnController::class, 'searchDsn']);
 });
 
 
@@ -358,6 +372,10 @@ Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
         });
 
         Route::get('pengajuan-cetak', [SkripsiController::class, 'pengajuan'])->name('pengajuan-cetak');
+
+        //job search
+        Route::get('/job-mhs',  [JobMhsController::class, 'indexMhs'])->name('job-mhs');
+        Route::get('/job-country-mhs/{search}',  [JobMhsController::class, 'searchMhs']);
 });
 
 
@@ -384,19 +402,3 @@ Route::group(['middleware'=> ['auth', 'Camba']], function () {
     //lihat pengumuman
     Route::get('/view-graduation/{id_pendaftaran}', [PendaftaranCambaController::class, 'lihatkelulusan']);
 });
-
-
-
-
-
-
-
-
-Route::get('/job-search',  [App\Http\Controllers\JobController::class, 'index'])->name('job-search');
-Route::get('/job-country/{search}',  [App\Http\Controllers\JobController::class, 'search']);
-
-Route::get('/zoom', [\App\Http\Controllers\ZoomController::class, 'index'])->name('zoom');
-Route::get('/zoom/create', [\App\Http\Controllers\ZoomController::class, 'create'])->name('zoom/create');
-Route::post('/zoom/save', [\App\Http\Controllers\ZoomController::class, 'save'])->name('zoom/save');
-Route::delete('/zoom/delete/{id}', [\App\Http\Controllers\ZoomController::class, 'delete'])->name('zoom.delete');
-
