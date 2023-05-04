@@ -240,14 +240,14 @@
                 <li class="dropdown"><a class="nav-link menu" href="{{ route('camba') }}"><i
                   data-feather="book-open"></i><span>Pendafataran</span></a>
                 </li>
-                <li class="sidebar-main-title">
+                {{-- <li class="sidebar-main-title">
                   <div>
                     <h6>Miscellaneous </h6>
                   </div>
                 </li>
                 <li class="dropdown"><a class="nav-link menu" href="{{ route('job-search') }}"><i
                       data-feather="pocket"></i><span>Job Search</span></a>
-                </li>
+                </li> --}}
               </ul>
             </div>
             <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

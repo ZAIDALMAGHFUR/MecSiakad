@@ -287,7 +287,7 @@
                       <li><a href="{{ route('jadwalpmb') }}">Jadwal PMB</a></li>
                       <li><a href="{{ route('pendaftar') }}">Pendaftaran</a></li>
                       <li><a href="{{ route('pembayaran') }}">Pembayaran</a></li>
-                      <li><a href="{{ route('penguguman') }}">Penguguman</a></li>
+                      <li><a href="{{ route('penguguman') }}">Pengumuman</a></li>
                       <li><a href="{{ route('persyaratan') }}">Persyaratan PMB</a></li>
                       <li><a href="{{ route('foto') }}">Foto Brosur</a></li>
                     </ul>
