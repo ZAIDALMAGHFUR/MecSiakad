@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\calonController;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\PMB\MabaController;
 use App\Http\Controllers\Admin\KhsController;
 use App\Http\Controllers\Admin\KrsController;
 use App\Http\Controllers\MahasiswaController;
@@ -58,7 +59,6 @@ Route::get('/', function () {
 });
 
 Auth::routes(['verify' => true]);
-
 
 Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -251,6 +251,12 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
     Route::post('/save-announcement', [PengugumanController::class, 'simpanpengumuman']);
     Route::post('/update-announcement/{id}', [PengugumanController::class, 'updatepengumuman']);
 
+
+    //maba
+    Route::controller(MabaController::class)->prefix('maba')->group(function () {
+        Route::get('', 'index')->name('maba');
+        Route::get('maba', 'export')->name('maba.export');
+    });
 
 
     //persyaratan

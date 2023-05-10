@@ -290,6 +290,7 @@
                       <li><a href="{{ route('penguguman') }}">Pengumuman</a></li>
                       <li><a href="{{ route('persyaratan') }}">Persyaratan PMB</a></li>
                       <li><a href="{{ route('foto') }}">Foto Brosur</a></li>
+                      <li><a href="{{ route('maba') }}">MABA</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu" href="javascript:void(0)"><i
