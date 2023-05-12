@@ -365,8 +365,6 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
     Route::get('getevent', [FullCalendarController::class, 'getEvent'])->name('getevent');
     Route::post('createevent', [FullCalendarController::class, 'createEvent'])->name('createevent');
     Route::post('deleteevent', [FullCalendarController::class, 'deleteEvent'])->name('deleteevent');
-<<<<<<< HEAD
-=======
 
     Route::get('/job-search',  [App\Http\Controllers\JobController::class, 'index'])->name('job-search');
     Route::get('/job-country/{search}',  [App\Http\Controllers\JobController::class, 'search']);
@@ -376,7 +374,6 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
     Route::post('/zoom/save', [\App\Http\Controllers\ZoomController::class, 'save'])->name('zoom/save');
     Route::delete('/zoom/delete/{id}', [\App\Http\Controllers\ZoomController::class, 'delete'])->name('zoom.delete');
 
->>>>>>> e677b3f883574f3ea6312340a0a7a87080355e92
 });
 
 
