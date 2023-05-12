@@ -373,7 +373,6 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
     Route::get('/zoom/create', [\App\Http\Controllers\ZoomController::class, 'create'])->name('zoom/create');
     Route::post('/zoom/save', [\App\Http\Controllers\ZoomController::class, 'save'])->name('zoom/save');
     Route::delete('/zoom/delete/{id}', [\App\Http\Controllers\ZoomController::class, 'delete'])->name('zoom.delete');
-
 });
 
 
@@ -407,23 +406,21 @@ Route::group(['middleware' => ['auth', 'OnlyDosen']], function () {
 
 
     //pengajuan judul
-<<<<<<< HEAD
     Route::controller(PengajuanController::class)->prefix('pengajuan')->group(function () {
         Route::get('', 'index')->name('pengajuan');
     });
     Route::post('save-pengajuan/{id}', [PengajuanController::class, 'update']);
     Route::get('ambil/{id}/{nama}', [PengajuanController::class, 'ambiljudul'])->name('pengajuan.ambil');
-=======
-        Route::controller(PengajuanController::class)->prefix('pengajuan')->group(function () {
-            Route::get('', 'index')->name('pengajuan');
-        });
-        Route::post('save-pengajuan/{id}', [PengajuanController::class, 'update']);
-        Route::get('ambil/{id}/{nama}', [PengajuanController::class, 'ambiljudul'])->name('pengajuan.ambil');
 
-                //job search
-                Route::get('/job-dsn',  [JobDsnController::class, 'indexDsn'])->name('job-dsn');
-                Route::get('/job-country-dsn/{search}',  [JobDsnController::class, 'searchDsn']);
->>>>>>> e677b3f883574f3ea6312340a0a7a87080355e92
+    Route::controller(PengajuanController::class)->prefix('pengajuan')->group(function () {
+        Route::get('', 'index')->name('pengajuan');
+    });
+    Route::post('save-pengajuan/{id}', [PengajuanController::class, 'update']);
+    Route::get('ambil/{id}/{nama}', [PengajuanController::class, 'ambiljudul'])->name('pengajuan.ambil');
+
+    //job search
+    Route::get('/job-dsn',  [JobDsnController::class, 'indexDsn'])->name('job-dsn');
+    Route::get('/job-country-dsn/{search}',  [JobDsnController::class, 'searchDsn']);
 });
 
 
@@ -467,15 +464,13 @@ Route::group(['middleware' => ['auth', 'OnlyMahasiswa']], function () {
         Route::delete('delete/{id}', 'destroy')->name('mhsjudul.delete');
     });
 
-<<<<<<< HEAD
-    Route::get('pengajuan-cetak', [SkripsiController::class, 'pengajuan'])->name('pengajuan-cetak');
-=======
-        Route::get('pengajuan-cetak', [SkripsiController::class, 'pengajuan'])->name('pengajuan-cetak');
 
-        //job search
-        Route::get('/job-mhs',  [JobMhsController::class, 'indexMhs'])->name('job-mhs');
-        Route::get('/job-country-mhs/{search}',  [JobMhsController::class, 'searchMhs']);
->>>>>>> e677b3f883574f3ea6312340a0a7a87080355e92
+    Route::get('pengajuan-cetak', [SkripsiController::class, 'pengajuan'])->name('pengajuan-cetak');
+    Route::get('pengajuan-cetak', [SkripsiController::class, 'pengajuan'])->name('pengajuan-cetak');
+
+    //job search
+    Route::get('/job-mhs',  [JobMhsController::class, 'indexMhs'])->name('job-mhs');
+    Route::get('/job-country-mhs/{search}',  [JobMhsController::class, 'searchMhs']);
 });
 
 
@@ -501,7 +496,6 @@ Route::group(['middleware' => ['auth', 'Camba']], function () {
 
     //lihat pengumuman
     Route::get('/view-graduation/{id_pendaftaran}', [PendaftaranCambaController::class, 'lihatkelulusan']);
-<<<<<<< HEAD
 });
 
 
@@ -518,6 +512,3 @@ Route::get('/zoom', [\App\Http\Controllers\ZoomController::class, 'index'])->nam
 Route::get('/zoom/create', [\App\Http\Controllers\ZoomController::class, 'create'])->name('zoom/create');
 Route::post('/zoom/save', [\App\Http\Controllers\ZoomController::class, 'save'])->name('zoom/save');
 Route::delete('/zoom/delete/{id}', [\App\Http\Controllers\ZoomController::class, 'delete'])->name('zoom.delete');
-=======
-});
->>>>>>> e677b3f883574f3ea6312340a0a7a87080355e92
