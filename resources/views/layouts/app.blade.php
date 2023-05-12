@@ -39,7 +39,7 @@
   @stack('css')
 
   <style>
-    .nyala{
+    .nyala {
       background-color: #24695c;
       border-radius: 2rem;
     }
@@ -87,8 +87,7 @@
               <div class="bookmark-dropdown onhover-show-div">
                 <div class="form-group mb-0">
                   <div class="input-group">
-                    <div class="input-group-prepend"><span class="input-group-text"><i
-                          class="fa fa-search"></i></span>
+                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span>
                     </div>
                     <input class="form-control" type="text" placeholder="Search for bookmark...">
                   </div>
@@ -121,8 +120,8 @@
                   </div>
                 </li>
                 <li class="noti-secondary">
-                  <div class="media"><span class="notification-bg bg-light-secondary"><i
-                        data-feather="check-circle"> </i></span>
+                  <div class="media"><span class="notification-bg bg-light-secondary"><i data-feather="check-circle">
+                      </i></span>
                     <div class="media-body">
                       <p>Order Complete</p><span>1 hour ago</span>
                     </div>
@@ -183,10 +182,9 @@
             </li>
             <li class="onhover-dropdown p-0">
 
-              <button class="btn btn-primary-light" type="button"><a href="{{ route('logout') }}"
-                  onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();"><i
-                    data-feather="log-out"></i>{{ __('Logout') }}</a>
+              <button class="btn btn-primary-light" type="button"><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"><i data-feather="log-out"></i>{{ __('Logout')
+                  }}</a>
               </button>
 
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -253,6 +251,13 @@
                     <li><a href="{{ route('jabatan') }}">Jabatan Dosen</a></li>
                     <li><a href="{{ route('dsnjabatan') }}">Dosen Jabatan</a></li>
                     <li><a href="{{ route('dsnmatkul') }}">Dosen Matkul</a></li>
+                    <li><a href="{{ route('berita.index') }}">Berita</a></li>
+                    <li><a href="{{ route('jurnal.index') }}">Jurnal</a></li>
+                    <li><a href="{{ route('page.index') }}">Halaman</a></li>
+                    <li><a href="{{ route('galeri.index') }}">Galeri</a></li>
+                    <li><a href="{{ route('gallery-items.index') }}">Galeri Items</a></li>
+                    <li><a href="{{ route('jabatans.index') }}">Jabatan</a></li>
+                    <li><a href="{{ route('struktur-kps.index') }}">Struktur K.</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
@@ -289,16 +294,16 @@
                 </li>
 
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-                  data-feather="user-check"></i><span>PMB</span></a>
-                    <ul class="nav-submenu menu-content">
-                      <li><a href="{{ route('pengguna') }}">Pengguna</a></li>
-                      <li><a href="{{ route('jadwalpmb') }}">Jadwal PMB</a></li>
-                      <li><a href="{{ route('pendaftar') }}">Pendaftaran</a></li>
-                      <li><a href="{{ route('pembayaran') }}">Pembayaran</a></li>
-                      <li><a href="{{ route('penguguman') }}">Penguguman</a></li>
-                      <li><a href="{{ route('persyaratan') }}">Persyaratan PMB</a></li>
-                      <li><a href="{{ route('foto') }}">Foto Brosur</a></li>
-                    </ul>
+                      data-feather="user-check"></i><span>PMB</span></a>
+                  <ul class="nav-submenu menu-content">
+                    <li><a href="{{ route('pengguna') }}">Pengguna</a></li>
+                    <li><a href="{{ route('jadwalpmb') }}">Jadwal PMB</a></li>
+                    <li><a href="{{ route('pendaftar') }}">Pendaftaran</a></li>
+                    <li><a href="{{ route('pembayaran') }}">Pembayaran</a></li>
+                    <li><a href="{{ route('penguguman') }}">Penguguman</a></li>
+                    <li><a href="{{ route('persyaratan') }}">Persyaratan PMB</a></li>
+                    <li><a href="{{ route('foto') }}">Foto Brosur</a></li>
+                  </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu" href="javascript:void(0)"><i
                       data-feather="book-open"></i><span>Jurnal KBM</span></a>

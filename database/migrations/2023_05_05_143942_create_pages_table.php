@@ -13,8 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('berita', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('thumbnail')->nullable();
+            $table->string('description');
+            $table->longText('body');
+            $table->string('menu');
+            $table->string('group_menu')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('berita');
+        Schema::dropIfExists('pages');
     }
 };

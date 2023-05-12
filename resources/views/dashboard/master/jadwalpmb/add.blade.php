@@ -6,7 +6,7 @@
         <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="saveJadwalPmb" class="needs-validation" novalidate="">
+        <form id="saveJadwalPmb" class="needs-validation" novalidate="" enctype="multipart/form-data">
           @csrf
           <div>
             <div class="row g-2">
@@ -27,6 +27,21 @@
               <div class="col-md-6">
                 <label class="form-label">Tanggal Selesai</label>
                 <input class="form-control" type="date" name="tgl_akhir" id="tgl_akhir" required>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="mb-2">
+                <label class="form-label" for="description">Keterangan</label>
+                <textarea class="form-control" name="description" id="description"
+                  required>{{ old('description') }}</textarea>
+              </div>
+              <div class="mb-2">
+                <label for="brosur" class="form-label">Brosur</label>
+                <input type="file" class="form-control" name="brosur" id="brosur" required>
+                <small class="text-muted">Wajib berbentuk file gambar seperti .jpg, .jpeg, .png, .gif atau
+                  sejenisnya dan maksimal ukuran file 5MB.</small>
               </div>
             </div>
           </div>

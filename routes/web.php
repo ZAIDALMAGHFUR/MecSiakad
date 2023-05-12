@@ -24,6 +24,7 @@ use App\Http\Controllers\Dosen\PengajuanController;
 use App\Http\Controllers\PMB\PendaftaranController;
 use App\Http\Controllers\PMB\PersyaratanController;
 use App\Http\Controllers\Admin\AdminDosenController;
+use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Admin\BobotNilaiController;
 use App\Http\Controllers\Admin\InputNilaiController;
 use App\Http\Controllers\Mahasiswa\GetKHSController;
@@ -36,8 +37,15 @@ use App\Http\Controllers\Admin\JabatanDosenController;
 use App\Http\Controllers\PMB\PengumumanCambaController;
 use App\Http\Controllers\PMB\PendaftaranCambaController;
 use App\Http\Controllers\Admin\CreateMahasiswaController;
+use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\GalleryItemController;
+use App\Http\Controllers\Admin\JurnalController;
+use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\StrJabatanController;
+use App\Http\Controllers\Admin\StrukturKepemimpinanController;
 use App\Http\Controllers\Dosen\EdiNilaiMahasiswaController;
 use App\Http\Controllers\Dosen\DosenMataKuliahDosenController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Mahasiswa\CalendarAcademicController;
 
 /*
@@ -51,14 +59,24 @@ use App\Http\Controllers\Mahasiswa\CalendarAcademicController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LandingPageController::class, 'index'])->name('landing-pages.index');
+Route::get('/p/berita', [LandingPageController::class, 'berita'])->name('landing-pages.berita');
+Route::get('/p/berita/{berita}', [LandingPageController::class, 'beritaDetail'])
+    ->name('landing-pages.berita.detail');
+Route::get('/p/jurnal', [LandingPageController::class, 'jurnal'])->name('landing-pages.jurnal');
+Route::get('/p/jurnal/{jurnal}', [LandingPageController::class, 'jurnalDetail'])
+    ->name('landing-pages.jurnal.detail');
+Route::get('/p/pages/{page}', [LandingPageController::class, 'pageDetail'])
+    ->name('landing-pages.pages.detail');
+Route::get('/p/gallery', [LandingPageController::class, 'galleries'])->name('landing-pages.galleries');
+
+Route::get('/p/struktur-kepemimpinan', [LandingPageController::class, 'strukturKps'])->name('landing-pages.struktur-kps');
+Route::post('/hide-modal', [LandingPageController::class, 'hideModal'])->name('landing-pages.hide-modal');
 
 Auth::routes(['verify' => true]);
 
 
-Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
+Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     //program studi
@@ -68,7 +86,6 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
     Route::get('/program-studi/edit/{id}', [ProgrammStudiController::class, 'edit'])->name('program-studi.edit');
     Route::post('/program-studi/update/{id}', [ProgrammStudiController::class, 'update'])->name('program-studi.update');
     Route::delete('/program-studi/delete/{id}', [ProgrammStudiController::class, 'destroy'])->name('program-studi.delete');
-
 
     //mahaiswa import excel
     Route::post('import_excel', [CreateMahasiswaController::class, 'importExcel'])->name('import_excel');
@@ -105,6 +122,70 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::get('edit/{id}', 'edit')->name('matkul.edit');
         Route::post('update/{id}', 'update')->name('matkul.update');
         Route::delete('delete/{id}', 'destroy')->name('matkul.delete');
+    });
+
+    //berita
+    Route::controller(BeritaController::class)->prefix('berita')->name('berita.')->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('add', 'add')->name('add');
+        Route::post('save', 'store')->name('save');
+        Route::get('edit/{id}', 'edit')->name('edit');
+        Route::post('update/{id}', 'update')->name('update');
+        Route::delete('delete/{id}', 'destroy')->name('delete');
+    });
+    //jurnal
+    Route::controller(JurnalController::class)->prefix('jurnal')->name('jurnal.')->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('add', 'add')->name('add');
+        Route::post('save', 'store')->name('save');
+        Route::get('edit/{id}', 'edit')->name('edit');
+        Route::post('update/{id}', 'update')->name('update');
+        Route::delete('delete/{id}', 'destroy')->name('delete');
+    });
+    //page
+    Route::controller(PageController::class)->prefix('page')->name('page.')->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('add', 'add')->name('add');
+        Route::post('save', 'store')->name('save');
+        Route::get('edit/{id}', 'edit')->name('edit');
+        Route::post('update/{id}', 'update')->name('update');
+        Route::delete('delete/{id}', 'destroy')->name('delete');
+    });
+    //galeri
+    Route::controller(GalleryController::class)->prefix('galeri')->name('galeri.')->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('add', 'add')->name('add');
+        Route::post('save', 'store')->name('save');
+        Route::get('edit/{id}', 'edit')->name('edit');
+        Route::post('update/{id}', 'update')->name('update');
+        Route::delete('delete/{id}', 'destroy')->name('delete');
+    });
+    // gallery items
+    Route::controller(GalleryItemController::class)->prefix('gallery-items')->name('gallery-items.')->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('add', 'add')->name('add');
+        Route::post('save', 'store')->name('save');
+        Route::get('edit/{id}', 'edit')->name('edit');
+        Route::post('update/{id}', 'update')->name('update');
+        Route::delete('delete/{id}', 'destroy')->name('delete');
+    });
+    // jabatans
+    Route::controller(StrJabatanController::class)->prefix('jabatans')->name('jabatans.')->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('add', 'add')->name('add');
+        Route::post('save', 'store')->name('save');
+        Route::get('edit/{id}', 'edit')->name('edit');
+        Route::post('update/{id}', 'update')->name('update');
+        Route::delete('delete/{id}', 'destroy')->name('delete');
+    });
+    // struktur-kps
+    Route::controller(StrukturKepemimpinanController::class)->prefix('struktur-kepemimpinan')->name('struktur-kps.')->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('add', 'add')->name('add');
+        Route::post('save', 'store')->name('save');
+        Route::get('edit/{id}', 'edit')->name('edit');
+        Route::post('update/{id}', 'update')->name('update');
+        Route::delete('delete/{id}', 'destroy')->name('delete');
     });
 
     //jabatan dosen
@@ -149,14 +230,14 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
     });
 
     //rentang nilai
-        Route::controller(BobotNilaiController::class)->prefix('rentang')->group(function () {
-            Route::get('', 'index')->name('rentang');
-            Route::get('add', 'add')->name('rentang.add');
-            Route::post('save', 'store')->name('rentang.save');
-            Route::get('edit/{id}', 'edit')->name('rentang.edit');
-            Route::post('update/{id}', 'update')->name('rentang.update');
-            Route::delete('delete/{id}', 'destroy')->name('rentang.delete');
-        });
+    Route::controller(BobotNilaiController::class)->prefix('rentang')->group(function () {
+        Route::get('', 'index')->name('rentang');
+        Route::get('add', 'add')->name('rentang.add');
+        Route::post('save', 'store')->name('rentang.save');
+        Route::get('edit/{id}', 'edit')->name('rentang.edit');
+        Route::post('update/{id}', 'update')->name('rentang.update');
+        Route::delete('delete/{id}', 'destroy')->name('rentang.delete');
+    });
 
     //krs
     Route::controller(KrsController::class)->prefix('krs')->group(function () {
@@ -243,7 +324,7 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::get('', 'index')->name('penguguman');
         Route::delete('delete/{id}', 'destroy')->name('penguguman/delete');
     });
-    
+
     //pengumuman change 
     Route::get('/view-announcement/{id_pendaftaran}', [PengugumanController::class, 'lihatpengumuman']);
     Route::post('/save-announcement', [PengugumanController::class, 'simpanpengumuman']);
@@ -275,12 +356,11 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
     Route::get('getevent', [FullCalendarController::class, 'getEvent'])->name('getevent');
     Route::post('createevent', [FullCalendarController::class, 'createEvent'])->name('createevent');
     Route::post('deleteevent', [FullCalendarController::class, 'deleteEvent'])->name('deleteevent');
-
 });
 
 
 //dosen
-Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {
+Route::group(['middleware' => ['auth', 'OnlyDosen']], function () {
     Route::get('/dosen', [DosenController::class, 'index'])->name('dosen');
 
     //matakuliah
@@ -295,25 +375,25 @@ Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {
         Route::post('update', 'update')->name('nilaidosen.update');
     });
 
-        //edit nilai
-        Route::controller(EdiNilaiMahasiswaController::class)->prefix('compensation')->group(function () {
-            Route::get('', 'index')->name('compensation');
-            Route::get('edit/{id}', 'change')->name('compensation.edit');
-            Route::get('replacement/{id}', 'compensation')->name('compensation.replacement');
-            Route::post('update/{id}', 'update')->name('compensation.update');
-            Route::delete('delete/{id}', 'destroy')->name('compensation.delete');
-        });
+    //edit nilai
+    Route::controller(EdiNilaiMahasiswaController::class)->prefix('compensation')->group(function () {
+        Route::get('', 'index')->name('compensation');
+        Route::get('edit/{id}', 'change')->name('compensation.edit');
+        Route::get('replacement/{id}', 'compensation')->name('compensation.replacement');
+        Route::post('update/{id}', 'update')->name('compensation.update');
+        Route::delete('delete/{id}', 'destroy')->name('compensation.delete');
+    });
 
     //kalender akademik
     Route::get('getdosenevent', [CalendarController::class, 'getDosenEvent'])->name('getdosenevent');
 
 
     //pengajuan judul
-        Route::controller(PengajuanController::class)->prefix('pengajuan')->group(function () {
-            Route::get('', 'index')->name('pengajuan');
-        });
-        Route::post('save-pengajuan/{id}', [PengajuanController::class, 'update']);
-        Route::get('ambil/{id}/{nama}', [PengajuanController::class, 'ambiljudul'])->name('pengajuan.ambil');
+    Route::controller(PengajuanController::class)->prefix('pengajuan')->group(function () {
+        Route::get('', 'index')->name('pengajuan');
+    });
+    Route::post('save-pengajuan/{id}', [PengajuanController::class, 'update']);
+    Route::get('ambil/{id}/{nama}', [PengajuanController::class, 'ambiljudul'])->name('pengajuan.ambil');
 });
 
 
@@ -321,7 +401,7 @@ Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {
 
 
 //mahasiswa
-Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
+Route::group(['middleware' => ['auth', 'OnlyMahasiswa']], function () {
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
 
 
@@ -337,27 +417,27 @@ Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
     });
     Route::get('cetak', [GetController::class, 'cetak'])->name('mhskrs.cetak');
 
-        //khs
-        Route::controller(GetKHSController::class)->prefix('mhskhs')->group(function () {
-            Route::get('', 'index')->name('mhskhs');
-            Route::post('', 'find')->name('mhskhs.find');
-        });
+    //khs
+    Route::controller(GetKHSController::class)->prefix('mhskhs')->group(function () {
+        Route::get('', 'index')->name('mhskhs');
+        Route::post('', 'find')->name('mhskhs.find');
+    });
     Route::get('cetak-khs', [GetKHSController::class, 'cetak'])->name('mhskhs.cetak');
 
-        //kalender akademik
-        Route::get('getmahasiswaevent', [CalendarAcademicController::class, 'getMahasiswaEvent'])->name('getmahasiswaevent');
+    //kalender akademik
+    Route::get('getmahasiswaevent', [CalendarAcademicController::class, 'getMahasiswaEvent'])->name('getmahasiswaevent');
 
-        //pengajuan judul
-        Route::controller(SkripsiController::class)->prefix('mhsjudul')->group(function () {
-            Route::get('', 'index')->name('mhsjudul');
-            Route::get('add', 'add')->name('mhsjudul.add');
-            Route::post('save', 'store')->name('mhsjudul.save');
-            Route::get('edit/{id}', 'edit')->name('mhsjudul.edit');
-            Route::post('update/{id}', 'update')->name('mhsjudul.update');
-            Route::delete('delete/{id}', 'destroy')->name('mhsjudul.delete');
-        });
+    //pengajuan judul
+    Route::controller(SkripsiController::class)->prefix('mhsjudul')->group(function () {
+        Route::get('', 'index')->name('mhsjudul');
+        Route::get('add', 'add')->name('mhsjudul.add');
+        Route::post('save', 'store')->name('mhsjudul.save');
+        Route::get('edit/{id}', 'edit')->name('mhsjudul.edit');
+        Route::post('update/{id}', 'update')->name('mhsjudul.update');
+        Route::delete('delete/{id}', 'destroy')->name('mhsjudul.delete');
+    });
 
-        Route::get('pengajuan-cetak', [SkripsiController::class, 'pengajuan'])->name('pengajuan-cetak');
+    Route::get('pengajuan-cetak', [SkripsiController::class, 'pengajuan'])->name('pengajuan-cetak');
 });
 
 
@@ -365,7 +445,7 @@ Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
 
 
 
-Route::group(['middleware'=> ['auth', 'Camba']], function () {
+Route::group(['middleware' => ['auth', 'Camba']], function () {
 
     Route::get('calon', [calonController::class, 'index'])->name('calon');
 
@@ -399,4 +479,3 @@ Route::get('/zoom', [\App\Http\Controllers\ZoomController::class, 'index'])->nam
 Route::get('/zoom/create', [\App\Http\Controllers\ZoomController::class, 'create'])->name('zoom/create');
 Route::post('/zoom/save', [\App\Http\Controllers\ZoomController::class, 'save'])->name('zoom/save');
 Route::delete('/zoom/delete/{id}', [\App\Http\Controllers\ZoomController::class, 'delete'])->name('zoom.delete');
-

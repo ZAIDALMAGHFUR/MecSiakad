@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Page;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,6 +27,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-            // URL::forceScheme('https');
+        Paginator::useBootstrapFive();
+        // URL::forceScheme('https');
+
+        $pages = Page::all();
+        $pages = $pages->groupBy('group_menu');
+        View::share('pages', $pages);
     }
 }
