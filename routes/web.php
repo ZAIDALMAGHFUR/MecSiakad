@@ -78,12 +78,8 @@ Route::post('/hide-modal', [LandingPageController::class, 'hideModal'])->name('l
 
 Auth::routes(['verify' => true]);
 
-<<<<<<< HEAD
-
 Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
-=======
-Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
->>>>>>> e677b3f883574f3ea6312340a0a7a87080355e92
+
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     //program studi
