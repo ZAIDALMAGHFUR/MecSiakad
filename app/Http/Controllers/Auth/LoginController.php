@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -28,17 +29,26 @@ class LoginController extends Controller
      * @var string
      */
     protected function redirectTo()
-    {
-        if (Auth::user()->roles_id == 1) {
-            return RouteServiceProvider::HOME;
-        } elseif (Auth::user()->roles_id == 2) {
-            return RouteServiceProvider::DOSEN;
-        } elseif (Auth::user()->roles_id == 3) {
-            return RouteServiceProvider::MAHASISWA;
-        } elseif (Auth::user()->roles_id == 4) {
-            return RouteServiceProvider::Calon;
+{
+    if (Auth::user()->roles_id == 1) {
+        return RouteServiceProvider::HOME;
+    } elseif (Auth::user()->roles_id == 2) {
+        return RouteServiceProvider::DOSEN;
+    } elseif (Auth::user()->roles_id == 3) {
+        if (auth()->user()->mahasiswa->status == 'drop out') {
+            Auth::logout();
+            Session::flush();
+            Session::regenerate();
+            toastr()->error('Anda tidak bisa login karena status anda drop out');
+            return route('login');
         }
+        return RouteServiceProvider::MAHASISWA;
+    } elseif (Auth::user()->roles_id == 4) {
+        return RouteServiceProvider::Calon;
     }
+}
+
+    
 
     /**
      * Create a new controller instance.

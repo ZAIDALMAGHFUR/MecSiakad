@@ -27,13 +27,22 @@ class RedirectIfAuthenticated
         //     }
         // }
 
+        // dd('drop out');
         if (Auth::check()) {
             if (Auth::user()->roles_id == 1)  {
                 return redirect(RouteServiceProvider::HOME);
             }elseif (Auth::user()->roles_id == 2) {
                 return redirect(RouteServiceProvider::DOSEN);
             } elseif (Auth::user()->roles_id == 3) {
-                return redirect(RouteServiceProvider::MAHASISWA);
+                if (Auth::user()->mahasiswa->status == 'drop out') {
+                    Auth::logout();
+                    // $request->session()->invalidate();
+                    // $request->session()->regenerateToken();
+                    // return redirect('/login')->with('error', 'Anda tidak bisa login karena status anda drop out');
+                    // return redirect('login')->with('error', 'Anda tidak bisa login karena status anda drop out');
+                } else {
+                    return redirect(RouteServiceProvider::MAHASISWA);
+                }
             } elseif (Auth::user()->roles_id == 4) {
                 return redirect(RouteServiceProvider::Calon);
             }

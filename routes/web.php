@@ -5,12 +5,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\calonController;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\PMB\MabaController;
 use App\Http\Controllers\Admin\KhsController;
 use App\Http\Controllers\Admin\KrsController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PMB\FotosController;
 use App\Http\Controllers\Dosen\NilaiController;
 use App\Http\Controllers\Admin\MatkulController;
+use App\Http\Controllers\Dosen\JobDsnController;
 use App\Http\Controllers\PMB\PenggunaController;
 use App\Http\Controllers\Mahasiswa\GetController;
 use App\Http\Controllers\PMB\JadwalPmbController;
@@ -28,6 +30,7 @@ use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Admin\BobotNilaiController;
 use App\Http\Controllers\Admin\InputNilaiController;
 use App\Http\Controllers\Mahasiswa\GetKHSController;
+use App\Http\Controllers\Mahasiswa\JobMhsController;
 use App\Http\Controllers\Admin\DosenMatkulController;
 use App\Http\Controllers\Admin\ThnAkademikController;
 use App\Http\Controllers\Mahasiswa\SkripsiController;
@@ -75,8 +78,12 @@ Route::post('/hide-modal', [LandingPageController::class, 'hideModal'])->name('l
 
 Auth::routes(['verify' => true]);
 
+<<<<<<< HEAD
 
 Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
+=======
+Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
+>>>>>>> e677b3f883574f3ea6312340a0a7a87080355e92
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     //program studi
@@ -331,6 +338,12 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
     Route::post('/update-announcement/{id}', [PengugumanController::class, 'updatepengumuman']);
 
 
+    //maba
+    Route::controller(MabaController::class)->prefix('maba')->group(function () {
+        Route::get('', 'index')->name('maba');
+        Route::get('maba', 'export')->name('maba.export');
+    });
+
 
     //persyaratan
     Route::controller(PersyaratanController::class)->prefix('persyaratan')->group(function () {
@@ -356,6 +369,18 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
     Route::get('getevent', [FullCalendarController::class, 'getEvent'])->name('getevent');
     Route::post('createevent', [FullCalendarController::class, 'createEvent'])->name('createevent');
     Route::post('deleteevent', [FullCalendarController::class, 'deleteEvent'])->name('deleteevent');
+<<<<<<< HEAD
+=======
+
+    Route::get('/job-search',  [App\Http\Controllers\JobController::class, 'index'])->name('job-search');
+    Route::get('/job-country/{search}',  [App\Http\Controllers\JobController::class, 'search']);
+
+    Route::get('/zoom', [\App\Http\Controllers\ZoomController::class, 'index'])->name('zoom');
+    Route::get('/zoom/create', [\App\Http\Controllers\ZoomController::class, 'create'])->name('zoom/create');
+    Route::post('/zoom/save', [\App\Http\Controllers\ZoomController::class, 'save'])->name('zoom/save');
+    Route::delete('/zoom/delete/{id}', [\App\Http\Controllers\ZoomController::class, 'delete'])->name('zoom.delete');
+
+>>>>>>> e677b3f883574f3ea6312340a0a7a87080355e92
 });
 
 
@@ -389,11 +414,23 @@ Route::group(['middleware' => ['auth', 'OnlyDosen']], function () {
 
 
     //pengajuan judul
+<<<<<<< HEAD
     Route::controller(PengajuanController::class)->prefix('pengajuan')->group(function () {
         Route::get('', 'index')->name('pengajuan');
     });
     Route::post('save-pengajuan/{id}', [PengajuanController::class, 'update']);
     Route::get('ambil/{id}/{nama}', [PengajuanController::class, 'ambiljudul'])->name('pengajuan.ambil');
+=======
+        Route::controller(PengajuanController::class)->prefix('pengajuan')->group(function () {
+            Route::get('', 'index')->name('pengajuan');
+        });
+        Route::post('save-pengajuan/{id}', [PengajuanController::class, 'update']);
+        Route::get('ambil/{id}/{nama}', [PengajuanController::class, 'ambiljudul'])->name('pengajuan.ambil');
+
+                //job search
+                Route::get('/job-dsn',  [JobDsnController::class, 'indexDsn'])->name('job-dsn');
+                Route::get('/job-country-dsn/{search}',  [JobDsnController::class, 'searchDsn']);
+>>>>>>> e677b3f883574f3ea6312340a0a7a87080355e92
 });
 
 
@@ -437,7 +474,15 @@ Route::group(['middleware' => ['auth', 'OnlyMahasiswa']], function () {
         Route::delete('delete/{id}', 'destroy')->name('mhsjudul.delete');
     });
 
+<<<<<<< HEAD
     Route::get('pengajuan-cetak', [SkripsiController::class, 'pengajuan'])->name('pengajuan-cetak');
+=======
+        Route::get('pengajuan-cetak', [SkripsiController::class, 'pengajuan'])->name('pengajuan-cetak');
+
+        //job search
+        Route::get('/job-mhs',  [JobMhsController::class, 'indexMhs'])->name('job-mhs');
+        Route::get('/job-country-mhs/{search}',  [JobMhsController::class, 'searchMhs']);
+>>>>>>> e677b3f883574f3ea6312340a0a7a87080355e92
 });
 
 
@@ -463,6 +508,7 @@ Route::group(['middleware' => ['auth', 'Camba']], function () {
 
     //lihat pengumuman
     Route::get('/view-graduation/{id_pendaftaran}', [PendaftaranCambaController::class, 'lihatkelulusan']);
+<<<<<<< HEAD
 });
 
 
@@ -479,3 +525,6 @@ Route::get('/zoom', [\App\Http\Controllers\ZoomController::class, 'index'])->nam
 Route::get('/zoom/create', [\App\Http\Controllers\ZoomController::class, 'create'])->name('zoom/create');
 Route::post('/zoom/save', [\App\Http\Controllers\ZoomController::class, 'save'])->name('zoom/save');
 Route::delete('/zoom/delete/{id}', [\App\Http\Controllers\ZoomController::class, 'delete'])->name('zoom.delete');
+=======
+});
+>>>>>>> e677b3f883574f3ea6312340a0a7a87080355e92
