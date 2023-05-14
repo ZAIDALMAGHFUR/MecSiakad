@@ -78,13 +78,13 @@ Route::get('/p/gallery/{gallery}', [LandingPageController::class, 'galleryDetail
 Route::get('/p/struktur-kepemimpinan', [LandingPageController::class, 'strukturKps'])->name('landing-pages.struktur-kps');
 Route::post('/hide-modal', [LandingPageController::class, 'hideModal'])->name('landing-pages.hide-modal');
 
-    // Route::get('/', function () {
-    //     return view('welcome');
-    // });
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes(['verify' => true]);
 
-Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
+Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     //program studi
@@ -175,14 +175,14 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
     });
 
     //rentang nilai
-        Route::controller(BobotNilaiController::class)->prefix('rentang')->group(function () {
-            Route::get('', 'index')->name('rentang');
-            Route::get('add', 'add')->name('rentang.add');
-            Route::post('save', 'store')->name('rentang.save');
-            Route::get('edit/{id}', 'edit')->name('rentang.edit');
-            Route::post('update/{id}', 'update')->name('rentang.update');
-            Route::delete('delete/{id}', 'destroy')->name('rentang.delete');
-        });
+    Route::controller(BobotNilaiController::class)->prefix('rentang')->group(function () {
+        Route::get('', 'index')->name('rentang');
+        Route::get('add', 'add')->name('rentang.add');
+        Route::post('save', 'store')->name('rentang.save');
+        Route::get('edit/{id}', 'edit')->name('rentang.edit');
+        Route::post('update/{id}', 'update')->name('rentang.update');
+        Route::delete('delete/{id}', 'destroy')->name('rentang.delete');
+    });
 
     //krs
     Route::controller(KrsController::class)->prefix('krs')->group(function () {
@@ -269,7 +269,7 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
         Route::get('', 'index')->name('penguguman');
         Route::delete('delete/{id}', 'destroy')->name('penguguman/delete');
     });
-    
+
     //pengumuman change 
     Route::get('/view-announcement/{id_pendaftaran}', [PengugumanController::class, 'lihatpengumuman']);
     Route::post('/save-announcement', [PengugumanController::class, 'simpanpengumuman']);
@@ -318,75 +318,74 @@ Route::group(['middleware'=> ['auth', 'OnlyAdmin']], function () {
 
 
 
-        //berita
-        Route::controller(BeritaController::class)->prefix('berita')->name('berita.')->group(function () {
-            Route::get('', 'index')->name('index');
-            Route::get('add', 'add')->name('add');
-            Route::post('save', 'store')->name('save');
-            Route::get('edit/{id}', 'edit')->name('edit');
-            Route::post('update/{id}', 'update')->name('update');
-            Route::delete('delete/{id}', 'destroy')->name('delete');
-        });
-        //jurnal
-        Route::controller(JurnalController::class)->prefix('jurnal')->name('jurnal.')->group(function () {
-            Route::get('', 'index')->name('index');
-            Route::get('add', 'add')->name('add');
-            Route::post('save', 'store')->name('save');
-            Route::get('edit/{id}', 'edit')->name('edit');
-            Route::post('update/{id}', 'update')->name('update');
-            Route::delete('delete/{id}', 'destroy')->name('delete');
-        });
-        //page
-        Route::controller(PageController::class)->prefix('page')->name('page.')->group(function () {
-            Route::get('', 'index')->name('index');
-            Route::get('add', 'add')->name('add');
-            Route::post('save', 'store')->name('save');
-            Route::get('edit/{id}', 'edit')->name('edit');
-            Route::post('update/{id}', 'update')->name('update');
-            Route::delete('delete/{id}', 'destroy')->name('delete');
-        });
-        //galeri
-        Route::controller(GalleryController::class)->prefix('galeri')->name('galeri.')->group(function () {
-            Route::get('', 'index')->name('index');
-            Route::get('add', 'add')->name('add');
-            Route::post('save', 'store')->name('save');
-            Route::get('edit/{id}', 'edit')->name('edit');
-            Route::post('update/{id}', 'update')->name('update');
-            Route::delete('delete/{id}', 'destroy')->name('delete');
-        });
-        // gallery items
-        Route::controller(GalleryItemController::class)->prefix('gallery-items')->name('gallery-items.')->group(function () {
-            Route::get('', 'index')->name('index');
-            Route::get('add', 'add')->name('add');
-            Route::post('save', 'store')->name('save');
-            Route::get('edit/{id}', 'edit')->name('edit');
-            Route::post('update/{id}', 'update')->name('update');
-            Route::delete('delete/{id}', 'destroy')->name('delete');
-        });
-        // jabatans
-        Route::controller(StrJabatanController::class)->prefix('jabatans')->name('jabatans.')->group(function () {
-            Route::get('', 'index')->name('index');
-            Route::get('add', 'add')->name('add');
-            Route::post('save', 'store')->name('save');
-            Route::get('edit/{id}', 'edit')->name('edit');
-            Route::post('update/{id}', 'update')->name('update');
-            Route::delete('delete/{id}', 'destroy')->name('delete');
-        });
-        // struktur-kps
-        Route::controller(StrukturKepemimpinanController::class)->prefix('struktur-kepemimpinan')->name('struktur-kps.')->group(function () {
-            Route::get('', 'index')->name('index');
-            Route::get('add', 'add')->name('add');
-            Route::post('save', 'store')->name('save');
-            Route::get('edit/{id}', 'edit')->name('edit');
-            Route::post('update/{id}', 'update')->name('update');
-            Route::delete('delete/{id}', 'destroy')->name('delete');
-        });
-
+    //berita
+    Route::controller(BeritaController::class)->prefix('berita')->name('berita.')->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('add', 'add')->name('add');
+        Route::post('save', 'store')->name('save');
+        Route::get('edit/{id}', 'edit')->name('edit');
+        Route::post('update/{id}', 'update')->name('update');
+        Route::delete('delete/{id}', 'destroy')->name('delete');
+    });
+    //jurnal
+    Route::controller(JurnalController::class)->prefix('jurnal')->name('jurnal.')->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('add', 'add')->name('add');
+        Route::post('save', 'store')->name('save');
+        Route::get('edit/{id}', 'edit')->name('edit');
+        Route::post('update/{id}', 'update')->name('update');
+        Route::delete('delete/{id}', 'destroy')->name('delete');
+    });
+    //page
+    Route::controller(PageController::class)->prefix('page')->name('page.')->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('add', 'add')->name('add');
+        Route::post('save', 'store')->name('save');
+        Route::get('edit/{id}', 'edit')->name('edit');
+        Route::post('update/{id}', 'update')->name('update');
+        Route::delete('delete/{id}', 'destroy')->name('delete');
+    });
+    //galeri
+    Route::controller(GalleryController::class)->prefix('galeri')->name('galeri.')->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('add', 'add')->name('add');
+        Route::post('save', 'store')->name('save');
+        Route::get('edit/{id}', 'edit')->name('edit');
+        Route::post('update/{id}', 'update')->name('update');
+        Route::delete('delete/{id}', 'destroy')->name('delete');
+    });
+    // gallery items
+    Route::controller(GalleryItemController::class)->prefix('gallery-items')->name('gallery-items.')->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('add', 'add')->name('add');
+        Route::post('save', 'store')->name('save');
+        Route::get('edit/{id}', 'edit')->name('edit');
+        Route::post('update/{id}', 'update')->name('update');
+        Route::delete('delete/{id}', 'destroy')->name('delete');
+    });
+    // jabatans
+    Route::controller(StrJabatanController::class)->prefix('jabatans')->name('jabatans.')->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('add', 'add')->name('add');
+        Route::post('save', 'store')->name('save');
+        Route::get('edit/{id}', 'edit')->name('edit');
+        Route::post('update/{id}', 'update')->name('update');
+        Route::delete('delete/{id}', 'destroy')->name('delete');
+    });
+    // struktur-kps
+    Route::controller(StrukturKepemimpinanController::class)->prefix('struktur-kepemimpinan')->name('struktur-kps.')->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('add', 'add')->name('add');
+        Route::post('save', 'store')->name('save');
+        Route::get('edit/{id}', 'edit')->name('edit');
+        Route::post('update/{id}', 'update')->name('update');
+        Route::delete('delete/{id}', 'destroy')->name('delete');
+    });
 });
 
 
 //dosen
-Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {
+Route::group(['middleware' => ['auth', 'OnlyDosen']], function () {
     Route::get('/dosen', [DosenController::class, 'index'])->name('dosen');
 
     //matakuliah
@@ -401,29 +400,29 @@ Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {
         Route::post('update', 'update')->name('nilaidosen.update');
     });
 
-        //edit nilai
-        Route::controller(EdiNilaiMahasiswaController::class)->prefix('compensation')->group(function () {
-            Route::get('', 'index')->name('compensation');
-            Route::get('edit/{id}', 'change')->name('compensation.edit');
-            Route::get('replacement/{id}', 'compensation')->name('compensation.replacement');
-            Route::post('update/{id}', 'update')->name('compensation.update');
-            Route::delete('delete/{id}', 'destroy')->name('compensation.delete');
-        });
+    //edit nilai
+    Route::controller(EdiNilaiMahasiswaController::class)->prefix('compensation')->group(function () {
+        Route::get('', 'index')->name('compensation');
+        Route::get('edit/{id}', 'change')->name('compensation.edit');
+        Route::get('replacement/{id}', 'compensation')->name('compensation.replacement');
+        Route::post('update/{id}', 'update')->name('compensation.update');
+        Route::delete('delete/{id}', 'destroy')->name('compensation.delete');
+    });
 
     //kalender akademik
     Route::get('getdosenevent', [CalendarController::class, 'getDosenEvent'])->name('getdosenevent');
 
 
     //pengajuan judul
-        Route::controller(PengajuanController::class)->prefix('pengajuan')->group(function () {
-            Route::get('', 'index')->name('pengajuan');
-        });
-        Route::post('save-pengajuan/{id}', [PengajuanController::class, 'update']);
-        Route::get('ambil/{id}/{nama}', [PengajuanController::class, 'ambiljudul'])->name('pengajuan.ambil');
+    Route::controller(PengajuanController::class)->prefix('pengajuan')->group(function () {
+        Route::get('', 'index')->name('pengajuan');
+    });
+    Route::post('save-pengajuan/{id}', [PengajuanController::class, 'update']);
+    Route::get('ambil/{id}/{nama}', [PengajuanController::class, 'ambiljudul'])->name('pengajuan.ambil');
 
-                //job search
-                Route::get('/job-dsn',  [JobDsnController::class, 'indexDsn'])->name('job-dsn');
-                Route::get('/job-country-dsn/{search}',  [JobDsnController::class, 'searchDsn']);
+    //job search
+    Route::get('/job-dsn',  [JobDsnController::class, 'indexDsn'])->name('job-dsn');
+    Route::get('/job-country-dsn/{search}',  [JobDsnController::class, 'searchDsn']);
 });
 
 
@@ -431,7 +430,7 @@ Route::group(['middleware'=> ['auth', 'OnlyDosen']], function () {
 
 
 //mahasiswa
-Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
+Route::group(['middleware' => ['auth', 'OnlyMahasiswa']], function () {
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
 
 
@@ -447,31 +446,31 @@ Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
     });
     Route::get('cetak', [GetController::class, 'cetak'])->name('mhskrs.cetak');
 
-        //khs
-        Route::controller(GetKHSController::class)->prefix('mhskhs')->group(function () {
-            Route::get('', 'index')->name('mhskhs');
-            Route::post('', 'find')->name('mhskhs.find');
-        });
+    //khs
+    Route::controller(GetKHSController::class)->prefix('mhskhs')->group(function () {
+        Route::get('', 'index')->name('mhskhs');
+        Route::post('', 'find')->name('mhskhs.find');
+    });
     Route::get('cetak-khs', [GetKHSController::class, 'cetak'])->name('mhskhs.cetak');
 
-        //kalender akademik
-        Route::get('getmahasiswaevent', [CalendarAcademicController::class, 'getMahasiswaEvent'])->name('getmahasiswaevent');
+    //kalender akademik
+    Route::get('getmahasiswaevent', [CalendarAcademicController::class, 'getMahasiswaEvent'])->name('getmahasiswaevent');
 
-        //pengajuan judul
-        Route::controller(SkripsiController::class)->prefix('mhsjudul')->group(function () {
-            Route::get('', 'index')->name('mhsjudul');
-            Route::get('add', 'add')->name('mhsjudul.add');
-            Route::post('save', 'store')->name('mhsjudul.save');
-            Route::get('edit/{id}', 'edit')->name('mhsjudul.edit');
-            Route::post('update/{id}', 'update')->name('mhsjudul.update');
-            Route::delete('delete/{id}', 'destroy')->name('mhsjudul.delete');
-        });
+    //pengajuan judul
+    Route::controller(SkripsiController::class)->prefix('mhsjudul')->group(function () {
+        Route::get('', 'index')->name('mhsjudul');
+        Route::get('add', 'add')->name('mhsjudul.add');
+        Route::post('save', 'store')->name('mhsjudul.save');
+        Route::get('edit/{id}', 'edit')->name('mhsjudul.edit');
+        Route::post('update/{id}', 'update')->name('mhsjudul.update');
+        Route::delete('delete/{id}', 'destroy')->name('mhsjudul.delete');
+    });
 
-        Route::get('pengajuan-cetak', [SkripsiController::class, 'pengajuan'])->name('pengajuan-cetak');
+    Route::get('pengajuan-cetak', [SkripsiController::class, 'pengajuan'])->name('pengajuan-cetak');
 
-        //job search
-        Route::get('/job-mhs',  [JobMhsController::class, 'indexMhs'])->name('job-mhs');
-        Route::get('/job-country-mhs/{search}',  [JobMhsController::class, 'searchMhs']);
+    //job search
+    Route::get('/job-mhs',  [JobMhsController::class, 'indexMhs'])->name('job-mhs');
+    Route::get('/job-country-mhs/{search}',  [JobMhsController::class, 'searchMhs']);
 });
 
 
@@ -479,7 +478,7 @@ Route::group(['middleware'=> ['auth', 'OnlyMahasiswa']], function () {
 
 
 
-Route::group(['middleware'=> ['auth', 'Camba']], function () {
+Route::group(['middleware' => ['auth', 'Camba']], function () {
 
     Route::get('calon', [calonController::class, 'index'])->name('calon');
 
