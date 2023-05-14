@@ -1,7 +1,6 @@
 @extends('layouts.landing')
 
 @push('styles')
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/photoswipe.css') }}">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 @endpush
 
@@ -47,7 +46,7 @@
         <hr style="width: 30px; height: 3px;" class="mx-auto mt-3 mb-5 d-block">
     </div>
     <div class="container">
-        <div class="row demo-block demo-imgs">
+        <div class="row">
             @foreach ($newestBerita as $item)
             <div class="col-sm-6 col-md-4">
                 <div class="card" data-aos="fade-down" data-aos-offset="200"
@@ -150,72 +149,30 @@
         <div class="row demo-block demo-imgs">
             <div class="my-gallery card-body row gallery-with-description" itemscope="">
                 @foreach ($newestGaleri as $item)
-                <div class="col-xl-3 col-sm-6 xl-33 mb-4" data-aos="fade-down" data-aos-offset="200"
-                    data-aos-delay="{{ 50 + ($loop->iteration * 50) }}">
-                    <figure itemprop="associatedMedia" itemscope="" class="mb-1">
-                        <a href="{{ asset('storage/' . $item->thumbnail) }}" itemprop="contentUrl" data-size="1600x950">
-                            <img src="{{asset('storage/' . $item->thumbnail)}}" itemprop="thumbnail"
-                                alt="Image description">
-                            <div class="caption">
-                                <h4>{{ $item->title }}</h4>
-                                <p>{{ $item->description }}</p>
-                            </div>
-                        </a>
-                        <figcaption itemprop="caption description">
-                            <h4>{{ $item->title }}</h4>
-                            <p>{{ $item->description }}</p>
-                        </figcaption>
-                    </figure>
-                    <a onclick="window.location.href = this.href"
-                        href="{{ route('landing-pages.gallery-detail', $item->id) }}"
-                        class="btn btn-primary fw-bold w-100">Lihat</a>
+                <div class="col-sm-6 col-md-4">
+                    <div class="card">
+                        <img src="{{ asset('storage/' . $item->thumbnail) }}" class="card-img-top"
+                            alt="{{ $item->title }} Image">
+                        <div class="card-body">
+                            <h6 class="card-title fw-bold"><a
+                                    href="{{ route('landing-pages.berita.detail', $item) }}">{{
+                                    $item->title }}</a></h6>
+                            <p class="card-text">{!! nl2br($item->description) !!}</p>
+                            <p class="card-text"><small class="text-body-secondary">{{
+                                    $item->created_at->diffForHumans() }}</small>
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <a class="btn btn-primary fw-bold w-100 mb-2" data-fslightbox
+                                href="{{ asset('storage/' . $item->thumbnail) }}">Lihat
+                            </a>
+                            <a class="btn btn-secondary fw-bold w-100"
+                                href="{{ route('landing-pages.gallery-detail', $item->id) }}">Lihat Gambar Lainnya
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 @endforeach
-            </div>
-            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-                <!--
-                Background of PhotoSwipe.
-                It's a separate element, as animating opacity is faster than rgba().
-                -->
-                <div class="pswp__bg"></div>
-                <!-- Slides wrapper with overflow:hidden.-->
-                <div class="pswp__scroll-wrap">
-                    <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory.-->
-                    <!-- don't modify these 3 pswp__item elements, data is added later on.-->
-                    <div class="pswp__container">
-                        <div class="pswp__item"></div>
-                        <div class="pswp__item"></div>
-                        <div class="pswp__item"></div>
-                    </div>
-                    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed.-->
-                    <div class="pswp__ui pswp__ui--hidden">
-                        <div class="pswp__top-bar">
-                            <!-- Controls are self-explanatory. Order can be changed.-->
-                            <div class="pswp__counter"></div>
-                            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                            <button class="pswp__button pswp__button--share" title="Share"></button>
-                            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                            <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR-->
-                            <!-- element will get class pswp__preloader--active when preloader is running-->
-                            <div class="pswp__preloader">
-                                <div class="pswp__preloader__icn">
-                                    <div class="pswp__preloader__cut">
-                                        <div class="pswp__preloader__donut"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                            <div class="pswp__share-tooltip"></div>
-                        </div>
-                        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-                        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
-                        <div class="pswp__caption">
-                            <div class="pswp__caption__center"></div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -271,9 +228,7 @@
 
 @push('scripts')
 <!-- Plugins JS start-->
-<script src="{{ asset('assets/js/photoswipe/photoswipe.min.js') }}"></script>
-<script src="{{ asset('assets/js/photoswipe/photoswipe-ui-default.min.js') }}"></script>
-<script src="{{ asset('assets/js/photoswipe/photoswipe.js') }}"></script>
+<script src="{{ asset('vendor/fslightbox/fslightbox.js') }}"></script>
 <!-- Plugins JS Ends-->
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

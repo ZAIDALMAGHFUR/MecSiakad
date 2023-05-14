@@ -28,10 +28,10 @@
 
                                 <div class="grid-galleries">
                                     @foreach ($gallery->galleryItems as $item)
-                                    <div class="w-100">
+                                    <a class="w-100" data-fslightbox href="{{ asset('storage/' . $item->thumbnail) }}">
                                         <img src="{{ asset('storage/' . $item->thumbnail) }}" alt=""
                                             class="img-thumbnail d-block" />
-                                    </div>
+                                    </a>
                                     @endforeach
                                 </div>
                             </div>
@@ -43,3 +43,9 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<!-- Plugins JS start-->
+<script src="{{ asset('vendor/fslightbox/fslightbox.js') }}"></script>
+<!-- Plugins JS Ends-->
+@endpush
