@@ -286,19 +286,7 @@
                 </li>
 
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-<<<<<<< HEAD
                       data-feather="user-check"></i><span>PMB</span></a>
-                  <ul class="nav-submenu menu-content">
-                    <li><a href="{{ route('pengguna') }}">Pengguna</a></li>
-                    <li><a href="{{ route('jadwalpmb') }}">Jadwal PMB</a></li>
-                    <li><a href="{{ route('pendaftar') }}">Pendaftaran</a></li>
-                    <li><a href="{{ route('pembayaran') }}">Pembayaran</a></li>
-                    <li><a href="{{ route('penguguman') }}">Penguguman</a></li>
-                    <li><a href="{{ route('persyaratan') }}">Persyaratan PMB</a></li>
-                    <li><a href="{{ route('foto') }}">Foto Brosur</a></li>
-                  </ul>
-=======
-                  data-feather="user-check"></i><span>PMB</span></a>
                     <ul class="nav-submenu menu-content">
                       <li><a href="{{ route('pengguna') }}">Pengguna</a></li>
                       <li><a href="{{ route('jadwalpmb') }}">Jadwal PMB</a></li>
@@ -309,7 +297,6 @@
                       <li><a href="{{ route('foto') }}">Foto Brosur</a></li>
                       <li><a href="{{ route('maba') }}">MABA</a></li>
                     </ul>
->>>>>>> e677b3f883574f3ea6312340a0a7a87080355e92
                 </li>
                 <li class="dropdown"><a class="nav-link menu" href="javascript:void(0)"><i
                       data-feather="book-open"></i><span>Jurnal KBM</span></a>
