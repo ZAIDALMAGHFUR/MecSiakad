@@ -43,23 +43,23 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // $this->call([
-        //     RolesSeeder::class,
-        //     UsersSeeder::class,
-        //     ProgramStuiesSeeder::class,
-        //     TahunAcademicsSeeder::class,
-        //     MahasiswaSeeder::class,
-        //     MataKuliahSeeder::class,
-        //     DosenSeeder::class,
-        //     JabatanSeeder::class,
-        //     DosenJabatanSeeder::class,
-        //     JadwalPmbSeeder::class,
-        //     PendaftarSeeder::class,
-        //     PembayaranSeeder::class,
-        //     PengugumanSeeder::class,
-        //     PersyaratansSeeder::class,
-        //     PengajuanSeeder::class,
-        // ]);
+        $this->call([
+            RolesSeeder::class,
+            UsersSeeder::class,
+            ProgramStuiesSeeder::class,
+            TahunAcademicsSeeder::class,
+            MahasiswaSeeder::class,
+            MataKuliahSeeder::class,
+            DosenSeeder::class,
+            JabatanSeeder::class,
+            DosenJabatanSeeder::class,
+            JadwalPmbSeeder::class,
+            PendaftarSeeder::class,
+            PembayaranSeeder::class,
+            PengugumanSeeder::class,
+            PersyaratansSeeder::class,
+            PengajuanSeeder::class,
+        ]);
 
         foreach (['beritas', 'jurnals', 'pages', 'galleries'] as $table) {
             Schema::disableForeignKeyConstraints();

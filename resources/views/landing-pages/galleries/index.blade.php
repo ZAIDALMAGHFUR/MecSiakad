@@ -36,21 +36,26 @@
         <div class="row demo-block demo-imgs">
             <div class="my-gallery card-body row gallery-with-description" itemscope="">
                 @foreach ($galleries as $item)
-                <figure class="col-xl-3 col-sm-6 xl-33" itemprop="associatedMedia" itemscope="">
-                    <a href="{{ asset('storage/' . $item->thumbnail)}}" itemprop="contentUrl" data-size="1600x950"
-                        class="bg-white">
-                        <img src="{{asset('storage/' . $item->thumbnail) }}" itemprop="thumbnail"
-                            alt="Image description">
-                        <div class="caption">
+                <div class="col-xl-3 col-sm-6 xl-33 mb-4" data-aos="fade-down" data-aos-offset="200"
+                    data-aos-delay="{{ 50 + ($loop->iteration * 50) }}">
+                    <figure itemprop="associatedMedia" itemscope="" class="mb-1">
+                        <a href="{{ asset('storage/' . $item->thumbnail) }}" itemprop="contentUrl" data-size="1600x950">
+                            <img src="{{asset('storage/' . $item->thumbnail)}}" itemprop="thumbnail"
+                                alt="Image description">
+                            <div class="caption">
+                                <h4>{{ $item->title }}</h4>
+                                <p>{{ $item->description }}</p>
+                            </div>
+                        </a>
+                        <figcaption itemprop="caption description">
                             <h4>{{ $item->title }}</h4>
                             <p>{{ $item->description }}</p>
-                        </div>
-                    </a>
-                    <figcaption itemprop="caption description">
-                        <h4>{{ $item->title }}</h4>
-                        <p>{{ $item->description }}</p>
-                    </figcaption>
-                </figure>
+                        </figcaption>
+                    </figure>
+                    <a onclick="window.location.href = this.href"
+                        href="{{ route('landing-pages.gallery-detail', $item->id) }}"
+                        class="btn btn-primary fw-bold w-100">Lihat</a>
+                </div>
                 @endforeach
             </div>
             <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">

@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('jadwal_pmbs', function (Blueprint $table) {
-            $table->string('brosur');
-            $table->string('description', 1000);
+            $table->string('brosur')->nullable();
+            $table->string('description', 1000)->nullable();
         });
     }
 

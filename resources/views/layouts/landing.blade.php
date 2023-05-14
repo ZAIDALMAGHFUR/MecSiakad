@@ -39,6 +39,15 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
 
     @stack('styles')
+
+    <style>
+        .grid-galleries {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+        }
+    </style>
 </head>
 
 <body class="landing-wrraper">

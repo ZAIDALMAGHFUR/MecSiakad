@@ -72,6 +72,7 @@ Route::get('/p/jurnal/{jurnal}', [LandingPageController::class, 'jurnalDetail'])
 Route::get('/p/pages/{page}', [LandingPageController::class, 'pageDetail'])
     ->name('landing-pages.pages.detail');
 Route::get('/p/gallery', [LandingPageController::class, 'galleries'])->name('landing-pages.galleries');
+Route::get('/p/gallery/{gallery}', [LandingPageController::class, 'galleryDetail'])->name('landing-pages.gallery-detail');
 
 Route::get('/p/struktur-kepemimpinan', [LandingPageController::class, 'strukturKps'])->name('landing-pages.struktur-kps');
 Route::post('/hide-modal', [LandingPageController::class, 'hideModal'])->name('landing-pages.hide-modal');
@@ -497,13 +498,6 @@ Route::group(['middleware' => ['auth', 'Camba']], function () {
     //lihat pengumuman
     Route::get('/view-graduation/{id_pendaftaran}', [PendaftaranCambaController::class, 'lihatkelulusan']);
 });
-
-
-
-
-
-
-
 
 Route::get('/job-search',  [App\Http\Controllers\JobController::class, 'index'])->name('job-search');
 Route::get('/job-country/{search}',  [App\Http\Controllers\JobController::class, 'search']);

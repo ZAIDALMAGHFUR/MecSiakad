@@ -11,9 +11,17 @@ use App\Models\StrJabatan;
 use App\Models\StrukturKepemimpinan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\View;
 
 class LandingPageController extends Controller
 {
+    public function __construct()
+    {
+        $pages = Page::all();
+        $pages = $pages->groupBy('group_menu');
+        View::share('pages', $pages);
+    }
+
     private function checkIfShowModal()
     {
         $exist = Cookie::has('show_modal');
@@ -173,5 +181,14 @@ class LandingPageController extends Controller
         $jabatans = StrJabatan::orderBy('order', 'asc')->get();
 
         return view('landing-pages.struktur-kps.index', compact('strukturKps', 'jabatans'));
+    }
+
+    public function galleryDetail(Gallery $gallery)
+    {
+        $gallery->load('galleryItems');
+
+        return view('landing-pages.galleries.detail', [
+            'gallery' => $gallery,
+        ]);
     }
 }

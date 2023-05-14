@@ -30,8 +30,5 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrapFive();
         // URL::forceScheme('https');
 
-        $pages = Page::all();
-        $pages = $pages->groupBy('group_menu');
-        View::share('pages', $pages);
     }
 }
