@@ -37,6 +37,13 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
   @stack('css')
+
+  <style>
+    .nyala {
+      background-color: #24695c;
+      border-radius: 2rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -53,9 +60,9 @@
     <div class="page-main-header">
       <div class="main-header-right row m-0">
         <div class="main-header-left">
-          <div class="logo-wrapper"><a href="/mahasiswa"><img class="img-fluid"
+          <div class="logo-wrapper"><a href="/home"><img class="img-fluid"
                 src="{{ asset('assets/images/logo/logo.png') }}" alt=""></a></div>
-          <div class="dark-logo-wrapper"><a href="/mahasiswa"><img class="img-fluid"
+          <div class="dark-logo-wrapper"><a href="/home"><img class="img-fluid"
                 src="{{ asset('assets/images/logo/dark-logo.png') }}" alt=""></a></div>
           <div class="toggle-sidebar"><i class="status_toggle middle" data-feather="align-center"
               id="sidebar-toggle"></i></div>
@@ -80,8 +87,7 @@
               <div class="bookmark-dropdown onhover-show-div">
                 <div class="form-group mb-0">
                   <div class="input-group">
-                    <div class="input-group-prepend"><span class="input-group-text"><i
-                          class="fa fa-search"></i></span>
+                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span>
                     </div>
                     <input class="form-control" type="text" placeholder="Search for bookmark...">
                   </div>
@@ -114,8 +120,8 @@
                   </div>
                 </li>
                 <li class="noti-secondary">
-                  <div class="media"><span class="notification-bg bg-light-secondary"><i
-                        data-feather="check-circle"> </i></span>
+                  <div class="media"><span class="notification-bg bg-light-secondary"><i data-feather="check-circle">
+                      </i></span>
                     <div class="media-body">
                       <p>Order Complete</p><span>1 hour ago</span>
                     </div>
@@ -176,10 +182,9 @@
             </li>
             <li class="onhover-dropdown p-0">
 
-              <button class="btn btn-primary-light" type="button"><a href="{{ route('logout') }}"
-                  onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();"><i
-                    data-feather="log-out"></i>{{ __('Logout') }}</a>
+              <button class="btn btn-primary-light" type="button"><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();"><i data-feather="log-out"></i>{{ __('Logout')
+                  }}</a>
               </button>
 
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -229,8 +234,8 @@
                     <h6>General </h6>
                   </div>
                 </li>
-                <li class="dropdown"><a class="nav-link menu" href="{{ route('mahasiswa') }}"><i
-                      data-feather="mahasiswa"></i><span>Dashboard</span></a>
+                <li class="dropdown"><a class="nav-link menu" href="{{ route('mahasiswa')}}"><i
+                      data-feather="home"></i><span>Dashboard</span></a>
                 </li>
                 <li class="sidebar-main-title">
                   <div>
@@ -244,44 +249,30 @@
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-                      data-feather="users"></i><span>Data KHS</span></a>
+                      data-feather="book"></i><span>Data KHS</span></a>
                   <ul class="nav-submenu menu-content">
                     <li><a href="{{ route('mhskhs') }}">Lihat KHS</a></li>
                   </ul>
                 </li>
+                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
+                      data-feather="file-text"></i><span>Calendar Academic</span></a>
+                  <ul class="nav-submenu menu-content">
+                    <li><a href="{{ route('getmahasiswaevent') }}">Calender Academic</a></li>
+                  </ul>
+                </li>
 
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-                  data-feather="users"></i><span>Calender Academic</span></a>
-              <ul class="nav-submenu menu-content">
-                <li>
-                  <a href="{{ route('getmahasiswaevent') }}">Calender Academic</a>
+                      data-feather="user-check"></i><span>Pengajuan Judul Skripsi</span></a>
+                  <ul class="nav-submenu menu-content">
+                    <li><a href="{{ route('mhsjudul') }}">Pengajuan Judul Skripsi</a></li>
+                    <li><a href="{{ route('mhsjudul.add') }}">Buat Pengajuan Judul Skripsi</a></li>
+                  </ul>
                 </li>
-              </ul>
-            </li>
-
-            <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-              data-feather="users"></i><span>Pengajuan Judul Skripsi</span></a>
-          <ul class="nav-submenu menu-content">
-            <li>
-              <a href="{{ route('mhsjudul') }}">Pengajuan Judul Skripsi</a>
-            </li>
-            <li>
-              <a href="{{ route('mhsjudul.add') }}">Buat Pengajuan Judul Skripsi</a>
-            </li>
-          </ul>
-        </li>
-
-
                 <li class="sidebar-main-title">
                   <div>
                     <h6>Miscellaneous </h6>
                   </div>
                 </li>
-                {{-- <li class="dropdown"><a class="nav-link menu" href="{{ route('zoom') }}"><i
-                      data-feather="video"></i><span>Zoom
-                      Meeting</span></a>
-                </li> --}}
-                
                 <li class="dropdown"><a class="nav-link menu" href="{{ route('job-mhs') }}"><i
                       data-feather="pocket"></i><span>Job Search</span></a>
                 </li>

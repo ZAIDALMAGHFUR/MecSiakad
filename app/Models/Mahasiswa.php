@@ -33,6 +33,11 @@ class Mahasiswa extends Model
     {
         return $this->hasMany(Nilai::class);
     }
+    
+    public function protoNilai()
+    {
+        return $this->hasMany(Nilai::class, 'mahasiswas_id');
+    }
 
     public function MataKuliah()
     {

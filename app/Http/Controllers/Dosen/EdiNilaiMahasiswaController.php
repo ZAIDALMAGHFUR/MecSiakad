@@ -42,6 +42,12 @@ class EdiNilaiMahasiswaController extends Controller
             $nilaiQuery = Nilai::query()
                 ->whereIn('mata_kuliahs_id', $turu, 'OR')
                 ->where('mahasiswas_id', $mahasiswa->id);
+                // dd($nilaiQuery);
+            
+            // $nilaiQuery = $mahasiswa->protoNilai();
+            // $nilais = $mahasiswa->Nilai()->get();
+            // dd($nilaiQuery->get()->toArray());    
+
         }
 
 
