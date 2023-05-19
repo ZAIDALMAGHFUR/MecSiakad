@@ -19,12 +19,12 @@ class FullCalendarController extends Controller
                 $color = null;
                 if ($booking->title == 'uts') {
                     $color = '#924ACE';
-                } else if ($booking->title == 'ujian') {
-                    $color = '#1A73E8';
-                } else if ($booking->title == 'uas') {
+                }else if ($booking->title == 'uas') {
                     $color = '#68B01A';
                 } else if ($booking->title == 'libur') {
                     $color = '#FF0000';
+                } else if ($booking->title == 'belajar') {
+                    $color = '#1A73E8';
                 }
     
                 $booking->color = $color;

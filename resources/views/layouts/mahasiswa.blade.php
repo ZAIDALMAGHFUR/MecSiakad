@@ -268,6 +268,16 @@
                     <li><a href="{{ route('mhsjudul.add') }}">Buat Pengajuan Judul Skripsi</a></li>
                   </ul>
                 </li>
+                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
+                  data-feather="book"></i><span>Data Modul</span></a>
+                    <ul class="nav-submenu menu-content">
+                      <li><a href="{{ route('krs') }}">KRS</a></li>
+                      <li><a href="{{ route('khs') }}">KHS</a></li>
+                      <li><a href="{{ route('nilai') }}">Input Nilai</a></li>
+                      <li><a href="{{ route('change') }}">Edit Nilai</a></li>
+                      <li><a href="{{ route('rentang') }}">Rentang Nilai</a></li>
+                    </ul>
+                  </li>
                 <li class="sidebar-main-title">
                   <div>
                     <h6>Miscellaneous </h6>

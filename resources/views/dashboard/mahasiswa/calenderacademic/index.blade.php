@@ -48,6 +48,33 @@
                     <div id='calendar'></div>
                 </div>
             </div>
+            <div class="col-sm-12 col-xl-6">
+              <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center pb-0">
+                  <h5><i data-feather="file-text"></i> Detail Calander</h5>
+                  <div class="setting-list">
+                    <ul class="list-unstyled setting-option">
+                      <li>
+                        <div class="setting-primary"><i class="icon-settings"></i></div>
+                      </li>
+                      <li><i class="view-html fa fa-code font-primary"></i></li>
+                      <li><i class="icofont icofont-maximize full-card font-primary"></i></li>
+                      <li><i class="icofont icofont-minus minimize-card font-primary"></i></li>
+                      <li><i class="icofont icofont-refresh reload-card font-primary"></i></li>
+                      <li><i class="icofont icofont-error close-card font-primary"></i></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <ol>
+                    <li style="background: #0000FF; color: aliceblue;">1. Belajar</li>
+                    <li class="bg-danger" style="margin-top: 1rem;">2. Libur</li>
+                    <li style="background: #0cf95f; color: aliceblue; margin-top: 1rem;">3. Uas</li>
+                    <li style="background: #f90cf9; color: aliceblue; margin-top: 1rem;">4. Uts</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
         </div>
     </div>
     </div>
