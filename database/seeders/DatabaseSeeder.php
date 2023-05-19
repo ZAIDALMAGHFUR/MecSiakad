@@ -61,15 +61,16 @@ class DatabaseSeeder extends Seeder
             PengajuanSeeder::class,
         ]);
 
-        foreach (['beritas', 'jurnals', 'pages', 'galleries'] as $table) {
+        foreach (['jurnals', 'pages', 'galleries', 'beritas'] as $table) {
             Schema::disableForeignKeyConstraints();
             DB::table($table)->truncate();
             Schema::enableForeignKeyConstraints();
         }
 
-        Berita::factory(40)->create();
+
         Jurnal::factory(40)->create();
         Page::factory(5)->create();
         Gallery::factory(40)->create();
+        Berita::factory(40)->create();
     }
 }

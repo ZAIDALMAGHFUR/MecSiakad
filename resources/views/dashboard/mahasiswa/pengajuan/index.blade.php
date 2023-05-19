@@ -68,7 +68,7 @@
                         <td style="text-align: center">
                             @if ($item->status == 0)
                                 <span class="badge badge-warning">Pending</span>
-                            @elseif($item->status == 1)
+                            @elseif($item->status = 1)
                                 <span class="badge badge-success">Diterima</span>
                             @else
                                 <span class="badge badge-danger">Ditolak</span>

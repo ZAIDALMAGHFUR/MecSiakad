@@ -22,6 +22,7 @@ class BeritaFactory extends Factory
             'tags' => $this->faker->randomElements(['news', 'ti', 'si', 'terbaru', 'penting', 'berita', 'pendaftaran', 'pmb', 'krs', 'khs'], rand(1, 4)),
             'description' => $this->faker->realText(),
             'thumbnail' => 'thumbnails/default.jpg',
+            'tanggal_publish' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'body' => $this->faker->realText(500)
         ];
     }

@@ -33,7 +33,8 @@ class BeritaController extends Controller
             'tags'    => 'required',
             'description'    => 'required|max:1000',
             'body'    => 'required',
-            'thumbnail' => 'required|image|max:5000'
+            'thumbnail' => 'required|image|max:5000',
+            'tanggal_publish' => 'required'
         ], [
             'title.required'   => 'Silahkan isi Judul Berita terlebih dahulu!',
             'category.required' => 'Silahkan isi Category terlebih dahulu!',
@@ -41,6 +42,7 @@ class BeritaController extends Controller
             'description.required' => 'Silahkan isi Description terlebih dahulu!',
             'body.required' => 'Silahkan isi Body Konten terlebih dahulu!',
             'thumbnail.required' => 'Silahkan pilih thumbnail terlebih dahulu!',
+            'tanggal_publish.required' => 'Silahkan isi Tanggal Publish terlebih dahulu!',
         ]);
 
         //create post
@@ -51,6 +53,7 @@ class BeritaController extends Controller
                 'tags'     => array_map(fn ($tag) => trim($tag), explode(',', $validatedData['tags'])),
                 'description' => $validatedData['description'],
                 'body' => $validatedData['body'],
+                'tanggal_publish' => $validatedData['tanggal_publish'],
             ],
             $request->hasFile('thumbnail') ?
                 ['thumbnail' => $request->file('thumbnail')->store('thumbnails', ['disk' => 'public'])] : []
@@ -80,7 +83,8 @@ class BeritaController extends Controller
             'tags'    => 'required',
             'description'    => 'required|max:1000',
             'body'    => 'required',
-            'thumbnail' => 'sometimes|image|max:5000|nullable'
+            'thumbnail' => 'sometimes|image|max:5000|nullable',
+            'tanggal_publish' => 'required'
         ], [
             'title.required'   => 'Silahkan isi Judul Berita terlebih dahulu!',
             'category.required' => 'Silahkan isi Category terlebih dahulu!',
@@ -88,6 +92,7 @@ class BeritaController extends Controller
             'description.required' => 'Silahkan isi Description terlebih dahulu!',
             'body.required' => 'Silahkan isi Body Konten terlebih dahulu!',
             'thumbnail.required' => 'Silahkan pilih thumbnail terlebih dahulu!',
+            'tanggal_publish.required' => 'Silahkan isi Tanggal Publish terlebih dahulu!',
         ]);
 
         $berita->update([
@@ -97,6 +102,7 @@ class BeritaController extends Controller
             'tags'     => array_map(fn ($tag) => trim($tag), explode(',', $validatedData['tags'])),
             'description' => $validatedData['description'],
             'body' => $validatedData['body'],
+            'tanggal_publish' => $validatedData['tanggal_publish'],
         ]);
 
         return redirect()->route('berita.index')->with([

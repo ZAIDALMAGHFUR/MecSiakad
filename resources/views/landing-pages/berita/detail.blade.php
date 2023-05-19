@@ -17,7 +17,7 @@
                         <div class="card-body">
                             <div class="blog-details">
                                 <ul class="blog-social">
-                                    <li>{{ $berita->created_at->format('d F Y') }}</li>
+                                    <li>{{ $berita->tanggal_publish}}</li>
                                     <li>
                                         <a
                                             href="{{ route('landing-pages.berita', ['category' => $berita->category]) }}">{{

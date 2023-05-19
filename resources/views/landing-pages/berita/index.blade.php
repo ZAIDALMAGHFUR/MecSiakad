@@ -30,45 +30,52 @@
             </div>
         </div>
         <div class="row demo-block demo-imgs">
-            @foreach ($berita as $item)
-            <div class="col-sm-6 col-md-4">
-                <div class="card">
-                    <div class="blog-box blog-grid">
-                        <div class="blog-wrraper">
-                            <a href="{{ route('landing-pages.berita.detail', $item) }}">
-                                <img class="img-fluid top-radius-blog" src="{{ asset('storage/' . $item->thumbnail) }}"
-                                    alt=""></a>
-                        </div>
-                        <div class="blog-details-second">
-                            <div class="blog-post-date"><span class="blg-month">{{
-                                    strtoupper($item->created_at->format('M')) }}</span><span class="blg-date">{{
-                                    $item->created_at->format('d') }}</span>
-                            </div><a href="{{ route('landing-pages.berita.detail', $item) }}">
-                                <h6 class="blog-bottom-details">{{ $item->title }}</h6>
-                            </a>
-                            <p>{{ $item->description }}</p>
-                            <p>
-                                @if ($item->tags)
-                                @foreach ($item->tags as $tag)
-                                <a href="{{ route('landing-pages.berita', ['tag' => $tag]) }}"
-                                    class="text-secondary">#{{ $tag }}</a>
-                                @endforeach
-                                @endif
-                            </p>
-                            <div class="detail-footer">
-                                <ul class="sociyal-list">
-                                    <li>
-                                        <i class="fa fa-tag"></i> <a
-                                            href="{{ route('landing-pages.berita', ['category' => $item->category]) }}">{{
-                                            $item->category }}</a>
-                                    </li>
-                                </ul>
+            @if ($berita->count() > 0)
+                @foreach ($berita as $item)
+                <div class="col-sm-6 col-md-4">
+                    <div class="card">
+                        <div class="blog-box blog-grid">
+                            <div class="blog-wrraper">
+                                <a href="{{ route('landing-pages.berita.detail', $item) }}">
+                                    <img class="img-fluid top-radius-blog" src="{{ asset('storage/' . $item->thumbnail) }}"
+                                        alt=""></a>
+                            </div>
+                            <div class="blog-details-second">
+                                <div class="blog-post-date">
+                                    <span class="blg-month">{{ strtoupper(date('M', strtotime($item->tanggal_publish))) }}</span>
+                                    <span class="blg-date">{{ date('d', strtotime($item->tanggal_publish)) }}</span>
+                                </div>
+                                <a href="{{ route('landing-pages.berita.detail', $item) }}">
+                                    <h6 class="blog-bottom-details">{{ $item->title }}</h6>
+                                </a>
+                                <p>{{ $item->description }}</p>
+                                <p>
+                                    @if ($item->tags)
+                                    @foreach ($item->tags as $tag)
+                                    <a href="{{ route('landing-pages.berita', ['tag' => $tag]) }}"
+                                        class="text-secondary">#{{ $tag }}</a>
+                                    @endforeach
+                                    @endif
+                                </p>
+                                <div class="detail-footer">
+                                    <ul class="sociyal-list">
+                                        <li>
+                                            <i class="fa fa-tag"></i> <a
+                                                href="{{ route('landing-pages.berita', ['category' => $item->category]) }}">{{
+                                                $item->category }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            @endforeach
+                @endforeach
+            @else
+                <div class="col">
+                    <p>Data yang Anda cari tidak ditemukan.</p>
+                </div>
+            @endif
         </div>
         <div class="row">
             <div class="col py-4">
@@ -76,6 +83,7 @@
             </div>
         </div>
     </div>
+    
 </section>
 <!--home section end-->
 @endsection

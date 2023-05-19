@@ -24,7 +24,7 @@
                             is the design. It needs to be high quality enough otherwise you will lose
                             potential users due to bad design.</p>
                         <div class="d-flex gap-2 flex-column flex-md-row" data-aos="fade-up">
-                            <a class="btn btn-primary py-3 btn-lg" href="/" target="_blank">PMB</a>
+                            <a class="btn btn-primary py-3 btn-lg" href="{{ route('register') }}" target="_blank">PMB</a>
                             <a class="btn py-3 btn-secondary btn-lg" href="{{ route('login') }}" target="_blank">Login
                                 Sebagai Mahasiswa</a>
                         </div>

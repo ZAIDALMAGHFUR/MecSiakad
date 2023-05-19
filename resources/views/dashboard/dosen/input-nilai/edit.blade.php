@@ -74,7 +74,7 @@
                               <div class="col-lg-4">
                                   <div class="mb-3 mb-4">
                                       @foreach ($bobot as $item)
-                                        <p class="form-label" for="nama_ayah">Nama Nilai = {{ $item->nama_rentang_nilai }}</p>
+                                        <p class="form-label" for="nama_ayah">Nilai Min = {{ $item->nama_rentang_nilai }}</p>
                                       @endforeach
                                   </div>
                               </div>
