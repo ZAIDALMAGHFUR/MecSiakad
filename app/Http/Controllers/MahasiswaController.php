@@ -36,7 +36,7 @@ class MahasiswaController extends Controller
             [
                 'label' => 'Jumblah SKS',
                 'value' => $sks,
-                'icon' => 'clipboard'
+                'icon' => 'check-circle'
             ],
             [
                 'label' => 'Semester',
@@ -59,16 +59,18 @@ class MahasiswaController extends Controller
         $data->program_studies_id = $data->mhs->program_studies_id;
 
         $select_krs = Krs::where('nim', $nim)
-            ->where('tahun_academic_id', $data->tahun_akademik_id)
+            // ->where('tahun_academic_id', $data->tahun_akademik_id)
             ->join('mata_kuliahs', 'krs.mata_kuliah_id', '=', 'mata_kuliahs.id')
             ->select('krs.id', 'krs.mata_kuliah_id', 'mata_kuliahs.name_mata_kuliah', 'mata_kuliahs.kode_mata_kuliah', 'mata_kuliahs.sks')
             ->get();
+            // dd($select_krs);
+
 
         $matkul = $select_krs->pluck('mata_kuliah_id');
 
-        $nilai_akhirs = Nilai::select('tahun_academic_id', 'mahasiswas_id', 'mata_kuliahs_id', 'nilai_akhir')
+        $nilai_akhirs = Nilai::select('mahasiswas_id', 'mata_kuliahs_id', 'nilai_akhir')
             ->where('mahasiswas_id', $mhsinfo->id)
-            ->where('tahun_academic_id', $data->tahun_academic->id)
+            // ->where('tahun_academic_id', $data->tahun_academic->id)
             ->get();
 
         foreach ($nilai_akhirs as $nilai_akhir) {
@@ -105,6 +107,7 @@ class MahasiswaController extends Controller
         }
 
         $total_nilai = 0;
+        // dd($nilai_akhirs->toArray());
         foreach ($select_krs as $index => $khs) {
             $bobot = $nilai_akhirs[$index]->bobot;
             $nilai = $khs->sks * $bobot;
@@ -116,6 +119,7 @@ class MahasiswaController extends Controller
         } else {
             $ipk = number_format($total_nilai / $total_sks, 2);
         }        
+        // dd($ipk);
         return $ipk;
     };
 }
@@ -132,7 +136,7 @@ class MahasiswaController extends Controller
             $data->program_studies_id = $data->mhs->program_studies_id;
 
             $select_krs = Krs::where('nim', $nim)
-                ->where('tahun_academic_id', $data->tahun_akademik_id)
+                // ->where('tahun_academic_id', $data->tahun_akademik_id)
                 ->join('mata_kuliahs', 'krs.mata_kuliah_id', '=', 'mata_kuliahs.id')
                 ->select('krs.id', 'krs.mata_kuliah_id', 'mata_kuliahs.name_mata_kuliah', 'mata_kuliahs.kode_mata_kuliah', 'mata_kuliahs.sks')
                 ->get();
@@ -157,7 +161,7 @@ class MahasiswaController extends Controller
         $data->program_studies_id = $data->mhs->program_studies_id;
 
         $select_krs = Krs::where('nim', $nim)
-            ->where('tahun_academic_id', $data->tahun_akademik_id)
+            // ->where('tahun_academic_id', $data->tahun_akademik_id)
             ->join('mata_kuliahs', 'krs.mata_kuliah_id', '=', 'mata_kuliahs.id')
             ->select('krs.id', 'krs.mata_kuliah_id', 'mata_kuliahs.name_mata_kuliah', 'mata_kuliahs.kode_mata_kuliah', 'mata_kuliahs.sks')
             ->get();
