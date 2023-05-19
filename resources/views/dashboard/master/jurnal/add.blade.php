@@ -101,6 +101,11 @@
                       <small class="text-muted">Wajib berbentuk file gambar seperti .jpg, .jpeg, .png, .gif atau
                         sejenisnya dan maksimal ukuran file 5MB.</small>
                     </div>
+
+                    <div class="col-md-6">
+                      <label for="tanggal_publish" class="form-label">tanggal_publish</label>
+                      <input type="date" class="form-control" name="tanggal_publish" id="tanggal_publish" required>
+                    </div>
                   </div>
                   <div class="row g-2 mt-3">
                     <div class="col">

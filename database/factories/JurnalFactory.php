@@ -22,7 +22,8 @@ class JurnalFactory extends Factory
             'tags' => $this->faker->randomElements(['news', 'ti', 'si', 'terbaru', 'penting', 'berita', 'pendaftaran', 'pmb', 'krs', 'khs'], rand(1, 4)),
             'description' => $this->faker->realText(),
             'thumbnail' => 'thumbnails/default.jpg',
-            'body' => $this->faker->realText(500)
+            'body' => $this->faker->realText(500),
+            'tanggal_publish' => $this->faker->dateTimeBetween('-1 years', 'now'),
         ];
     }
 }

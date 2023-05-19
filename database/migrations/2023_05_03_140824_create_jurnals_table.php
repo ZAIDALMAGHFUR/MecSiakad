@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('category');
             $table->json('tags');
             $table->longText('body');
+            $table->date('tanggal_publish');
             $table->timestamps();
         });
     }

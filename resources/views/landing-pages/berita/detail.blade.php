@@ -58,9 +58,9 @@
                                         src="{{ asset('storage/' . $item->thumbnail) }}" alt=""></a>
                             </div>
                             <div class="blog-details-second">
-                                <div class="blog-post-date"><span class="blg-month">{{
-                                        strtoupper($item->created_at->format('M')) }}</span><span class="blg-date">{{
-                                        $item->created_at->format('d') }}</span>
+                                <div class="blog-post-date">
+                                    <span class="blg-month">{{ strtoupper(date('M', strtotime($item->tanggal_publish))) }}</span>
+                                    <span class="blg-date">{{ date('d', strtotime($item->tanggal_publish)) }}</span>
                                 </div><a href="{{ route('landing-pages.berita.detail', $item) }}">
                                     <h6 class="blog-bottom-details">{{ $item->title }}</h6>
                                 </a>

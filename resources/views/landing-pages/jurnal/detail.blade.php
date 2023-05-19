@@ -17,7 +17,7 @@
                         <div class="card-body">
                             <div class="blog-details">
                                 <ul class="blog-social">
-                                    <li>{{ $jurnal->created_at->format('d F Y') }}</li>
+                                    <li>{{ $jurnal->tanggal_publish }}</li>
                                     <li>
                                         <a
                                             href="{{ route('landing-pages.jurnal', ['category' => $jurnal->category]) }}">{{
@@ -59,9 +59,9 @@
                                         src="{{ asset('storage/' . $item->thumbnail) }}" alt=""></a>
                             </div>
                             <div class="blog-details-second">
-                                <div class="blog-post-date"><span class="blg-month">{{
-                                        strtoupper($item->created_at->format('M')) }}</span><span class="blg-date">{{
-                                        $item->created_at->format('d') }}</span>
+                                <div class="blog-post-date">
+                                    <span class="blg-month">{{ strtoupper(date('M', strtotime($item->tanggal_publish))) }}</span>
+                                    <span class="blg-date">{{ date('d', strtotime($item->tanggal_publish)) }}</span>
                                 </div><a href="{{ route('landing-pages.jurnal.detail', $item) }}">
                                     <h6 class="blog-bottom-details">{{ $item->title }}</h6>
                                 </a>

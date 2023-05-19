@@ -111,7 +111,7 @@ class LandingPageController extends Controller
         $tag = request('tag');
         $category = request('category');
 
-        $jurnal = Berita::orderBy('created_at', 'desc')
+        $jurnal = Jurnal::orderBy('created_at', 'desc')
             ->when(
                 $keyword,
                 fn ($query) => $query

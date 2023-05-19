@@ -26,41 +26,45 @@ class JurnalController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $validatedData = $this->validate($request, [
-            'title' => 'required',
-            'category'    => 'required',
-            'tags'    => 'required',
-            'description'    => 'required|max:1000',
-            'body'    => 'required',
-            'thumbnail' => 'required|image|max:5000'
-        ], [
-            'title.required'   => 'Silahkan isi Judul Jurnal terlebih dahulu!',
-            'category.required' => 'Silahkan isi Category terlebih dahulu!',
-            'tags.required' => "Silahkan isi Tags (jika lebih dari satu pisahkan dengan ',') terlebih dahulu!",
-            'description.required' => 'Silahkan isi Description terlebih dahulu!',
-            'body.required' => 'Silahkan isi Body Konten terlebih dahulu!',
-            'thumbnail.required' => 'Silahkan pilih thumbnail terlebih dahulu!',
-        ]);
+{
+    $validatedData = $this->validate($request, [
+        'title' => 'required',
+        'category'    => 'required',
+        'tags'    => 'required',
+        'description'    => 'required|max:1000',
+        'body'    => 'required',
+        'thumbnail' => 'required|image|max:5000',
+        'tanggal_publish' => 'required'
+    ], [
+        'title.required'   => 'Silahkan isi Judul Jurnal terlebih dahulu!',
+        'category.required' => 'Silahkan isi Category terlebih dahulu!',
+        'tags.required' => "Silahkan isi Tags (jika lebih dari satu pisahkan dengan ',') terlebih dahulu!",
+        'description.required' => 'Silahkan isi Description terlebih dahulu!',
+        'body.required' => 'Silahkan isi Body Konten terlebih dahulu!',
+        'thumbnail.required' => 'Silahkan pilih thumbnail terlebih dahulu!',
+        'tanggal_publish.required' => 'Silahkan isi Tanggal Publish terlebih dahulu!',
+    ]);
 
-        //create post
-        Jurnal::create(array_merge(
-            [
-                'title'     => $validatedData['title'],
-                'category'     => $validatedData['category'],
-                'tags'     => array_map(fn ($tag) => trim($tag), explode(',', $validatedData['tags'])),
-                'description' => $validatedData['description'],
-                'body' => $validatedData['body'],
-            ],
-            $request->hasFile('thumbnail') ?
-                ['thumbnail' => $request->disk('public')->file('thumbnail')->store('thumbnails', ['disk' => 'public'])] : []
-        ));
+    //create post
+    Jurnal::create(array_merge(
+        [
+            'title'     => $validatedData['title'],
+            'category'     => $validatedData['category'],
+            'tags'     => array_map(fn ($tag) => trim($tag), explode(',', $validatedData['tags'])),
+            'description' => $validatedData['description'],
+            'body' => $validatedData['body'],
+            'tanggal_publish' => $validatedData['tanggal_publish'],
+        ],
+        $request->hasFile('thumbnail') ?
+            ['thumbnail' => $request->file('thumbnail')->store('thumbnails', 'public')] : []
+    ));
 
-        return redirect()->route('jurnal.index')->with([
-            'success' => 'Data berhasil ditambahkan',
-            'alert-type' => 'success'
-        ]);
-    }
+    return redirect()->route('jurnal.index')->with([
+        'success' => 'Data berhasil ditambahkan',
+        'alert-type' => 'success'
+    ]);
+}
+
 
 
 
@@ -80,7 +84,8 @@ class JurnalController extends Controller
             'tags'    => 'required',
             'description'    => 'required|max:1000',
             'body'    => 'required',
-            'thumbnail' => 'sometimes|image|max:5000|nullable'
+            'thumbnail' => 'sometimes|image|max:5000|nullable',
+            'tanggal_publish' => 'required'
         ], [
             'title.required'   => 'Silahkan isi Judul Jurnal terlebih dahulu!',
             'category.required' => 'Silahkan isi Category terlebih dahulu!',
@@ -88,6 +93,7 @@ class JurnalController extends Controller
             'description.required' => 'Silahkan isi Description terlebih dahulu!',
             'body.required' => 'Silahkan isi Body Konten terlebih dahulu!',
             'thumbnail.required' => 'Silahkan pilih thumbnail terlebih dahulu!',
+            'tanggal_publish.required' => 'Silahkan isi Tanggal Publish terlebih dahulu!',
         ]);
 
         $jurnal->update([
@@ -97,6 +103,7 @@ class JurnalController extends Controller
             'tags'     => array_map(fn ($tag) => trim($tag), explode(',', $validatedData['tags'])),
             'description' => $validatedData['description'],
             'body' => $validatedData['body'],
+            'tanggal_publish' => $validatedData['tanggal_publish'],
         ]);
 
         return redirect()->route('jurnal.index')->with([
