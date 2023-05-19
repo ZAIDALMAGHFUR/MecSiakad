@@ -142,7 +142,6 @@
                         <button hidden type="submit" class="btn btn-primary">Filter</button>
                 </form>
             </div>
-          <div class="row mb-3">
               <div class="card mb-4">
                   <div class="card-body">
                       <div class="row mb-3">

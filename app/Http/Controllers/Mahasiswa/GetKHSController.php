@@ -53,6 +53,7 @@ class GetKHSController extends Controller
             ->where('mahasiswas_id', $mhs->id)
             ->where('tahun_academic_id', $request->tahun_academic_id)
             ->get();
+            // dd($nilai_akhirs->toArray());
 
             // dd($nilai_akhirs);
     
@@ -80,7 +81,7 @@ class GetKHSController extends Controller
             ->select('krs.id', 'mata_kuliahs.name_mata_kuliah', 'mata_kuliahs.kode_mata_kuliah', 'mata_kuliahs.sks')
             ->get();
 
-            // dd($select_krs);
+            // dd($select_krs->toArray());
     
         $data_khs = [
             'mhs_data' => $nilai_akhirs,
@@ -120,10 +121,11 @@ class GetKHSController extends Controller
     public function cetak()
     {
         $mhsinfo = Mahasiswa::where('user_id', Auth::user()->id)->first();
+        // dd($mhsinfo->protoNilai()->get()->toArray());
         $nim = $mhsinfo->nim;
         $data = (object)[];
         $data->mhs = Mahasiswa::where('nim', $nim)->first();
-        $data->tahun_academic = TahunAcademic::where('status', 'aktif')->first();
+        $data->tahun_academic = TahunAcademic::all()->first();
         $data->tahun_akademik_id = $data->tahun_academic->id;
         $data->program_studies_id = $data->mhs->program_studies_id;
         $select_krs = Krs::where('nim', $nim)
@@ -131,6 +133,8 @@ class GetKHSController extends Controller
         ->join('mata_kuliahs', 'krs.mata_kuliah_id', '=', 'mata_kuliahs.id')
         ->select('krs.id', 'krs.mata_kuliah_id', 'mata_kuliahs.name_mata_kuliah', 'mata_kuliahs.kode_mata_kuliah', 'mata_kuliahs.sks')
         ->get();
+        // dd(Nilai::all()->toArray());
+        // dd($select_krs->toArray());
 
         $matkul = $select_krs->pluck('mata_kuliah_id');
 
@@ -142,6 +146,7 @@ class GetKHSController extends Controller
         ->where('mahasiswas_id', $mhsinfo->id)
         ->where('tahun_academic_id', $data->tahun_academic->id)
         ->get();
+        // dd($nilai_akhirs->toArray());
 
         foreach ($nilai_akhirs as $nilai_akhir) {
             $nilai_akhir->kriteria = '';
@@ -177,12 +182,17 @@ class GetKHSController extends Controller
         }
         
         $total_nilai = 0;
+        // dd($select_krs);
         foreach ($select_krs as $index => $khs) {
             $bobot = $nilai_akhirs[$index]->bobot;
+            // dd($nilai_akhirs[$index]->bobot);
+            // dd($khs->sks);
             $nilai = $khs->sks * $bobot;
+            // dd($nilai);
             $total_nilai += $nilai;
+            
         }
-
+// dd("breakpoint");s
         $ipk = number_format($total_nilai / $total_sks, 2);
         
         $download ='KRS-'. $data->mhs->name .'.pdf';

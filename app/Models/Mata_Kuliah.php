@@ -32,7 +32,7 @@ class Mata_Kuliah extends Model
 
     public function nilai()
     {
-        return $this->hasMany(Nilai::class, 'mata_kuliahs_id', 'nim');
+        return $this->hasMany(Nilai::class, 'mata_kuliahs_id');
     }
 
     public function dosen()

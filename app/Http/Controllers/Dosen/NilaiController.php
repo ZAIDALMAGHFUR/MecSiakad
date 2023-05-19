@@ -28,6 +28,7 @@ class NilaiController extends Controller
 
 
     public function find(Request $request, $id){
+        // dd(TahunAcademic::all()->toArray());
         $bobot = BobotNilai::all();
         $mahasiswa = Mahasiswa::where('id', $id)->first();
         $tahun_akademik = TahunAcademic::all();
@@ -52,15 +53,20 @@ class NilaiController extends Controller
     
         if($request->has('tahun_academic_id')){
             $krsQuery->where('tahun_academic_id', $request->tahun_academic_id);
+            $nilais = Nilai::where('mahasiswas_id', $id)
+            ->where('tahun_academic_id', $request->tahun_academic_id)
+            ->get()
+            ->toArray();
         }else{
             $krsQuery->whereIn('tahun_academic_id', $tahun_akademik->pluck('id'));
+            $nilais = Nilai::where('mahasiswas_id', $id)
+            ->get()
+            ->toArray();
         }
     
         $krs = $krsQuery->get();
 
-        $nilais = Nilai::where('mahasiswas_id', $id)
-        ->get()
-        ->toArray();
+
 
     return view('dashboard.dosen.input-nilai.edit', compact('mahasiswa', 'krs', 'tahun_akademik', 'bobot', 'nilais'));
 
@@ -104,7 +110,7 @@ class NilaiController extends Controller
     $total = count($tugas) - 1;
     for ($key = 0; $key <= $total ; $key++) {
         $nilai = new Nilai;
-        $nilai->tahun_academic_id = $tahun_academic_id[$key];
+        $nilai->    tahun_academic_id = $tahun_academic_id[$key];
         $nilai->mahasiswas_id = $mahasiswa_id[$key];
         $nilai->mata_kuliahs_id = $mata_kuliahs_id[$key];
         $nilai->tugas = $tugas[$key];

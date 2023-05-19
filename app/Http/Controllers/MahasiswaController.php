@@ -54,7 +54,7 @@ class MahasiswaController extends Controller
         $nim = $mhsinfo->nim;
         $data = (object)[];
         $data->mhs = Mahasiswa::where('nim', $nim)->first();
-        $data->tahun_academic = TahunAcademic::where('status', 'aktif')->first();
+        $data->tahun_academic = TahunAcademic::all()->first();
         $data->tahun_akademik_id = $data->tahun_academic->id;
         $data->program_studies_id = $data->mhs->program_studies_id;
 
@@ -111,9 +111,12 @@ class MahasiswaController extends Controller
             $total_nilai += $nilai;
         }
 
-        $ipk = number_format($total_nilai / $total_sks, 2);
+        if ($total_sks == 0) {
+            $ipk = 0;
+        } else {
+            $ipk = number_format($total_nilai / $total_sks, 2);
+        }        
         return $ipk;
-
     };
 }
 
@@ -124,7 +127,7 @@ class MahasiswaController extends Controller
             $nim = $mhsinfo->nim;
             $data = (object)[];
             $data->mhs = Mahasiswa::where('nim', $nim)->first();
-            $data->tahun_academic = TahunAcademic::where('status', 'aktif')->first();
+            $data->tahun_academic = TahunAcademic::all()->first();
             $data->tahun_akademik_id = $data->tahun_academic->id;
             $data->program_studies_id = $data->mhs->program_studies_id;
 
@@ -149,7 +152,7 @@ class MahasiswaController extends Controller
         $nim = $mhsinfo->nim;
         $data = (object)[];
         $data->mhs = Mahasiswa::where('nim', $nim)->first();
-        $data->tahun_academic = TahunAcademic::where('status', 'aktif')->first();
+        $data->tahun_academic = TahunAcademic::all()->first();
         $data->tahun_akademik_id = $data->tahun_academic->id;
         $data->program_studies_id = $data->mhs->program_studies_id;
 
