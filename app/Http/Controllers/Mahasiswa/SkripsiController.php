@@ -99,5 +99,20 @@ class SkripsiController extends Controller
         // return view('dashboard.mahasiswa.khs.cetak.cetak', compact('data', 'ketua_prodi_id', 'nilai_akhirs', 'select_krs', 'total_sks', 'total_nilai', 'ipk'));
         return Pdf::loadHTML(view('dashboard.mahasiswa.pengajuan.surat', compact('pengajuan', 'tahun_akademik')))->download($download);
     }
+
+    public function cetakacc(){
+        $mahasiswa = auth()->user()->mahasiswa;
+        $mahasiswa_id = $mahasiswa->id;
+    
+        // mengambil data pengajuan yang dimiliki oleh mahasiswa yang sedang login
+        $pengajuan = Pengajuan::where('mahasiswa_id', $mahasiswa_id)->get();
+
+        //mengambil data tahun akademik yang aktif
+        $tahun_akademik = TahunAcademic::where('status', 'aktif')->first();
+
+        $download ='Judul Skripsi-'. $mahasiswa->name .'.pdf';
+        // return view('dashboard.mahasiswa.pengajuan.suratacc', compact('pengajuan', 'tahun_akademik'));
+        return Pdf::loadHTML(view('dashboard.mahasiswa.pengajuan.suratacc', compact('pengajuan', 'tahun_akademik')))->download($download);
+    }
     
 }

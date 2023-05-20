@@ -95,24 +95,16 @@
 
     <p>{{ $pengajuan[0]['deskripsi'] }} :</p>
 
+    <p>JUDUL ACC</p>
+
     {{-- Judul Skripsi --}}
     <table style="width: 100%; margin-top: 3%; font-size: 12px">
         <tr>
             <td style="width: 50%">
                 <table>
                     <tr>
-                        <td>Judul Skripsi 1</td>
-                        <td>: {{ $pengajuan[0]['judul_1'] }}</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Judul Skripsi 2</td>
-                        <td>: {{ $pengajuan[0]['judul_2'] }}</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Judul Skripsi 3</td>
-                        <td>: {{ $pengajuan[0]['judul_3'] }}</td>
+                        <td>Judul Skripsi Acc</td>
+                        <td>: {{ $pengajuan[0]['judul_acc'] }}</td>
                         <td></td>
                     </tr>
                 </table>

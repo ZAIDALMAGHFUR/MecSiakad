@@ -93,6 +93,7 @@
                 </tbody>
               </table>
               <!-- Modal -->
+              @foreach ($pengajuan as $data)
               <div class="modal fade edit{{ $data->id }}" id="modal-{{ $data->id }}" tabindex="-1" aria-labelledby="modalLabel-{{ $data->id }}" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -108,8 +109,12 @@
                                 <input type="hidden" name="mahasiswa_id" value="{{ $data->mahasiswa_id }}">
                                 <input type="hidden" name="dosen_id" value="{{ $data->dosen_id }}">
                                 <div class="mb-3">
-                                    <label for="judul" class="form-label">Judul yang di pilih</label>
-                                    <input type="text" class="form-control" id="judul" name="judul">
+                                    <label for="judul_acc" class="form-label">Judul yang di pilih</label>
+                                    <select class="form-select" name="judul_acc" id="judul_acc">
+                                        <option value="{{ $data->judul_1 }}">{{ $data->judul_1 }}</option>
+                                        <option value="{{ $data->judul_2 }}">{{ $data->judul_2 }}</option>
+                                        <option value="{{ $data->judul_3 }}">{{ $data->judul_3 }}</option>
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="status" class="form-label">Status</label>
@@ -131,6 +136,7 @@
                     </div>
                 </div>
             </div>
+              @endforeach
             </div>
           </div>
         </div>

@@ -469,6 +469,7 @@ Route::group(['middleware' => ['auth', 'OnlyMahasiswa']], function () {
     });
 
     Route::get('pengajuan-cetak', [SkripsiController::class, 'pengajuan'])->name('pengajuan-cetak');
+    Route::get('pengajuan-cetak-acc', [SkripsiController::class, 'cetakacc'])->name('pengajuan-cetak-acc');
 
     //job search
     Route::get('/job-mhs',  [JobMhsController::class, 'indexMhs'])->name('job-mhs');

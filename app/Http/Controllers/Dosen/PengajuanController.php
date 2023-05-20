@@ -24,11 +24,11 @@ class PengajuanController extends Controller
     public function update(Request $request, $id)
 {
     $this->validate($request, [
-        'judul' => 'required',
+        'judul_acc' => 'required',
         'status'     => 'required',
         'pesan'     => 'required',
     ], [
-        'judul.required'   => 'Silahkan isi judul terlebih dahulu!',
+        'judul_acc.required'   => 'Silahkan isi judul terlebih dahulu!',
         'status.required' => 'Silahkan isi status terlebih dahulu!',
         'pesan.required' => 'Silahkan isi pesan terlebih dahulu!',
     ]);
@@ -36,7 +36,7 @@ class PengajuanController extends Controller
     //update data
     $pengajuan = Pengajuan::find($id);
     $pengajuan->update([
-        'judul' => $request->judul,
+        'judul_acc' => $request->judul_acc,
         'status' => $request->status,
         'pesan' => $request->pesan,
     ]);

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('judul_1')->nullable();
             $table->string('judul_2')->nullable();
             $table->string('judul_3')->nullable();
+            $table->string('judul_acc')->nullable();
             $table->enum('status', ['diterima', 'ditolak'])->nullable();
             $table->string('pesan')->nullable();
             $table->unsignedBigInteger('mahasiswa_id')->nullable();

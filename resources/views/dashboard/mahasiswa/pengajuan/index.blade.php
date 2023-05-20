@@ -57,6 +57,7 @@
                     <th>Nama Dosen</th>
                     <th>Status</th>
                     <th>Pesan</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -75,6 +76,9 @@
                             @endif
                         </td>
                         <td>{{ $item->pesan }}</td>
+                          <td style="text-align: center">
+                            <a href="{{ route('pengajuan-cetak-acc') }}" class="btn btn-primary btn-sm"><i class="fa fa-print"></i></a>
+                          </td>
                     </tr>
                     @endforeach
                 </tbody>

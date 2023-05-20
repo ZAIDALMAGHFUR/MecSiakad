@@ -10,11 +10,11 @@
         <div class="row">
           <div class="col-sm-6">
             <h3>Buat Pengajuan Skripsi</h3>
-            <ol class="breadcrumb">
+            <ul class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
               <li class="breadcrumb-item">Data Master</li>
               <li class="breadcrumb-item active">Buat Pengajuan Skripsi</li>
-            </ol>
+            </ul>
           </div>
           <div class="col-sm-6">
             <!-- Bookmark Start-->
@@ -46,7 +46,7 @@
       <div class="col-sm-12">
         <div class="card">
             <div class="card-header">
-                <li><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Add Surat Pengajuan</a></li>
+                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Add Surat Pengajuan</a>
               </div>      
               
               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
