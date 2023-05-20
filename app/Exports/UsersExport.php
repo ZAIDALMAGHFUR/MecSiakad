@@ -17,6 +17,7 @@ class UsersExport implements FromQuery, WithHeadings, WithColumnWidths, WithStyl
     {
         return [
             'name',
+            'nim',
             'email',
             'no_hp',
             'alamat',
@@ -26,6 +27,8 @@ class UsersExport implements FromQuery, WithHeadings, WithColumnWidths, WithStyl
             'jenis_kelamin',
             'agama',
             'status',
+            'user_id',
+            'foto',
             'tahun_masuk',
             'nama_ayah',
             'nama_ibu',
