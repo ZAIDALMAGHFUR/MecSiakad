@@ -82,6 +82,7 @@ class UsersExport implements FromQuery, WithHeadings, WithColumnWidths, WithStyl
     {
         return [
             $pengumuman->user->username,
+            $pengumuman->user->nim,
             $pengumuman->user->email,
             $pengumuman->pendaftaran->no_hp,
             $pengumuman->pendaftaran->alamat,
@@ -91,6 +92,8 @@ class UsersExport implements FromQuery, WithHeadings, WithColumnWidths, WithStyl
             $pengumuman->pendaftaran->jenis_kelamin,
             $pengumuman->pendaftaran->agama,
             $pengumuman->user->status,
+            $pengumuman->user->user_id,
+            $pengumuman->user->foto,
             $pengumuman->user->tahun_masuk,
             $pengumuman->pendaftaran->nama_ayah,
             $pengumuman->pendaftaran->nama_ibu,
