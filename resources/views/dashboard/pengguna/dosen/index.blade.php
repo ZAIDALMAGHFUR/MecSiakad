@@ -80,7 +80,7 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Import from Excel</a></li>
               <li><a class="dropdown-item" href="{{ route('export_excel_dosen') }}">Export to Excel</a></li>
-              <li><a class="dropdown-item" href="storage/Template-Import-Dosen/import Dosen.xlsx">Download Template Import</a></li>
+              <li><a class="dropdown-item" href="Template/import Dosen.xlsx">Download Template Import</a></li>
             </ul>
           </div>
           <div class="card-body">
