@@ -18,11 +18,24 @@ use Illuminate\Support\Facades\Validator;
 class InputNilaiController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $mahasiswa = Mahasiswa::all();
-        $nilai = Nilai::all();
-        return view('dashboard.master.input-nilai.index', compact('mahasiswa', 'nilai'));
+        $nilai = Nilai::all(); //mengambil semua data nilai
+        $thn = TahunAcademic::all();
+        $prodi = Program_studies::all();
+
+        $mahasiswa = Mahasiswa::query();
+        if ($request->tahun_academics_id && $request->program_studies_id) {
+            $mahasiswa->where('tahun_academics_id', $request->tahun_academics_id)
+                ->where('program_studies_id', $request->program_studies_id);
+        } elseif ($request->tahun_academics_id) {
+            $mahasiswa->where('tahun_academics_id', $request->tahun_academics_id);
+        } elseif ($request->program_studies_id) {
+            $mahasiswa->where('program_studies_id', $request->program_studies_id);
+        }
+        $mahasiswa = $mahasiswa->get();
+        
+        return view('dashboard.master.input-nilai.index', compact('mahasiswa', 'nilai', 'thn', 'prodi'));
     }
 
     public function edit(Request $request, $id)
@@ -34,17 +47,22 @@ class InputNilaiController extends Controller
         $krsQuery = Krs::query()
             ->where('nim', $mahasiswa->nim);
             
-        if($request->has('tahun_academic_id')){
-            $krsQuery->where('tahun_academic_id', $request->tahun_academic_id);
-        }else{
-            $krsQuery->whereIn('tahun_academic_id', $tahun_akademik->pluck('id'));
-        }
+            if($request->has('tahun_academic_id')){
+                $krsQuery->where('tahun_academic_id', $request->tahun_academic_id);
+                $nilais = Nilai::where('mahasiswas_id', $id)
+                ->where('tahun_academic_id', $request->tahun_academic_id)
+                ->get()
+                ->toArray();
+            }else{
+                $krsQuery->whereIn('tahun_academic_id', $tahun_akademik->pluck('id'));
+                $nilais = Nilai::where('mahasiswas_id', $id)
+                ->get()
+                ->toArray();
+            }
         
-        $krs = $krsQuery->get();
-
-        // dd($krsQuery);
+            $krs = $krsQuery->get();
     
-        return view('dashboard.master.input-nilai.edit', compact('mahasiswa', 'krs', 'tahun_akademik', 'bobot'));
+        return view('dashboard.master.input-nilai.edit', compact('mahasiswa', 'krs', 'tahun_akademik', 'bobot', 'nilais'));
     }
     
 
@@ -81,9 +99,10 @@ class InputNilaiController extends Controller
     $nilai_akhir = $request->input('nilai_akhir');
 
     // loop through the input arrays to create the new records
-    foreach ($tahun_academic_id as $key => $value) {
+    $total = count($tugas) - 1;
+    for ($key = 0; $key <= $total ; $key++) {
         $nilai = new Nilai;
-        $nilai->tahun_academic_id = $tahun_academic_id[$key];
+        $nilai->    tahun_academic_id = $tahun_academic_id[$key];
         $nilai->mahasiswas_id = $mahasiswa_id[$key];
         $nilai->mata_kuliahs_id = $mata_kuliahs_id[$key];
         $nilai->tugas = $tugas[$key];

@@ -47,14 +47,41 @@
       <div class="col-sm-12">
         <div class="card">
           <div class="card-header">
+            <form method="GET" action="{{ route('nilai') }}">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="tahun_akademik">Tahun Akademik:</label>
+                    <select name="tahun_academics_id" class="form-control">
+                      <option value="">-- Pilih Tahun Akademik --</option>
+                        @foreach ($thn as $a)
+                          <option {{ request('tahun_academics_id') == $a->id ? 'selected' : '' }} value="{{ $a->id }}">{{ $a->tahun_akademik }}</option>
+                        @endforeach
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="program_studi">Program Studi:</label>
+                    <select name="program_studies_id" class="form-control">
+                      <option value="">-- Pilih Program Studi --</option>
+                        @foreach ($prodi as $a)
+                        <option {{ request('program_studies_id') == $a->id ? 'selected' : '' }} value="{{ $a->id }}">{{ $a->name }}</option>
+                        @endforeach
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
           </div>
-        
           <div class="card-body">
             <div class="table-responsive">
               <div class="text-end mt-2 mt-sm-0 mb-3">
-                <a href="{{ route('nilai.export') }}" class="btn btn-success waves-effect waves-light me-1"><i
-                        class="fa fa-print"> </i></a>
-            </div>
+                <a href="{{ route('nilai.export') }}" class="btn btn-success waves-effect waves-light me-1">
+                  <i class="fa fa-print"></i>
+                </a>
+              </div>
               <table class="display table table-bordered" id="basic-1">
                 <thead>
                   <tr style="text-align: center">
@@ -73,9 +100,10 @@
                       <td>{{ $a['name'] }}</td>
                       <td>{{ $a->program_studies->name }}</td>
                       <td style="text-align: center">
-
                         <a href="{{ route('nilai.edit', [$a]) }}">
-                          <button class="btn btn-primary btn-sm edit" type="button"><i class="fa fa-edit"></i></button>
+                          <button class="btn btn-primary btn-sm edit" type="button">
+                            <i class="fa fa-edit"></i>
+                          </button>
                         </a>
                       </td>
                     </tr>
@@ -87,6 +115,7 @@
         </div>
       </div>
     </div>
+    
   </div>
   @pushOnce('js')
     <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>

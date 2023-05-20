@@ -154,60 +154,72 @@
                           </div>
                       </div>
 
-                      <form action="{{ route('nilai.update') }}" id="form-nilai" method="POST">
-                        <input type="hidden" name="dosen_matkul_id" value="">
-                        @csrf
-                        @method('POST')
-                        <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                  <th style="width: 55px">No</th>
-                                    <th width="20%">NIM</th>
-                                    <th width="20%">Mata Kuliah</th>
-                                    <th width="10%" class="text-center">Tugas</th>
-                                    <th width="10%" class="text-center">Partisipasi Pembelajaran</th>
-                                    <th width="10%" class="text-center">Kuis</th>
-                                    <th width="10%" class="text-center">UTS</th>
-                                    <th width="10%" class="text-center">UAS</th>
-                                    <th width="20%" class="text-center">Nilai Akhir</th>
-                                </tr>
-                                @if ($krs->count() > 0)
-                                @endif
-                            </thead>
-                            <tbody>
-                                @foreach ($krs as $k)
-                                <tr class="rowData" >
-                                    <input type="hidden"  value="{{ $k->tahun_academic_id }}" name="tahun_academic_id[]">
-                                    <input type="hidden" value="{{ $mahasiswa->id }}" name="mahasiswa_id[]">
-                                    <input type="hidden" value="{{ $k->mata_kuliah_id }}" name="mata_kuliahs_id[]">
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $k->nim }}</td>
-                                    <td>{{ $k['mataKuliah']['name_mata_kuliah'] }}</td>
-                                    <td>
-                                        <input type="number" class="form-control form-control-sm kuis" value="{{ $k->kuis }}" name="kuis[]">
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control form-control-sm partisipasi_pembelajaran" value="{{ $k->partisipasi_pembelajaran }}" name="partisipasi_pembelajaran[]">
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control form-control-sm tugas" value="{{ $k->tugas }}" name="tugas[]">
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control form-control-sm uts" value="{{ $k->uts }}" name="uts[]">
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control form-control-sm uas" value="{{ $k->uas }}" name="uas[]">
-                                    </td>
-                                    <td>
-                                        <input readonly type="number" class="form-control form-control-sm nilai_akhir" value="{{ $k->nilai_akhir }}" name="nilai_akhir[]">
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        </div>
-                    </form>                    
+                    <form action="{{ route('nilai.update') }}" id="form-nilai" method="POST">
+                      <input type="hidden" name="dosen_matkul_id" value="">
+                      @csrf
+                      @method('POST')
+                      <div class="table-responsive">
+                      <table class="table table-bordered">
+                          <thead>
+                              <tr>
+                                <th style="width: 55px">No</th>
+                                  <th width="20%">NIM</th>
+                                  <th width="20%">Mata Kuliah</th>
+                                  <th width="10%" class="text-center">Tugas</th>
+                                  <th width="10%" class="text-center">Partisipasi Pembelajaran</th>
+                                  <th width="10%" class="text-center">Kuis</th>
+                                  <th width="10%" class="text-center">UTS</th>
+                                  <th width="10%" class="text-center">UAS</th>
+                                  <th width="20%" class="text-center">Nilai Akhir</th>
+                              </tr>
+                              @if ($krs->count() > 0)
+                              @endif
+                          </thead>
+                          <tbody>
+                          <?php $x = 0 ?>
+                            @foreach ($krs as $k)
+                            <?php if (! isset($nilais[$x]) ) {
+                              $nilais[$x]['tugas'] = '';
+                              $nilais[$x]['partisipasi_pembelajaran'] = '';
+                              $nilais[$x]['kuis'] = '';
+                              $nilais[$x]['uts'] = '';
+                              $nilais[$x]['uas'] = '';
+                              $nilais[$x]['nilai_akhir'] = '';
+                            }
+                            ?>
+                              <tr class="rowData">
+                                  <input type="hidden"  value="{{ $k->tahun_academic_id }}" name="tahun_academic_id[]">
+                                  <input type="hidden" value="{{ $mahasiswa->id }}" name="mahasiswa_id[]">
+                                  <input type="hidden" value="{{ $k->mata_kuliah_id }}" name="mata_kuliahs_id[]">
+                                  <td>{{ $loop->iteration }}</td>
+                                  <td>{{ $k->nim }}</td>
+                                  <td>{{ $k['mataKuliah']['name_mata_kuliah'] }}</td>
+                                  <td>
+                                      <input type="number" class="form-control form-control-sm tugas" value="{{ $nilais[$x]['tugas'] }}" name="tugas[]" {{ $nilais[$x]['tugas'] ? 'disabled' : '' }}>
+                                  </td>
+                                  <td>
+                                      <input type="number" class="form-control form-control-sm partisipasi_pembelajaran" value="{{ $nilais[$x]['partisipasi_pembelajaran'] }}" name="partisipasi_pembelajaran[]" {{ $nilais[$x]['partisipasi_pembelajaran'] ? 'disabled' : '' }}>
+                                  </td>
+                                  <td>
+                                      <input type="number" class="form-control form-control-sm kuis" value="{{ $nilais[$x]['kuis'] }}" name="kuis[]" {{ $nilais[$x]['kuis'] ? 'disabled' : '' }}>
+                                  </td>
+                                  <td>
+                                      <input type="number" class="form-control form-control-sm uts" value="{{ $nilais[$x]['uts'] }}" name="uts[]" {{ $nilais[$x]['uts'] ? 'disabled' : '' }}>
+                                  </td>
+                                  <td>
+                                      <input type="number" class="form-control form-control-sm uas" value="{{ $nilais[$x]['uas'] }}" name="uas[]" {{ $nilais[$x]['uas'] ? 'disabled' : '' }}>
+                                  </td>
+                                  <td>
+                                      <input readonly type="number" class="form-control form-control-sm nilai_akhir" value="{{ $nilais[$x]['nilai_akhir'] }}" name="nilai_akhir[]" {{ $nilais[$x]['nilai_akhir'] ? '' : '' }}>
+                                  </td>
+                              </tr>
+                              <?php $x++ ?>
+                          @endforeach
+                          
+                          </tbody>
+                      </table>
+                      </div>
+                  </form>      
                   </div>
             </div>
           </div>
