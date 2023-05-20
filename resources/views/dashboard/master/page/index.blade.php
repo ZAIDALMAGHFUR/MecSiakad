@@ -80,7 +80,7 @@
                 <tr>
                   <td class="text-center">{{ $loop->iteration }}</td>
                   <td>{{ $a['title'] }}</td>
-                  <td>{{ str()->words($a['description'], 10, '...'); }}</td>
+                  <td>{{ str()->words($a['description'], 10, '...') }}</td>
                   <td class="text-center">{{ $a['menu'] }}</td>
                   <td class="text-center">{{ $a['group_menu'] }}</td>
                   <td class="text-center">

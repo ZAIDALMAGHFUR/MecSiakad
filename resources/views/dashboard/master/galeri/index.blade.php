@@ -82,7 +82,7 @@
                     <img src="{{ asset('storage/' . $a['thumbnail']) }}" alt="" width="70" class="img-thumbnail" />
                   </td>
                   <td>{{ $a['title'] }}</td>
-                  <td>{{ str()->words($a['description'], 10, '...'); }}</td>
+                  <td>{{ str()->words($a['description'], 10, '...') }}</td>
                   <td class="text-center">
                     <form method="POST" action="{{ route('galeri.delete', [$a]) }}">
                       @csrf

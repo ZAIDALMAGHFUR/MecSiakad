@@ -80,7 +80,7 @@
                 <tr>
                   <td class="text-center">{{ $loop->iteration }}</td>
                   <td>{{ $a['title'] }}</td>
-                  <td>{{ str()->words($a['description'], 10, '...'); }}</td>
+                  <td>{{ str()->words($a['description'], 10, '...') }}</td>
                   <td class="text-center">{{ $a['category'] }}</td>
                   <td class="text-center">{{ join(' ', array_map(fn ($tag) => '#' . $tag, $a['tags'])) }}</td>
                   <td class="text-center">
