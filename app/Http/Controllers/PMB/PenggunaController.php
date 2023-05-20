@@ -24,5 +24,22 @@ class PenggunaController extends Controller
             'alert-type' => 'success'
         ]);
     }
+
+    public function deleteAll()
+    {
+        $users = User::where('roles_id', 4)->get();
+        
+        foreach ($users as $user) {
+            $user->pendaftarans()->delete();
+            $user->pengumumen()->delete();
+            $user->delete();
+        }
+    
+        return redirect()->back()->with([
+            'success' => 'Data berhasil dihapus',
+            'alert-type' => 'success'
+        ]);
+    }
+    
     
 }

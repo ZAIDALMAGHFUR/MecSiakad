@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Dosen;
 use App\Models\Timeline;
 use App\Models\Mahasiswa;
+use App\Models\Pendaftaran;
 use App\Models\ProfileUsers;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -58,6 +59,16 @@ class User extends Authenticatable implements MustVerifyEmail
     public function ProfileUsers()
     {
         return $this->hasOne(ProfileUsers::class);
+    }
+
+    public function pendaftarans()
+    {
+        return $this->hasMany(Pendaftaran::class, 'users_id');
+    }
+
+    public function pengumumen()
+    {
+        return $this->hasMany(Pengumuman::class, 'users_id');
     }
 
     public function timeline(){

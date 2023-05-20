@@ -47,6 +47,13 @@
         <div class="card">
           <div class="card-body">
             <div class="table-responsive">
+              <div class="text-end mt-2 mt-sm-0 mb-3"> 
+                <form method="POST" action="pengguna/deleteAll">
+                  @csrf
+                  <input name="_method" type="hidden" class="btn-primary btn-xs" value="DELETE">
+                  <a type="submit" class="btn btn-danger waves-effect waves-light me-1"><i class="fa fa-trash"></i>  Delete All</a>
+                </form>
+              </div>
               <table class="display table table-bordered" id="basic-1">
                 <thead>
                   <tr style="text-align: center">
@@ -72,7 +79,7 @@
                         <input name="_method" type="hidden" class="btn-primary btn-xs" value="DELETE">
                         <a type="submit" class="btn btn-danger btn-xs show_confirm"><i class="fa fa-trash"></i></a>
                       </form>
-                    </td>blank
+                    </td>
                   </tr>
                 @endforeach
                 </tbody>

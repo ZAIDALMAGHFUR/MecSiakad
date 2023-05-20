@@ -238,6 +238,7 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
     Route::controller(PenggunaController::class)->prefix('pengguna')->group(function () {
         Route::get('', 'index')->name('pengguna');
         Route::delete('delete/{id}', 'destroy')->name('pengguna/delete');
+        Route::delete('deleteAll', 'deleteAll')->name('pengguna/deleteAll');
     });
 
     //pendaftar
