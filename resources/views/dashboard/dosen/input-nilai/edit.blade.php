@@ -72,39 +72,24 @@
                       <div class="p-4 border-top">
                           <div class="row">
                               <div class="col-lg-4">
-                                  <div class="mb-3 mb-4">
+                                  <div class="mb-4">
                                       @foreach ($bobot as $item)
-                                        <p class="form-label" for="nama_ayah">Nilai Min = {{ $item->nama_rentang_nilai }}</p>
+                                        <p class="form-label mt-5" for="nama_ayah">Nilai Min = {{ $item->nama_rentang_nilai }}</p>
+                                        <p class="form-label" for="nama_ayah">Nilai Huruf = {{ $item->huruf_nilai }}</p>
                                       @endforeach
                                   </div>
                               </div>
                               <div class="col-lg-4">
-                                  <div class="mb-3 mb-4">
+                                  <div class="mb-4">
                                     @foreach ($bobot as $it)
-                                      <p class="form-label" for="nama_ayah">Nilai Max = {{ $it->rentang_nilai }}</p>
+                                      <p class="form-label mt-5" for="nama_ayah">Nilai Max = {{ $it->rentang_nilai }}</p>
+                                      <p class="form-label" for="nama_ayah">Nilai Bobot = {{ $it->bobot_nilai }}</p>
                                     @endforeach
                                   </div>
                               </div>
                           </div>
                       </div>
-                      <div class="p-4">
-                          <div class="row">
-                              <div class="col-lg-4">
-                                  <div class="mb-3 mb-4">
-                                      @foreach ($bobot as $p)
-                                        <p class="form-label" for="nama_ayah">Nilai Hufur = {{ $p->huruf_nilai }}</p>
-                                      @endforeach
-                                  </div>
-                              </div>
-                              <div class="col-lg-4">
-                                  <div class="mb-3 mb-4">
-                                    @foreach ($bobot as $b)
-                                      <p class="form-label" for="nama_ayah">Nilai Bobot = {{ $b->bobot_nilai }}</p>
-                                    @endforeach
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+
                   </div>
               </div>
                 <div class="card text-left">

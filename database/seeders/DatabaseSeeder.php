@@ -4,14 +4,15 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Berita;
-use App\Models\Gallery;
-use App\Models\Jurnal;
 use App\Models\Page;
+use App\Models\Berita;
+use App\Models\Jurnal;
+use App\Models\Gallery;
 use Illuminate\Database\Seeder;
 use Database\Seeders\DosenSeeder;
 use Database\Seeders\RolesSeeder;
 use Database\Seeders\UsersSeeder;
+use Illuminate\Support\Facades\DB;
 use Database\Seeders\JabatanSeeder;
 use Database\Seeders\JadwalPmbSeeder;
 use Database\Seeders\MahasiswaSeeder;
@@ -20,12 +21,12 @@ use Database\Seeders\PengajuanSeeder;
 use Database\Seeders\MataKuliahSeeder;
 use Database\Seeders\PembayaranSeeder;
 use Database\Seeders\PengugumanSeeder;
+use Illuminate\Support\Facades\Schema;
 use Database\Seeders\DosenJabatanSeeder;
 use Database\Seeders\PersyaratansSeeder;
+use Database\Seeders\RentangNilaiSeeder;
 use Database\Seeders\ProgramStuiesSeeder;
 use Database\Seeders\TahunAcademicsSeeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
 
 class DatabaseSeeder extends Seeder
 {
@@ -59,6 +60,7 @@ class DatabaseSeeder extends Seeder
             PengugumanSeeder::class,
             PersyaratansSeeder::class,
             PengajuanSeeder::class,
+            RentangNilaiSeeder::class,
         ]);
 
         foreach (['jurnals', 'pages', 'galleries', 'beritas'] as $table) {

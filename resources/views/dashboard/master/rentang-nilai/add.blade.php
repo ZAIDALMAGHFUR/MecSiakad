@@ -67,13 +67,13 @@
                   @endif
                   <div class="row g-2">
                     <div class="col-md-6">
-                      <label for="nama_rentang_nilai" class="form-label">Nama Rentang Nilai</label>
+                      <label for="nama_rentang_nilai" class="form-label">Nilai Min</label>
                       <div class="col-sm-10">
                           <input type="text" class="form-control" name="nama_rentang_nilai" value="{{ old('nama_rentang_nilai') }}" id="nama_rentang_nilai" required>
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <label for="rentang_nilai" class="form-label">Nilai</label>
+                      <label for="rentang_nilai" class="form-label">Nilai Max</label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" name="rentang_nilai" value="{{ old('rentang_nilai') }}" id="rentang_nilai" required>
                       </div>
