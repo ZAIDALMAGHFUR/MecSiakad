@@ -49,15 +49,15 @@ return new class extends Migration
             $table->string('nohp_ibu')->nullable();
             $table->string('penghasilan_ayah')->nullable();
             $table->string('penghasilan_ibu')->nullable();
-            $table->string('berkas_ortu');//kk akte ijazah raport penghasilan
+            $table->string('berkas_ortu')->nullable();//kk akte ijazah raport penghasilan
 
             //data sekolah
             $table->string('asal_sekolah');
-            $table->double('smt1');
-            $table->double('smt2');
-            $table->double('smt3');
-            $table->double('smt4');
-            $table->double('smt5');
+            $table->double('smt1')->nullable();
+            $table->double('smt2')->nullable();
+            $table->double('smt3')->nullable();
+            $table->double('smt4')->nullable();
+            $table->double('smt5')->nullable();
             $table->double('smt6')->nullable();
             $table->string('berkas_siswa');//kk akte ijazah raport penghasilan
             $table->string('prestasi')->nullable();

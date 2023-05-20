@@ -3,11 +3,12 @@
 namespace App\Exports;
 
 use App\Models\Nilai;
-use Maatwebsite\Excel\Concerns\{WithHeadings, FromQuery, WithColumnWidths};
+use Maatwebsite\Excel\Concerns\{WithHeadings, FromQuery, WithColumnWidths, WithStyles};
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithMapping;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class NilaiExport implements FromQuery, WithHeadings, WithColumnWidths, WithMapping
+class NilaiExport implements FromQuery, WithHeadings, WithColumnWidths, WithMapping, WithStyles
 {
     use Exportable;
 
@@ -38,6 +39,14 @@ class NilaiExport implements FromQuery, WithHeadings, WithColumnWidths, WithMapp
             'G' => 20,
             'H' => 20,
             'I' => 20,
+        ];
+    }
+    
+    public function styles(Worksheet $sheet)
+    {
+        return [
+            1 => ['font' => ['bold' => true]],
+            '2:50' => ['alignment' => ['horizontal' => 'left']],
         ];
     }
 
