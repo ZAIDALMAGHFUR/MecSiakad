@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Krs;
 use App\Models\Nilai;
 use App\Models\Mahasiswa;
+use App\Models\BobotNilai;
 use App\Models\Mata_kuliah;
+use App\Exports\NilaiExport;
 use Illuminate\Http\Request;
 use App\Models\TahunAcademic;
 use App\Models\Program_studies;
 use App\Http\Controllers\Controller;
-use App\Models\BobotNilai;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
 
 class InputNilaiController extends Controller
@@ -94,6 +96,11 @@ class InputNilaiController extends Controller
     }
 
     return redirect()->back()->with('success', 'Nilai berhasil disimpan.');
+}
+
+public function export() 
+{
+    return Excel::download(new NilaiExport, 'Nilai.xlsx');
 }
 
 

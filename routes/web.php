@@ -202,6 +202,7 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
         Route::post('update', 'update')->name('nilai.update');
         Route::delete('delete/{id}', 'destroy')->name('nilai.delete');
     });
+    Route::get('Nilai/export/', [InputNilaiController::class, 'export'])->name('nilai.export');
 
     //edit nilai
     Route::controller(EditNilaiController::class)->prefix('change')->group(function () {
