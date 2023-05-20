@@ -64,6 +64,9 @@ class UsersExport implements FromQuery, WithHeadings, WithColumnWidths, WithStyl
             'R' => 20,
             'S' => 20,
             'T' => 20,
+            'U' => 20,
+            'V' => 20,
+            'W' => 20,
         ];
     }
 
