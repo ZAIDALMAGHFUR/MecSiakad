@@ -47,6 +47,10 @@
         <div class="card">
           <div class="card-body">
             <div class="table-responsive">
+              <div class="text-end mt-2 mt-sm-0 mb-3">
+                <a href="{{ route('maba.export') }}" class="btn btn-success waves-effect waves-light me-1"><i
+                        class="fa fa-print"> </i></a>
+            </div>
               <table class="display table table-bordered" id="basic-1">
                 <thead>
                   <tr style="text-align: center">
@@ -55,7 +59,6 @@
                     <th>Nama</th>
                     <th>Email</th>
                     <th>Program Studi</th>
-                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -66,12 +69,6 @@
                     <td>{{ $a->user->username }}</td>
                     <td>{{ $a->user->email }}</td>
                     <td>{{ $a->Program_studies->name }}</td>
-                    <td>
-                      <form method="POST" action="">
-                        @csrf
-                        <a href="{{ route('maba.export') }}" type="button" class="btn btn-primary btn-xs edit" data-bs-id=""><i class="fa fa-print"></i></a>
-                      </form>
-                    </td>
                   </tr>
                 @endforeach
                 </tbody>
