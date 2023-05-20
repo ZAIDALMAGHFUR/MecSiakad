@@ -51,7 +51,7 @@
                 <form method="POST" action="pengguna/deleteAll">
                   @csrf
                   <input name="_method" type="hidden" class="btn-primary btn-xs" value="DELETE">
-                  <a type="submit" class="btn btn-danger waves-effect waves-light me-1"><i class="fa fa-trash"></i>  Delete All</a>
+                  <a type="submit" class="btn btn-danger waves-effect waves-light me-1 show_confirm"><i class="fa fa-trash"></i>  Delete All</a>
                 </form>
               </div>
               <table class="display table table-bordered" id="basic-1">
