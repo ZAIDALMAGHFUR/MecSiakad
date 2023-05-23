@@ -178,6 +178,7 @@ public function cetak()
             ->join('mata_kuliahs', 'krs.mata_kuliah_id', '=', 'mata_kuliahs.id')
             ->select('krs.id', 'krs.mata_kuliah_id', 'mata_kuliahs.name_mata_kuliah', 'mata_kuliahs.kode_mata_kuliah', 'mata_kuliahs.sks')
             ->get();
+            // dd($select_krs);
 
         $matkul = $select_krs->pluck('mata_kuliah_id');
         $dsnmatkul = DosenMatkul::whereIn('mata_kuliah_id', $matkul, 'OR')->get();
@@ -186,6 +187,8 @@ public function cetak()
         // dd($select_krs);
         $total_semester = $select_krs->sum('tahun_akademik_id.sks');
         // dd($total_semester);
+
+        // dd($dsnmatkul);
 
         $data->total_sks = 0;
         foreach ($select_krs as $itung_sks) {

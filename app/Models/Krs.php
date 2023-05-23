@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Dosen;
 use App\Models\Nilai;
 use App\Models\Mahasiswa;
 use App\Models\Mata_Kuliah;
@@ -39,5 +40,10 @@ class Krs extends Model
     public function nilai()
     {
         return $this->hasMany(Nilai::class, 'mahasiswas_id');
+    }
+
+    public function dosen()
+    {
+        return $this->belongsTo(Dosen::class);
     }
 }
