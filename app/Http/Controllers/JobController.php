@@ -35,7 +35,7 @@ class JobController extends Controller
     $country_code = 'ID';
     $symbol = 'Rp';
 
-    if ( ! empty($location) ) {
+//    if ( ! empty($location) ) {
       $country = file_get_contents('../countries.json');
       $country = json_decode($country);
   
@@ -44,7 +44,7 @@ class JobController extends Controller
             $country_code = $data->cca2;
             }
         }
-      }
+  //    }
 
     if ($keyword != null) {
       $search_term = '"SearchTerm":"' . $keyword . '",';
@@ -81,6 +81,7 @@ class JobController extends Controller
         isset($value['salaries']['0']['maxAmount']) ? $value['salaries']['0']['maxAmount'] = $symbol . ' ' . number_format($value['salaries']['0']['maxAmount'], 0, ',', '.') : $value['salaries']['0']['maxAmount'] = '';
       
         isset($value['citySubDivision']['name']) ? $value['citySubDivision']['name'] = $value['citySubDivision']['name'] . ', ' : $value['citySubDivision']['name'] = '';
+        isset($value['city']['name']) ? $value['city']['name'] = $value['city']['name'] : $value['city']['name'] = '';
       
         $date_glints = $value['updatedAt'];
         $date_glints = date('Y-m-d', strtotime($date_glints));

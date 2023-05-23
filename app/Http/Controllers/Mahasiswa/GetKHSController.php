@@ -195,7 +195,7 @@ class GetKHSController extends Controller
 // dd("breakpoint");s
         $ipk = number_format($total_nilai / $total_sks, 2);
         
-        $download ='KRS-'. $data->mhs->name .'.pdf';
+        $download ='KHS-'. $data->mhs->name .'.pdf';
         // return view('dashboard.mahasiswa.khs.cetak.cetak', compact('data', 'ketua_prodi_id', 'nilai_akhirs', 'select_krs', 'total_sks', 'total_nilai', 'ipk'));
         return Pdf::loadHTML(view('dashboard.mahasiswa.khs.cetak.cetak', compact('data', 'ketua_prodi_id', 'nilai_akhirs', 'select_krs', 'total_sks', 'total_nilai', 'ipk')))->download($download);
     }
