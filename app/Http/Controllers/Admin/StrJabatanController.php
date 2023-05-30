@@ -14,31 +14,38 @@ class StrJabatanController extends Controller
     public function index(Request $request)
     {
         $jabatans = StrJabatan::query()
-            ->orderBy('id', 'desc')
-            ->get();
+            ->get()->each(function ($jabatan) {
+                $jabatan['parent'] = StrJabatan::where('id', $jabatan->child_of)->get()->first()?->name == null ? 'none' : StrJabatan::where('id', $jabatan->child_of)->get()->first()?->name;
+            });
+
+            // dd($jabatans->toArray());
 
         return view('dashboard.master.jabatans.index', compact('jabatans'));
+        // return response()->json($jabatans);
     }
 
     public function add()
     {
-        return view('dashboard.master.jabatans.add');
+        $jabatans = StrJabatan::query()
+        ->get();
+
+        return view('dashboard.master.jabatans.add', compact('jabatans'));
     }
 
     public function store(Request $request)
     {
         $validatedData = $this->validate($request, [
             'name' => 'required',
-            'order'    => 'required|numeric',
+            'child_of'    => 'required|numeric',
         ], [
             'name.required'   => 'Silahkan isi Nama Jabatan terlebih dahulu!',
-            'order.required' => 'Silahkan isi Urutan terlebih dahulu!',
+            'child_of.required' => 'Silahkan isi \'Child of\' terlebih dahulu!',
         ]);
 
         //create post
         StrJabatan::create([
             'name'     => $validatedData['name'],
-            'order'     => $validatedData['order'],
+            'child_of'     => $validatedData['child_of'],
         ]);
 
         return redirect()->route('jabatans.index')->with([
@@ -61,15 +68,15 @@ class StrJabatanController extends Controller
 
         $validatedData = $this->validate($request, [
             'name' => 'required',
-            'order'    => 'required|numeric',
+            'child_of'    => 'required|numeric',
         ], [
             'name.required'   => 'Silahkan isi Nama Jabatan terlebih dahulu!',
-            'order.required' => 'Silahkan isi Urutan terlebih dahulu!',
+            'child_of.required' => 'Silahkan isi Urutan terlebih dahulu!',
         ]);
 
         $jabatan->update([
             'name'     => $validatedData['name'],
-            'order'     => $validatedData['order'],
+            'child_of'     => $validatedData['child_of'],
         ]);
 
         return redirect()->route('jabatans.index')->with([

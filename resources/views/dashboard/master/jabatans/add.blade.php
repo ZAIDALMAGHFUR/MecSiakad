@@ -4,8 +4,8 @@
 @pushOnce('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/sweetalert2.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/select2.css') }}">
 @endPushOnce
-
 
 <div class="page-body">
   <div class="container-fluid">
@@ -75,9 +75,13 @@
                           required>
                       </div>
                       <div class="mb-3">
-                        <label for="order" class="form-label">Urutan Jabatan</label>
-                        <input type="number" class="form-control" name="order" value="{{ old('order', 0) }}" id="order"
-                          required>
+                        <label class="col-form-label" for="child_of">Child of</label>
+                        <select class="js-example-basic-single col-sm-12" name="child_of" id="child_of">
+                          @foreach ($jabatans as $jabatan)
+                          <option @selected($jabatan->id == old("child_of")) value="{{ $jabatan->id }}">{{
+                            $jabatan->name }}</option>
+                          @endforeach
+                        </select>
                       </div>
                     </div>
                   </div>
@@ -92,3 +96,8 @@
   </div>
 </div>
 @endsection
+
+@push('js')
+<script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
+<script src="{{ asset('assets/js/select2/select2-custom.js') }}"></script>
+@endpush

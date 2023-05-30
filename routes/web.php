@@ -61,7 +61,14 @@ use App\Http\Controllers\Mahasiswa\CalendarAcademicController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::controller(StrJabatanController::class)->prefix('jabatans')->name('jabatans.')->group(function () {
+    Route::get('', 'index')->name('index');
+    Route::get('add', 'add')->name('add');
+    Route::post('save', 'store')->name('save');
+    Route::get('edit/{id}', 'edit')->name('edit');
+    Route::post('update/{id}', 'update')->name('update');
+    Route::delete('delete/{id}', 'destroy')->name('delete');
+});
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-pages.index');
 Route::get('/p/berita', [LandingPageController::class, 'berita'])->name('landing-pages.berita');
@@ -366,14 +373,7 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
         Route::delete('delete/{id}', 'destroy')->name('delete');
     });
     // jabatans
-    Route::controller(StrJabatanController::class)->prefix('jabatans')->name('jabatans.')->group(function () {
-        Route::get('', 'index')->name('index');
-        Route::get('add', 'add')->name('add');
-        Route::post('save', 'store')->name('save');
-        Route::get('edit/{id}', 'edit')->name('edit');
-        Route::post('update/{id}', 'update')->name('update');
-        Route::delete('delete/{id}', 'destroy')->name('delete');
-    });
+    
     // struktur-kps
     Route::controller(StrukturKepemimpinanController::class)->prefix('struktur-kepemimpinan')->name('struktur-kps.')->group(function () {
         Route::get('', 'index')->name('index');
