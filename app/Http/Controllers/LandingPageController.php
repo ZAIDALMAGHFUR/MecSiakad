@@ -177,10 +177,16 @@ class LandingPageController extends Controller
 
     public function strukturKps()
     {
-        $strukturKps = StrukturKepemimpinan::orderBy('name', 'asc')->get();
-        $jabatans = StrJabatan::orderBy('order', 'asc')->get();
+        $structures = [];
+        $hierarchies = StrJabatan::max('hierarki');
 
-        return view('landing-pages.struktur-kps.index', compact('strukturKps', 'jabatans'));
+        for ($i=0; $i < $hierarchies; $i++) { 
+            $structures[$i] = StrJabatan::with('strukturKepemimpinan')->where('hierarki', $i+1)->get()->toArray();
+        }
+        
+        // dd($structures);
+
+        return view('landing-pages.struktur-kps.index', compact('structures', 'hierarchies'));
     }
 
     public function galleryDetail(Gallery $gallery)

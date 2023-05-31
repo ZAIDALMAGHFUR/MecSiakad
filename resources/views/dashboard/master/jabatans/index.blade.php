@@ -69,7 +69,7 @@
                 <tr style="text-align: center">
                   <th style="width: 55px">No</th>
                   <th>Nama Jabatan</th>
-                  <th>Urutan</th>
+                  <th>Child of</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -78,7 +78,7 @@
                 <tr>
                   <td class="text-center">{{ $loop->iteration }}</td>
                   <td>{{ $a['name'] }}</td>
-                  <td class="text-center">{{ $a['order'] }}</td>
+                  <td class="d.flex justify-content-center align-items-center"><p class="text-center badge badge-primary bg-success">{{ $a->parent }}</p></td>
                   <td class="text-center">
                     <form method="POST" action="{{ route('jabatans.delete', [$a]) }}">
                       @csrf

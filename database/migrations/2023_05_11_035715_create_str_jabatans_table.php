@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('str_jabatans', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->tinyInteger('order')->default(0);
+            $table->tinyInteger('child_of')->default(0);
+            $table->tinyInteger('hierarki')->default(0);
             $table->timestamps();
         });
     }

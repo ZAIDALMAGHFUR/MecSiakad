@@ -10,4 +10,9 @@ class StrJabatan extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function strukturKepemimpinan()
+    {
+        return $this->hasMany(StrukturKepemimpinan::class, 'jabatan_id', 'id');
+    }
 }
