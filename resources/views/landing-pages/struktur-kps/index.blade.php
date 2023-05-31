@@ -44,7 +44,7 @@
                                       <div class="modal-body">
                                         <img
                                           src="{{ asset('storage/' . ($item['struktur_kepemimpinan'] == null ? null : $item['struktur_kepemimpinan'][0]['pas_foto'])) }}"
-                                          class="rounded mx-auto d-block" alt="...">
+                                          class="rounded mx-auto d-block w-100 p-3" alt="...">
 
                                         <h5>Nama :
                                           {{ $item['struktur_kepemimpinan'] == null ? null : $item['struktur_kepemimpinan'][0]['name'] }}
@@ -56,7 +56,6 @@
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                           data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
                                       </div>
                                     </div>
                                   </div>
@@ -91,14 +90,13 @@
                                               </div>
                                               <div class="modal-body">
                                                 <img src="{{ asset('storage/' . $people['pas_foto']) }}"
-                                                  class="rounded mx-auto d-block" alt="...">
+                                                  class="rounded mx-auto d-block w-100 p-3" alt="...">
                                                 <h5>Nama : {{ $people['name'] }}</h5>
                                                 <p>Deskripsi : {{ $people['description'] }}</p>
                                               </div>
                                               <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                   data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save changes</button>
                                               </div>
                                             </div>
                                           </div>
