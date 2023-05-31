@@ -173,7 +173,6 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
  } 
-
  @endif
 
   @pushOnce('js')
