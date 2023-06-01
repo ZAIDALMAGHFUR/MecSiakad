@@ -68,7 +68,7 @@
                     <td>{{ $a->id_pengumuman }}</td>
                     <td>{{ $a->user->username }}</td>
                     <td>{{ $a->user->email }}</td>
-                    <td>{{ $a->Program_studies->name }}</td>
+                    <td>{{ $a->Program_studies->name ?? 'belum di pilih' }}</td>
                   </tr>
                 @endforeach
                 </tbody>

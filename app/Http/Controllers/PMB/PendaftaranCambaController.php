@@ -138,6 +138,7 @@ class PendaftaranCambaController extends Controller
         Pengumuman::create([
             'id_pengumuman' => $kodepengumuman,
             'id_pendaftaran' => $id_pendaftaran,
+            'users_id' => Auth::user()->id,
             'hasil_seleksi' => "Belum Seleksi",
             // 'status' => '0',
         ]);

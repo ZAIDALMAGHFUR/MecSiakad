@@ -106,7 +106,8 @@
     </div>
   </div>
 
-  <div class="modal fade edit{{ $a->id_pengumuman }}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+ @if (isset($a)){
+  <div class="modal fade edit{{ $a->id_pengumuman  }}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -117,6 +118,12 @@
               <form action="update-announcement/{{ $a->id }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
+                    <div class="col-xl-6">
+                                <label for="users_id">Hidden</label>
+                                <input type="text" class="form-control" id="users_id"
+                                    value="{{ $a }}" name="users_id"
+                                  hidden >
+                            </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xl-6">
@@ -171,6 +178,8 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+ } 
+ @endif
 
   @pushOnce('js')
     <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>

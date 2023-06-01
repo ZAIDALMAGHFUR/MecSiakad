@@ -13,6 +13,7 @@ class MabaController extends Controller
     public function index()
     {
         $Pengumuman = Pengumuman::all();
+        // dd($Pengumuman->toArray());
         return view('dashboard.master.maba.maba', compact('Pengumuman'));
     }
 

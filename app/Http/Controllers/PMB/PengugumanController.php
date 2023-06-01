@@ -36,11 +36,13 @@ class PengugumanController extends Controller
     public function simpanpengumuman(Request $a)
     {
         try{
+            // dd($a->all());
         //$dataUser = ProfileUsers::all();
             $kode = Pengumuman::id();
             Pengumuman::create([
                 'id_pengumuman' => $kode,
                 'id_pendaftaran' => $a->id_pendaftaran,
+                'users_id' => $a,
                 'hasil_seleksi' => $a->hasil,
                 'prodi_penerima' => $a->penerima,
                 'nilai_interview' => $a->interview,
