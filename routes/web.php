@@ -45,6 +45,7 @@ use App\Http\Controllers\Mahasiswa\SkripsiController;
 use App\Http\Controllers\Admin\DosenJabatanController;
 use App\Http\Controllers\Admin\FullCalendarController;
 use App\Http\Controllers\Admin\JabatanDosenController;
+use App\Http\Controllers\Mahasiswa\SettingsController;
 use App\Http\Controllers\PMB\PengumumanCambaController;
 use App\Http\Controllers\PMB\PendaftaranCambaController;
 use App\Http\Controllers\Admin\CreateMahasiswaController;
@@ -487,6 +488,13 @@ Route::group(['middleware' => ['auth', 'OnlyMahasiswa']], function () {
     //job search
     Route::get('/job-mhs',  [JobMhsController::class, 'indexMhs'])->name('job-mhs');
     Route::get('/job-country-mhs/{search}',  [JobMhsController::class, 'searchMhs']);
+
+
+    //setting profile
+    Route::controller(SettingsController::class)->prefix('profile')->group(function () {
+        Route::get('', 'index')->name('profile');
+        Route::put('/user-update', 'updatePassword')->name('profile.update');
+    });
 
 
 

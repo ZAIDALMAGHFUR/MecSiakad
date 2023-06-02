@@ -203,7 +203,7 @@
       <header class="main-nav">
         <div class="sidebar-user text-center"><a class="setting-primary" href="javascript:void(0)"><i
               data-feather="settings"></i></a><img class="img-90 rounded-circle"
-            src="{{ asset('assets/images/dashboard/1.png') }}" alt="">
+            src="{{ Storage::url(Auth::user()->foto) == '/storage/' ? asset('assets/images/dashboard/1.png') : Storage::url(Auth::user()->foto)  }}" alt="">
           <div class="badge-bottom"><span class="badge badge-primary">New</span></div><a href="">
             <h6 class="mt-3 f-14 f-w-600">{{ Auth::user()->username }} {{ Auth::user()->last_name }}</h6>
           </a>
@@ -270,6 +270,9 @@
                 </li>
                 <li class="dropdown"><a class="nav-link menu" href="{{ route('ktm.index') }}"><i
                   data-feather="book"></i><span>KTM Download</span></a>
+                </li>
+                <li class="dropdown"><a class="nav-link menu" href="{{ route('profile') }}"><i
+                  data-feather="edit"></i><span>Setting</span></a>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                   data-feather="book"></i><span>Data Modul</span></a>
