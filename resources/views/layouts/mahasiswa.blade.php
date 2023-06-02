@@ -268,6 +268,9 @@
                     <li><a href="{{ route('mhsjudul.add') }}">Buat Pengajuan Judul Skripsi</a></li>
                   </ul>
                 </li>
+                <li class="dropdown"><a class="nav-link menu" href="{{ route('ktm.index') }}"><i
+                  data-feather="book"></i><span>KTM Download</span></a>
+                </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                   data-feather="book"></i><span>Data Modul</span></a>
                     <ul class="nav-submenu menu-content">

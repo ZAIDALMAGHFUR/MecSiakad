@@ -20,6 +20,7 @@ use App\Http\Controllers\Dosen\JobDsnController;
 use App\Http\Controllers\PMB\PenggunaController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Mahasiswa\GetController;
+use App\Http\Controllers\Mahasiswa\KtmController;
 use App\Http\Controllers\PMB\JadwalPmbController;
 use App\Http\Controllers\PMB\PendaftarController;
 use App\Http\Controllers\ProgrammStudiController;
@@ -38,6 +39,7 @@ use App\Http\Controllers\Mahasiswa\GetKHSController;
 use App\Http\Controllers\Mahasiswa\JobMhsController;
 use App\Http\Controllers\Admin\DosenMatkulController;
 use App\Http\Controllers\Admin\GalleryItemController;
+use App\Http\Controllers\Admin\SelectedKtmController;
 use App\Http\Controllers\Admin\ThnAkademikController;
 use App\Http\Controllers\Mahasiswa\SkripsiController;
 use App\Http\Controllers\Admin\DosenJabatanController;
@@ -383,6 +385,17 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
         Route::post('update/{id}', 'update')->name('update');
         Route::delete('delete/{id}', 'destroy')->name('delete');
     });
+
+
+    //ktm mahasiswa
+    Route::controller(SelectedKtmController::class)->prefix('ktm')->group(function () {
+        Route::get('', 'index')->name('ktm');
+        Route::get('ktmsatu', 'ktmsatu')->name('ktm.ktmsatu');
+        Route::get('ktmdua', 'ktmdua')->name('ktm.ktmdua');
+        Route::get('ktmtiga', 'ktmtiga')->name('ktm.ktmtiga');
+        Route::post('update', 'update')->name('ktm.update');
+    });
+
 });
 
 
@@ -474,6 +487,11 @@ Route::group(['middleware' => ['auth', 'OnlyMahasiswa']], function () {
     //job search
     Route::get('/job-mhs',  [JobMhsController::class, 'indexMhs'])->name('job-mhs');
     Route::get('/job-country-mhs/{search}',  [JobMhsController::class, 'searchMhs']);
+
+
+
+    //ktm mahasiswa
+    route::get('cetak-ktm', [KtmController::class, 'index'])->name('ktm.index');
 });
 
 

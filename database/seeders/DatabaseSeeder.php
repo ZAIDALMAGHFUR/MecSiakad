@@ -9,6 +9,7 @@ use App\Models\Berita;
 use App\Models\Jurnal;
 use App\Models\Gallery;
 use Illuminate\Database\Seeder;
+use Database\Seeders\ktmSeeders;
 use Database\Seeders\DosenSeeder;
 use Database\Seeders\RolesSeeder;
 use Database\Seeders\UsersSeeder;
@@ -61,6 +62,7 @@ class DatabaseSeeder extends Seeder
             PersyaratansSeeder::class,
             PengajuanSeeder::class,
             RentangNilaiSeeder::class,
+            ktmSeeders::class,
         ]);
 
         foreach (['jurnals', 'pages', 'galleries', 'beritas'] as $table) {

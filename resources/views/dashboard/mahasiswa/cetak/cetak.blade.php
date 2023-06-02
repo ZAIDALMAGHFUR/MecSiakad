@@ -17,17 +17,30 @@
 
 <body>
     {{-- Header --}}
-    <table style="width: 100%">
+    <table style="border-bottom:3px solid;width:100%; border-bottom-style: double; color: #000000">
         <tr>
-            {{-- <td style="width: 10%">
-                <img src="{{ Storage::url($data->mhs->foto) }}" alt="foto mahasiswa" width="80">
-            </td> --}}
+            <td style="width: 10%">
+                <img src="{{ public_path() . '/assets/images/6.png' }}" alt="makan" width="80">
+                {{-- <img src="{{ asset('assets/images/6.png') }}" alt="makan" width="90"> --}}
+            </td>
             <td style="width: 90%; text-align: center">
                 <div style="font-weight: bold;font-size=20px">KARTU RENCANA STUDI (KRS)</div>
-                <div style="font-weight: bold;font-size=20px">SEKOLAH TINGGI ILMU TARBIYAH (STIT) AL-HIKMAH TEBING
-                    TINGGI</div>
+                <div style="font-weight: bold;font-size=20px">AKADEMI TEKNIK INDONESIA CUT MEUTIA</div>
                 <div style="font-weight: bold;font-size=20px">TAHUN AKADEMIK {{ $data->tahun_academic->tahun_akademik }}
                 </div>
+            </td>
+        </tr>
+        <tr style="width: 100%">
+            <td colspan="2" style="font-size: 12px;font-weight: lighter; text-align: center">
+                Kampus Utama : Jl. Medan - Binjai KM 16,5, Sei Semayang, Sunggal, Deli Serdang  E-mail :
+                <u>aticutmeutia.ac.id<u>
+            </td>
+        </tr>
+    
+        <tr style="width: 100%">
+            <td colspan="2" style="font-size: 12px;font-weight: lighter; text-align: center">
+                Kampus II : Jl. AH. Nasution No. 18, Pangkalan Masyhur, Medan Johor, Medan Web :
+                <u>aticutmeutia89@gmail.com<u>
             </td>
         </tr>
     </table>

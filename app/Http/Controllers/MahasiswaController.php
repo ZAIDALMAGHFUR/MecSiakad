@@ -34,7 +34,7 @@ class MahasiswaController extends Controller
                 'icon' => 'users'
             ],
             [
-                'label' => 'Jumblah SKS',
+                'label' => 'Jumlah SKS',
                 'value' => $sks,
                 'icon' => 'check-circle'
             ],

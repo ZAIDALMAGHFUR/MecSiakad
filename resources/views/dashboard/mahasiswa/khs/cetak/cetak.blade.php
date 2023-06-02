@@ -17,48 +17,31 @@
 <body>
     {{-- Header --}}
 
-    <table style="border-bottom:3px solid;width:100%; border-bottom-style: double; color: #408C67">
+    <table style="border-bottom:3px solid;width:100%; border-bottom-style: double; color: #000000">
         <tr style="width: 100%">
-            <td style="width: 10%">
-                {{-- <img src="{{ asset('assets/images/logo/logo-1.png') }}" alt="makan" width="90"> --}}
-                <img src="{{ public_path() . '/assets/logo.png' }}" alt="makan" width="90">
+            <td style="width: 1%">
+                {{-- <img src="{{ asset('assets/images/6.png') }}" alt="makan" width="90"> --}}
+                <img src="{{ public_path() . '/assets/images/6.png' }}" alt="makan" width="80">
             </td>
             <td style="width: 90%; text-align: center">
-                <div style="font-weight: lighter;">YAYASAN PERGURUAN TINGGI ISLAM AL-HIKMAH (YASPETIA)</div>
-                <div style="font-weight: bold">SEKOLAH TINGGI ILMU TARBIYAH (STIT)</div>
-                <div style="font-weight: bold">AL-HIKMAH TEBING TINGGI</div>
-                <div style="font-weight: bold; letter-spacing: 2px;"><span
-                        style="background-color: #FEF400">TERAKREDITASI </span></div>
-                <div style="font-size: 12px;font-weight: lighter">BAN-PT. Nomor : 4025/SK/BAN-PT/Akred/PT/X/2017</div>
-                <div style="font-size: 12px;font-weight: lighter">Prodi : </div>
-                <table align="center">
-                    <tr>
-                        <td>
-                            <div style="font-size: 12px;font-weight: lighter">1. S1 Pendidikan Agama Islam (PAI)
-                            </div>
-                            <div style="font-size: 12px;font-weight: lighter">2. S1 Pendidikan Guru Madrasah Ibtidaiyah
-                                (PGMI)</div>
-                        </td>
-                        <td>
-                            <div style="font-size: 12px;font-weight: lighter">3. S1 Pendidikan Islam Anak Usia Dini
-                                (PIAUD)</div>
-                            <div style="font-size: 12px;font-weight: lighter">4. S1 Pendidikan/Tadris Matematika
-                                (TMM)</div>
-                        </td>
-                    </tr>
-                </table>
-
-
-
-
+                <div style="font-weight: bold;">AKADEMI TEKNIK INDONESIA CUT MEUTIA</div>
+                <div style="font-weight: bold"> (ATI - CM)</div>
             </td>
         </tr>
-        <tr style="width: 100%">
-            <td colspan="2" style="font-size: 12px;font-weight: lighter; text-align: center">
-                KAMPUS : Jln. Gatot Subroto Km 3 No. 3 Tebing Tinggi Telp. ( 0621 ) 21428 E-mail :
-                <u>stitalhikmah.ttsu@gmail.com<u>
-            </td>
-        </tr>
+    <tr style="width: 100%">
+        <td colspan="2" style="font-size: 12px;font-weight: lighter; text-align: center">
+            Kampus Utama : Jl. Medan - Binjai KM 16,5, Sei Semayang, Sunggal, Deli Serdang  E-mail :
+            <u>aticutmeutia.ac.id<u>
+        </td>
+    </tr>
+
+    <tr style="width: 100%">
+        <td colspan="2" style="font-size: 12px;font-weight: lighter; text-align: center">
+            Kampus II : Jl. AH. Nasution No. 18, Pangkalan Masyhur, Medan Johor, Medan Web :
+            <u>aticutmeutia89@gmail.com<u>
+        </td>
+    </tr>
+
     </table>
 
 
