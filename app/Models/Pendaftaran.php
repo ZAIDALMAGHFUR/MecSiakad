@@ -22,7 +22,11 @@ class Pendaftaran extends Model
     public static function id()
     {
         $data = DB::table('pendaftarans')->orderby('id_pendaftaran','DESC')->first();
+        if ($data) {
         $kodeakhir5 = substr($data->id_pendaftaran,-4);
+        } else {
+            $kodeakhir5 = '0000';
+        }
         $kodeku= (int)$kodeakhir5;
         $addNol = '';
         $kodetb = 'PENDPSB';

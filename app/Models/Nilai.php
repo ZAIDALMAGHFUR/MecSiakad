@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Models\Krs;
 use App\Models\Mahasiswa;
-use App\Models\Mata_kuliah;
+use App\Models\Mata_Kuliah;
 use App\Models\TahunAcademic;
 use App\Models\Program_studies;
 use Illuminate\Database\Eloquent\Model;
@@ -29,7 +29,7 @@ class Nilai extends Model
 
     public function mataKuliah()
     {
-        return $this->belongsTo(Mata_kuliah::class, 'mata_kuliahs_id');
+        return $this->belongsTo(Mata_Kuliah::class, 'mata_kuliahs_id');
     }
 
     public function krs()

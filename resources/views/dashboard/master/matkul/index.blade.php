@@ -67,11 +67,11 @@
                 <thead>
                   <tr style="text-align: center">
                     <th style="width: 55px">No</th>
+                    <th>Program Studi</th>
                     <th>Nama Mata Kuliah</th>
                     <th>Kode Mata Kuliah</th>
                     <th>SKS</th>
                     <th>Semester</th>
-                    <th>Program Studi</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -79,11 +79,11 @@
                   @foreach ($matkul as $a)
                     <tr style="text-align: center">
                       <td>{{ $loop->iteration }}</td>
+                      <td>{{ $a->program_studies->name }}</td>
                       <td>{{ $a['name_mata_kuliah'] }}</td>
                       <td>{{ $a['kode_mata_kuliah'] }}</td>
                       <td>{{ $a['sks'] }}</td>
                       <td>{{ $a['semester'] }}</td>
-                      <td>{{ $a->program_studies->name }}</td>
                       <td>
                         <form method="POST" action="{{ route('matkul.delete', [$a]) }}">
                           @csrf

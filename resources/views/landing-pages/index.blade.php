@@ -18,7 +18,7 @@
                         {{-- <div class="landing-logo"><img class="img-fluid"
                                 src="../assets/images/landing/landing-home/logo.png" alt=""></div> --}}
                         <h6 class="fw-bold uppercase" data-aos="fade-down">SELAMAT DATANG DI</h6>
-                        <h2 class="fs-1" data-aos="fade-down">Website Kampus <span>ZAIDAL</span></h2>
+                        <h2 class="fs-1" data-aos="fade-down">Website Kampus <span>Akademi Teknik Indonesia Cut Meutia</span></h2>
                         <p data-aos="zoom-in">When it comes to dashboard or web apps. one of the first impression you
                             consider
                             is the design. It needs to be high quality enough otherwise you will lose

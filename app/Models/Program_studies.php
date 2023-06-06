@@ -41,4 +41,9 @@ class Program_studies extends Model
     public function pendaftaran(){
         return $this->hasMany(Pendaftaran::class);
     }
+
+    public function nilai()
+    {
+        return $this->hasMany(Nilai::class);
+    }
 }

@@ -73,6 +73,11 @@ class MahasiswaController extends Controller
             // ->where('tahun_academic_id', $data->tahun_academic->id)
             ->get();
 
+
+        if($nilai_akhirs->isEmpty()){
+            return 0;
+        }     //fix zaid
+
         foreach ($nilai_akhirs as $nilai_akhir) {
             $nilai_akhir->kriteria = '';
             if ($nilai_akhir->nilai_akhir >= 0 && $nilai_akhir->nilai_akhir <= 59) {

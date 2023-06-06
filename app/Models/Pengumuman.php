@@ -33,7 +33,12 @@ class Pengumuman extends Model
     public static function id()
     {
         $data = DB::table('pembayarans')->orderby('id_pendaftaran','DESC')->first();
-		$kodeakhir5 = substr($data->id_pendaftaran,-3);
+        if ($data) {
+            $kodeakhir5 = substr($data->id_pendaftaran,-3);
+            } else {
+                $kodeakhir5 = '0000';
+            }
+		// $kodeakhir5 = substr($data->id_pendaftaran,-3);
 		$kodeku= (int)$kodeakhir5;
 		$addNol = '';
 		$kodetb = 'TAG';

@@ -111,30 +111,49 @@ class CreateMahasiswaController extends Controller
         return view('dashboard.pengguna.mahasiswa.edit', compact('data', 'program_studies', 'tahunakademic'));
     }
 
-    public function update(MahasiswatRequest $request, $id)
+
+public function update(Request $request, $id)
 {
+    $this->validate($request, [
+        'name' => 'required',
+        'nim' => 'required',
+        'email' => 'required|string|email|max:255',
+        'no_hp' => 'required',
+        'alamat' => 'required',
+        'program_studies_id' => 'required',
+        'tempat_lahir' => 'required',
+        'tanggal_lahir' => 'required',
+        'jenis_kelamin' => 'required',
+        'agama' => 'required',
+        'status' => 'required',
+        'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'tahun_masuk' => 'required',
+        'nama_ayah' => 'required',
+        'nama_ibu' => 'required',
+        'pekerjaan_ayah' => 'required',
+        'pekerjaan_ibu' => 'required',
+        'no_hp_ortu' => 'required',
+        'alamat_ortu' => 'required',
+        'asal_sekolah' => 'required',
+        'tahun_academics_id' => 'required',
+    ]);
+    
     $mahasiswa = Mahasiswa::findOrFail($id);
 
-    if($request->validated()){
-        if($request->foto){
-            File::delete('storage/'.$mahasiswa->foto);
-            $foto = $request->file('foto')->store(
-                'foto-mahasiswa', 'public'
-            );
-            $mahasiswa->update($request->except('foto') + [
-                'foto' => $foto
-            ]);
-        }
-        else{
-            $mahasiswa->update($request->except('foto'));
-        }
+    if ($request->hasFile('foto')) {
+        File::delete('storage/'.$mahasiswa->foto);
+        $foto = $request->file('foto')->store('foto-mahasiswa', 'public');
+        $mahasiswa->foto = $foto;
     }
+
+    $mahasiswa->update($request->except('foto'));
 
     return redirect()->route('mahasiswa.admin')->with([
         'success' => 'Data berhasil diubah',
         'alert-type' => 'success'
     ]);
 }
+
 
     public function show($id)
     {

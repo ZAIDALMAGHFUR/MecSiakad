@@ -34,6 +34,8 @@ class SettingsController extends Controller
             'confirmpass' => ['required', 'string', 'min:7', 'max:16', 'same:newpass'],
         ], [
             'oldpass.required' => 'Password sekarang tidak boleh kosong!',
+            'oldpass.min' => 'Password lama minimal 7 karakter!',
+            'newpass.min' => 'Password baru minimal 7 karakter!',
             'newpass.max' => 'Password baru maksimal 16 karakter!',
             'newpass.different' => 'Password baru tidak boleh sama dengan password sekarang!',
             'confirmpass.required' => 'Konfirmasi password tidak boleh kosong!',
@@ -42,13 +44,20 @@ class SettingsController extends Controller
             'confirmpass.same' => 'Konfirmasi password tidak sesuai!',
         ]);
 
-
+        //dd($validator->errors()->toArray());
         if ($validator->fails()) {
-            return response()->json([
-                'status' => 400,
-                'tipe' => 'validation',
-                'errors' => $validator->errors()->toArray(),
+            $error = [];
+            foreach ($validator->errors()->toArray() as $key => $value) {
+                foreach ($value as $tod) {
+                    array_push($error, $tod);
+                }
+            }
+
+            return redirect()->back()->with([
+                'danger' => $error,
+                'alert-type' => 'danger',
             ]);
+
         } else {
             DB::beginTransaction();
             try {

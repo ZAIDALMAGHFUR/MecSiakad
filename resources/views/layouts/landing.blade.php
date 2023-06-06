@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="viho admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+        content="kampus ACTM, Kampus ati cut meutiam, ACTM, medan, clean &amp; kampus actm kampus hebat dan berkualitas, kampus at cut meutia.">
     <meta name="keywords"
-        content="admin template, viho admin template, dashboard template, flat admin template, responsive admin template, web app">
+        content="kampus ati cut meutia, kampus actm, actm, ati cut meutia, kampus actm,  landing pages kampus actm, actm kampus, kampus actm,  landing pages kampus, website kampus act, website kampus ati cut meutia, kamppus actm">
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
-    <title>Landing Page ZAIDAL</title>
+    <title>Landing Page ACTM</title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -65,7 +65,7 @@
                         <div class="col-12">
                             <nav class="navbar navbar-light p-0" id="navbar-example2">
                                 <a class="navbar-brand" href="javascript:void(0)">
-                                    <span class="fw-bold fs-5">ZAIDAL</span>
+                                    <span class="fw-bold fs-5">ACTM</span>
                                     {{-- <img class="img-fluid" src="../assets/images/logo/logo.png" alt=""> --}}
                                 </a>
                                 <ul class="landing-menu nav nav-pills">
@@ -124,7 +124,7 @@
 
             @yield('content')
 
-            <div class="sub-footer">
+            <!-- <div class="sub-footer">
                 <div class="custom-container">
                     <div class="row">
                         <div class="col-md-6 col-sm-2">
@@ -139,7 +139,60 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
+
+        </div>
+            <!--footer start-->
+            <div style="margin-left: -17rem;">
+<footer class="py-5">
+    <div class="row" style="margin-left: 0;">
+      <div class="col-6 col-md-2 mb-3">
+      <img class="img-fluid" src="{{ asset('assets/images/logoactm.png') }}" alt="">
+      </div>
+
+      <div class="col-6 col-md-2 mb-3">
+        <h5 class="link-body-emphasis fw-bold text-success ">Kampus Utama</h5>
+        <ul class="nav flex-column ">
+          <a class="text-body-secondary fw-bold">Kampus Utama : Jl. Medan-Binjai Km 16,5 Sei Semayang, Kec. Sunggal Kab. Deli Serdang - Sumatera Utara</a>
+          <div class="mt-3">
+            <a href=""><svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg></i> <a style="font-size: 20px;">0823 6515 7391</a></a>
+            <a style="font-size: 15px; " class="text-body-secondary fw-bold" >info@aticutmeutia.ac.id</a>  
+        </div>
+        </ul>
+
+      </div>
+
+      <div class="col-6 col-md-2 mb-3">
+        <h5 class="link-body-emphasis fw-bold text-success ">Kampus II</h5>
+        <ul class="nav flex-column ">
+          <a class="text-body-secondary fw-bold">Kampus Utama : Kampus II : Jl. AH. Nasution No. 18, Pangkalan Masyhur, Medan Johor, Medan - Sumatera Utara</a>
+          <div class="mt-3">
+            <a href=""><svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg></i> <a style="font-size: 20px;">0823 6515 7391</a></a>
+            <a style="font-size: 13px; " class="text-body-secondary fw-bold" >info@aticutmeutia.ac.id</a>  
+        </div>
+        </ul>
+
+      </div>
+
+      <div class="col-md-5 offset-md-1 mb-3">
+        <div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.932955144437!2d98.5382053!3d3.602827999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3031292ef8dd5ec1%3A0x449756fa63449563!2sAkademi%20Teknik%20Indonesia%20Cut%20Meutia%20Kampus%20I!5e0!3m2!1sid!2sid!4v1685867692240!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+    <p>© {{ date('Y') }} <a class="link-body-emphasis fw-bold ">Akademi Teknik Indonesia Cut Meutia</a> by © <a class="link-body-emphasis fw-bold ">PT. Mec Tech Inv</a> rights reserved.</p>
+      <ul class="list-unstyled d-flex">
+        <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="fa fs-1 fa-twitter"></i></a></li>
+        <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="fa fs-1 fa-instagram"></i></a></li>
+        <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="fa fs-1 fa-facebook"></i></a></li>
+        <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="fa fs-1 fa-youtube"></i></li>
+        <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="fa fs-1 fa-whatsapp"></i></li>
+      </ul>
+    </div>
+  </footer>
+</div>
             <!--footer end-->
         </div>
     </div>

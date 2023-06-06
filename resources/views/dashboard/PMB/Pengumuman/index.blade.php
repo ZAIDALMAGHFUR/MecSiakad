@@ -64,8 +64,10 @@
                                     <div class="mb-3">
                                         <div class="d-flex align-items-center mb-4 pb-3 justify-content-end flex-wrap">
                                             <div class="me-3">
-                                                <h4 class="fs-18 font-w600">PMB UMTI</h4>
-                                                <p>Padang Bulan, Kota Medan <br>Sumatera Utara, Indonesia , 20115 </p>
+                                                <h4 class="fs-18 font-w600">PMB ATICM</h4>
+                                                <p>Kampus Utama : Jl. Medan - Binjai KM 16,5, <br> Sei Semayang, Sunggal, Deli Serdang. </p>
+                                                <p>Kampus II : Jl. AH. Nasution No. 18, Pangkalan Masyhur, <br> Medan Johor. </p>
+                                                 
                                             </div>
                                             <div class="me-3">
                                                 <img src="{{ asset('sipenmaru/images/logo.png') }}" alt="" width="50px">

@@ -21,7 +21,7 @@ class Mahasiswa extends Model
 
     public function program_studies()
     {
-        return $this->belongsTo(Program_studies::class);
+        return $this->belongsTo(Program_studies::class, 'program_studies_id');
     }
 
     public function TahunAcademic()

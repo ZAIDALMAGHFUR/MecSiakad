@@ -329,13 +329,11 @@
                                         <div class="mb-3 mb-4">
                                             <label class="form-label" for="pil1">Pilihan
                                                 1 <a style="color: red">*</a></label>
-                                            <input class="form-control" list="datalistOptionsProdi" id="pil1" placeholder="Pilih program studi" name="pil1"
-                                                value="{{ old('pil1') }}" required>
-                                            <datalist id="datalistOptionsProdi">
+                                            <select  class="form-control wide" name="pil1" required >
                                                 @foreach ($viewProdi as $z)
-                                                    <option value="{{ $z->id }}">{{ $z->name }}</option>
+                                                    <option value="{{ $z->id }}" selected>{{ $z->name }}</option>
                                                 @endforeach
-                                            </datalist>
+                                            </select>
                                             @error('pil1')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
@@ -347,13 +345,11 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3 mb-4">
                                             <label class="form-label" for="pil2">Pilihan 2 <a style="color: red">*</a></label>
-                                            <input class="form-control" list="datalistOptionsProdi" id="pil2" placeholder="Pilih program studi" name="pil2"
-                                                value="{{ old('pil2') }}" required>
-                                            <datalist id="datalistOptionsProdi">
+                                            <select  class="form-control wide" name="pil2" required  >
                                                 @foreach ($viewProdi as $z)
-                                                    <option value="{{ $z->name }}">{{ $z->name }}</option>
+                                                    <option value="{{ $z->id }}" selected>{{ $z->name }}</option>
                                                 @endforeach
-                                            </datalist>
+                                            </select>
                                             @error('pil2')
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>

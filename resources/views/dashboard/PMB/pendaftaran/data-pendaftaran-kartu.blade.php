@@ -61,9 +61,9 @@
                                             <label class="form-label" style="margin-top: -0.5rem"><strong class="d-block">KARTU
                                                     PESERTA</strong></label>
                                             <h5 style="margin-top: -0.5rem"> <strong class="d-block">PENERIMAAN MAHASISWA BARU</strong></h4>
-                                                <h4 style="margin-top: -0.5rem"><strong class="d-block">UNIVERSITAS MEC TECH INV</strong></h3>
-                                                    <p style="margin-top: -0.5rem"><strong class="d-block">Kembangkuning, Kec. Jatiluhur, Kabupaten
-                                                        Purwakarta, Jawa Barat <br> 41152</strong></p>
+                                                <h4 style="margin-top: -0.5rem"><strong class="d-block">ACTM</strong></h3>
+                                                    <p style="margin-top: -0.5rem"><strong class="d-block">Kampus Utama : Jl. Medan - Binjai KM 16,5 Sei Semayang, Sunggal, Deli Serdang.</strong></p>
+                                                    <p style="margin-top: -0.5rem"><strong class="d-block">Kampus II : Jl. AH. Nasution No. 18, Pangkalan Masyhur Medan Johor.</strong></p>
                                         </center>
                                     </div>
                                 </div>
@@ -131,8 +131,7 @@
                                     <div class="mb-4">
                                         <h4><strong>PERNYATAAN</strong></h4>
                                         <p style="text-indent: 0.5in;text-align: justify;">Saya yang menyatakan bahwa data yang
-                                            saya isikan dalam formulir pendaftaran penerimaan mahasiswa baru UNIVERISTAS MEC 
-                                            TECH INV  tahun {{$viewData->tgl_pendaftaran  }} adalah benar dan saya bersedia menerima ketentuan yang berlaku. Saya
+                                            saya isikan dalam formulir pendaftaran penerimaan mahasiswa baru ACTM  tahun {{$viewData->tgl_pendaftaran  }} adalah benar dan saya bersedia menerima ketentuan yang berlaku. Saya
                                             bersedia menerima sanksi pembatalan penerimaan apabila melanggar pernyataan ini.</p>
                                     </div>
                                     <div class="d-flex">
