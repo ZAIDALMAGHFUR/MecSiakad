@@ -21,6 +21,13 @@ class UsersImport implements ToModel, WithHeadingRow, WithValidation
     */
 
 
+    private $importedRows = 0;
+
+    public function getImportedRowCount()
+    {
+        return $this->importedRows;
+    }
+
 
     public function rules(): array
     {
@@ -30,7 +37,7 @@ class UsersImport implements ToModel, WithHeadingRow, WithValidation
                     $onFailure("NIM $value sudah ada");
                     // dd($value);
                 }
-            }, 
+            },
             'email' => function($attribute, $value, $onFailure) {
                 if(User::where('email', $value)->exists()){
                     $onFailure("Email $value sudah ada");
@@ -57,7 +64,7 @@ class UsersImport implements ToModel, WithHeadingRow, WithValidation
             'password' => bcrypt($row['nim']),
             'roles_id' => 3,
         ]);
-        
+
         Mahasiswa::create([
                 'name' => $row['name'],
                 'nim' => $row['nim'],
@@ -83,6 +90,8 @@ class UsersImport implements ToModel, WithHeadingRow, WithValidation
                 'tahun_academics_id' => $row['tahun_academics_id'],
         ]);
 
-        
+
+        $this->importedRows++;
+
     }
 }
