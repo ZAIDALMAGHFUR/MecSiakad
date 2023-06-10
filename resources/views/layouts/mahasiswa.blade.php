@@ -201,7 +201,7 @@
     <div class="page-body-wrapper sidebar-icon">
       <!-- Page Sidebar Start-->
       <header class="main-nav">
-        <div class="sidebar-user text-center"><a class="setting-primary" href="javascript:void(0)"><i
+        <div class="sidebar-user text-center"><a class="setting-primary" href="{{ route('profile') }}"><i
               data-feather="settings"></i></a><img class="img-90 rounded-circle"
             src="{{ Storage::url(Auth::user()->foto) == '/storage/' ? asset('assets/images/dashboard/1.png') : Storage::url(Auth::user()->foto)  }}" alt="">
           <div class="badge-bottom"><span class="badge badge-primary">New</span></div><a href="">
@@ -271,19 +271,15 @@
                 <li class="dropdown"><a class="nav-link menu" href="{{ route('ktm.index') }}"><i
                   data-feather="book"></i><span>KTM Download</span></a>
                 </li>
-                <li class="dropdown"><a class="nav-link menu" href="{{ route('profile') }}"><i
-                  data-feather="edit"></i><span>Setting</span></a>
-                </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                   data-feather="book"></i><span>Data Modul</span></a>
                     <ul class="nav-submenu menu-content">
-                      <li><a href="{{ route('krs') }}">KRS</a></li>
-                      <li><a href="{{ route('khs') }}">KHS</a></li>
-                      <li><a href="{{ route('nilai') }}">Input Nilai</a></li>
-                      <li><a href="{{ route('change') }}">Edit Nilai</a></li>
-                      <li><a href="{{ route('rentang') }}">Rentang Nilai</a></li>
+                      <li><a href="{{ route('mhs-download') }}">Download</a></li>
                     </ul>
                   </li>
+                  <li class="dropdown"><a class="nav-link menu" href="{{ route('mhs-profile') }}"><i
+                  data-feather="edit"></i><span>Profile</span></a>
+                </li>
                 <li class="sidebar-main-title">
                   <div>
                     <h6>Miscellaneous </h6>

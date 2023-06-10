@@ -33,10 +33,12 @@ return new class extends Migration
             // $table->string('kelurahan');
             $table->foreignId('jadwal_pmbs_id')->constrained();
             $table->string('tahun_masuk');
-            $table->unsignedBigInteger('pil1')->nullable();
-            $table->foreign('pil1')->references('id')->on('program_studies')->onUpdate('cascade')->onDelete('cascade');
-            $table->unsignedBigInteger('pil2')->nullable();
-            $table->foreign('pil2')->references('id')->on('program_studies')->onUpdate('cascade')->onDelete('cascade');
+            // $table->unsignedBigInteger('pil1')->nullable();
+            // $table->foreign('pil1')->references('id')->on('program_studies')->onUpdate('cascade')->onDelete('cascade');
+            // $table->unsignedBigInteger('pil2')->nullable();
+            // $table->foreign('pil2')->references('id')->on('program_studies')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('pil1');
+            $table->string('pil2');
 
             //data orang tua
             $table->string('nama_ayah')->nullable();

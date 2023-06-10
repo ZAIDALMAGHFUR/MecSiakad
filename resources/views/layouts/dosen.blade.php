@@ -257,10 +257,17 @@
 
                 @php
                   use App\Models\Dosen;
-                  $dosen = Dosen::Where('users_id', Auth::user()->id)->first();
+                  use App\Models\DosenJabatan;
+                  use App\Models\User;
+                  $user = User::Where('id', Auth::user()->id)->first();
+
+                  $sdnJbt = DosenJabatan::where('dosen_id', $user->dosen->id)->first();
+                  $dosen = Dosen::where('id', $sdnJbt->dosen_id)->first();
+
+                  $jbtdsn = DosenJabatan::where('dosen_id', $dosen->id)->first();
                 @endphp
 
-                @if ($dosen->dosenJabatans()->first()->jabatan_id == '1')
+                @if ($jbtdsn->jabatan_id == '1')
                 <li class="dropdown">
                   <a class="nav-link menu-title" href="javascript:void(0)">
                       <i data-feather="users"></i><span>Pengajuan Judul</span>
@@ -271,7 +278,7 @@
                       </li>
                   </ul>
               </li>
-                @endif
+              @endif
 
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
                   data-feather="users"></i><span>Calender Academic</span></a>

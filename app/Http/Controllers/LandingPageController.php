@@ -9,7 +9,11 @@ use App\Models\Jurnal;
 use App\Models\Page;
 use App\Models\StrJabatan;
 use App\Models\StrukturKepemimpinan;
+use App\Models\Program_studies;
+use App\Models\Mata_Kuliah;
+use App\Models\Downloads;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\View;
 
@@ -180,10 +184,10 @@ class LandingPageController extends Controller
         $structures = [];
         $hierarchies = StrJabatan::max('hierarki');
 
-        for ($i=0; $i < $hierarchies; $i++) { 
+        for ($i=0; $i < $hierarchies; $i++) {
             $structures[$i] = StrJabatan::with('strukturKepemimpinan')->where('hierarki', $i+1)->get()->toArray();
         }
-        
+
         // dd($structures);
 
         return view('landing-pages.struktur-kps.index', compact('structures', 'hierarchies'));
@@ -196,5 +200,59 @@ class LandingPageController extends Controller
         return view('landing-pages.galleries.detail', [
             'gallery' => $gallery,
         ]);
+    }
+
+
+    public function sejarah()
+    {
+        return view('landing-pages.sejarah.index');
+    }
+
+    public function visiMisi()
+    {
+        return view('landing-pages.visi-misi.index');
+    }
+
+    public function prodi()
+    {
+
+        $Mata_Kuliah = Mata_Kuliah::where('program_studies_id', 1)->get();
+        // dd($Mata_Kuliah);
+
+        return view('landing-pages.prodi.index', [
+            'Mata_Kuliah' => $Mata_Kuliah
+        ]);
+    }
+
+    public function prodiindustri()
+    {
+        $Mata_Kuliah_industri = Mata_Kuliah::where('program_studies_id', 2)->get();
+
+        return view('landing-pages.prodi.industri', [
+            'Mata_Kuliah_industri' => $Mata_Kuliah_industri
+        ]);
+    }
+
+
+    public function download(){
+        $Downloads = Downloads::where('to', 'umum')->get();
+        // dd($Downloads);
+        return view('landing-pages.download.index', [
+            'Downloads' => $Downloads
+        ]);
+    }
+
+    public function downloadrill($id)
+    {
+        $data = Downloads::find($id);
+
+        if (!$data) {
+            return redirect()->back()->with([
+                'danger' => 'File tidak ditemukan',
+                'alert-type' => 'danger'
+            ]);
+        }
+
+        return response()->download(public_path(). Storage::url($data->file_path), $data->file_name);
     }
 }

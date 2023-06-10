@@ -40,6 +40,7 @@ use App\Http\Controllers\Mahasiswa\JobMhsController;
 use App\Http\Controllers\Admin\DosenMatkulController;
 use App\Http\Controllers\Admin\GalleryItemController;
 use App\Http\Controllers\Admin\SelectedKtmController;
+use App\Http\Controllers\Admin\DownloadController;
 use App\Http\Controllers\Admin\ThnAkademikController;
 use App\Http\Controllers\Mahasiswa\SkripsiController;
 use App\Http\Controllers\Admin\DosenJabatanController;
@@ -53,6 +54,7 @@ use App\Http\Controllers\Dosen\EdiNilaiMahasiswaController;
 use App\Http\Controllers\Admin\StrukturKepemimpinanController;
 use App\Http\Controllers\Dosen\DosenMataKuliahDosenController;
 use App\Http\Controllers\Mahasiswa\CalendarAcademicController;
+use App\Http\Controllers\Mahasiswa\ModulDownloadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,6 +89,16 @@ Route::get('/p/gallery/{gallery}', [LandingPageController::class, 'galleryDetail
 
 Route::get('/p/struktur-kepemimpinan', [LandingPageController::class, 'strukturKps'])->name('landing-pages.struktur-kps');
 Route::post('/hide-modal', [LandingPageController::class, 'hideModal'])->name('landing-pages.hide-modal');
+Route::get('/sejarah', [LandingPageController::class, 'sejarah'])->name('landing-pages.sejarah');
+Route::get('/visi-misi', [LandingPageController::class, 'visiMisi'])->name('landing-pages.visi-misi');
+Route::get('/kontak', [LandingPageController::class, 'kontak'])->name('landing-pages.kontak');
+Route::get('/prodi-kimia', [LandingPageController::class, 'prodi'])->name('landing-pages.prodi-kimia');
+Route::get('/prodi-industri', [LandingPageController::class, 'prodiindustri'])->name('landing-pages.prodi-industri');
+
+//download
+Route::get('/download-public', [LandingPageController::class, 'download'])->name('landing-pages.download-umum');
+Route::get('/download-public/{id}', [LandingPageController::class, 'downloadrill'])->name('landing-pages.download-umum-rill');
+
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -212,7 +224,7 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
         Route::post('update', 'update')->name('nilai.update');
         Route::delete('delete/{id}', 'destroy')->name('nilai.delete');
     });
-    Route::get('Nilai/export/', [InputNilaiController::class, 'export'])->name('nilai.export');
+    Route::get('Nilai/export/{ta}/{ps}', [InputNilaiController::class, 'export'])->name('nilai.export');
 
     //edit nilai
     Route::controller(EditNilaiController::class)->prefix('change')->group(function () {
@@ -265,7 +277,7 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
     Route::get('/detail-registration/{id_pendaftaran}', [PendaftarController::class, 'detailpendaftaran']);
 
 
-    //pembayaran 
+    //pembayaran
     Route::controller(PembayaranController::class)->prefix('pembayaran')->group(function () {
         Route::get('', 'index')->name('pembayaran');
         Route::delete('delete/{id}', 'destroy')->name('pembayaran/delete');
@@ -282,7 +294,7 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
         Route::delete('delete/{id}', 'destroy')->name('penguguman/delete');
     });
 
-    //pengumuman change 
+    //pengumuman change
     Route::get('/view-announcement/{id_pendaftaran}', [PengugumanController::class, 'lihatpengumuman']);
     Route::post('/save-announcement', [PengugumanController::class, 'simpanpengumuman']);
     Route::post('/update-announcement/{id}', [PengugumanController::class, 'updatepengumuman']);
@@ -376,7 +388,7 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
         Route::delete('delete/{id}', 'destroy')->name('delete');
     });
     // jabatans
-    
+
     // struktur-kps
     Route::controller(StrukturKepemimpinanController::class)->prefix('struktur-kepemimpinan')->name('struktur-kps.')->group(function () {
         Route::get('', 'index')->name('index');
@@ -397,6 +409,17 @@ Route::group(['middleware' => ['auth', 'OnlyAdmin']], function () {
         Route::post('update', 'update')->name('ktm.update');
     });
 
+    //download
+    Route::controller(DownloadController::class)->prefix('download')->group(function () {
+        Route::get('', 'index')->name('download');
+        Route::get('/add', 'add')->name('add.download');
+        Route::post('/save', 'store')->name('save.download');
+        Route::get('/edit/{id}', 'edit')->name('edit.download');
+        Route::post('/update/{id}', 'update')->name('update.download');
+        Route::delete('/delete/{id}', 'delete')->name('delete.download');
+        Route::get('/file/{id}', 'download')->name('file.download');
+    });
+
 });
 
 
@@ -414,6 +437,7 @@ Route::group(['middleware' => ['auth', 'OnlyDosen']], function () {
         Route::get('', 'index')->name('nilaidosen');
         Route::get('find/{id}', 'find')->name('nilaidosen.find');
         Route::post('update', 'update')->name('nilaidosen.update');
+        Route::get('cetak-dosen/{ta}/{matkul}', 'export')->name('compensation.export');
     });
 
     //edit nilai
@@ -500,8 +524,15 @@ Route::group(['middleware' => ['auth', 'OnlyMahasiswa']], function () {
 
     //ktm mahasiswa
     route::get('cetak-ktm', [KtmController::class, 'index'])->name('ktm.index');
-});
 
+    Route::get('mhs-profile', [MahasiswaController::class, 'profile'])->name('mhs-profile');
+
+            //download
+            Route::controller(ModulDownloadController::class)->prefix('mhs-download')->group(function () {
+                Route::get('', 'index')->name('mhs-download');
+                Route::get('/file/{id}', 'download')->name('mhs.download');
+            });
+});
 
 
 
@@ -525,4 +556,6 @@ Route::group(['middleware' => ['auth', 'Camba']], function () {
 
     //lihat pengumuman
     Route::get('/view-graduation/{id_pendaftaran}', [PendaftaranCambaController::class, 'lihatkelulusan']);
+
+
 });

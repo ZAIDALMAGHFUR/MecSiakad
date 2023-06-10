@@ -30,14 +30,14 @@
         </tr>
     <tr style="width: 100%">
         <td colspan="2" style="font-size: 12px;font-weight: lighter; text-align: center">
-            Kampus Utama : Jl. Medan - Binjai KM 16,5, Sei Semayang, Sunggal, Deli Serdang  E-mail :
+            Kampus Utama : Jl. Medan - Binjai KM 16,5, Sei Semayang, Sunggal, Deli Serdang  Web :
             <u>aticutmeutia.ac.id<u>
         </td>
     </tr>
 
     <tr style="width: 100%">
         <td colspan="2" style="font-size: 12px;font-weight: lighter; text-align: center">
-            Kampus II : Jl. AH. Nasution No. 18, Pangkalan Masyhur, Medan Johor, Medan Web :
+            Kampus II : Jl. AH. Nasution No. 18, Pangkalan Masyhur, Medan Johor, Medan E-mail :
             <u>aticutmeutia89@gmail.com<u>
         </td>
     </tr>
@@ -148,3 +148,4 @@
 </body>
 
 </html>
+

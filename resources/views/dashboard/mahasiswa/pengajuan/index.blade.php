@@ -67,11 +67,11 @@
                         <td>{{ $item->judul }}</td>
                         <td>{{ $item->dosen->nama_dosen }}</td>
                         <td style="text-align: center">
-                            @if ($item->status == 0)
+                            @if ($item->status == null)
                                 <span class="badge badge-warning">Pending</span>
-                            @elseif($item->status = 1)
+                            @elseif($item->status == 'diterima')
                                 <span class="badge badge-success">Diterima</span>
-                            @else
+                            @elseif($item->status == 'ditolak')
                                 <span class="badge badge-danger">Ditolak</span>
                             @endif
                         </td>

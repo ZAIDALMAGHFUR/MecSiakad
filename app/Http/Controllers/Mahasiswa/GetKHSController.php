@@ -30,13 +30,13 @@ class GetKHSController extends Controller
         $this->validate(request(), [
             'tahun_academic_id' => 'required',
         ]);
-    
+
         $mhs = Mahasiswa::Where('user_id', Auth::user()->id)
         ->first();
         $nim = $mhs->nim;
 
         // dd($mhs);
-    
+
         $mhs = Mahasiswa::where('nim', $nim)->first();
         if(is_null($mhs)) {
             return redirect()->back()->with([
@@ -44,37 +44,42 @@ class GetKHSController extends Controller
                 'alert-type' => 'info'
             ]);
         }
-    
+
         $tahun_academic = TahunAcademic::findOrFail($request->tahun_academic_id);
 
         // dd($tahun_academic);
-    
-        $nilai_akhirs = Nilai::select('tahun_academic_id', 'mahasiswas_id', 'mata_kuliahs_id', 'nilai_akhir')
-            ->where('mahasiswas_id', $mhs->id)
-            ->where('tahun_academic_id', $request->tahun_academic_id)
-            ->get();
-            // dd($nilai_akhirs->toArray());
-
-            // dd($nilai_akhirs);
-    
-        if($nilai_akhirs->isEmpty()) {
-            return redirect()->back()->with([
-                'info' => 'Mahasiswa belum memiliki nilai pada tahun yang dipilih !',
-                'alert-type' => 'info'
-            ]);
-        }
-    
         $krs = Krs::where('nim', $mhs->nim)
-            ->where('tahun_academic_id', $request->tahun_academic_id)
-            ->get();
-    
+        ->where('tahun_academic_id', $request->tahun_academic_id)
+        ->get();
+
         if($krs->isEmpty()) {
             return redirect()->back()->with([
                 'info' => 'Maaf, mahasiswa belum melakukan pemilihan KRS pada tahun akademik yang dipilih !',
                 'alert-type' => 'info'
             ]);
         }
-    
+
+        $nilai_akhirs = Nilai::select('tahun_academic_id', 'mahasiswas_id', 'mata_kuliahs_id', 'nilai_akhir')
+            ->where('mahasiswas_id', $mhs->id)
+            ->where('tahun_academic_id', $request->tahun_academic_id)
+            ->get();
+
+            // dd($nilai_akhirs);
+        if ($krs->count() != $nilai_akhirs->count()) {
+            return redirect()->back()->with([
+                'info' => 'Maaf, Nilai kamu belum selesai di isi !',
+                'alert-type' => 'info'
+            ]);
+        }
+
+        if($nilai_akhirs->isEmpty()) {
+            return redirect()->back()->with([
+                'info' => 'Mahasiswa belum memiliki nilai pada tahun yang dipilih !',
+                'alert-type' => 'info'
+            ]);
+        }
+
+
         $select_krs = Krs::where('nim', $mhs->nim)
             ->where('tahun_academic_id', $request->tahun_academic_id)
             ->join('mata_kuliahs', 'krs.mata_kuliah_id', '=', 'mata_kuliahs.id')
@@ -82,7 +87,7 @@ class GetKHSController extends Controller
             ->get();
 
             // dd($select_krs->toArray());
-    
+
         $data_khs = [
             'mhs_data' => $nilai_akhirs,
             'nim' => $mhs->nim,
@@ -113,7 +118,7 @@ class GetKHSController extends Controller
         }
 
     // dd($request->all());
-    
+
         return view('dashboard.mahasiswa.khs.show', compact('data_khs', 'tahun_academic'));
     }
 
@@ -161,7 +166,7 @@ class GetKHSController extends Controller
             } elseif ($nilai_akhir->nilai_akhir >= 90 && $nilai_akhir->nilai_akhir <= 100) {
                 $nilai_akhir->kriteria = 'A';
             }
-        
+
             $nilai_akhir->bobot = 0;
             if($nilai_akhir->kriteria == 'A'){
                 $nilai_akhir->bobot = 4;
@@ -175,12 +180,12 @@ class GetKHSController extends Controller
                 $nilai_akhir->bobot = 0;
             }
         }
-        
+
         $total_sks = 0 ;
         foreach ($select_krs as $sks) {
             $total_sks += $sks->sks;
         }
-        
+
         $total_nilai = 0;
         // dd($select_krs);
         foreach ($select_krs as $index => $khs) {
@@ -190,11 +195,11 @@ class GetKHSController extends Controller
             $nilai = $khs->sks * $bobot;
             // dd($nilai);
             $total_nilai += $nilai;
-            
+
         }
 // dd("breakpoint");s
         $ipk = number_format($total_nilai / $total_sks, 2);
-        
+
         $download ='KHS-'. $data->mhs->name .'.pdf';
         // return view('dashboard.mahasiswa.khs.cetak.cetak', compact('data', 'ketua_prodi_id', 'nilai_akhirs', 'select_krs', 'total_sks', 'total_nilai', 'ipk'));
         return Pdf::loadHTML(view('dashboard.mahasiswa.khs.cetak.cetak', compact('data', 'ketua_prodi_id', 'nilai_akhirs', 'select_krs', 'total_sks', 'total_nilai', 'ipk')))->download($download);

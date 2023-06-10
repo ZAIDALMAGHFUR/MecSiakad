@@ -111,8 +111,8 @@
                       </p>
                   </div>
               </div>
-              
-                
+
+
               </div>
           </div>
             <div class="col-md-12 col-12 mb-5">
@@ -140,6 +140,8 @@
 
                       <form action="{{ route('nilaidosen.update') }}" id="form-nilai" method="POST">
                         <input type="hidden" name="dosen_matkul_id" value="">
+                        <input type="hidden"  value="{{ $ta_krs }}" name="tahun_academic_id">
+                        <input type="hidden" value="{{ $mahasiswa->id }}" name="mahasiswa_id">
                         @csrf
                         @method('POST')
                         <div class="table-responsive">
@@ -162,48 +164,38 @@
                             <tbody>
                             <?php $x = 0 ?>
                               @foreach ($krs as $k)
-                              <?php if (! isset($nilais[$x]) ) {
-                                $nilais[$x]['tugas'] = '';
-                                $nilais[$x]['partisipasi_pembelajaran'] = '';
-                                $nilais[$x]['kuis'] = '';
-                                $nilais[$x]['uts'] = '';
-                                $nilais[$x]['uas'] = '';
-                                $nilais[$x]['nilai_akhir'] = '';
-                              }
-                              ?>
                                 <tr class="rowData">
-                                    <input type="hidden"  value="{{ $k->tahun_academic_id }}" name="tahun_academic_id[]">
-                                    <input type="hidden" value="{{ $mahasiswa->id }}" name="mahasiswa_id[]">
-                                    <input type="hidden" value="{{ $k->mata_kuliah_id }}" name="mata_kuliahs_id[]">
+                                    <input type="hidden" value="{{ $k->mata_kuliah_id }}" name="mata_kuliahs_id[{{$k->mata_kuliah_id}}]" {{ $nilai[$x]['tugas'] ? 'disabled' : '' }}>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $k->nim }}</td>
-                                    <td>{{ $k['mataKuliah']['name_mata_kuliah'] }}</td>
+                                    <td>{{ $k['mataKuliah']['name_mata_kuliah'] }} </td>
+                                    {{-- {{ json_encode($k, JSON_PRETTY_PRINT) }} --}}
                                     <td>
-                                        <input type="number" class="form-control form-control-sm tugas" value="{{ $nilais[$x]['tugas'] }}" name="tugas[]" {{ $nilais[$x]['tugas'] ? 'disabled' : '' }}>
+                                        <input type="number" min="0" class="form-control form-control-sm tugas" value="{{ $nilai[$x]['tugas'] }}" name="tugas[{{$k->mata_kuliah_id}}]" {{ $nilai[$x]['tugas'] ? 'disabled' : '' }}>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm partisipasi_pembelajaran" value="{{ $nilais[$x]['partisipasi_pembelajaran'] }}" name="partisipasi_pembelajaran[]" {{ $nilais[$x]['partisipasi_pembelajaran'] ? 'disabled' : '' }}>
+                                        <input type="number" min="0" class="form-control form-control-sm partisipasi_pembelajaran" value="{{ $nilai[$x]['partisipasi_pembelajaran'] }}" name="partisipasi_pembelajaran[{{$k->mata_kuliah_id}}]" {{ $nilai[$x]['partisipasi_pembelajaran'] ? 'disabled' : '' }}>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm kuis" value="{{ $nilais[$x]['kuis'] }}" name="kuis[]" {{ $nilais[$x]['kuis'] ? 'disabled' : '' }}>
+                                        <input type="number" min="0" class="form-control form-control-sm kuis" value="{{ $nilai[$x]['kuis'] }}" name="kuis[{{$k->mata_kuliah_id}}]" {{ $nilai[$x]['kuis'] ? 'disabled' : '' }}>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm uts" value="{{ $nilais[$x]['uts'] }}" name="uts[]" {{ $nilais[$x]['uts'] ? 'disabled' : '' }}>
+                                        <input type="number" min="0" class="form-control form-control-sm uts" value="{{ $nilai[$x]['uts'] }}" name="uts[{{$k->mata_kuliah_id}}]" {{ $nilai[$x]['uts'] ? 'disabled' : '' }}>
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control form-control-sm uas" value="{{ $nilais[$x]['uas'] }}" name="uas[]" {{ $nilais[$x]['uas'] ? 'disabled' : '' }}>
+                                        <input type="number" min="0" class="form-control form-control-sm uas" value="{{ $nilai[$x]['uas'] }}" name="uas[{{$k->mata_kuliah_id}}]" {{ $nilai[$x]['uas'] ? 'disabled' : '' }}>
                                     </td>
                                     <td>
-                                        <input readonly type="number" class="form-control form-control-sm nilai_akhir" value="{{ $nilais[$x]['nilai_akhir'] }}" name="nilai_akhir[]" {{ $nilais[$x]['nilai_akhir'] ? '' : '' }}>
+                                        <input readonly type="number" class="form-control form-control-sm nilai_akhir" value="{{ $nilai[$x]['nilai_akhir'] }}" name="nilai_akhir[{{$k->mata_kuliah_id}}]" {{ $nilai[$x]['nilai_akhir'] ? '' : '' }}>
                                     </td>
                                 </tr>
                                 <?php $x++ ?>
                             @endforeach
-                            
+
                             </tbody>
                         </table>
                         </div>
-                    </form>                    
+                    </form>
                   </div>
             </div>
           </div>

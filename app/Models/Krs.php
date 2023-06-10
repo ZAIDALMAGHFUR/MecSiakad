@@ -39,7 +39,7 @@ class Krs extends Model
 
     public function nilai()
     {
-        return $this->hasMany(Nilai::class, 'mahasiswas_id');
+        return $this->hasMany(Nilai::class, 'mata_kuliahs_id', 'mata_kuliah_id');
     }
 
     public function dosen()

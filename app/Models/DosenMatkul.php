@@ -27,11 +27,11 @@ class DosenMatkul extends Model
 
     public function programStudies()
     {
-        return $this->belongsTo(Program_studies::class);
+        return $this->belongsTo(Program_studies::class, 'program_studies_id');
     }
 
     public function mataKuliah()
     {
-        return $this->belongsTo(Mata_Kuliah::class);
+        return $this->belongsTo(Mata_Kuliah::class, 'mata_kuliah_id', 'id');
     }
 }

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Dosen;
 
 use App\Models\Krs;
+use App\Models\User;
 use App\Models\Dosen;
 use App\Models\Nilai;
 use App\Models\Mahasiswa;
 use App\Models\BobotNilai;
 use App\Models\DosenMatkul;
+use App\Models\DosenJabatan;
 use Illuminate\Http\Request;
 use App\Models\TahunAcademic;
 use App\Models\Mata_Kuliah;
@@ -28,9 +30,16 @@ class EdiNilaiMahasiswaController extends Controller
         $mahasiswa = Mahasiswa::where('id', $id)->first();
         $nilai = Nilai::where('mahasiswas_id', $id)->get();
         $tahun_akademik = TahunAcademic::all();
-        $dosen = Dosen::Where('users_id', Auth::user()->id)->first();
+        // $dosen = Dosen::Where('users_id', Auth::user()->id)->first();
 
-        if ($dosen->dosenJabatans()->first()->jabatan_id != '1') {
+        $user = User::Where('id', Auth::user()->id)->first();
+
+        $sdnJbt = DosenJabatan::where('dosen_id', $user->dosen->id)->first();
+        $dosen = Dosen::where('id', $sdnJbt->dosen_id)->first();
+
+        $jbtdsn = DosenJabatan::where('dosen_id', $dosen->id)->first();
+
+        if ($jbtdsn->jabatan_id != '1') {
             $nilaiQuery = Nilai::query()
                 ->where('mahasiswas_id', $mahasiswa->id);
             $dsnmatkul = DosenMatkul::where('dosen_id', $dosen->id)
@@ -43,10 +52,10 @@ class EdiNilaiMahasiswaController extends Controller
                 ->whereIn('mata_kuliahs_id', $turu, 'OR')
                 ->where('mahasiswas_id', $mahasiswa->id);
                 // dd($nilaiQuery);
-            
+
             // $nilaiQuery = $mahasiswa->protoNilai();
             // $nilais = $mahasiswa->Nilai()->get();
-            // dd($nilaiQuery->get()->toArray());    
+            // dd($nilaiQuery->get()->toArray());
 
         }
 
@@ -110,7 +119,7 @@ class EdiNilaiMahasiswaController extends Controller
             'uas' => $request->uas,
             'nilai_akhir' => $request->nilai_akhir,
         ]);
-        
+
 
         return redirect()->route('compensation')->with([
             'info' => 'Data berhasil diubah!',

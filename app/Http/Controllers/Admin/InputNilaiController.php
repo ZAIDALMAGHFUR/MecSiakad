@@ -35,7 +35,13 @@ class InputNilaiController extends Controller
         }
         $mahasiswa = $mahasiswa->get();
         
-        return view('dashboard.master.input-nilai.index', compact('mahasiswa', 'nilai', 'thn', 'prodi'));
+        $export = (object)[];
+        $export->ta = $request->tahun_academics_id ?? '0';
+        $export->ps = $request->program_studies_id ?? '0';
+
+        
+
+        return view('dashboard.master.input-nilai.index', compact('mahasiswa', 'nilai', 'thn', 'prodi', 'export'));
     }
 
     public function edit(Request $request, $id)
@@ -102,7 +108,7 @@ class InputNilaiController extends Controller
     $total = count($tugas) - 1;
     for ($key = 0; $key <= $total ; $key++) {
         $nilai = new Nilai;
-        $nilai->    tahun_academic_id = $tahun_academic_id[$key];
+        $nilai->tahun_academic_id = $tahun_academic_id[$key];
         $nilai->mahasiswas_id = $mahasiswa_id[$key];
         $nilai->mata_kuliahs_id = $mata_kuliahs_id[$key];
         $nilai->tugas = $tugas[$key];
@@ -117,10 +123,16 @@ class InputNilaiController extends Controller
     return redirect()->back()->with('success', 'Nilai berhasil disimpan.');
 }
 
-public function export() 
-{
-    return Excel::download(new NilaiExport, 'Nilai.xlsx');
-}
+// public function export() 
+// {
+//     return Excel::download(new NilaiExport, 'Nilai.xlsx');
+// }
 
+
+public function export($ta, $ps) 
+{
+    //dd($ta);
+    return Excel::download(new NilaiExport($ta, $ps), 'Nilai.xlsx');
+}
 
 }

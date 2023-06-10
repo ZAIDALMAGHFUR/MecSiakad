@@ -259,6 +259,7 @@
                     <li><a href="{{ route('jabatans.index') }}">Jabatan</a></li>
                     <li><a href="{{ route('struktur-kps.index') }}">Struktur K.</a></li>
                     <li><a href="{{ route('ktm') }}">KTM</a></li>
+                    <li><a href="{{ route('download') }}">Download fitur</a></li>
                   </ul>
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i

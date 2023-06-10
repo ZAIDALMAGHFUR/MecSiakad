@@ -78,7 +78,7 @@
           <div class="card-body">
             <div class="table-responsive">
               <div class="text-end mt-2 mt-sm-0 mb-3">
-                <a href="{{ route('nilai.export') }}" class="btn btn-success waves-effect waves-light me-1">
+                <a href="{{ route('nilai.export', [$export->ta, $export->ps]) }}" class="btn btn-success waves-effect waves-light me-1">
                   <i class="fa fa-print"></i>
                 </a>
               </div>
@@ -115,7 +115,7 @@
         </div>
       </div>
     </div>
-    
+
   </div>
   @pushOnce('js')
     <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>

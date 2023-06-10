@@ -20,6 +20,10 @@ class JabatanSeeder extends Seeder
             'nama_jabatan' => 'Ketua Prodi',
             'kode_jabatan' => 'KP',
         ]);
+        Jabatan::create([
+            'nama_jabatan' => 'Dosen Tidak Tetap',
+            'kode_jabatan' => 'DTT',
+        ]);
 
         DB::table('str_jabatans')->insert([
             [

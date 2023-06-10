@@ -28,6 +28,7 @@ use Database\Seeders\PersyaratansSeeder;
 use Database\Seeders\RentangNilaiSeeder;
 use Database\Seeders\ProgramStuiesSeeder;
 use Database\Seeders\TahunAcademicsSeeder;
+use Database\Seeders\DosenMatkulSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -55,26 +56,27 @@ class DatabaseSeeder extends Seeder
             DosenSeeder::class,
             JabatanSeeder::class,
             DosenJabatanSeeder::class,
+            DosenMatkulSeeder::class,
             JadwalPmbSeeder::class,
-            PendaftarSeeder::class,
-            PembayaranSeeder::class,
-            PengugumanSeeder::class,
+            //PendaftarSeeder::class,
+            //PembayaranSeeder::class,
+            //PengugumanSeeder::class,
             PersyaratansSeeder::class,
             PengajuanSeeder::class,
             RentangNilaiSeeder::class,
             ktmSeeders::class,
         ]);
 
-        foreach (['jurnals', 'pages', 'galleries', 'beritas'] as $table) {
-            Schema::disableForeignKeyConstraints();
-            DB::table($table)->truncate();
-            Schema::enableForeignKeyConstraints();
-        }
+        // foreach (['jurnals', 'pages', 'galleries', 'beritas'] as $table) {
+        //     Schema::disableForeignKeyConstraints();
+        //     DB::table($table)->truncate();
+        //     Schema::enableForeignKeyConstraints();
+        // }
 
 
-        Jurnal::factory(40)->create();
-        Page::factory(5)->create();
-        Gallery::factory(40)->create();
-        Berita::factory(40)->create();
+        // Jurnal::factory(40)->create();
+        // Page::factory(5)->create();
+        // Gallery::factory(40)->create();
+        // Berita::factory(40)->create();
     }
 }
