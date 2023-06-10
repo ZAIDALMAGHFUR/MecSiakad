@@ -25,11 +25,7 @@ class KtmController extends Controller
 
         if (empty(auth()->user()->foto)) {
             return redirect()->route('mahasiswa')->with([
-<<<<<<< HEAD
                 'info' => 'Tolong ganti dan lengkapi foto profil anda di tombol setting',
-=======
-                'info' => 'Tolong ganti dan lengkapi foto profil anda',
->>>>>>> 677e430bffcdef9b793a4ea4fe77845b84b75ec6
                 'alert-type' => 'info'
             ]);
         }
