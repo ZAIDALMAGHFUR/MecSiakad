@@ -230,7 +230,7 @@
                   </div>
                 </li>
                 <li class="dropdown"><a class="nav-link menu" href="{{ route('dosen') }}"><i
-                      data-feather="dosen"></i><span>Dashboard</span></a>
+                      data-feather="home"></i><span>Dashboard</span></a>
                 </li>
                 <li class="sidebar-main-title">
                   <div>
@@ -281,7 +281,7 @@
               @endif
 
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-                  data-feather="users"></i><span>Calender Academic</span></a>
+                  data-feather="file-text"></i><span>Calender Academic</span></a>
               <ul class="nav-submenu menu-content">
                 <li>
                   <a href="{{ route('getdosenevent') }}">Calender Academic</a>
