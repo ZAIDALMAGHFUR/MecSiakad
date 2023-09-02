@@ -134,7 +134,7 @@ class AdminDosenController extends Controller
         return Excel::download(new DosenExport, 'dosen.xlsx');
     }
 
-    
+
     public function importExcel(Request $request)
     {
         $request->validate([
