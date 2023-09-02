@@ -32,10 +32,10 @@ class Nilai extends Model
         return $this->belongsTo(Mata_Kuliah::class, 'mata_kuliahs_id');
     }
 
-    public function krs()
-    {
-        return $this->hasMany(Krs::class, 'mahasiswas_id', 'nim');
-    }
+    // public function krs()
+    // {
+    //     return $this->belongsTo(Krs::class, 'mata_kuliahs_id');
+    // }
 
     public function tahunAkademik()
     {

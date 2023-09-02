@@ -126,8 +126,8 @@
                       </p>
                   </div>
               </div>
-              
-                
+
+
               </div>
           </div>
             <div class="col-md-12 col-12 mb-5">
@@ -195,19 +195,19 @@
                                   <td>{{ $k->nim }}</td>
                                   <td>{{ $k['mataKuliah']['name_mata_kuliah'] }}</td>
                                   <td>
-                                      <input type="number" class="form-control form-control-sm tugas" value="{{ $nilais[$x]['tugas'] }}" name="tugas[]" {{ $nilais[$x]['tugas'] ? 'disabled' : '' }}>
+                                      <input type="number" min="0" class="form-control form-control-sm tugas" value="{{ $nilais[$x]['tugas'] }}" name="tugas[]" {{ $nilais[$x]['tugas'] ? 'disabled' : '' }}>
                                   </td>
                                   <td>
-                                      <input type="number" class="form-control form-control-sm partisipasi_pembelajaran" value="{{ $nilais[$x]['partisipasi_pembelajaran'] }}" name="partisipasi_pembelajaran[]" {{ $nilais[$x]['partisipasi_pembelajaran'] ? 'disabled' : '' }}>
+                                      <input type="number" min="0" class="form-control form-control-sm partisipasi_pembelajaran" value="{{ $nilais[$x]['partisipasi_pembelajaran'] }}" name="partisipasi_pembelajaran[]" {{ $nilais[$x]['partisipasi_pembelajaran'] ? 'disabled' : '' }}>
                                   </td>
                                   <td>
-                                      <input type="number" class="form-control form-control-sm kuis" value="{{ $nilais[$x]['kuis'] }}" name="kuis[]" {{ $nilais[$x]['kuis'] ? 'disabled' : '' }}>
+                                      <input type="number" min="0" class="form-control form-control-sm kuis" value="{{ $nilais[$x]['kuis'] }}" name="kuis[]" {{ $nilais[$x]['kuis'] ? 'disabled' : '' }}>
                                   </td>
                                   <td>
-                                      <input type="number" class="form-control form-control-sm uts" value="{{ $nilais[$x]['uts'] }}" name="uts[]" {{ $nilais[$x]['uts'] ? 'disabled' : '' }}>
+                                      <input type="number" min="0" class="form-control form-control-sm uts" value="{{ $nilais[$x]['uts'] }}" name="uts[]" {{ $nilais[$x]['uts'] ? 'disabled' : '' }}>
                                   </td>
                                   <td>
-                                      <input type="number" class="form-control form-control-sm uas" value="{{ $nilais[$x]['uas'] }}" name="uas[]" {{ $nilais[$x]['uas'] ? 'disabled' : '' }}>
+                                      <input type="number" min="0" class="form-control form-control-sm uas" value="{{ $nilais[$x]['uas'] }}" name="uas[]" {{ $nilais[$x]['uas'] ? 'disabled' : '' }}>
                                   </td>
                                   <td>
                                       <input readonly type="number" class="form-control form-control-sm nilai_akhir" value="{{ $nilais[$x]['nilai_akhir'] }}" name="nilai_akhir[]" {{ $nilais[$x]['nilai_akhir'] ? '' : '' }}>
@@ -215,11 +215,11 @@
                               </tr>
                               <?php $x++ ?>
                           @endforeach
-                          
+
                           </tbody>
                       </table>
                       </div>
-                  </form>      
+                  </form>
                   </div>
             </div>
           </div>

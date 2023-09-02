@@ -91,26 +91,26 @@
                       <th>NILAI</th>
                       <th>SKOR</th>
                     </tr>
-                    @php 
+                    @php
                     $total_sks = 0;
                     $total_nilai = 0;
                     $x = 0;
                     function skorNilai($krs, $skor) {
                       if ($skor == 'A') {
-                        $skor = 4 * $krs; 
+                        $skor = 4 * $krs;
                       } elseif ($skor == 'B') {
-                        $skor = 3 * $krs; 
+                        $skor = 3 * $krs;
                       } elseif ($skor == 'C') {
-                        $skor = 2 * $krs; 
+                        $skor = 2 * $krs;
                       } elseif ($skor == 'D') {
-                        $skor = 1 * $krs; 
+                        $skor = 1 * $krs;
                       } elseif ($skor == 'E') {
-                        $skor = 0 * $krs; 
+                        $skor = 0 * $krs;
                       }
                       return $skor;
                     }
                     @endphp
-                    
+
                     @foreach ($data_khs['select_krs'] as $khs)
                       <tr>
                         <td>{{ $loop->iteration }}</td>
@@ -127,7 +127,7 @@
                       $x++;
                     @endphp
                     @endforeach
-                    
+
                     <tr>
                         <td colspan="3" align="right"><strong>Jumlah SKS</strong></td>
                         <td colspan="2"><strong>{{ $total_sks }}</strong></td>

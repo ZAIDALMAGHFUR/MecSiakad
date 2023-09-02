@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Krs;
 use App\Models\Nilai;
 use App\Models\Mahasiswa;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\TahunAcademic;
 use Illuminate\Support\Facades\Auth;
@@ -45,7 +46,7 @@ class MahasiswaController extends Controller
             ]
         ];
     }
-    
+
     private function _calculateIPK()
     {
 
@@ -114,7 +115,7 @@ class MahasiswaController extends Controller
         $total_nilai = 0;
         // dd($nilai_akhirs->toArray());
         foreach ($select_krs as $index => $khs) {
-            $bobot = $nilai_akhirs[$index]->bobot;
+            $bobot = $nilai_akhirs[$index]->bobot ?? 0;
             $nilai = $khs->sks * $bobot;
             $total_nilai += $nilai;
         }
@@ -123,7 +124,7 @@ class MahasiswaController extends Controller
             $ipk = 0;
         } else {
             $ipk = number_format($total_nilai / $total_sks, 2);
-        }        
+        }
         // dd($ipk);
         return $ipk;
     };
@@ -178,4 +179,12 @@ class MahasiswaController extends Controller
         return $smt;
     }
 }
+
+    public function profile(){
+        $profile = Mahasiswa::where('user_id', Auth::user()->id)->first();
+        $user = User::where('id', Auth::user()->id)->first();
+        // dd($profile);
+        // dd($user);
+        return view('dashboard.mahasiswa.profile.index', compact('profile', 'user'));
+    }
 }

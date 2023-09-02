@@ -54,7 +54,7 @@
                         <div class="col-lg-12">
                             <div class="card p-3">
                             <form method="POST" action="{{ route('mhskrs.store') }}">
-                                    @csrf 
+                                    @csrf
                                     @method('POST')
                                     <div class="row g-2 mt-3">
                                       <div class="col-md-6">
@@ -80,7 +80,7 @@
                                                 @foreach($data_mata_kuliah as $mata_kuliah)
                                                     <option value="{{ $mata_kuliah->id }}">{{ $mata_kuliah->name_mata_kuliah }}</option>
                                                 @endforeach
-                                            </select>                                            
+                                            </select>
                                         </div>
                                       </div>
                                     </div>

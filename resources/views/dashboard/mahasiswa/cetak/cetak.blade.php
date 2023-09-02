@@ -32,14 +32,14 @@
         </tr>
         <tr style="width: 100%">
             <td colspan="2" style="font-size: 12px;font-weight: lighter; text-align: center">
-                Kampus Utama : Jl. Medan - Binjai KM 16,5, Sei Semayang, Sunggal, Deli Serdang  E-mail :
+                Kampus Utama : Jl. Medan - Binjai KM 16,5, Sei Semayang, Sunggal, Deli Serdang Web :
                 <u>aticutmeutia.ac.id<u>
             </td>
         </tr>
-    
+
         <tr style="width: 100%">
             <td colspan="2" style="font-size: 12px;font-weight: lighter; text-align: center">
-                Kampus II : Jl. AH. Nasution No. 18, Pangkalan Masyhur, Medan Johor, Medan Web :
+                Kampus II : Jl. AH. Nasution No. 18, Pangkalan Masyhur, Medan Johor, Medan E-mail  :
                 <u>aticutmeutia89@gmail.com<u>
             </td>
         </tr>
@@ -101,9 +101,21 @@
                 <td>{{ $krs_data->name_mata_kuliah }}</td>
                 <td align="center">{{ $krs_data->sks }}</td>
                 <td align="center">{{ $krs_data->kode_mata_kuliah }}</td>
-                <td align="center">{{ $dsnmatkul[0]->dosen->kode_dosen }}</td>
-                <td align="center">{{ $dsnmatkul[0]->dosen->nama_dosen }}</td>
-                <td align="center">-</td>
+                <td align="center">
+                    @foreach ($dsnmatkul as $dosen)
+                        @if ($dosen->mata_kuliah_id == $krs_data->id)
+                            {{ $dosen->dosen->kode_dosen }}
+                        @endif
+                    @endforeach
+                </td>
+                <td align="center">
+                    @foreach ($dsnmatkul as $dosen)
+                        @if ($dosen->mata_kuliah_id == $krs_data->id)
+                            {{ $dosen->dosen->nama_dosen }}
+                        @endif
+                    @endforeach
+                </td>
+                <td align="center"></td>
             </tr>
         @endforeach
         <tr>

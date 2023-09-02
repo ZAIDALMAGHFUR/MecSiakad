@@ -41,23 +41,37 @@
     </div>
     <!-- Container-fluid starts-->
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="card">
-            <div class="card-header pb-0">
-              <h5>Sample Card</h5><span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
-            </div>
-            <div class="card-body">
-              <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum."</p>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-body">
+                <h5>Hello! 👋, Selamat datang kembali {{ auth()->user()->username }}</h5>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <!-- Container-fluid Ends-->
+
+      <div class="container-fluid general-widget">
+        <div class="row">
+          @foreach ($stats as $stat)
+          <div class="col-sm-6 col-xl-4 col-lg-6">
+            <div class="card o-hidden border-0">
+              <div class="bg-{{ $loop->index % 2 == 0 ? 'primary' : 'secondary' }} b-r-4 card-body">
+                <div class="media static-top-widget">
+                  <div class="align-self-center text-center"><i data-feather="{{ $stat['icon'] }}"></i></div>
+                  <div class="media-body"><span class="m-0">{{ $stat['label'] }}</span>
+                    <h4 class="mb-0 counter">{{ $stat['value'] }}</h4>
+                    <i class="icon-bg" data-feather="{{ $stat['icon'] }}"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          @endforeach
+        </div>
+      </div>
     <!-- Container-fluid Ends-->
   </div>
 @endsection

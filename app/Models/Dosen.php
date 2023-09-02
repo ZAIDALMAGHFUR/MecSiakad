@@ -79,6 +79,6 @@ class Dosen extends Model
 
     public function dosenJabatans()
     {
-        return $this->hasMany(DosenJabatan::class, 'jabatan_id');
+        return $this->belongsTo(DosenJabatan::class, 'jabatan_id');
     }
 }

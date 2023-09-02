@@ -47,7 +47,38 @@
       <div class="col-sm-12">
         <div class="card">
           <div class="card-header">
-
+            <form method="GET" action="{{ route('nilaidosen') }}">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="tahun_akademik">Tahun Akademik:</label>
+                      <select name="tahun_academics_id" class="form-control">
+                        <option value="">-- Pilih Tahun Akademik --</option>
+                          @foreach ($thn as $a)
+                            <option {{ request('tahun_academics_id') == $a->id ? 'selected' : '' }} value="{{ $a->id }}">{{ $a->tahun_akademik }}</option>
+                          @endforeach
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="program_studi">Dosen Mata Kuliah:</label>
+                      <select name="mata_kuliah_id" class="form-control">
+                        <option value="">-- Pilih Mata Kuliah --</option>
+                          @foreach ($matkul as $a)
+                          <option {{ request('mata_kuliah_id') == $a->id ? 'selected' : '' }} value="{{ $a->id }}">{{ $a->name_mata_kuliah }}</option>
+                          @endforeach
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Filter</button>
+              </form>
+            <div class="text-end mt-2 mt-sm-0 mb-3">
+                <a href="{{ route('compensation.export', [$cetak->ta, $cetak->matkul]) }}" class="btn btn-success waves-effect waves-light me-1">
+                  <i class="fa fa-print"></i>
+                </a>
+              </div>
           </div>
           <div class="card-body">
             <div class="table-responsive">

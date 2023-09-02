@@ -21,5 +21,11 @@ class DosenJabatanSeeder extends Seeder
             'program_studies_id' => '1',
             'tahun_academics_id' => '1',
         ]);
+        DosenJabatan::create([
+            'dosen_id' => '2',
+            'jabatan_id' => 2,
+            'program_studies_id' => '1',
+            'tahun_academics_id' => '1',
+        ]);
     }
 }

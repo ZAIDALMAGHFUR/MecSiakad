@@ -15,6 +15,7 @@ class DosenMatkulController extends Controller
     public function index()
     {
         $dsn = DosenMatkul::all();
+        // dd($dsn);
         return view('dashboard.master.dosen-matkul.index', compact('dsn'));
     }
 

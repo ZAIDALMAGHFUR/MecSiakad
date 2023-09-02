@@ -38,18 +38,18 @@
   <body>
     <!-- Loader starts-->
     <div class="loader-wrapper">
-      <div class="theme-loader">    
+      <div class="theme-loader">
         <div class="loader-p"></div>
       </div>
     </div>
     <!-- Loader ends-->
     <!-- error page start //-->
-    <div class="page-wrapper" id="pageWrapper">        
+    <div class="page-wrapper" id="pageWrapper">
       <div class="error-wrapper">
         <div class="container">
           <div class="error-page1">
             <div class="svg-wrraper mb-0">
-              <svg class="svg-60" viewbox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">                  
+              <svg class="svg-60" viewbox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
                 <g>
                   <path class="warning-color" d="M600.87,872H156a4,4,0,0,0-3.78,4.19h0a4,4,0,0,0,3.78,4.19H600.87a4,4,0,0,0,3.78-4.19h0A4,4,0,0,0,600.87,872Z"></path>
                   <rect class="warning-color" height="8.39" rx="4.19" ry="4.19" width="513.38" x="680.91" y="871.98"></rect>
@@ -103,7 +103,7 @@
             </div>
             <div class="col-md-8 offset-md-2">
               <h3>Oops! This Page is Not Found.</h3>
-              <p class="sub-content">The page you are attempting to reach is currently not available. This may be because the page does not exist or has been moved.</p><a class="btn btn-primary btn-lg" href="{{ route('login') }}">BACK TO HOME PAGE</a>
+              <p class="sub-content">The page you are attempting to reach is currently not available. This may be because the page does not exist or has been moved.</p><a class="btn btn-primary btn-lg" href="/">BACK TO HOME PAGE</a>
             </div>
           </div>
         </div>

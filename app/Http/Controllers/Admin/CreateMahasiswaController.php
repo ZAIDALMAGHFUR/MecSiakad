@@ -90,13 +90,18 @@ class CreateMahasiswaController extends Controller
 
         $file = $request->file('file');
 
-        Excel::import(new UsersImport, $file);
+        $import = new UsersImport();
+        $importedRows = Excel::import($import, $file);
+
+        $importedRows = $import->getImportedRowCount();
 
         return redirect()->back()->with([
             'success' => 'Data berhasil ditambahkan',
-            'alert-type' => 'success'
+            'alert-type' => 'success',
+            'importedRows' => $importedRows
         ]);
     }
+
 
     public function exportExcel()
     {
@@ -137,7 +142,7 @@ public function update(Request $request, $id)
         'asal_sekolah' => 'required',
         'tahun_academics_id' => 'required',
     ]);
-    
+
     $mahasiswa = Mahasiswa::findOrFail($id);
 
     if ($request->hasFile('foto')) {

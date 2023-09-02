@@ -46,31 +46,36 @@
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Create Mahasiswa Via Excel</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="{{ route('import_excel') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-            <div class="modal-body">
-                <div class="form-grop">
-                    <input type="file" name="file" required>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Create Mahasiswa Via Excel</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('import_excel') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="form-grop">
+                                <input type="file" name="file" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="modal-footer">
-            
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-          </div>
-        </div>
-            </form>
         </div>
     </div>
+
+    @if(session('importedRows'))
+        <div class="alert alert-success">
+            Jumlah Mahasiswa yang berhasil diimpor: {{ session('importedRows') }}
+        </div>
+    @endif
     <div class="container-fluid">
       <div class="col-sm-12">
         <div class="card">
@@ -85,7 +90,7 @@
                 <li><a class="dropdown-item" href="Template/import siakad.xlsx">Download Template Import</a></li>
               </ul>
           </div>
-          
+
           @if ($errors->any())
           <div class="alert alert-danger">
               <ul>
@@ -140,14 +145,14 @@
                       </td>
                       <td style="text-align: center">
 
-                        <a href="{{ route('mahasiswa.admin.show', [$d]) }}"> 
+                        <a href="{{ route('mahasiswa.admin.show', [$d]) }}">
                             <button class="btn btn-warning  btn-sm edit" type="button"><i class="fa fa-eye"></i></button>
-                        </a>   
+                        </a>
 
                         <a href="{{ route('mahasiswa.admin.edit', [$d]) }}">
                           <button class="btn btn-primary btn-sm edit" type="button"><i class="fa fa-edit"></i></button>
                         </a>
-                        
+
                         <form action="{{ route('mahasiswa.admin.delete', [$d]) }}" method="POST" class="d-inline">
                           @csrf
                           @method('delete')
@@ -210,7 +215,7 @@
             progressBar: true,
           }
         );
-      @endif  
+      @endif
     </script>
   @endPushOnce
 @endsection

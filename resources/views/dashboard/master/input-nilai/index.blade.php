@@ -115,7 +115,7 @@
         </div>
       </div>
     </div>
-    
+
   </div>
   @pushOnce('js')
     <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>

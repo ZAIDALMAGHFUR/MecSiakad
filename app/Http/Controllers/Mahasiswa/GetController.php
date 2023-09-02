@@ -84,8 +84,8 @@ public function find(Request $request)
     return view('dashboard.mahasiswa.krs.show', compact('data_krs', 'tahun_academic'));
 }
 
-    
-    
+
+
     public function add($nim, $tahun_akademik_id)
 {
     $mahasiswa = Mahasiswa::where('nim', $nim)->first();
