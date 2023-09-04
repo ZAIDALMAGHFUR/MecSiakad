@@ -42,9 +42,12 @@ class Pendaftaran extends Model
             $addNol = "";
         }
         $kodeBaru = $kodetb.now()->format('y').$addNol.$kode;
-    	return $kodeBaru;
+        return $kodeBaru;
     }
 
+public function tes (){
+    return $this->belongsTo(User::class, 'users_id');
+}
     public function user()
     {
          return $this->belongsTo(User::class, 'users_id');
